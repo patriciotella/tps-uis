@@ -1,0 +1,4 @@
+
+class Club extends LugarDeInteres {
+	
+}

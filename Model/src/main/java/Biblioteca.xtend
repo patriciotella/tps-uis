@@ -1,0 +1,4 @@
+
+class Biblioteca extends LugarDeInteres{
+	
+}
