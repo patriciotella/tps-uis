@@ -1,0 +1,4 @@
+
+class Embajada extends LugarDeInteres {
+	
+}
