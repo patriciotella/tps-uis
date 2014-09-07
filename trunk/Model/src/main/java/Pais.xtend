@@ -15,14 +15,6 @@ class Pais {
 		this._caracteristicas.add(caracteristica)
 		ObservableUtils.firePropertyChanged(this,"caracteristicas",caracteristicas)
 	}
-	
-//	new(String nombre, Map<String, String> caracteristicas,
-//		List<LugarDeInteres> lugaresDeInteres, List<Pais> paisesConectados) {
-//		this.nombre = nombre
-//		this.caracteristicas = caracteristicas
-//		this.lugaresDeInteres = lugaresDeInteres
-//		this.conexiones = paisesConectados	
-//	}
 
 	new() {
 		caracteristicas = newArrayList
