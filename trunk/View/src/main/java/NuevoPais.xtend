@@ -37,11 +37,11 @@ class NuevoPaisWindow extends MainWindow<Pais> {
 		val caracteristicasPanel = new Panel(editorPanel)
 		caracteristicasPanel.layout = new HorizontalLayout
 		new Label(caracteristicasPanel) => [
-			setText("Caracteristicas")
-			width = 170
+			setText("Características")
+			width = 175
 		]
 		new Button(caracteristicasPanel) => [
-			caption = "Editar caracteristicas"
+			caption = "Editar características"
 			onClick [ | new EditarCaracteristicasDePaisWindow(this, new EditorDeCaracteristicasDePais(this.modelObject)).open ]
 		]
 
@@ -49,19 +49,22 @@ class NuevoPaisWindow extends MainWindow<Pais> {
 		val caracteristicas = new Panel(mainPanel)
 		caracteristicas.layout = new HorizontalLayout
 		new Label(caracteristicas) => [
-			setText("Caracteristicas")
+			setText("Características")
 			width = 340
 			setBackground(Color::lightGray)
 		]
 		new List(mainPanel) => [
 			width = 280
-			height = 150
+			height = 120
 			bindItemsToProperty("caracteristicas")
 		]
 		
 		val conexionesPanel = new Panel(mainPanel)
 		conexionesPanel.layout = new HorizontalLayout
-		new Label(conexionesPanel).setText("Conexiones                             ")
+		new Label(conexionesPanel) => [
+			setText("Conexiones")
+			width = 200
+		]
 		new Button(conexionesPanel) => [
 			caption = "Editar conexiones"
 			onClick [ | new EditarConexionDePaisWindow(this, new EditorDeConexionesDePais(modelObject, mapamundi)).open ]
@@ -76,26 +79,44 @@ class NuevoPaisWindow extends MainWindow<Pais> {
 		]
 		new List(mainPanel) => [
 			width = 280
-			height = 150
+			height = 120
 			bindItemsToProperty("conexiones")
 		]
 
 		val lugaresPanel = new Panel(mainPanel)
 		lugaresPanel.layout = new HorizontalLayout
-		new Label(lugaresPanel).setText("Lugares de interes")
+		new Label(lugaresPanel) => [
+			setText("Lugares de interés")
+			width = 160	
+		]
 		new Button(lugaresPanel) => [
-			caption = "Editar lugares de interes"
-		//			onClick [ | this.modelObject.convertir ]
+			caption = "Editar lugares de interés"
+			onClick [ | new EditarLugaresDeInteresWindow(this, new EditorDeLugaresDeInteres()).open ]
 		]
 
-		var tablaLugares = new Table(mainPanel)
-		new Column(tablaLugares).setTitle("Lugares de interes")
+
+		val lugares = new Panel(mainPanel)
+		lugares.layout = new HorizontalLayout
+		new Label(lugares) => [
+			setText("Lugares de interés")
+			width = 340
+			setBackground(Color::lightGray)
+		]
+		new List(mainPanel) => [
+			width = 280
+			height = 120
+//			bindItemsToProperty("conexiones")
+		]
+		//var tablaLugares = new Table(mainPanel)
+		//new Column(tablaLugares).setTitle("Lugares de interes")
 
 		val buttonPanel = new Panel(mainPanel)
 		buttonPanel.layout = new HorizontalLayout
 		var aceptarButton = new Button(buttonPanel) => [
 			caption = "Aceptar"
-			onClick [ | mapamundi.agregarPais(modelObject) ]
+			onClick [ | mapamundi.agregarPais(modelObject) 
+						close
+					]
 		]
 		aceptarButton.setBackground(Color::lightGray)
 	}
