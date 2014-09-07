@@ -21,7 +21,10 @@ class EditarCaracteristicasDePaisWindow extends Dialog<EditorDeCaracteristicasDe
 		this.setTitle("Editar caracteristicas")
 
 		mainPanel.setLayout(new VerticalLayout)
-		new Label(mainPanel).setText("Caracteristicas")
+		new Label(mainPanel)=> [
+			setText("Caracteristicas")
+			setBackground(Color::lightGray)
+		]
 		new List(mainPanel) => [
 			width = 300
 			height = 150

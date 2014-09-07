@@ -21,7 +21,10 @@ class EditarConexionDePaisWindow extends Dialog<EditorDeConexionesDePais> {
 		this.setTitle("Editar conexiones")
 
 		mainPanel.setLayout(new VerticalLayout)
-		new Label(mainPanel).setText("Conexiones")
+		new Label(mainPanel) => [
+			setText("Conexiones")
+			setBackground(Color::lightGray)	
+		]
 		new List(mainPanel) => [
 			width = 300
 			height = 150
