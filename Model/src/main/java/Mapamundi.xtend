@@ -17,7 +17,7 @@ class Mapamundi {
 	}
 	
 	def agregarPais(Pais pais) {
-		_paises.add(pais)
+		this._paises.add(pais)
 		ObservableUtils.firePropertyChanged(this, "paises", paises)
 	}
 }
