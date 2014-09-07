@@ -28,15 +28,15 @@ class EditarLugaresDeInteresWindow extends Dialog<EditorDeLugaresDeInteres> {
 		new List(mainPanel) => [
 			width = 300
 			height = 150
-//			bindValueToProperty("conexionSeleccionada")
-//			bindItemsToProperty("pais.conexiones")
+			bindValueToProperty("lugarSeleccionado")
+			bindItemsToProperty("pais.lugaresDeInteres")
 		]
 
 		val eliminarButtonPanel = new Panel(mainPanel)
 		eliminarButtonPanel.layout = new HorizontalLayout
 		var eliminarButton = new Button(eliminarButtonPanel) => [
 			caption = "Eliminar"
-//			onClick [|this.modelObject.borrarLugarDeInteres]
+			onClick [|this.modelObject.borrarLugarDeInteres]
 		]
 		eliminarButton.setBackground(Color::lightGray)
 
@@ -44,16 +44,15 @@ class EditarLugaresDeInteresWindow extends Dialog<EditorDeLugaresDeInteres> {
 		agregarPanel.layout = new HorizontalLayout
 		new Selector(agregarPanel) => [
 			width = 230
-//			bindValueToProperty("conexionNueva")
-//			bindItemsToProperty("mapamundi.paises")
-//			allowNull = false
+			bindValueToProperty("lugarNuevo")
+			allowNull = false
 //			bindItems(new ObservableProperty(this.modelObject, "paises"))
 //			bindValueToProperty("conexionNueva")
 		]
 		
 		var agregarButton = new Button(agregarPanel) => [
 			caption = "Agregar"
-//			onClick [|this.modelObject.agregarLugarDeInteres]
+			onClick [|this.modelObject.agregarLugarDeInteres]
 		]
 		agregarButton.setBackground(Color::lightGray)
 

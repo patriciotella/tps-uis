@@ -1,28 +1,26 @@
-
-
-import org.uqbar.arena.windows.MainWindow
-import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.layout.VerticalLayout
-import org.uqbar.arena.layout.HorizontalLayout
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.widgets.TextBox
-import org.uqbar.arena.widgets.Button
-import org.uqbar.arena.widgets.List
 import java.awt.Color
-import org.uqbar.arena.widgets.tables.Table
-import org.uqbar.arena.widgets.tables.Column
+import org.uqbar.arena.layout.HorizontalLayout
+import org.uqbar.arena.layout.VerticalLayout
+import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.List
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.TextBox
+import org.uqbar.arena.windows.MainWindow
 
-class NuevoPaisWindow extends MainWindow<Pais> {
+class PaisWindow extends MainWindow<Pais> {
 
 	Mapamundi mapamundi
+	String nombreDePais
 	
-	new(Mapamundi mapamundi) {
-		super(new Pais)
+	new(Mapamundi mapamundi, Pais pais) {
+		super(pais)
 		this.mapamundi = mapamundi
+		this.nombreDePais = pais.nombre
 	}
 
 	override createContents(Panel mainPanel) {
-		this.setTitle("Mapamundi - Nuevo Pais")
+		setWindowTitle()
 		val editorPanel = new Panel(mainPanel)
 		mainPanel.setLayout(new VerticalLayout)
 
@@ -91,7 +89,7 @@ class NuevoPaisWindow extends MainWindow<Pais> {
 		]
 		new Button(lugaresPanel) => [
 			caption = "Editar lugares de interés"
-			onClick [ | new EditarLugaresDeInteresWindow(this, new EditorDeLugaresDeInteres()).open ]
+			onClick [ | new EditarLugaresDeInteresWindow(this, new EditorDeLugaresDeInteres(this.modelObject)).open ]
 		]
 
 
@@ -105,10 +103,8 @@ class NuevoPaisWindow extends MainWindow<Pais> {
 		new List(mainPanel) => [
 			width = 280
 			height = 120
-//			bindItemsToProperty("conexiones")
+			bindItemsToProperty("lugaresDeInteres")
 		]
-		//var tablaLugares = new Table(mainPanel)
-		//new Column(tablaLugares).setTitle("Lugares de interes")
 
 		val buttonPanel = new Panel(mainPanel)
 		buttonPanel.layout = new HorizontalLayout
@@ -120,9 +116,27 @@ class NuevoPaisWindow extends MainWindow<Pais> {
 		]
 		aceptarButton.setBackground(Color::lightGray)
 	}
+	
+	private def setWindowTitle() {
+		if(!this.nombreDePais.equals(""))
+			this.setTitle("Mapamundi - Editar País")
+		else
+			this.setTitle("Mapamundi - Nuevo País")
+	}
 
 	def static void main(String[] args) {
-		new NuevoPaisWindow(new Mapamundi).startApplication
+		var pais = new Pais
+		pais.nombre = "Argentina"
+		pais.agregarCaracteristica("Prueba")
+		val paisConex = new Pais
+		paisConex.nombre = "Chile"
+		pais.agregarConexion(paisConex)
+		val rusia = new Pais
+		rusia.nombre = "Rusia"
+		var mapamundi = new Mapamundi
+		mapamundi.agregarPais(rusia)
+		new PaisWindow(mapamundi, pais).startApplication
+//		new PaisWindow(new Mapamundi, new Pais).startApplication
 	}
 
 }
