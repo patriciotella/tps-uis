@@ -20,6 +20,7 @@ class Pais {
 		caracteristicas = newArrayList
 		lugaresDeInteres = newArrayList
 		conexiones = newArrayList
+		nombre = ""
 	}
 	
 	def borrarCaracteristica(String caracteristica) {
@@ -39,6 +40,16 @@ class Pais {
 	
 	override toString() {
 		nombre
+	}
+	
+	def agregarLugarDeInteres(LugarDeInteres lugarDeInteres) {
+		this._lugaresDeInteres.add(lugarDeInteres)
+		ObservableUtils.firePropertyChanged(this,"lugaresDeInteres",lugaresDeInteres)
+	}
+	
+	def borrarLugarDeInteres(LugarDeInteres lugarDeInteres) {
+		this._lugaresDeInteres.remove(lugarDeInteres)
+		ObservableUtils.firePropertyChanged(this,"lugaresDeInteres",lugaresDeInteres)
 	}
 	
 }
