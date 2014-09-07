@@ -1,25 +1,66 @@
 
 
 import java.util.LinkedList
-import org.junit.Test
 
+import org.junit.Test
 import static org.junit.Assert.*
-import java.util.HashMap
-import main.java.lugaresDeInteres
+import org.junit.Before
+import java.util.List
 
 class PaisTest {
 	
-	@Test
-	def test() {
-		var caracteristicas = new HashMap<String, String>()
-		var lugaresDeInteres = new LinkedList<LugarDeInteres>()
-		var conexiones = new LinkedList<Pais>()
+	var List<String> caracteristicas
+	var Pais pais
+	
+	@Before
+	def setUp() {
+		caracteristicas = new LinkedList<String>()
 		
-		caracteristicas.put("Bandera", "Celeste y blanca")
-		caracteristicas.put("Moneda", "Peso")
-		caracteristicas.put("Casa de gobierno", "Rosada")
-		caracteristicas.put("Comida tipica", "Empanadas")
+		caracteristicas.add("Bandera celeste y blanca")
+		caracteristicas.add("Moneda peso")
+		caracteristicas.add("Casa de gobierno Rosada")
+		caracteristicas.add("Comida tipica empanadas")
 		
-//		var pais = new Pais("Argentina", caracteristicas, lugaresDeInteres, conexiones)
+		pais = new Pais()
+		pais.nombre = "Argentina"
+		pais.caracteristicas = caracteristicas
 	}
+	
+	@Test
+	def testConstructor() {	
+		assertEquals(pais.caracteristicas, caracteristicas)
+		assertEquals(pais.nombre, "Argentina")
+		assertEquals(pais.conexiones, newArrayList)
+		assertEquals(pais.lugaresDeInteres, newArrayList)
+	}
+	
+	@Test
+	def testAgregarCaracteristica() {
+		pais.agregarCaracteristica("Caracteristica agregada")
+		assertTrue(pais.caracteristicas.contains("Caracteristica agregada"))
+	}
+	
+	@Test
+	def testBorrarCaracteristica() {
+		pais.borrarCaracteristica("Casa de gobierno Rosada")
+		assertFalse(pais.caracteristicas.contains("Casa de gobierno Rosada"))
+	}
+	
+	@Test
+	def testAgregarConexion() {
+		val conexion = new Pais()
+		pais.agregarConexion(conexion)
+		assertTrue(pais.conexiones.contains(conexion))
+	}
+	
+	@Test
+	def testBorrarConexion() {
+		val conexion = new Pais()
+		pais.agregarConexion(conexion)
+		assertTrue(pais.conexiones.contains(conexion))
+		
+		pais.borrarConexion(conexion)
+		assertFalse(pais.conexiones.contains(conexion))
+	}
+	
 }
