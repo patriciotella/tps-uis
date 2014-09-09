@@ -40,6 +40,7 @@ class Villano {
 	
 	def eliminarHobbie (String hobbie) {
 		this._hobbies.remove(hobbie)
+		ObservableUtils.firePropertyChanged(this,"hobbies",hobbies)
 	}
 	
 	def setNombre (String nombre) {

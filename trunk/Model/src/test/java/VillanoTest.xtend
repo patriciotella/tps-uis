@@ -1,6 +1,4 @@
-
-
-import java.util.LinkedList
+import org.junit.Before
 import org.junit.Test
 
 import static org.junit.Assert.*
@@ -9,15 +7,30 @@ class VillanoTest {
 	
 	var Villano carlin
 
+	@Before
+	def setUp(){
+		
+		carlin = new Villano()
+		carlin.setNombre("Carlin")
+		carlin.setSexo("Masculino")
+		carlin.agregarHobbie("hacker")
+		carlin.agregarSeniaParticular("laDelAnchoDeBasto")
+		
+	}
 	@Test
-	def villanoTest() {
-		var hobbiesDeCarlin = new LinkedList<String>()
-		hobbiesDeCarlin.add("Hacker")
-		var senias = new LinkedList<String>()
-		carlin = new Villano("Carlin", "Masculino", senias, hobbiesDeCarlin)
+	def villanoContructoresTest() {
+		
 		assertEquals(carlin.nombre, "Carlin")
 		assertEquals(carlin.sexo, "Masculino")
-		assertEquals(carlin.seniasParticulares, senias)
-		assertEquals(carlin.hobbies, hobbiesDeCarlin)
+		assertTrue(carlin.seniasParticulares.contains("laDelAnchoDeBasto"))
+		assertTrue(carlin.hobbies.contains("hacker"))
+	}
+	
+	@Test
+	def AgregarCaracteristicasYHobbiesTest(){
+		carlin.agregarHobbie("otroHobbie")
+		carlin.agregarSeniaParticular("otraSeña")
+		assertTrue(carlin.hobbies.size()==2)
+		assertTrue(carlin.seniasParticulares.size==2)
 	}
 }
