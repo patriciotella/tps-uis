@@ -10,6 +10,7 @@ import java.awt.Color
 import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
+import org.uqbar.arena.bindings.ObservableProperty
 
 class EditarLugaresDeInteresWindow extends Dialog<EditorDeLugaresDeInteres> {
 	
@@ -34,11 +35,11 @@ class EditarLugaresDeInteresWindow extends Dialog<EditorDeLugaresDeInteres> {
 
 		val eliminarButtonPanel = new Panel(mainPanel)
 		eliminarButtonPanel.layout = new HorizontalLayout
-		var eliminarButton = new Button(eliminarButtonPanel) => [
+		new Button(eliminarButtonPanel) => [
 			caption = "Eliminar"
 			onClick [|this.modelObject.borrarLugarDeInteres]
+			setBackground(Color::lightGray)
 		]
-		eliminarButton.setBackground(Color::lightGray)
 
 		val agregarPanel = new Panel(mainPanel)
 		agregarPanel.layout = new HorizontalLayout
@@ -46,22 +47,27 @@ class EditarLugaresDeInteresWindow extends Dialog<EditorDeLugaresDeInteres> {
 			width = 230
 			bindValueToProperty("lugarNuevo")
 			allowNull = false
-//			bindItems(new ObservableProperty(this.modelObject, "paises"))
-//			bindValueToProperty("conexionNueva")
+			bindItems(new ObservableProperty(this.modelObject, "lugaresPosibles"))
 		]
 		
-		var agregarButton = new Button(agregarPanel) => [
+		new Button(agregarPanel) => [
 			caption = "Agregar"
 			onClick [|this.modelObject.agregarLugarDeInteres]
+			setBackground(Color::lightGray)
+			bindEnabledToProperty("puedeAgregarLugar")
+			disableOnError
 		]
-		agregarButton.setBackground(Color::lightGray)
 
 		val buttonPanel = new Panel(mainPanel)
 		buttonPanel.layout = new HorizontalLayout
-		var aceptarButton = new Button(buttonPanel) => [
+		new Button(buttonPanel) => [
 			caption = "Aceptar"
 			onClick [|close]
+			setBackground(Color::lightGray)
 		]
-		aceptarButton.setBackground(Color::lightGray)
+	}
+	
+	def getLugaresPosibles() {
+		LugarDeInteres.getLugares
 	}
 }

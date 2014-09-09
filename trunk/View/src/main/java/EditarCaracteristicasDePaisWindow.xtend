@@ -34,30 +34,30 @@ class EditarCaracteristicasDePaisWindow extends Dialog<EditorDeCaracteristicasDe
 
 		val eliminarButtonPanel = new Panel(mainPanel)
 		eliminarButtonPanel.layout = new HorizontalLayout
-		var eliminarButton = new Button(eliminarButtonPanel) => [
+		new Button(eliminarButtonPanel) => [
 			caption = "Eliminar"
 			onClick [ | this.modelObject.borrarCaracteristica ]
+			setBackground(Color::lightGray)
 		]
-		eliminarButton.setBackground(Color::lightGray)
 
 		val agregarPanel = new Panel(mainPanel)
 		agregarPanel.layout = new HorizontalLayout
 		val caracteristica = new TextBox(agregarPanel).width = 230
 		caracteristica.bindValueToProperty("caracteristicaNueva")
 
-		var agregarButton = new Button(agregarPanel) => [
+		new Button(agregarPanel) => [
 			caption = "Agregar"
 			onClick [ | this.modelObject.agregarCaracteristica ]
+			setBackground(Color::lightGray)
 		]
-		agregarButton.setBackground(Color::lightGray)
 
 		val buttonPanel = new Panel(mainPanel)
 		buttonPanel.layout = new HorizontalLayout
-		var aceptarButton = new Button(buttonPanel) => [
+		new Button(buttonPanel) => [
 			caption = "Aceptar"
 			onClick [|close]
+			setBackground(Color::lightGray)
 		]
-		aceptarButton.setBackground(Color::lightGray)
 	}
 
 }

@@ -34,11 +34,11 @@ class EditarConexionDePaisWindow extends Dialog<EditorDeConexionesDePais> {
 
 		val eliminarButtonPanel = new Panel(mainPanel)
 		eliminarButtonPanel.layout = new HorizontalLayout
-		var eliminarButton = new Button(eliminarButtonPanel) => [
+		new Button(eliminarButtonPanel) => [
 			caption = "Eliminar"
 			onClick [|this.modelObject.borrarConexion]
+			setBackground(Color::lightGray)
 		]
-		eliminarButton.setBackground(Color::lightGray)
 
 		val agregarPanel = new Panel(mainPanel)
 		agregarPanel.layout = new HorizontalLayout
@@ -46,24 +46,21 @@ class EditarConexionDePaisWindow extends Dialog<EditorDeConexionesDePais> {
 			width = 230
 			bindValueToProperty("conexionNueva")
 			bindItemsToProperty("mapamundi.paises")
-//			allowNull = false
-//			bindItems(new ObservableProperty(this.modelObject, "paises"))
-//			bindValueToProperty("conexionNueva")
 		]
 		
-		var agregarButton = new Button(agregarPanel) => [
+		new Button(agregarPanel) => [
 			caption = "Agregar"
 			onClick [|this.modelObject.agregarConexion]
+			setBackground(Color::lightGray)
 		]
-		agregarButton.setBackground(Color::lightGray)
 
 		val buttonPanel = new Panel(mainPanel)
 		buttonPanel.layout = new HorizontalLayout
-		var aceptarButton = new Button(buttonPanel) => [
+		new Button(buttonPanel) => [
 			caption = "Aceptar"
 			onClick [|close]
+			setBackground(Color::lightGray)
 		]
-		aceptarButton.setBackground(Color::lightGray)
 	}
 	
 }
