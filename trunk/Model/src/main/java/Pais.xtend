@@ -52,4 +52,13 @@ class Pais {
 		ObservableUtils.firePropertyChanged(this,"lugaresDeInteres",lugaresDeInteres)
 	}
 	
+	def isPuedeCrearPais() {
+		!this._nombre.equals("")
+	}
+	
+	def setNombre(String nombre) {
+		this._nombre = nombre
+		ObservableUtils.firePropertyChanged(this,"puedeCrearPais",puedeCrearPais)
+	}
+	
 }
