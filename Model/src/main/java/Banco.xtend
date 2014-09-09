@@ -1,4 +1,4 @@
 
 class Banco extends LugarDeInteres{
-	
+
 }
