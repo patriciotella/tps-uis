@@ -1,6 +1,6 @@
-import org.uqbar.commons.utils.Observable
 import java.util.List
 import org.uqbar.commons.model.ObservableUtils
+import org.uqbar.commons.utils.Observable
 
 @Observable
 class EditorDeLugaresDeInteres {
@@ -16,12 +16,12 @@ class EditorDeLugaresDeInteres {
 	
 	def borrarLugarDeInteres() {
 		pais.borrarLugarDeInteres(lugarSeleccionado)
-		ObservableUtils.firePropertyChanged(this,"puedeAgregarLugar",puedeAgregarLugar)
+		cambioPuedeAgregarLugar()
 	}
 	
 	def agregarLugarDeInteres() {
 		pais.agregarLugarDeInteres(lugarNuevo)
-		ObservableUtils.firePropertyChanged(this,"puedeAgregarLugar",puedeAgregarLugar)
+		cambioPuedeAgregarLugar()	
 	}
 	
 	def getLugaresPosibles() {
@@ -29,15 +29,24 @@ class EditorDeLugaresDeInteres {
 	}
 	
 	def isPuedeAgregarLugar() {
-		pais.lugaresDeInteres.size < 3// && noEstanRepetidos
+		pais.lugaresDeInteres.size < 3 && noEstanRepetidos
 	}
 	
 	def noEstanRepetidos() {
-		for(LugarDeInteres lugar : pais.lugaresDeInteres){
-			if(lugarSeleccionado.toString.equals(lugar.toString))
+		for(LugarDeInteres lugar : _pais.lugaresDeInteres){
+			if(lugar.class.equals(_lugarNuevo.class))
 				return false
 		}
 		return true
+	}
+	
+	def setLugarNuevo(LugarDeInteres lugar) {
+		this._lugarNuevo = lugar
+		cambioPuedeAgregarLugar()	
+	}
+	
+	private def cambioPuedeAgregarLugar() {
+		ObservableUtils.firePropertyChanged(this,"puedeAgregarLugar",puedeAgregarLugar)
 	}
 	
 }
