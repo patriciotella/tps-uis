@@ -63,4 +63,35 @@ class PaisTest {
 		assertFalse(pais.conexiones.contains(conexion))
 	}
 	
+	@Test
+	def testToString() {
+		assertEquals(pais.toString, "Argentina")
+	}
+	
+	@Test
+	def testAgregarLugarDeInteres() {
+		val club = new Club
+		pais.agregarLugarDeInteres(club)
+		assertTrue(pais.lugaresDeInteres.contains(club))
+	}
+	
+	@Test
+	def testBorrarLugarDeInteres() {
+		val banco = new Banco
+		pais.agregarLugarDeInteres(banco)
+		assertTrue(pais.lugaresDeInteres.contains(banco))
+		pais.borrarLugarDeInteres(banco)
+		assertFalse(pais.lugaresDeInteres.contains(banco))
+	}
+	
+	@Test
+	def testPuedeCrearPais() {
+		assertTrue(pais.puedeCrearPais)
+	}
+	
+	@Test
+	def testNoPuedeCrearPais() {
+		assertFalse(new Pais().puedeCrearPais)
+	}
+	
 }
