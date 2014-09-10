@@ -5,7 +5,7 @@ import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.layout.VerticalLayout
 
-abstract class EditorDePaisWindow<T> extends Dialog<T> {
+abstract class EditorDePropiedadDePaisWindow<T> extends Dialog<T> {
 	
 	public new(WindowOwner owner, T model) {
 		super(owner, model)
@@ -14,20 +14,20 @@ abstract class EditorDePaisWindow<T> extends Dialog<T> {
 	override protected createFormPanel(Panel mainPanel) {
 		setWindowTitle()
 		mainPanel.setLayout(new VerticalLayout)
-		getListaDePropiedades(mainPanel)
-		setEliminarButton(mainPanel)
+		listaDePropiedades(mainPanel)
+		eliminarButton(mainPanel)
 		agregarPropiedadInput(mainPanel)
-		setAceptarButton(mainPanel)
+		aceptarButton(mainPanel)
 	}
 	
 	def protected abstract void setWindowTitle()
 	
-	def protected abstract void setAceptarButton(Panel panel)
+	def protected abstract void aceptarButton(Panel panel)
 	
 	def protected abstract void agregarPropiedadInput(Panel panel)
 	
-	def protected abstract void setEliminarButton(Panel panel)
+	def protected abstract void eliminarButton(Panel panel)
 	
-	def protected abstract void getListaDePropiedades(Panel panel)
+	def protected abstract void listaDePropiedades(Panel panel)
 	
 }
