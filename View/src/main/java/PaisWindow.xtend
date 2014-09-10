@@ -168,8 +168,8 @@ class PaisWindow extends MainWindow<Pais> {
 		rusia.nombre = "Rusia"
 		var mapamundi = new Mapamundi
 		mapamundi.agregarPais(rusia)
-//		new PaisWindow(mapamundi, pais).startApplication
-		new PaisWindow(new Mapamundi, new Pais).startApplication
+		new PaisWindow(mapamundi, pais).startApplication
+//		new PaisWindow(new Mapamundi, new Pais).startApplication
 	}
 
 }

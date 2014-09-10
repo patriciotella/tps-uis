@@ -67,7 +67,4 @@ class EditarLugaresDeInteresWindow extends Dialog<EditorDeLugaresDeInteres> {
 		]
 	}
 	
-	def getLugaresPosibles() {
-		LugarDeInteres.getLugares
-	}
 }
