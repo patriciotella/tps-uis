@@ -1,6 +1,3 @@
-
-
-import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.layout.VerticalLayout
@@ -11,26 +8,50 @@ import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.widgets.Button
 import java.awt.Color
 
-class EditarHobbiesDeVillanoWindow extends Dialog<EditorDeHobbiesDeVillano>{
+class EditarHobbiesDeVillanoWindow extends EditorDePropiedadDeModeloWindow<EditorDeHobbiesDeVillano> {
 	
 	new(WindowOwner owner, EditorDeHobbiesDeVillano model) {
 		super(owner, model)
 	}
 	
-	override protected createFormPanel(Panel mainPanel) {
-		setWindowTitle()
-		mainPanel.setLayout(new VerticalLayout)
-		verHobbies(mainPanel)
-		eliminarHobbieButton(mainPanel)
-		agregarHobbie(mainPanel)
-		aceptarButton(mainPanel)
+	override protected setWindowTitle() {
+		this.setTitle("Editar hobbies")	
 	}
 	
-	def setWindowTitle() {
-		this.setTitle("Editar hobbies")
+	override protected aceptarButton(Panel panel) {
+		val buttonPanel = new Panel(panel)
+		buttonPanel.layout = new HorizontalLayout
+		new Button(buttonPanel) => [
+			caption = "Aceptar"
+			onClick [|close]
+			setBackground(Color::lightGray)
+		]
 	}
 	
-	def verHobbies(Panel mainPanel) {
+	override protected agregarPropiedadInput(Panel panel) {
+		val agregarPanel = new Panel(panel)
+		agregarPanel.layout = new HorizontalLayout
+		val hobbie = new TextBox(agregarPanel).width = 230
+		hobbie.bindValueToProperty("hobbieNuevo")
+		
+		new Button(agregarPanel) => [
+			caption = "Agregar"
+			onClick [ | this.modelObject.agregarHobbie ]
+			setBackground(Color::lightGray)
+		]
+	}
+	
+	override protected eliminarButton(Panel panel) {
+		val eliminarButtonPanel = new Panel(panel)
+		eliminarButtonPanel.layout = new HorizontalLayout
+		new Button(eliminarButtonPanel) => [
+			caption = "Eliminar"
+			onClick [ | this.modelObject.borrarHobbie ]
+			setBackground(Color::lightGray)
+		]	
+	}
+	
+	override protected listaDePropiedades(Panel mainPanel) {
 		mainPanel.setLayout(new VerticalLayout)
 		new Label(mainPanel) => [
 			setText("Hobbie")
@@ -42,40 +63,6 @@ class EditarHobbiesDeVillanoWindow extends Dialog<EditorDeHobbiesDeVillano>{
 			height = 150
 			bindValueToProperty("hobbieSeleccionado")
 			bindItemsToProperty("villano.hobbies")
-		]	
-	}
-	
-	def eliminarHobbieButton (Panel mainPanel) {
-		val eliminarButtonPanel = new Panel(mainPanel)
-		eliminarButtonPanel.layout = new HorizontalLayout
-		new Button(eliminarButtonPanel) => [
-			caption = "Eliminar"
-			onClick [ | this.modelObject.borrarHobbie ]
-			setBackground(Color::lightGray)
 		]
 	}
-	
-	def agregarHobbie (Panel mainPanel) {
-		val agregarPanel = new Panel(mainPanel)
-		agregarPanel.layout = new HorizontalLayout
-		val hobbie = new TextBox(agregarPanel).width = 230
-		hobbie.bindValueToProperty("hobbieNuevo")
-		
-		new Button(agregarPanel) => [
-			caption = "Agregar"
-			onClick [ | this.modelObject.agregarHobbie ]
-			setBackground(Color::lightGray)
-		]	
-	}
-	
-	def aceptarButton (Panel mainPanel) {
-		val buttonPanel = new Panel(mainPanel)
-		buttonPanel.layout = new HorizontalLayout
-		new Button(buttonPanel) => [
-			caption = "Aceptar"
-			onClick [|close]
-			setBackground(Color::lightGray)
-		]
-	}
-	
 }
