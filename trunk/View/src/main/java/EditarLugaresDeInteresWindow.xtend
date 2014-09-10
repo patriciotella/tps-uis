@@ -12,36 +12,28 @@ import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.bindings.ObservableProperty
 
-class EditarLugaresDeInteresWindow extends Dialog<EditorDeLugaresDeInteres> {
+class EditarLugaresDeInteresWindow extends EditorDePropiedadDeModeloWindow<EditorDeLugaresDeInteres> {
 	
 	new(WindowOwner owner, EditorDeLugaresDeInteres model) {
 		super(owner, model)
 	}
-
-	override protected createFormPanel(Panel mainPanel) {
+	
+	override protected setWindowTitle() {
 		this.setTitle("Editar lugares de interés")
-
-		mainPanel.setLayout(new VerticalLayout)
-		new Label(mainPanel) => [
-			setText("Lugares de interés")
-			setBackground(Color::lightGray)	
-		]
-		new List(mainPanel) => [
-			width = 300
-			height = 150
-			bindValueToProperty("lugarSeleccionado")
-			bindItemsToProperty("pais.lugaresDeInteres")
-		]
-
-		val eliminarButtonPanel = new Panel(mainPanel)
-		eliminarButtonPanel.layout = new HorizontalLayout
-		new Button(eliminarButtonPanel) => [
-			caption = "Eliminar"
-			onClick [|this.modelObject.borrarLugarDeInteres]
+	}
+	
+	override protected aceptarButton(Panel panel) {
+		val buttonPanel = new Panel(panel)
+		buttonPanel.layout = new HorizontalLayout
+		new Button(buttonPanel) => [
+			caption = "Aceptar"
+			onClick [|close]
 			setBackground(Color::lightGray)
 		]
-
-		val agregarPanel = new Panel(mainPanel)
+	}
+	
+	override protected agregarPropiedadInput(Panel panel) {
+		val agregarPanel = new Panel(panel)
 		agregarPanel.layout = new HorizontalLayout
 		new Selector(agregarPanel) => [
 			width = 230
@@ -57,13 +49,29 @@ class EditarLugaresDeInteresWindow extends Dialog<EditorDeLugaresDeInteres> {
 			bindEnabledToProperty("puedeAgregarLugar")
 			disableOnError
 		]
-
-		val buttonPanel = new Panel(mainPanel)
-		buttonPanel.layout = new HorizontalLayout
-		new Button(buttonPanel) => [
-			caption = "Aceptar"
-			onClick [|close]
+	}
+	
+	override protected eliminarButton(Panel panel) {
+		val eliminarButtonPanel = new Panel(panel)
+		eliminarButtonPanel.layout = new HorizontalLayout
+		new Button(eliminarButtonPanel) => [
+			caption = "Eliminar"
+			onClick [|this.modelObject.borrarLugarDeInteres]
 			setBackground(Color::lightGray)
+		]
+	}
+	
+	override protected listaDePropiedades(Panel panel) {
+		panel.setLayout(new VerticalLayout)
+		new Label(panel) => [
+			setText("Lugares de interés")
+			setBackground(Color::lightGray)	
+		]
+		new List(panel) => [
+			width = 300
+			height = 150
+			bindValueToProperty("lugarSeleccionado")
+			bindItemsToProperty("pais.lugaresDeInteres")
 		]
 	}
 	

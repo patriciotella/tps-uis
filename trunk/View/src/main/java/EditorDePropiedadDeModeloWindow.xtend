@@ -7,7 +7,7 @@ import org.uqbar.arena.layout.VerticalLayout
 
 abstract class EditorDePropiedadDeModeloWindow<T> extends Dialog<T> {
 	
-	public new(WindowOwner owner, T model) {
+	protected new(WindowOwner owner, T model) {
 		super(owner, model)
 	}
 	
