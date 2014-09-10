@@ -5,7 +5,7 @@ import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.layout.VerticalLayout
 
-abstract class EditorDePropiedadDePaisWindow<T> extends Dialog<T> {
+abstract class EditorDePropiedadDeModeloWindow<T> extends Dialog<T> {
 	
 	public new(WindowOwner owner, T model) {
 		super(owner, model)
