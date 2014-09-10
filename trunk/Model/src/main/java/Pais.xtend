@@ -1,8 +1,6 @@
-
-
-import org.uqbar.commons.utils.Observable
 import java.util.List
 import org.uqbar.commons.model.ObservableUtils
+import org.uqbar.commons.utils.Observable
 
 @Observable
 class Pais {
@@ -13,6 +11,10 @@ class Pais {
 	
 	def agregarCaracteristica(String caracteristica) {
 		this._caracteristicas.add(caracteristica)
+		cambiaronCaracteristicas
+	}
+	
+	private def cambiaronCaracteristicas() {
 		ObservableUtils.firePropertyChanged(this,"caracteristicas",caracteristicas)
 	}
 
@@ -25,17 +27,21 @@ class Pais {
 	
 	def borrarCaracteristica(String caracteristica) {
 		this._caracteristicas.remove(caracteristica)
-		ObservableUtils.firePropertyChanged(this,"caracteristicas",caracteristicas)
+		cambiaronCaracteristicas
 	}
 	
 	def borrarConexion(Pais conexion) {
 		this._conexiones.remove(conexion)
+		cambiaronConexiones
+	}
+	
+	private def cambiaronConexiones() {
 		ObservableUtils.firePropertyChanged(this,"conexiones",conexiones)
 	}
 	
 	def agregarConexion(Pais conexion) {
 		this._conexiones.add(conexion)
-		ObservableUtils.firePropertyChanged(this,"conexiones",conexiones)
+		cambiaronConexiones
 	}
 	
 	override toString() {
@@ -44,12 +50,16 @@ class Pais {
 	
 	def agregarLugarDeInteres(LugarDeInteres lugarDeInteres) {
 		this._lugaresDeInteres.add(lugarDeInteres)
+		cambiaronLugaresDeInteres()
+	}
+	
+	private def cambiaronLugaresDeInteres() {
 		ObservableUtils.firePropertyChanged(this,"lugaresDeInteres",lugaresDeInteres)
 	}
 	
 	def borrarLugarDeInteres(LugarDeInteres lugarDeInteres) {
 		this._lugaresDeInteres.remove(lugarDeInteres)
-		ObservableUtils.firePropertyChanged(this,"lugaresDeInteres",lugaresDeInteres)
+		cambiaronLugaresDeInteres()
 	}
 	
 	def isPuedeCrearPais() {
