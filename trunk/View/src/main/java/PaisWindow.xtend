@@ -29,17 +29,17 @@ class PaisWindow extends MainWindow<Pais> {
 	
 	private def agregarLugaresDeInteresYSuEditor(Panel mainPanel) {
 		agregarEditorDeLugaresDeInteres(mainPanel)
-		getListaDeLugaresDeInteres(mainPanel)
+		listaDeLugaresDeInteres(mainPanel)
 	}
 	
 	private def agregarConexionesYSuEditor(Panel mainPanel) {
 		agregarEditorDeConexiones(mainPanel)
-		getListaDeConexiones(mainPanel)
+		listaDeConexiones(mainPanel)
 	}
 	
 	private def agregarCaracteristicasYSuEditor(Panel mainPanel) {
 		agregarEditorDeCaracteristicas(mainPanel)
-		getListaDeCaracteristicas(mainPanel)
+		listaDeCaracteristicas(mainPanel)
 	}
 	
 	private def agregarAceptarBoton(Panel mainPanel) {
@@ -56,7 +56,7 @@ class PaisWindow extends MainWindow<Pais> {
 		]
 	}
 	
-	private def getListaDeLugaresDeInteres(Panel mainPanel) {
+	private def listaDeLugaresDeInteres(Panel mainPanel) {
 		val lugares = new Panel(mainPanel)
 		lugares.layout = new HorizontalLayout
 		new Label(lugares) => [
@@ -84,7 +84,7 @@ class PaisWindow extends MainWindow<Pais> {
 		]
 	}
 	
-	private def getListaDeConexiones(Panel mainPanel) {
+	private def listaDeConexiones(Panel mainPanel) {
 		val conexiones = new Panel(mainPanel)
 		conexiones.layout = new HorizontalLayout
 		new Label(conexiones) => [
@@ -112,7 +112,7 @@ class PaisWindow extends MainWindow<Pais> {
 		]
 	}
 	
-	private def getListaDeCaracteristicas(Panel mainPanel) {
+	private def listaDeCaracteristicas(Panel mainPanel) {
 		val caracteristicas = new Panel(mainPanel)
 		caracteristicas.layout = new HorizontalLayout
 		new Label(caracteristicas) => [
