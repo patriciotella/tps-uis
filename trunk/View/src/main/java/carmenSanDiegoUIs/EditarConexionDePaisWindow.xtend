@@ -1,4 +1,4 @@
-
+package carmenSanDiegoUIs
 
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Label
@@ -7,16 +7,16 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
 import java.awt.Color
-import org.uqbar.arena.widgets.TextBox
+import org.uqbar.arena.widgets.Selector
 
-class EditarCaracteristicasDePaisWindow extends EditorDePropiedadDeModeloWindow<EditorDeCaracteristicasDePais> {
+class EditarConexionDePaisWindow extends EditorDePropiedadDeModeloWindow<EditorDeConexionesDePais> {
 
-	new(WindowOwner owner, EditorDeCaracteristicasDePais model) {
+	new(WindowOwner owner, EditorDeConexionesDePais model) {
 		super(owner, model)
 	}
 	
 	override protected setWindowTitle() {
-		this.setTitle("Editar caracteristicas")
+		this.setTitle("Editar conexiones")
 	}
 	
 	override protected aceptarButton(Panel panel) {
@@ -32,12 +32,15 @@ class EditarCaracteristicasDePaisWindow extends EditorDePropiedadDeModeloWindow<
 	override protected agregarPropiedadInput(Panel panel) {
 		val agregarPanel = new Panel(panel)
 		agregarPanel.layout = new HorizontalLayout
-		val caracteristica = new TextBox(agregarPanel).width = 230
-		caracteristica.bindValueToProperty("caracteristicaNueva")
-
+		new Selector(agregarPanel) => [
+			width = 230
+			bindValueToProperty("conexionNueva")
+			bindItemsToProperty("mapamundi.paises")
+		]
+		
 		new Button(agregarPanel) => [
 			caption = "Agregar"
-			onClick [ | this.modelObject.agregarCaracteristica ]
+			onClick [|this.modelObject.agregarConexion]
 			setBackground(Color::lightGray)
 		]
 	}
@@ -47,22 +50,22 @@ class EditarCaracteristicasDePaisWindow extends EditorDePropiedadDeModeloWindow<
 		eliminarButtonPanel.layout = new HorizontalLayout
 		new Button(eliminarButtonPanel) => [
 			caption = "Eliminar"
-			onClick [ | this.modelObject.borrarCaracteristica ]
+			onClick [|this.modelObject.borrarConexion]
 			setBackground(Color::lightGray)
 		]
 	}
 	
 	override protected listaDePropiedades(Panel panel) {
-		new Label(panel)=> [
-			setText("Caracteristicas")
-			setBackground(Color::lightGray)
+		new Label(panel) => [
+			setText("Conexiones")
+			setBackground(Color::lightGray)	
 		]
 		new List(panel) => [
 			width = 300
 			height = 150
-			bindValueToProperty("caracteristicaSeleccionada")
-			bindItemsToProperty("pais.caracteristicas")
+			bindValueToProperty("conexionSeleccionada")
+			bindItemsToProperty("pais.conexiones")
 		]
 	}
-
+	
 }

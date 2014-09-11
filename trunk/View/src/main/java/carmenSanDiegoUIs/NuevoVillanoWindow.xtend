@@ -1,3 +1,5 @@
+package carmenSanDiegoUIs 
+
 import org.uqbar.arena.windows.MainWindow
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.layout.VerticalLayout

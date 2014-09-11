@@ -1,4 +1,4 @@
-
+package carmenSanDiegoUIs
 
 import org.uqbar.arena.windows.MainWindow
 import org.uqbar.arena.widgets.Panel

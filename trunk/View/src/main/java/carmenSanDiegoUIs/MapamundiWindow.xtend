@@ -1,4 +1,4 @@
-import java.awt.Color
+package carmenSanDiegoUIs import java.awt.Color
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.List
