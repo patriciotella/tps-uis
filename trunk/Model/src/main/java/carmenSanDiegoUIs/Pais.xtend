@@ -1,4 +1,4 @@
-import java.util.List
+package carmenSanDiegoUIs import java.util.List
 import org.uqbar.commons.model.ObservableUtils
 import org.uqbar.commons.utils.Observable
 

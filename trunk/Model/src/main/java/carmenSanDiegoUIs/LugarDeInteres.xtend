@@ -1,7 +1,4 @@
-
-
-
-abstract class LugarDeInteres {
+package carmenSanDiegoUIs abstract class LugarDeInteres {
 	@Property String ocupante
 	
 	override toString() {
