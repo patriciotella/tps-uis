@@ -1,4 +1,4 @@
-
+package carmenSanDiegoUIs
 
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
@@ -7,7 +7,7 @@ import org.uqbar.arena.layout.VerticalLayout
 
 abstract class EditorDePropiedadDeModeloWindow<T> extends Dialog<T> {
 	
-	protected new(WindowOwner owner, T model) {
+	public new(WindowOwner owner, T model) {
 		super(owner, model)
 	}
 	

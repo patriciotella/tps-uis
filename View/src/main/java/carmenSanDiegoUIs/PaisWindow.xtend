@@ -1,3 +1,5 @@
+package carmenSanDiegoUIs 
+
 import java.awt.Color
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.layout.VerticalLayout
@@ -8,13 +10,17 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.MainWindow
 
-class PaisWindow extends MainWindow<EditorDePais> {
+class PaisWindow extends MainWindow<Pais> {
 
-	new(EditorDePais paisModelApp) {
-		super(paisModelApp)
+	Mapamundi mapamundi
+	
+	new(Mapamundi mapamundi, Pais pais) {
+		super(pais)
+		this.mapamundi = mapamundi
 	}
 
 	override createContents(Panel mainPanel) {
+		setWindowTitle()
 		mainPanel.setLayout(new VerticalLayout)
 		agregarNombreInput(mainPanel)
 		agregarCaracteristicasYSuEditor(mainPanel)
@@ -43,10 +49,10 @@ class PaisWindow extends MainWindow<EditorDePais> {
 		buttonPanel.layout = new HorizontalLayout
 		new Button(buttonPanel) => [
 			caption = "Aceptar"
-			onClick [ | modelObject.agregarPais 
+			onClick [ | mapamundi.agregarPais(modelObject) 
 						close
 			]
-			bindEnabledToProperty("pais.puedeCrearPais")
+			bindEnabledToProperty("puedeCrearPais")
 			disableOnError
 			setBackground(Color::lightGray)
 		]
@@ -63,7 +69,7 @@ class PaisWindow extends MainWindow<EditorDePais> {
 		new List(mainPanel) => [
 			width = 280
 			height = 120
-			bindItemsToProperty("pais.lugaresDeInteres")
+			bindItemsToProperty("lugaresDeInteres")
 		]
 	}
 	
@@ -76,7 +82,7 @@ class PaisWindow extends MainWindow<EditorDePais> {
 		]
 		new Button(lugaresPanel) => [
 			caption = "Editar lugares de interés"
-			onClick [ | new EditarLugaresDeInteresWindow(this, new EditorDeLugaresDeInteres(this.modelObject.pais)).open ]
+			onClick [ | new EditarLugaresDeInteresWindow(this, new EditorDeLugaresDeInteres(this.modelObject)).open ]
 		]
 	}
 	
@@ -91,7 +97,7 @@ class PaisWindow extends MainWindow<EditorDePais> {
 		new List(mainPanel) => [
 			width = 280
 			height = 120
-			bindItemsToProperty("pais.conexiones")
+			bindItemsToProperty("conexiones")
 		]
 	}
 	
@@ -104,7 +110,7 @@ class PaisWindow extends MainWindow<EditorDePais> {
 		]
 		new Button(conexionesPanel) => [
 			caption = "Editar conexiones"
-			onClick [ | new EditarConexionDePaisWindow(this, new EditorDeConexionesDePais(modelObject.pais, modelObject.mapamundi)).open ]
+			onClick [ | new EditarConexionDePaisWindow(this, new EditorDeConexionesDePais(modelObject, mapamundi)).open ]
 		]
 	}
 	
@@ -119,7 +125,7 @@ class PaisWindow extends MainWindow<EditorDePais> {
 		new List(mainPanel) => [
 			width = 280
 			height = 120
-			bindItemsToProperty("pais.caracteristicas")
+			bindItemsToProperty("caracteristicas")
 		]
 	}
 	
@@ -132,7 +138,7 @@ class PaisWindow extends MainWindow<EditorDePais> {
 		]
 		new Button(caracteristicasPanel) => [
 			caption = "Editar características"
-			onClick [ | new EditarCaracteristicasDePaisWindow(this, new EditorDeCaracteristicasDePais(modelObject.pais)).open ]
+			onClick [ | new EditarCaracteristicasDePaisWindow(this, new EditorDeCaracteristicasDePais(this.modelObject)).open ]
 		]
 	}
 	
@@ -141,14 +147,17 @@ class PaisWindow extends MainWindow<EditorDePais> {
 		nombrePanel.layout = new HorizontalLayout
 		new Label(nombrePanel).setText("Nombre:")
 		new TextBox(nombrePanel) => [
-			bindValueToProperty("pais.nombre") 
+			bindValueToProperty("nombre") 
 			width = 150
 		]
 	}
 	
-//	def setWindowTitle(String unTitulo) {
-//		this.setTitle(unTitulo)
-//	}
+	private def setWindowTitle() {
+		if(this.modelObject.puedeCrearPais)
+			this.setTitle("Mapamundi - Editar País")
+		else
+			this.setTitle("Mapamundi - Nuevo País")
+	}
 	
 	def static void main(String[] args) {
 		var pais = new Pais
@@ -161,7 +170,7 @@ class PaisWindow extends MainWindow<EditorDePais> {
 		rusia.nombre = "Rusia"
 		var mapamundi = new Mapamundi
 		mapamundi.agregarPais(rusia)
-		new PaisWindow(new EditorDePais(mapamundi, pais)).startApplication
+		new PaisWindow(mapamundi, pais).startApplication
 //		new PaisWindow(new Mapamundi, new Pais).startApplication
 	}
 
