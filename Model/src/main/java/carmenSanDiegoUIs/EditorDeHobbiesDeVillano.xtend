@@ -1,4 +1,4 @@
-import org.uqbar.commons.utils.Observable
+package carmenSanDiegoUIs import org.uqbar.commons.utils.Observable
 
 @Observable
 class EditorDeHobbiesDeVillano {

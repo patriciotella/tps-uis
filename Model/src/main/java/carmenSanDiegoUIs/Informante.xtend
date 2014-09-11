@@ -1,0 +1,4 @@
+package carmenSanDiegoUIs
+class Informante {
+	
+}
