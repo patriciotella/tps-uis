@@ -1,6 +1,13 @@
-package carmenSanDiegoUIs import java.util.List
+package pais
+
+import java.util.List
 import org.uqbar.commons.model.ObservableUtils
 import org.uqbar.commons.utils.Observable
+import lugarDeInteres.LugarDeInteres
+import lugarDeInteres.Club
+import lugarDeInteres.Biblioteca
+import lugarDeInteres.Banco
+import lugarDeInteres.Embajada
 
 @Observable
 class EditorDeLugaresDeInteres {

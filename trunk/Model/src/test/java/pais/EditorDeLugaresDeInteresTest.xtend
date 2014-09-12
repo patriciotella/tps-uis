@@ -1,10 +1,12 @@
-package carmenSanDiegoUIs
+package pais
 
 import org.junit.Before
 import org.mockito.Mockito
 import org.junit.Test
 
 import static org.junit.Assert.*
+import lugarDeInteres.LugarDeInteres
+
 
 class EditorDeLugaresDeInteresTest {
 	

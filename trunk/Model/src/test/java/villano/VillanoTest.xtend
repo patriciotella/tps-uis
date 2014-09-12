@@ -1,4 +1,6 @@
-package carmenSanDiegoUIs import org.junit.Before
+package villano
+
+import org.junit.Before
 import org.junit.Test
 
 import static org.junit.Assert.*

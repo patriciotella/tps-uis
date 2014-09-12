@@ -3,6 +3,7 @@ package carmenSanDiegoUIs
 import org.uqbar.commons.utils.Observable
 import java.util.List
 import org.uqbar.commons.model.ObservableUtils
+import villano.Villano
 
 @Observable
 class Expedientes {

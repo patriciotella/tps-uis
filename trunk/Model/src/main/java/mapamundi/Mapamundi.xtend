@@ -1,8 +1,9 @@
-package carmenSanDiegoUIs
+package mapamundi
 
 import org.uqbar.commons.utils.Observable
 import java.util.List
 import org.uqbar.commons.model.ObservableUtils
+import pais.Pais
 
 @Observable
 class Mapamundi {

@@ -1,4 +1,4 @@
-package carmenSanDiegoUIs
+package pais
 
 import java.util.LinkedList
 
@@ -6,6 +6,8 @@ import org.junit.Test
 import static org.junit.Assert.*
 import org.junit.Before
 import java.util.List
+import lugarDeInteres.Club
+import lugarDeInteres.Banco
 
 class PaisTest {
 	
