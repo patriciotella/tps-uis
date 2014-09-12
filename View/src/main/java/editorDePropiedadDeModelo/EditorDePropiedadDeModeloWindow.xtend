@@ -1,4 +1,4 @@
-package carmenSanDiegoUIs
+package editorDePropiedadDeModelo
 
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
@@ -7,11 +7,11 @@ import org.uqbar.arena.layout.VerticalLayout
 
 abstract class EditorDePropiedadDeModeloWindow<T> extends Dialog<T> {
 	
-	public new(WindowOwner owner, T model) {
+	protected new(WindowOwner owner, T model) {
 		super(owner, model)
 	}
 	
-	override protected createFormPanel(Panel mainPanel) {
+	override protected final createFormPanel(Panel mainPanel) {
 		setWindowTitle()
 		mainPanel.setLayout(new VerticalLayout)
 		listaDePropiedades(mainPanel)

@@ -1,4 +1,4 @@
-package carmenSanDiegoUIs 
+package villano
 
 import org.uqbar.arena.windows.MainWindow
 import org.uqbar.arena.widgets.Panel
@@ -9,6 +9,7 @@ import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.widgets.Button
 import java.awt.Color
 import org.uqbar.arena.widgets.List
+import carmenSanDiegoUIs.Expedientes
 
 class NuevoVillanoWindow extends MainWindow<Villano> {
 
