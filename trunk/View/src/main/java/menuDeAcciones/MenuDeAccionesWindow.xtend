@@ -1,4 +1,4 @@
-package carmenSanDiegoUIs
+package menuDeAcciones
 
 import org.uqbar.arena.windows.MainWindow
 import org.uqbar.arena.widgets.Panel
@@ -6,6 +6,9 @@ import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
 import java.awt.Color
 import org.uqbar.arena.widgets.Label
+import mapamundi.Mapamundi
+import carmenSanDiegoUIs.Expedientes
+import carmenSanDiegoUIs.Caso
 
 class MenuDeAccionesWindow extends MainWindow<MenuDeAcciones> {
 	

@@ -1,4 +1,4 @@
-package carmenSanDiegoUIs
+package villano
 
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.widgets.Panel

@@ -1,4 +1,4 @@
-package carmenSanDiegoUIs
+package mapamundi
 
 import java.awt.Color
 import org.uqbar.arena.layout.ColumnLayout

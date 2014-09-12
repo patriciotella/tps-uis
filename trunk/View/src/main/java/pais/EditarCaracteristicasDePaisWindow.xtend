@@ -1,4 +1,4 @@
-package carmenSanDiegoUIs
+package pais
 
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Label
@@ -7,16 +7,17 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
 import java.awt.Color
-import org.uqbar.arena.widgets.Selector
+import org.uqbar.arena.widgets.TextBox
+import editorDePropiedadDeModelo.EditorDePropiedadDeModeloWindow
 
-class EditarConexionDePaisWindow extends EditorDePropiedadDeModeloWindow<EditorDeConexionesDePais> {
+class EditarCaracteristicasDePaisWindow extends EditorDePropiedadDeModeloWindow<EditorDeCaracteristicasDePais> {
 
-	new(WindowOwner owner, EditorDeConexionesDePais model) {
+	new(WindowOwner owner, EditorDeCaracteristicasDePais model) {
 		super(owner, model)
 	}
 	
 	override protected setWindowTitle() {
-		this.setTitle("Editar conexiones")
+		this.setTitle("Editar caracteristicas")
 	}
 	
 	override protected aceptarButton(Panel panel) {
@@ -32,15 +33,12 @@ class EditarConexionDePaisWindow extends EditorDePropiedadDeModeloWindow<EditorD
 	override protected agregarPropiedadInput(Panel panel) {
 		val agregarPanel = new Panel(panel)
 		agregarPanel.layout = new HorizontalLayout
-		new Selector(agregarPanel) => [
-			width = 230
-			bindValueToProperty("conexionNueva")
-			bindItemsToProperty("mapamundi.paises")
-		]
-		
+		val caracteristica = new TextBox(agregarPanel).width = 230
+		caracteristica.bindValueToProperty("caracteristicaNueva")
+
 		new Button(agregarPanel) => [
 			caption = "Agregar"
-			onClick [|this.modelObject.agregarConexion]
+			onClick [ | this.modelObject.agregarCaracteristica ]
 			setBackground(Color::lightGray)
 		]
 	}
@@ -50,22 +48,22 @@ class EditarConexionDePaisWindow extends EditorDePropiedadDeModeloWindow<EditorD
 		eliminarButtonPanel.layout = new HorizontalLayout
 		new Button(eliminarButtonPanel) => [
 			caption = "Eliminar"
-			onClick [|this.modelObject.borrarConexion]
+			onClick [ | this.modelObject.borrarCaracteristica ]
 			setBackground(Color::lightGray)
 		]
 	}
 	
 	override protected listaDePropiedades(Panel panel) {
-		new Label(panel) => [
-			setText("Conexiones")
-			setBackground(Color::lightGray)	
+		new Label(panel)=> [
+			setText("Caracteristicas")
+			setBackground(Color::lightGray)
 		]
 		new List(panel) => [
 			width = 300
 			height = 150
-			bindValueToProperty("conexionSeleccionada")
-			bindItemsToProperty("pais.conexiones")
+			bindValueToProperty("caracteristicaSeleccionada")
+			bindItemsToProperty("pais.caracteristicas")
 		]
 	}
-	
+
 }
