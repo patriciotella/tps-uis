@@ -1,6 +1,7 @@
-
+package pais
 
 import org.uqbar.commons.utils.Observable
+import mapamundi.Mapamundi
 
 @Observable
 class EditorDePais {

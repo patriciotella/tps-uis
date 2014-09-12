@@ -1,0 +1,6 @@
+package ocupante
+
+
+class Informante {
+	
+}

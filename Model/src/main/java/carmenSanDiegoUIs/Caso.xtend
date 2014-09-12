@@ -1,6 +1,8 @@
 package carmenSanDiegoUIs
 
 import java.util.List
+import villano.Villano
+import pais.Pais
 
 class Caso {
 	@Property Villano responsable

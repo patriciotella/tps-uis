@@ -1,4 +1,9 @@
 
+
+import mapamundi.Mapamundi
+import carmenSanDiegoUIs.Expedientes
+import carmenSanDiegoUIs.Caso
+
 class MenuDeAcciones {
 	@Property Mapamundi mapamundi
 	@Property Expedientes expedientes

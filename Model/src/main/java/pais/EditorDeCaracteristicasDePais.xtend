@@ -1,4 +1,4 @@
-package carmenSanDiegoUIs
+package pais
 
 import org.uqbar.commons.utils.Observable
 

@@ -1,4 +1,6 @@
-package carmenSanDiegoUIs
+package lugarDeInteres
+
+
 class Embajada extends LugarDeInteres {
 	
 }

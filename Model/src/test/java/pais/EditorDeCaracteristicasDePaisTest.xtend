@@ -1,7 +1,10 @@
-package carmenSanDiegoUIs import org.junit.Test
+package pais
+
+import org.junit.Test
 import static org.junit.Assert.*
 import org.junit.Before
 import org.mockito.Mockito
+
 
 class EditorDeCaracteristicasDePaisTest {
 	
