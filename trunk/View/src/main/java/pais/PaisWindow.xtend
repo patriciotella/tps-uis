@@ -8,13 +8,13 @@ import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
-import org.uqbar.arena.windows.MainWindow
-import mapamundi.Mapamundi
+import org.uqbar.arena.windows.SimpleWindow
+import org.uqbar.arena.windows.WindowOwner
 
-class PaisWindow extends MainWindow<EditorDePais> {
+class PaisWindow extends SimpleWindow<EditorDePais> {
 
-	new(EditorDePais editor) {
-		super(editor)
+	new(WindowOwner owner, EditorDePais model) {
+		super(owner, model)
 	}
 
 	override createContents(Panel mainPanel) {
@@ -149,7 +149,15 @@ class PaisWindow extends MainWindow<EditorDePais> {
 		]
 	}
 	
-	def static void main(String[] args) {
+	override protected addActions(Panel actionsPanel) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+	override protected createFormPanel(Panel mainPanel) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+	/*def static void main(String[] args) {
 		var pais = new Pais
 		pais.nombre = "Argentina"
 		pais.agregarCaracteristica("Prueba")
@@ -164,6 +172,6 @@ class PaisWindow extends MainWindow<EditorDePais> {
 		val editor = new EditorDePais(mapamundi, pais)
 		new PaisWindow(editor).startApplication
 //		new PaisWindow(new editor(new Mapamundi, new Pais)).startApplication
-	}
+	}*/
 
 }
