@@ -21,4 +21,9 @@ class Mapamundi {
 		this._paises.add(pais)
 		ObservableUtils.firePropertyChanged(this, "paises", paises)
 	}
+	
+	def eliminarPais(Pais pais){
+		this.paises.remove(pais)
+		ObservableUtils.firePropertyChanged(this,"paises",paises)
+	}
 }
