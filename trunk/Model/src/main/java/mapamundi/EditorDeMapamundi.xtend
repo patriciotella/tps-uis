@@ -7,7 +7,7 @@ import org.uqbar.commons.model.ObservableUtils
 @Observable
 class EditorDeMapamundi {
 	
-	@Property Pais conexionSeleccionada
+	@Property Pais paisSeleccionado
 	@Property Mapamundi mapamundi
 	
 	new(Mapamundi mapamundi){
@@ -15,31 +15,22 @@ class EditorDeMapamundi {
 	}
 	
 	def eliminarPais() {
-		mapamundi.eliminarPais(conexionSeleccionada)
-		ObservableUtils.firePropertyChanged(this, "mapamundi", mapamundi)
+		_mapamundi.eliminarPais(_paisSeleccionado)
+		ObservableUtils.firePropertyChanged(this, "mapamundi", _mapamundi)
+		ObservableUtils.firePropertyChanged(this, "seleccionoPais", seleccionoPais)
 	}
 	
-	def paises(){
-		this.mapamundi.paises
+	def agregarPais(Pais unPais){
+		_mapamundi.agregarPais(unPais)
+		ObservableUtils.firePropertyChanged(this, "mapamundi", _mapamundi)
+	}
+
+	def isSeleccionoPais() {
+		_paisSeleccionado != null
 	}
 	
-	def pais(){
-		this.conexionSeleccionada
+	def setPaisSeleccionado(Pais unPais) {
+		_paisSeleccionado = unPais
+		ObservableUtils.firePropertyChanged(this, "seleccionoPais", seleccionoPais)
 	}
-	
-	def agregarPais(){
-		this.mapamundi.agregarPais(new Pais())
-	}
-	
-	def caracteristicasDePais(){
-		this.conexionSeleccionada.caracteristicas
-	}
-	
-	def conexionesPais(){
-		this.conexionSeleccionada.conexiones
-	}
-	//def agregarConexion() {
-		//pais.agregarConexion(conexionNueva)
-	//}
-	
 }
