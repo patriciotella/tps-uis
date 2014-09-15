@@ -17,7 +17,7 @@ class PaisWindow extends SimpleWindow<EditorDePais> {
 		super(owner, model)
 	}
 
-	override createContents(Panel mainPanel) {
+	override createFormPanel(Panel mainPanel) {
 		mainPanel.setLayout(new VerticalLayout)
 		agregarNombreInput(mainPanel)
 		agregarCaracteristicasYSuEditor(mainPanel)
@@ -150,11 +150,6 @@ class PaisWindow extends SimpleWindow<EditorDePais> {
 	}
 	
 	override protected addActions(Panel actionsPanel) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-	
-	override protected createFormPanel(Panel mainPanel) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 	/*def static void main(String[] args) {
