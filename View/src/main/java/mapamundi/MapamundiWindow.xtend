@@ -35,8 +35,8 @@ class MapamundiWindow extends MainWindow<EditorDeMapamundi> {
 		new List(paisesPanel) =>[
 			width = 150
 			height = 300
-			bindItemsToProperty("paises")
-			bindValueToProperty("conexionSeleccionada")
+			bindItemsToProperty("mapamundi.paises")
+			bindValueToProperty("paisSeleccionado")
 		]
 		
 		val botonesPanel = new Panel (paisesPanel)
@@ -46,19 +46,30 @@ class MapamundiWindow extends MainWindow<EditorDeMapamundi> {
 				caption = "Eliminar"
 				width = 100
 				onClick [|this.modelObject.eliminarPais()]
+				bindEnabledToProperty("mapamundi.tienePaises")
+				bindEnabledToProperty("seleccionoPais")
 			]
 		
 			new Button(botonesPanel) =>[
 				caption = "Editar"
 				width = 100
-				onClick [ | new PaisWindow(this, new EditorDePais(modelObject.mapamundi, modelObject.conexionSeleccionada)).open]
+				onClick [ | new PaisWindow(this, new EditorDePais(modelObject.mapamundi, modelObject.paisSeleccionado)) => [
+					setTitle("Mapamundi - Editar País")
+					open
+					]
+				]
+				bindEnabledToProperty("mapamundi.tienePaises")
+				bindEnabledToProperty("seleccionoPais")
 			]
 		
 			new Button(botonesPanel) =>[
 				caption = "Nuevo"
 				width = 100
-				onClick [ | new PaisWindow(this, new EditorDePais(modelObject.mapamundi, new Pais())).open]
-				onClick [ | this.modelObject.agregarPais()]
+				onClick [ | new PaisWindow(this, new EditorDePais(modelObject.mapamundi, new Pais())) => [
+					setTitle("Mapamundi - Nuevo País")
+					open
+					]
+				]
 			]
 		
 		val datosPais = new Panel(mainPanel)
@@ -67,8 +78,9 @@ class MapamundiWindow extends MainWindow<EditorDeMapamundi> {
 			nombrePais.layout = new HorizontalLayout
 			new Label(nombrePais).setText("Nombre:")
 			new Label(nombrePais) => [ 
-			bindValueToProperty("conexionSeleccionada.nombre")
+			bindValueToProperty("paisSeleccionado.nombre")
 			width = 150
+			height = 20
 		]
 		
 			val caracteristicasPais = new Panel(datosPais)
@@ -81,7 +93,7 @@ class MapamundiWindow extends MainWindow<EditorDeMapamundi> {
 			new List(caracteristicasPais) =>[
 				width= 100
 				height= 50
-				bindItemsToProperty("conexionSeleccionada.caracteristicas")
+				bindItemsToProperty("paisSeleccionado.caracteristicas")
 			]
 			
 			val conexionesPais = new Panel(datosPais)
@@ -94,7 +106,7 @@ class MapamundiWindow extends MainWindow<EditorDeMapamundi> {
 			new List(conexionesPais) =>[
 				width= 100
 				height= 50
-				bindItemsToProperty("conexionSeleccionada.conexiones")
+				bindItemsToProperty("paisSeleccionado.conexiones")
 			]
 			
 			val lugaresDeInteresPais = new Panel(datosPais)
@@ -107,17 +119,17 @@ class MapamundiWindow extends MainWindow<EditorDeMapamundi> {
 			new List(lugaresDeInteresPais) =>[
 				width= 100
 				height= 50
-				bindItemsToProperty("conexionSeleccionada.lugaresDeInteres")
+				bindItemsToProperty("paisSeleccionado.lugaresDeInteres")
 			]
 	}
 	
 	def static void main(String[] args) {
 		var mapamundi = new Mapamundi
 		var arg = new Pais
-		arg.setNombre("arg")
+		arg.setNombre("Argentina")
 		arg.agregarCaracteristica("holiz")
 		var chi = new Pais
-		chi.setNombre("chi")
+		chi.setNombre("Chile")
 		arg.agregarConexion(chi)
 		var banco = new Banco
 		arg.agregarLugarDeInteres(banco)

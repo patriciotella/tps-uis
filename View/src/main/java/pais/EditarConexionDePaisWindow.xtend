@@ -36,7 +36,8 @@ class EditarConexionDePaisWindow extends EditorDePropiedadDeModeloWindow<EditorD
 		new Selector(agregarPanel) => [
 			width = 230
 			bindValueToProperty("conexionNueva")
-			bindItemsToProperty("mapamundi.paises")
+			bindItemsToProperty("conexiones")
+			allowNull = false
 		]
 		
 		new Button(agregarPanel) => [
