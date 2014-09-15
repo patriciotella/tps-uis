@@ -3,13 +3,14 @@ import java.util.List
 import org.uqbar.commons.model.ObservableUtils
 import org.uqbar.commons.utils.Observable
 import lugarDeInteres.LugarDeInteres
+import java.util.Set
 
 @Observable
 class Pais {
 	@Property String nombre
 	@Property List<String> caracteristicas
 	@Property List<LugarDeInteres> lugaresDeInteres
-	@Property List<Pais> conexiones
+	@Property Set<Pais> conexiones
 	
 	def agregarCaracteristica(String caracteristica) {
 		this._caracteristicas.add(caracteristica)
@@ -23,7 +24,7 @@ class Pais {
 	new() {
 		caracteristicas = newArrayList
 		lugaresDeInteres = newArrayList
-		conexiones = newArrayList
+		conexiones = newHashSet
 		nombre = ""
 	}
 	
