@@ -1,14 +1,16 @@
 package carmenSanDiegoUIs
 
 import java.awt.Color
+import java.util.Set
 import org.uqbar.arena.layout.ColumnLayout
+import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.layout.VerticalLayout
+import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.MainWindow
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.layout.HorizontalLayout
-import org.uqbar.arena.widgets.Button
+import villano.Villano
 
 class ExpedienteWindow extends MainWindow<ConfiguradorDeJuego> {
 	
@@ -30,15 +32,12 @@ class ExpedienteWindow extends MainWindow<ConfiguradorDeJuego> {
 		new List(villanosPanel) =>[
 			width = 150
 			height = 300
+			bindItemsToProperty("expedientes.villanos")
+			bindValueToProperty("villanoSeleccionado")
 		]
 		
 		val botonesPanel = new Panel (villanosPanel)
 		botonesPanel.layout = new VerticalLayout
-		
-			new Button(botonesPanel) =>[
-				caption = "Eliminar"
-				width = 100
-			]
 		
 			new Button(botonesPanel) =>[
 				caption = "Editar"
@@ -48,6 +47,11 @@ class ExpedienteWindow extends MainWindow<ConfiguradorDeJuego> {
 			new Button(botonesPanel) =>[
 				caption = "Nuevo"
 				width = 100
+//				onClick [ | new NuevoVillanoWindow(this, new EditorDePais(modelObject.mapamundi, new Pais())) => [
+//					setTitle("Mapamundi - Nuevo País")
+//					open
+//					]
+//				]
 			]
 		
 		val datosVillano = new Panel(mainPanel)
@@ -55,12 +59,16 @@ class ExpedienteWindow extends MainWindow<ConfiguradorDeJuego> {
 			val nombreVillano = new Panel (datosVillano)
 			nombreVillano.layout = new HorizontalLayout
 			new Label(nombreVillano).setText("Nombre:")
-			new Label(nombreVillano).setText("bindconNombre")
+			new Label(nombreVillano)=>[
+				bindValueToProperty("villanoSeleccionado.nombre")
+				]
 			
 			val sexoVillano = new Panel (datosVillano)
 			sexoVillano.layout = new HorizontalLayout
 			new Label(sexoVillano).setText("Sexo:")
-			new Label(sexoVillano).setText("bindconsexo")
+			new Label(sexoVillano)=>[
+				bindValueToProperty("villanoSeleccionado.sexo")
+				]
 		
 			val seniasVillano = new Panel(datosVillano)
 			seniasVillano.layout = new VerticalLayout
@@ -72,6 +80,7 @@ class ExpedienteWindow extends MainWindow<ConfiguradorDeJuego> {
 			new List(seniasVillano) =>[
 				width= 100
 				height= 50
+				bindItemsToProperty("villanoSeleccionado.seniasParticulares")
 			]
 			
 			val hobbiesVillano = new Panel(datosVillano)
@@ -84,11 +93,27 @@ class ExpedienteWindow extends MainWindow<ConfiguradorDeJuego> {
 			new List(hobbiesVillano) =>[
 				width= 100
 				height= 50
+				bindItemsToProperty("villanoSeleccionado.hobbies")
 			]
 	}
 	
 	def static void main(String[] args) {
-		var configurador = new ConfiguradorDeJuego
+		
+		var juli = new Villano
+		var cami = new Villano
+		var Set<Villano> villanos = newHashSet()
+		villanos.add(juli)
+		villanos.add(cami)
+		juli.setNombre("Juli")
+		cami.setNombre("cami")
+		juli.setSexo("hombreNordico")
+		cami.setSexo("mujer")
+		juli.agregarHobbie("Golpear con su mazo")
+		cami.agregarHobbie("alqv")
+		juli.agregarSeniaParticular("rubio nazi")
+		cami.agregarSeniaParticular("rubia nazi")
+		var expedientes = new Expedientes(villanos)
+		var configurador = new ConfiguradorDeJuego(expedientes)
 		new ExpedienteWindow(configurador).startApplication
 	}
 }
