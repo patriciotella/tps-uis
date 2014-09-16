@@ -1,24 +1,31 @@
 package carmenSanDiegoUIs
 
-import org.uqbar.commons.utils.Observable
-import java.util.List
+import java.util.Set
 import org.uqbar.commons.model.ObservableUtils
+import org.uqbar.commons.utils.Observable
 import villano.Villano
 
 @Observable
 class Expedientes {
-	@Property List<Villano> villanos
+	@Property Set<Villano> villanos
 	
 	new() {
-		villanos = newArrayList
+		villanos = newHashSet
 	}
 	
-	new(List<Villano> villanos) {
+	new(Set<Villano> villanos) {
 		this.villanos = villanos
 	}
 	
 	def agregarVillano(Villano villano) {
 		this._villanos.add(villano)
 		ObservableUtils.firePropertyChanged(this, "villanos", villanos)
+		ObservableUtils.firePropertyChanged(this, "tieneVillanos", tieneVillanos)
 	}
+	
+	def isTieneVillanos() {
+		!villanos.empty
+	}
+	
+	
 }
