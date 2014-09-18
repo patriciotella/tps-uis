@@ -17,7 +17,53 @@ class ResolverElMisterioWindow extends Dialog<Caso> {
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
-		setWindowTitle()
+		
+		mainPanel.layout = new VerticalLayout
+		
+		val columnas = new Panel(mainPanel)
+		columnas.layout = new ColumnLayout(2)		
+		
+		val primerColumna = new Panel(columnas)
+		primerColumna.layout = new VerticalLayout
+		
+		new Button(primerColumna) => [
+			caption = "Orden de Arresto"
+			width = 200
+			//onClick [ | new OrdenDeArrestoWindow(lalal).open]
+		]
+
+		new Button(primerColumna) => [
+			caption = "Viajar"
+			width = 200
+			//onClick [ | new pantalla con paises a viajar ]
+		]		
+
+		new Button(primerColumna) => [
+			caption = "Expedientes"
+			width = 200
+		]
+		
+		val segundaColumna = new Panel(columnas)
+		segundaColumna.layout = new VerticalLayout
+		
+		new Label(segundaColumna).setText("Lugares")
+
+		new Button(segundaColumna) => [
+			caption = "Biblioteca"
+			width = 200
+		]
+
+		new Button(segundaColumna) => [
+			caption = "Club"
+			width = 200
+		]
+		
+		new Button(segundaColumna) => [
+			caption = "Embajada"
+			width = 200
+		]
+		
+		/*setWindowTitle()
 		setEstasEnLabel(mainPanel)
 		
 		setBotonera(mainPanel)
