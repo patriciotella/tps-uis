@@ -1,27 +1,23 @@
 package villano
 
-import org.uqbar.arena.windows.MainWindow
-import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.layout.VerticalLayout
-import org.uqbar.arena.layout.HorizontalLayout
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.widgets.TextBox
-import org.uqbar.arena.widgets.Button
 import java.awt.Color
+import org.uqbar.arena.layout.HorizontalLayout
+import org.uqbar.arena.layout.VerticalLayout
+import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.List
-import carmenSanDiegoUIs.Expedientes
+import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.TextBox
+import org.uqbar.arena.windows.SimpleWindow
+import org.uqbar.arena.windows.WindowOwner
 
-class NuevoVillanoWindow extends MainWindow<Villano> {
+class NuevoVillanoWindow extends SimpleWindow<EditorDeVillano> {
 
-	Expedientes expediente
-	
-	new(Villano villano, Expedientes expediente) {
-		super(villano)
-		this.expediente = expediente
+	new(WindowOwner owner, EditorDeVillano model) {
+		super(owner, model)
 	}
 	
 	override createContents(Panel mainPanel) {
-		setWindowTitle()
 		mainPanel.setLayout(new VerticalLayout)
 		agregarNombreInput(mainPanel)
 		agregarSexoInput(mainPanel)
@@ -30,19 +26,12 @@ class NuevoVillanoWindow extends MainWindow<Villano> {
 		agregarAceptarBoton(mainPanel)
 	}
 	
-	private def setWindowTitle() {
-		if(this.modelObject.puedeCrearVillano)
-			this.setTitle("Expedientes - Nuevo Villano")
-		else
-			this.setTitle("Expedientes - Editar Villano")
-	}
-	
 	def agregarNombreInput(Panel editorPanel) {
 		val nombrePanel = new Panel(editorPanel)
 		nombrePanel.layout = new HorizontalLayout
 		new Label(nombrePanel).setText("Nombre:")
 		new TextBox(nombrePanel) => [
-			bindValueToProperty("nombre")
+			bindValueToProperty("villano.nombre")
 			width = 150
 		]
 	}
@@ -52,7 +41,7 @@ class NuevoVillanoWindow extends MainWindow<Villano> {
 		sexoPanel.layout = new HorizontalLayout
 		new Label(sexoPanel).setText("Sexo:        ")
 		new TextBox(sexoPanel) => [
-			bindValueToProperty("sexo")
+			bindValueToProperty("villano.sexo")
 			width = 150
 		]
 	}
@@ -73,7 +62,7 @@ class NuevoVillanoWindow extends MainWindow<Villano> {
 		
 		new Button(editorDeSeniasPanel) => [
 			caption = "Editar Señas Particulares"
-			onClick [ | new EditarSeniasParticularesDeVillanoWindow(this, new EditorDeSeniasParticularesDeVillano(this.modelObject)).open]
+			onClick [ | new EditarSeniasParticularesDeVillanoWindow(this, new EditorDeSeniasParticularesDeVillano(this.modelObject.villano)).open]
 		]
 	}
 	
@@ -90,7 +79,7 @@ class NuevoVillanoWindow extends MainWindow<Villano> {
 		new List(mainPanel) => [
 			width = 280
 			height = 60
-			bindItemsToProperty("seniasParticulares")
+			bindItemsToProperty("villano.seniasParticulares")
 		]
 	}
 
@@ -110,7 +99,7 @@ class NuevoVillanoWindow extends MainWindow<Villano> {
 		
 		new Button(editorDeHobbiesPanel) => [
 			caption = "Editar Hobbies"
-			onClick [ | new EditarHobbiesDeVillanoWindow(this, new EditorDeHobbiesDeVillano(this.modelObject)).open]
+			onClick [ | new EditarHobbiesDeVillanoWindow(this, new EditorDeHobbiesDeVillano(this.modelObject.villano)).open]
 		]
 	}
 	
@@ -127,7 +116,7 @@ class NuevoVillanoWindow extends MainWindow<Villano> {
 		new List(mainPanel) => [
 			width = 280
 			height = 60
-			bindItemsToProperty("hobbies")
+			bindItemsToProperty("villano.hobbies")
 		]
 	}
 	
@@ -136,7 +125,7 @@ class NuevoVillanoWindow extends MainWindow<Villano> {
 		buttonPanel.layout = new HorizontalLayout
 		new Button(buttonPanel) => [
 			caption = "Aceptar"
-			onClick [ | expediente.agregarVillano(modelObject) 
+			onClick [ | modelObject.expediente.agregarVillano(modelObject.villano) 
 						close
 			]
 			bindEnabledToProperty("puedeCrearVillano")
@@ -146,7 +135,16 @@ class NuevoVillanoWindow extends MainWindow<Villano> {
 	}
 	
 		
-	def static void main(String[] args) {
-		new NuevoVillanoWindow(new Villano, new Expedientes).startApplication 
-	}	
+//	def static void main(String[] args) {
+//		new NuevoVillanoWindow(new Villano, new Expedientes).startApplication 
+//	}
+	
+	override protected addActions(Panel actionsPanel) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+	override protected createFormPanel(Panel mainPanel) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
 }
