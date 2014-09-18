@@ -6,7 +6,7 @@ import org.uqbar.commons.utils.Observable
 import villano.Villano
 
 @Observable
-class Expedientes {
+class Expediente {
 	@Property Set<Villano> villanos
 	
 	new() {

@@ -30,7 +30,6 @@ class Villano {
 
 	override toString() {
 		nombre
-		sexo
 	}
 	
 	def agregarHobbie (String hobbie) {
@@ -49,7 +48,7 @@ class Villano {
 	}
 	
 	def puedeCrearVillano() {
-		this._nombre.equals("")
+		!this._nombre.equals("")
 	}
 
 }

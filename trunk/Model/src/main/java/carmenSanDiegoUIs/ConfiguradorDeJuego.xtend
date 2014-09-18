@@ -7,17 +7,17 @@ import villano.Villano
 @Observable
 class ConfiguradorDeJuego {
 	
-	@Property Expedientes expedientes
+	@Property Expediente expediente
 	@Property Villano villanoSeleccionado
 	
 	
-	new (Expedientes expedientes){
-		this._expedientes = expedientes
+	new (Expediente expediente){
+		_expediente = expediente
 	}
 	
 	def agregarVillano(Villano unVillano){
-		this._expedientes.agregarVillano(unVillano)
-		ObservableUtils.firePropertyChanged(this, "expedientes", _expedientes)
+		_expediente.agregarVillano(unVillano)
+		ObservableUtils.firePropertyChanged(this, "expediente", _expediente)
 	}
 	
 	def isSeleccionoVillano() {
