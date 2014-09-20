@@ -4,6 +4,7 @@ import org.uqbar.commons.model.ObservableUtils
 import org.uqbar.commons.utils.Observable
 import lugarDeInteres.LugarDeInteres
 import java.util.Set
+import villano.Villano
 
 @Observable
 class Pais {
@@ -72,6 +73,12 @@ class Pais {
 	def setNombre(String nombre) {
 		this._nombre = nombre
 		ObservableUtils.firePropertyChanged(this,"puedeCrearPais",puedeCrearPais)
+	}
+	
+	def marcarComoRutaDeEscapeDeVillano(Villano unVillano, Pais proximoPaisEnRuta) {
+		/*Por cada lugar de interés, setearlo como lugar que tiene datos del vilano
+		 * y darle el proximo país en la ruta (si no es el último)
+		 */
 	}
 	
 }

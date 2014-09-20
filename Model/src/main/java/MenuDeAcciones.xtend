@@ -1,15 +1,15 @@
 
 
 import mapamundi.Mapamundi
-import carmenSanDiegoUIs.Expedientes
 import carmenSanDiegoUIs.Caso
+import carmenSanDiegoUIs.Expediente
 
 class MenuDeAcciones {
 	@Property Mapamundi mapamundi
-	@Property Expedientes expedientes
+	@Property Expediente expedientes
 	@Property Caso caso
 	
-	new(Mapamundi mapamundi, Expedientes expedientes, Caso caso) {
+	new(Mapamundi mapamundi, Expediente expedientes, Caso caso) {
 		this._caso = caso
 		this._expedientes = expedientes
 		this._mapamundi = mapamundi
