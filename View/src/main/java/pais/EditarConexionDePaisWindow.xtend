@@ -36,14 +36,15 @@ class EditarConexionDePaisWindow extends EditorDePropiedadDeModeloWindow<EditorD
 		new Selector(agregarPanel) => [
 			width = 230
 			bindValueToProperty("conexionNueva")
-			bindItemsToProperty("conexiones")
+			bindItemsToProperty("conexionesParaAgregar")
 			allowNull = false
 		]
 		
 		new Button(agregarPanel) => [
 			caption = "Agregar"
-			onClick [|this.modelObject.agregarConexion]
+			onClick [|modelObject.agregarConexion]
 			setBackground(Color::lightGray)
+			bindEnabledToProperty("seleccionoConexionParaAgregar")
 		]
 	}
 	
@@ -54,6 +55,7 @@ class EditarConexionDePaisWindow extends EditorDePropiedadDeModeloWindow<EditorD
 			caption = "Eliminar"
 			onClick [|this.modelObject.borrarConexion]
 			setBackground(Color::lightGray)
+			bindEnabledToProperty("seleccionoConexionAEliminar")
 		]
 	}
 	
@@ -66,7 +68,7 @@ class EditarConexionDePaisWindow extends EditorDePropiedadDeModeloWindow<EditorD
 			width = 300
 			height = 150
 			bindValueToProperty("conexionSeleccionada")
-			bindItemsToProperty("pais.conexiones")
+			bindItemsToProperty("conexiones")
 		]
 	}
 	

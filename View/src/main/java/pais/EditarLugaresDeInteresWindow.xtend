@@ -26,7 +26,10 @@ class EditarLugaresDeInteresWindow extends EditorDePropiedadDeModeloWindow<Edito
 		buttonPanel.layout = new HorizontalLayout
 		new Button(buttonPanel) => [
 			caption = "Aceptar"
-			onClick [|close]
+			onClick [|
+//				modelObject.aceptar 
+				close
+			]
 			setBackground(Color::lightGray)
 		]
 	}
@@ -46,6 +49,7 @@ class EditarLugaresDeInteresWindow extends EditorDePropiedadDeModeloWindow<Edito
 			onClick [|this.modelObject.agregarLugarDeInteres]
 			setBackground(Color::lightGray)
 			bindEnabledToProperty("puedeAgregarLugar")
+//			bindEnabledToProperty("seleccionoLugarParaAgregar")
 			disableOnError
 		]
 	}
@@ -57,6 +61,7 @@ class EditarLugaresDeInteresWindow extends EditorDePropiedadDeModeloWindow<Edito
 			caption = "Eliminar"
 			onClick [|this.modelObject.borrarLugarDeInteres]
 			setBackground(Color::lightGray)
+			bindEnabledToProperty("seleccionoLugarABorrar")
 		]
 	}
 	
@@ -69,7 +74,7 @@ class EditarLugaresDeInteresWindow extends EditorDePropiedadDeModeloWindow<Edito
 			width = 300
 			height = 150
 			bindValueToProperty("lugarSeleccionado")
-			bindItemsToProperty("pais.lugaresDeInteres")
+			bindItemsToProperty("lugaresDeInteres")
 		]
 	}
 	

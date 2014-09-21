@@ -46,11 +46,9 @@ class PaisWindow extends SimpleWindow<EditorDePais> {
 		buttonPanel.layout = new HorizontalLayout
 		new Button(buttonPanel) => [
 			caption = "Aceptar"
-			onClick [ | modelObject.mapamundi.agregarPais(modelObject.pais) 
+			onClick [ | modelObject.agregarPais() 
 						close
 			]
-			bindEnabledToProperty("pais.puedeCrearPais")
-			disableOnError
 			setBackground(Color::lightGray)
 		]
 	}
@@ -66,7 +64,7 @@ class PaisWindow extends SimpleWindow<EditorDePais> {
 		new List(mainPanel) => [
 			width = 280
 			height = 120
-			bindItemsToProperty("pais.lugaresDeInteres")
+			bindItemsToProperty("lugaresDeInteres")
 		]
 	}
 	
@@ -79,7 +77,7 @@ class PaisWindow extends SimpleWindow<EditorDePais> {
 		]
 		new Button(lugaresPanel) => [
 			caption = "Editar lugares de interés"
-			onClick [ | new EditarLugaresDeInteresWindow(this, new EditorDeLugaresDeInteres(this.modelObject.pais)).open ]
+			onClick [ | new EditarLugaresDeInteresWindow(this, new EditorDeLugaresDeInteres(this.modelObject)).open ]
 		]
 	}
 	
@@ -94,7 +92,7 @@ class PaisWindow extends SimpleWindow<EditorDePais> {
 		new List(mainPanel) => [
 			width = 280
 			height = 120
-			bindItemsToProperty("pais.conexiones")
+			bindItemsToProperty("conexiones")
 		]
 	}
 	
@@ -107,7 +105,7 @@ class PaisWindow extends SimpleWindow<EditorDePais> {
 		]
 		new Button(conexionesPanel) => [
 			caption = "Editar conexiones"
-			onClick [ | new EditarConexionDePaisWindow(this, new EditorDeConexionesDePais(modelObject.pais, modelObject.mapamundi)).open ]
+			onClick [ | new EditarConexionDePaisWindow(this, new EditorDeConexionesDePais(modelObject, modelObject.mapamundi)).open ]
 		]
 	}
 	
@@ -122,7 +120,7 @@ class PaisWindow extends SimpleWindow<EditorDePais> {
 		new List(mainPanel) => [
 			width = 280
 			height = 120
-			bindItemsToProperty("pais.caracteristicas")
+			bindItemsToProperty("caracteristicas")
 		]
 	}
 	
@@ -135,7 +133,7 @@ class PaisWindow extends SimpleWindow<EditorDePais> {
 		]
 		new Button(caracteristicasPanel) => [
 			caption = "Editar características"
-			onClick [ | new EditarCaracteristicasDePaisWindow(this, new EditorDeCaracteristicasDePais(this.modelObject.pais)).open ]
+			onClick [ | new EditarCaracteristicasDePaisWindow(this, new EditorDeCaracteristicasDePais(this.modelObject)).open ]
 		]
 	}
 	
@@ -144,29 +142,12 @@ class PaisWindow extends SimpleWindow<EditorDePais> {
 		nombrePanel.layout = new HorizontalLayout
 		new Label(nombrePanel).setText("Nombre:")
 		new TextBox(nombrePanel) => [
-			bindValueToProperty("pais.nombre") 
+			bindValueToProperty("nombre") 
 			width = 150
 		]
 	}
 	
 	override protected addActions(Panel actionsPanel) {
 	}
-	
-	/*def static void main(String[] args) {
-		var pais = new Pais
-		pais.nombre = "Argentina"
-		pais.agregarCaracteristica("Prueba")
-		val paisConex = new Pais
-		paisConex.nombre = "Chile"
-		pais.agregarConexion(paisConex)
-		val rusia = new Pais
-		rusia.nombre = "Rusia"
-		var mapamundi = new Mapamundi
-		mapamundi.agregarPais(rusia)
-		
-		val editor = new EditorDePais(mapamundi, pais)
-		new PaisWindow(editor).startApplication
-//		new PaisWindow(new editor(new Mapamundi, new Pais)).startApplication
-	}*/
 
 }
