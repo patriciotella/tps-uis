@@ -7,25 +7,28 @@ import villano.Villano
 
 @Observable
 class Expediente {
-	@Property Set<Villano> villanos
+	@Property Villano villano
 	
-	new() {
-		villanos = newHashSet
+//	new() {
+//		villanos = newHashSet
+//	}
+//	
+//	new(Set<Villano> villanos) {
+//		this.villanos = villanos
+//	}
+//	
+//	def agregarVillano(Villano villano) {
+//		this._villanos.add(villano)
+//		ObservableUtils.firePropertyChanged(this, "villanos", villanos)
+//		ObservableUtils.firePropertyChanged(this, "tieneVillanos", tieneVillanos)
+//	}
+//	
+//	def isTieneVillanos() {
+//		!villanos.empty
+//	}
+	
+	new(Villano unVillano) {
+		villano = unVillano
 	}
-	
-	new(Set<Villano> villanos) {
-		this.villanos = villanos
-	}
-	
-	def agregarVillano(Villano villano) {
-		this._villanos.add(villano)
-		ObservableUtils.firePropertyChanged(this, "villanos", villanos)
-		ObservableUtils.firePropertyChanged(this, "tieneVillanos", tieneVillanos)
-	}
-	
-	def isTieneVillanos() {
-		!villanos.empty
-	}
-	
 	
 }

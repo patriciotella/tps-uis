@@ -1,22 +1,22 @@
 package villano
 
-import carmenSanDiegoUIs.Expediente
 import org.uqbar.commons.utils.Observable
+import java.util.Set
 
 @Observable
 class EditorDeVillano {
 	
 	@Property Villano villano
-	@Property Expediente expediente
+//	@Property Expediente expediente
+	@Property Set<Villano> villanos
 	
-	new(Villano unVillano, Expediente unExpediente){
+	new(Villano unVillano, Set<Villano> villanos){
 		villano = unVillano
-		expediente = unExpediente
+		_villanos = villanos
 	}
 	
 	def agregarVillano(Villano unVillano){
-		expediente.agregarVillano(unVillano)
-		
+		_villanos.add(unVillano)
 	}
 	
 	def puedeCrearVillano(){

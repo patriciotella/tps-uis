@@ -20,17 +20,17 @@ class Mapamundi {
 	def agregarPais(Pais pais) {
 		this._paises.add(pais)
 		ObservableUtils.firePropertyChanged(this, "paises", paises)
-		ObservableUtils.firePropertyChanged(this, "tienePaises", tienePaises)
+//		ObservableUtils.firePropertyChanged(this, "tienePaises", tienePaises)
 	}
 	
 	def eliminarPais(Pais pais){
 		this.paises.remove(pais)
 		ObservableUtils.firePropertyChanged(this,"paises",paises)
-		ObservableUtils.firePropertyChanged(this, "tienePaises", tienePaises)
+//		ObservableUtils.firePropertyChanged(this, "tienePaises", tienePaises)
 	}
 		
-	def isTienePaises() {
-		!paises.empty
-	}
+//	def isTienePaises() {
+//		!paises.empty
+//	}
 	
 }

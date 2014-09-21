@@ -16,7 +16,7 @@ class ConfiguradorDeJuego {
 	}
 	
 	def agregarVillano(Villano unVillano){
-		_expediente.agregarVillano(unVillano)
+//		_expediente.agregarVillano(unVillano)
 		ObservableUtils.firePropertyChanged(this, "expediente", _expediente)
 	}
 	
