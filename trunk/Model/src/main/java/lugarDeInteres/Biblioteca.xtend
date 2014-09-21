@@ -4,9 +4,9 @@ package lugarDeInteres
 class Biblioteca extends LugarDeInteres {
 	
 	override darPista() {
-		val randomInt = (Math.random() * ( pais.caracteristicas.size - 0 )) as Integer
-		val anotherRandomInt = (Math.random() * (villano.seniasParticulares.size - 0)) as Integer
-		val probabilidades = (Math.random() * ( 3 - 1 )) as Integer
+		val randomInt = (Math.random() * ( pais.caracteristicas.size - 0 )).intValue
+		val anotherRandomInt = (Math.random() * (villano.seniasParticulares.size - 0)).intValue
+		val probabilidades = (Math.random() * ( 3 - 1 )).intValue
 		val pistas = newArrayList
 		pistas.add("Características: ")
 		pistas.add(pais.caracteristicas.get(randomInt))
@@ -14,7 +14,7 @@ class Biblioteca extends LugarDeInteres {
 		pistas.add(villano.seniasParticulares.get(anotherRandomInt))
 		
 		if(probabilidades % 2 == 0) {
-			val rand = (Math.random() * (villano.hobbies.size - 0)) as Integer
+			val rand = (Math.random() * (villano.hobbies.size - 0)).intValue
 			pistas.add("Hobbies: ")
 			pistas.add(villano.hobbies.get(rand))
 		}

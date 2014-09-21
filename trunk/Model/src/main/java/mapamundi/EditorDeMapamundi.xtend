@@ -23,6 +23,7 @@ class EditorDeMapamundi {
 	def agregarPais(Pais unPais){
 		_mapamundi.agregarPais(unPais)
 		ObservableUtils.firePropertyChanged(this, "mapamundi", _mapamundi)
+		ObservableUtils.firePropertyChanged(this, "seleccionoPais", seleccionoPais)
 	}
 
 	def isSeleccionoPais() {

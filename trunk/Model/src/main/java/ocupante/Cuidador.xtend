@@ -1,6 +1,0 @@
-package ocupante
-
-
-class Cuidador {
-	
-}

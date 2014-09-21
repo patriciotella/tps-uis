@@ -5,11 +5,11 @@ class Embajada extends LugarDeInteres {
 
 	override darPista() {
 		val high = pais.caracteristicas.size
-		var randomInt = (Math.random() * ( high - 0 )) as Integer
-		var anotherRandomInt = (Math.random() * ( high - 0 )) as Integer
+		var randomInt = (Math.random() * ( high - 0 )).intValue
+		var anotherRandomInt = (Math.random() * ( high - 0 )).intValue
 		
 		while (randomInt == anotherRandomInt){
-			anotherRandomInt = (Math.random() * ( high - 0 )) as Integer
+			anotherRandomInt = (Math.random() * ( high - 0 )).intValue
 		}
 		
 		var pistas = newArrayList

@@ -18,6 +18,11 @@ class Villano {
 		sexo = ""
 	}
 	
+	/*
+	 * Tengan en cuenta que es obligatorio ingresar el nombre del villano y,
+	 * al menos, 2 señas particulares y un hobbie.
+	 */
+	 
 	def agregarSeniaParticular(String senia) {
 		this._seniasParticulares.add(senia)
 		ObservableUtils.firePropertyChanged(this,"seniasParticulares", seniasParticulares)
@@ -44,11 +49,11 @@ class Villano {
 	
 	def setNombre (String nombre) {
 		this._nombre = nombre
-		ObservableUtils.firePropertyChanged(this, "puedeCrearVillano", puedeCrearVillano)
+//		ObservableUtils.firePropertyChanged(this, "puedeCrearVillano", puedeCrearVillano)
 	}
 	
-	def puedeCrearVillano() {
-		!this._nombre.equals("")
-	}
+//	def puedeCrearVillano() {
+//		!this._nombre.equals("")
+//	}
 
 }

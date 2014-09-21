@@ -1,6 +1,5 @@
 package pais
 
-import java.util.List
 import org.uqbar.commons.model.ObservableUtils
 import org.uqbar.commons.utils.Observable
 import lugarDeInteres.LugarDeInteres
@@ -8,43 +7,47 @@ import lugarDeInteres.Club
 import lugarDeInteres.Biblioteca
 import lugarDeInteres.Banco
 import lugarDeInteres.Embajada
+import java.util.Set
 
 @Observable
 class EditorDeLugaresDeInteres {
 	
-	@Property Pais pais
-	@Property LugarDeInteres lugarNuevo
-	@Property LugarDeInteres lugarSeleccionado
-	@Property List<LugarDeInteres> lugaresPosibles
+	@Property 
+	EditorDePais pais
 	
-	new(Pais pais){
-		this._pais = pais
+	@Property
+	LugarDeInteres lugarNuevo
+	
+	@Property
+	LugarDeInteres lugarSeleccionado
+	
+	Set<? extends LugarDeInteres> LUGARESPOSIBLES = 
+		#{new Club, new Biblioteca, new Banco, new Embajada}
+		
+	new(EditorDePais editorDePais){
+		this._pais = editorDePais
 	}
 	
 	def borrarLugarDeInteres() {
-		pais.borrarLugarDeInteres(lugarSeleccionado)
+		_pais.borrarLugarDeInteres(lugarSeleccionado)
 		cambioPuedeAgregarLugar()
+		ObservableUtils.firePropertyChanged(this,"lugaresDeInteres", lugaresDeInteres)
+		ObservableUtils.firePropertyChanged(this,"lugaresPosibles", lugaresPosibles)
 	}
 	
 	def agregarLugarDeInteres() {
-		pais.agregarLugarDeInteres(lugarNuevo)
+		_pais.agregarLugarDeInteres(lugarNuevo)
 		cambioPuedeAgregarLugar()	
+		ObservableUtils.firePropertyChanged(this,"lugaresDeInteres", lugaresDeInteres)
+		ObservableUtils.firePropertyChanged(this,"lugaresPosibles", lugaresPosibles)
 	}
 	
 	def getLugaresPosibles() {
-		#[new Club, new Biblioteca, new Banco, new Embajada]
+		LUGARESPOSIBLES.filter([!_pais.lugaresDeInteres.contains(it)]).toList
 	}
 	
 	def isPuedeAgregarLugar() {
-		pais.lugaresDeInteres.size < 3 && noEstanRepetidos
-	}
-	
-	def noEstanRepetidos() {
-		for(LugarDeInteres lugar : _pais.lugaresDeInteres){
-			if(lugar.class.equals(_lugarNuevo.class))
-				return false
-		}
-		return true
+		getLugaresPosibles.size > 1 && lugarNuevo != null
 	}
 	
 	def setLugarNuevo(LugarDeInteres lugar) {
@@ -56,4 +59,16 @@ class EditorDeLugaresDeInteres {
 		ObservableUtils.firePropertyChanged(this,"puedeAgregarLugar",puedeAgregarLugar)
 	}
 	
+	def setLugarSeleccionado(LugarDeInteres lugarASeleccionar) {
+		_lugarSeleccionado = lugarASeleccionar
+		ObservableUtils.firePropertyChanged(this,"seleccionoLugarABorrar", seleccionoLugarABorrar)
+	}
+	
+	def isSeleccionoLugarABorrar() {
+		_lugarSeleccionado != null
+	}
+	
+	def getLugaresDeInteres() {
+		_pais.lugaresDeInteres
+	}
 }
