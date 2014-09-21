@@ -7,8 +7,9 @@ import org.uqbar.arena.widgets.Button
 import java.awt.Color
 import org.uqbar.arena.widgets.Label
 import mapamundi.Mapamundi
-import carmenSanDiegoUIs.Expedientes
 import carmenSanDiegoUIs.Caso
+import carmenSanDiegoUIs.Expediente
+import carmenSanDiegoUIs.MenuDeAcciones
 
 class MenuDeAccionesWindow extends MainWindow<MenuDeAcciones> {
 	
@@ -76,11 +77,10 @@ class MenuDeAccionesWindow extends MainWindow<MenuDeAcciones> {
 			setBackground(Color::lightGray)
 		]
 	}
-	
-	def static void main(String[] args) {
-		var menuDeAcciones = new MenuDeAcciones(new Mapamundi, new Expedientes, new Caso)
-		new MenuDeAccionesWindow(menuDeAcciones).startApplication
-	}
-	
+//	
+//	def static void main(String[] args) {
+//		new MenuDeAccionesWindow(new MenuDeAcciones(new Mapamundi, new Expediente, new Caso)).startApplication
+//	}
+//	
 	
 }

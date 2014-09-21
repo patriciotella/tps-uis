@@ -40,6 +40,7 @@ class EditarCaracteristicasDePaisWindow extends EditorDePropiedadDeModeloWindow<
 			caption = "Agregar"
 			onClick [ | this.modelObject.agregarCaracteristica ]
 			setBackground(Color::lightGray)
+			bindEnabledToProperty("hayCaracteristicaParaAgregar")
 		]
 	}
 	
@@ -50,6 +51,7 @@ class EditarCaracteristicasDePaisWindow extends EditorDePropiedadDeModeloWindow<
 			caption = "Eliminar"
 			onClick [ | this.modelObject.borrarCaracteristica ]
 			setBackground(Color::lightGray)
+			bindEnabledToProperty("puedeEliminarCaracteristica")
 		]
 	}
 	

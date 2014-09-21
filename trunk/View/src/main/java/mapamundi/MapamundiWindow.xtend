@@ -11,9 +11,7 @@ import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.MainWindow
 import pais.EditorDePais
-import pais.Pais
 import pais.PaisWindow
-import lugarDeInteres.Banco
 
 class MapamundiWindow extends MainWindow<EditorDeMapamundi> {
 	
@@ -46,7 +44,6 @@ class MapamundiWindow extends MainWindow<EditorDeMapamundi> {
 				caption = "Eliminar"
 				width = 100
 				onClick [|this.modelObject.eliminarPais()]
-				bindEnabledToProperty("mapamundi.tienePaises")
 				bindEnabledToProperty("seleccionoPais")
 			]
 		
@@ -58,14 +55,13 @@ class MapamundiWindow extends MainWindow<EditorDeMapamundi> {
 					open
 					]
 				]
-				bindEnabledToProperty("mapamundi.tienePaises")
 				bindEnabledToProperty("seleccionoPais")
 			]
 		
 			new Button(botonesPanel) =>[
 				caption = "Nuevo"
 				width = 100
-				onClick [ | new PaisWindow(this, new EditorDePais(modelObject.mapamundi, new Pais())) => [
+				onClick [ | new PaisWindow(this, new EditorDePais(modelObject.mapamundi)) => [
 					setTitle("Mapamundi - Nuevo País")
 					open
 					]
@@ -125,16 +121,6 @@ class MapamundiWindow extends MainWindow<EditorDeMapamundi> {
 	
 	def static void main(String[] args) {
 		var mapamundi = new Mapamundi
-		var arg = new Pais
-		arg.setNombre("Argentina")
-		arg.agregarCaracteristica("holiz")
-		var chi = new Pais
-		chi.setNombre("Chile")
-		arg.agregarConexion(chi)
-		var banco = new Banco
-		arg.agregarLugarDeInteres(banco)
-		mapamundi.agregarPais(arg)
-		mapamundi.agregarPais(chi)
 		var editor = new EditorDeMapamundi(mapamundi)
 		new MapamundiWindow(editor).startApplication
 	}
