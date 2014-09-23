@@ -18,7 +18,7 @@ class NuevoVillanoWindow extends SimpleWindow<EditorDeVillano> {
 		super(owner, model)
 	}
 	
-	override createContents(Panel mainPanel) {
+	override createFormPanel(Panel mainPanel) {
 		mainPanel.setLayout(new VerticalLayout)
 		agregarNombreInput(mainPanel)
 		agregarSexoInput(mainPanel)
@@ -139,12 +139,7 @@ class NuevoVillanoWindow extends SimpleWindow<EditorDeVillano> {
 	}
 	
 	override protected addActions(Panel actionsPanel) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-	
-	override protected createFormPanel(Panel mainPanel) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-
-	
+		
+	}	
+		
 }
