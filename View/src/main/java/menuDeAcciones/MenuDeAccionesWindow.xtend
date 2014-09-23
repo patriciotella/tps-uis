@@ -6,9 +6,6 @@ import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
 import java.awt.Color
 import org.uqbar.arena.widgets.Label
-import mapamundi.Mapamundi
-import carmenSanDiegoUIs.Caso
-import carmenSanDiegoUIs.Expediente
 import carmenSanDiegoUIs.MenuDeAcciones
 
 class MenuDeAccionesWindow extends MainWindow<MenuDeAcciones> {

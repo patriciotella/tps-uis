@@ -33,14 +33,14 @@ class InicioDeJuegoWindow extends MainWindow<Caso> {
 		buttonPanel.layout = new HorizontalLayout
 		new Button(buttonPanel) => [
 			caption = "Aceptar el caso"
-			onClick [ | new ResolverElMisterioWindow(this, new Caso).open]
+//			onClick [ | new ResolverElMisterioWindow(this, new Caso).open]
 		]
 	}
 	
 	
 	def static void main(String[] args) {
-		val caso = new Caso()
-		new InicioDeJuegoWindow(caso).startApplication
+//		val caso = new Caso()
+//		new InicioDeJuegoWindow(caso).startApplication
 	}
 	
 	

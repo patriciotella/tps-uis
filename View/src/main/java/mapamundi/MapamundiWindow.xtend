@@ -12,6 +12,10 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.MainWindow
 import pais.EditorDePais
 import pais.PaisWindow
+import lugarDeInteres.Embajada
+import lugarDeInteres.Banco
+import lugarDeInteres.Club
+import pais.Pais
 
 class MapamundiWindow extends MainWindow<EditorDeMapamundi> {
 	
@@ -121,6 +125,12 @@ class MapamundiWindow extends MainWindow<EditorDeMapamundi> {
 	
 	def static void main(String[] args) {
 		var mapamundi = new Mapamundi
+		mapamundi.agregarPais(new Pais("Argentina", 
+			newHashSet => [add("Toman mate")],
+			newHashSet, newHashSet => [
+				add(new Club) add(new Banco) add(new Embajada)
+			]
+		))
 		var editor = new EditorDeMapamundi(mapamundi)
 		new MapamundiWindow(editor).startApplication
 	}
