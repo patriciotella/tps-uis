@@ -9,19 +9,4 @@ import pais.Pais
 
 class MapamundiTest {
 	
-	var Mapamundi mapamundi
-	var Pais argentina
-	
-	@Before
-	def setUp(){
-		mapamundi = new Mapamundi()
-		argentina = Mockito.mock(Pais)
-		mapamundi.agregarPais(argentina)
-	}
-	
-	@Test
-	def agregarPaisesTest(){
-		assertTrue(mapamundi.paises.size()==1)
-		assertTrue(mapamundi.paises.contains(argentina))
-	}
 }

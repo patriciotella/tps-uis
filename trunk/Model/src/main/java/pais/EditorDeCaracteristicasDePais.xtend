@@ -19,6 +19,7 @@ class EditorDeCaracteristicasDePais {
 		_caracteristicaNueva = null
 		ObservableUtils.firePropertyChanged(this, "puedeEliminarCaracteristica", puedeEliminarCaracteristica)
 		ObservableUtils.firePropertyChanged(this, "hayCaracteristicaParaAgregar", hayCaracteristicaParaAgregar)
+		ObservableUtils.firePropertyChanged(this, "caracteristicas", caracteristicas)
 	}
 	
 	def borrarCaracteristica() {

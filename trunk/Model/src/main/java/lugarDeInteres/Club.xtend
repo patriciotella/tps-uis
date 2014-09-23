@@ -10,7 +10,7 @@ class Club extends LugarDeInteres {
 		while (randomInt == anotherRandomInt)
 			anotherRandomInt = (Math.random() * ( high - 0 )).intValue
 		var pistas = newArrayList
-		pistas.add("Señas particulares: ")
+//		pistas.add("Señas particulares: ")
 		pistas.add(villano.seniasParticulares.get(randomInt))
 		pistas.add(villano.seniasParticulares.get(anotherRandomInt))
 		if(((Math.random() * ( 9 - 0 )).intValue) <= 6) {
