@@ -74,17 +74,28 @@ class Pais {
 		this._nombre = nombre
 	}
 	
-	def marcarComoRutaDeEscapeDeVillano(Villano unVillano, Pais proximoPaisEnRuta) {
+	def void marcarComoRutaDeEscapeDeVillano(Villano unVillano, Pais proximoPaisEnRuta) {
+		_lugaresDeInteres.forEach[marcarComoRutaDeEscapeDeVillano(unVillano, proximoPaisEnRuta)]
 		/*Por cada lugar de interés, setearlo como lugar que tiene datos del vilano
 		 * y darle el proximo país en la ruta (si no es el último)
 		 */
 	}
 	
 	def syncWith(Pais pais) {
-		_nombre = pais.nombre
-		_caracteristicas = pais.caracteristicas
-		_conexiones = pais.conexiones
-		_lugaresDeInteres = pais.lugaresDeInteres
+		nombre = pais.nombre
+		caracteristicas = pais.caracteristicas
+		conexiones = pais.conexiones
+		lugaresDeInteres = pais.lugaresDeInteres
+	}
+	
+	def void marcarSinVillano() {
+		_lugaresDeInteres.forEach[noConoceAlVillano]
+//		marca el país como si no hubiera pasado el villano
+	}
+	
+	def void marcarComoUltimoPaisDeLaRutaDelVillano(Villano unVillano) {
+		_lugaresDeInteres.forEach[marcarComoEsconditeDeVillano(unVillano)]
+//		le paso el villano y marca a ese pais con el estado que tiene al villano.
 	}
 	
 }

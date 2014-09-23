@@ -5,8 +5,8 @@ import java.util.List
 
 abstract class LugarDeInteres {
 	
-	private LugarNoConoceAlMalechor estado
-	private Pais proximoLugarDondeFueElMalechor
+	private EstadoDelLugar estado
+	private Pais proximoPaisDondeFueElMalechor
 	private Villano villano
 	
 	def protected LugarDeInteres() {
@@ -32,6 +32,25 @@ abstract class LugarDeInteres {
 	}
 	
 	def getPais() {
-		proximoLugarDondeFueElMalechor
+		proximoPaisDondeFueElMalechor
 	}
+	
+	def marcarComoRutaDeEscapeDeVillano(Villano unVillano, Pais siguientePais) {
+		villano = unVillano
+		proximoPaisDondeFueElMalechor = siguientePais
+		estado = new LugarConoceAlMalechor
+	}
+	
+	def marcarComoEsconditeDeVillano(Villano unVillano) {
+		villano = unVillano
+		proximoPaisDondeFueElMalechor = null
+		estado = new LugarContieneAlVillano
+	}
+	
+	def noConoceAlVillano() {
+		villano = null
+		proximoPaisDondeFueElMalechor = null
+		estado = new LugarNoConoceAlMalechor
+	}
+	
 }

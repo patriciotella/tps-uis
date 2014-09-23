@@ -1,26 +1,32 @@
 package villano
 
 import org.uqbar.commons.utils.Observable
+import org.uqbar.commons.model.ObservableUtils
 
 @Observable
 class EditorDeHobbiesDeVillano {
 	
-	@Property Villano villano
+	@Property EditorDeVillano editorDeVillano
 	@Property String hobbieNuevo
 	@Property String hobbieSeleccionado
 	
-	new(Villano villano) {
-		this._villano = villano		
+	new(EditorDeVillano editorDeVillano) {
+		this._editorDeVillano = editorDeVillano
 	}
 	
 	def agregarHobbie() {
-		this.villano.agregarHobbie(hobbieNuevo)
+		_editorDeVillano.agregarHobbie(hobbieNuevo)
+		_hobbieNuevo = ""
+		ObservableUtils.firePropertyChanged(this, "hobbies", hobbies)
 	}
 	
 	def borrarHobbie() {
-		this.villano.eliminarHobbie(hobbieSeleccionado)
+		_editorDeVillano.eliminarHobbie(hobbieSeleccionado)
+		ObservableUtils.firePropertyChanged(this, "hobbies", hobbies)
 	}
 	
-	
+	def getHobbies() {
+		_editorDeVillano.hobbies
+	}
 	
 }
