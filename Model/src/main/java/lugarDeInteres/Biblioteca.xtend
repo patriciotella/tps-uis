@@ -8,14 +8,14 @@ class Biblioteca extends LugarDeInteres {
 		val anotherRandomInt = (Math.random() * (villano.seniasParticulares.size - 0)).intValue
 		val probabilidades = (Math.random() * ( 3 - 1 )).intValue
 		val pistas = newArrayList
-		pistas.add("Características: ")
+//		pistas.add("Características: ")
 		pistas.add(pais.caracteristicas.get(randomInt))
-		pistas.add("Señas particulares: ")
+//		pistas.add("Señas particulares: ")
 		pistas.add(villano.seniasParticulares.get(anotherRandomInt))
 		
 		if(probabilidades % 2 == 0) {
 			val rand = (Math.random() * (villano.hobbies.size - 0)).intValue
-			pistas.add("Hobbies: ")
+//			pistas.add("Hobbies: ")
 			pistas.add(villano.hobbies.get(rand))
 		}
 		

@@ -7,31 +7,31 @@ import org.uqbar.commons.model.ObservableUtils
 @Observable
 class EditorDeConexionesDePais {
 
-	@Property EditorDePais pais
+	@Property EditorDePais editorDePais
 	@Property Pais conexionNueva
 	@Property Pais conexionSeleccionada
 	@Property Mapamundi mapamundi
 
 	new(EditorDePais editorDePais, Mapamundi mapamundi) {
-		this._pais = editorDePais
+		this._editorDePais = editorDePais
 		this._mapamundi = mapamundi
 	}
 
 	def borrarConexion() {
 		//Le pasa el mensaje a ejecutar en un bloque.
-		modificarConexion([pais.borrarConexion(conexionSeleccionada)])
+		modificarConexion([getEditorDePais.borrarConexion(conexionSeleccionada)])
 	}
 
 	def agregarConexion() {
-		modificarConexion([pais.agregarConexion(conexionNueva)])
+		modificarConexion([getEditorDePais.agregarConexion(conexionNueva)])
 	}
 
 	def getConexiones() {
-		_pais.conexiones
+		_editorDePais.conexiones
 	}
 	
 	def getConexionesParaAgregar() {
-		_mapamundi.paises.filter[it != _pais && !_pais.conexiones.contains(it)].toSet
+		_mapamundi.paises.filter[it != _editorDePais.pais && !_editorDePais.conexiones.contains(it)].toSet
 	}
 	
 	def isTieneConexiones() {

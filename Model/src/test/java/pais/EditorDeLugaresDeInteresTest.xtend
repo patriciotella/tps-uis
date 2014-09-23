@@ -31,7 +31,7 @@ class EditorDeLugaresDeInteresTest {
 	}
 	
 	@Test
-	def losLugaresPosiblesSonLaDiferenciaEntreLosLugaresDeInteresDelPaisYTodosLosLugaresDeInteres() {
+	def testLosLugaresPosiblesSonLaDiferenciaEntreLosLugaresDeInteresDelPaisYTodosLosLugaresDeInteres() {
 		assertEquals(editorDeLugares.lugaresPosibles.get(0).class, new Biblioteca.class)
 	}
 }

@@ -17,7 +17,7 @@ abstract class LugarDeInteres {
 		this.class.toString.substring(21)
 	}
 	
-	def List<String> pista() {
+	def pista() {
 		estado.pista(this)
 	}
 	
@@ -25,7 +25,7 @@ abstract class LugarDeInteres {
 		estado
 	}
 	
-	def List<String> darPista()
+	def protected List<String> darPista()
 	
 	def getVillano() {
 		villano

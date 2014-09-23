@@ -61,27 +61,27 @@ class EditorDePais {
 	}
 	
 	def agregarCaracteristica(String caracteristica) {
-		_caracteristicas.add(caracteristica)
+		caracteristicas.add(caracteristica)
 	}
 	
 	def borrarCaracteristica(String caracteristica) {
-		_caracteristicas.remove(caracteristica)
+		caracteristicas.remove(caracteristica)
 	}
 	
 	def borrarLugarDeInteres(LugarDeInteres unLugarDeInteres) {
-		_lugaresDeInteres.remove(unLugarDeInteres)
+		lugaresDeInteres.remove(unLugarDeInteres)
 	}
 	
 	def agregarLugarDeInteres(LugarDeInteres unLugarDeInteres) {
-		_lugaresDeInteres.add(unLugarDeInteres)
+		lugaresDeInteres.add(unLugarDeInteres)
 	}
 	
 	def borrarConexion(Pais unaConexion) {
-		_conexiones.remove(unaConexion)
+		conexiones.remove(unaConexion)
 	}
 	
 	def agregarConexion(Pais unaConexion) {
-		_conexiones.add(unaConexion)
+		conexiones.add(unaConexion)
 	}
 	
 }
