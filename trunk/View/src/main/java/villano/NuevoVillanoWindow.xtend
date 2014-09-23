@@ -10,6 +10,7 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
+import org.uqbar.arena.widgets.Selector
 
 class NuevoVillanoWindow extends SimpleWindow<EditorDeVillano> {
 
@@ -31,7 +32,7 @@ class NuevoVillanoWindow extends SimpleWindow<EditorDeVillano> {
 		nombrePanel.layout = new HorizontalLayout
 		new Label(nombrePanel).setText("Nombre:")
 		new TextBox(nombrePanel) => [
-			bindValueToProperty("villano.nombre")
+			bindValueToProperty("nombre")
 			width = 150
 		]
 	}
@@ -39,9 +40,12 @@ class NuevoVillanoWindow extends SimpleWindow<EditorDeVillano> {
 	def agregarSexoInput(Panel editorPanel) {
 		val sexoPanel = new Panel(editorPanel)
 		sexoPanel.layout = new HorizontalLayout
-		new Label(sexoPanel).setText("Sexo:        ")
-		new TextBox(sexoPanel) => [
-			bindValueToProperty("villano.sexo")
+		new Label(sexoPanel) => [
+			setText("Sexo: ")
+		]
+		new Selector(sexoPanel) => [
+			bindValueToProperty("sexo")
+			bindItemsToProperty("sexos")
 			width = 150
 		]
 	}
@@ -62,7 +66,7 @@ class NuevoVillanoWindow extends SimpleWindow<EditorDeVillano> {
 		
 		new Button(editorDeSeniasPanel) => [
 			caption = "Editar Señas Particulares"
-			onClick [ | new EditarSeniasParticularesDeVillanoWindow(this, new EditorDeSeniasParticularesDeVillano(this.modelObject.villano)).open]
+			onClick [ | new EditarSeniasParticularesDeVillanoWindow(this, new EditorDeSeniasParticularesDeVillano(this.modelObject)).open]
 		]
 	}
 	
@@ -79,7 +83,7 @@ class NuevoVillanoWindow extends SimpleWindow<EditorDeVillano> {
 		new List(mainPanel) => [
 			width = 280
 			height = 60
-			bindItemsToProperty("villano.seniasParticulares")
+			bindItemsToProperty("seniasParticulares")
 		]
 	}
 
@@ -99,7 +103,7 @@ class NuevoVillanoWindow extends SimpleWindow<EditorDeVillano> {
 		
 		new Button(editorDeHobbiesPanel) => [
 			caption = "Editar Hobbies"
-			onClick [ | new EditarHobbiesDeVillanoWindow(this, new EditorDeHobbiesDeVillano(this.modelObject.villano)).open]
+			onClick [ | new EditarHobbiesDeVillanoWindow(this, new EditorDeHobbiesDeVillano(this.modelObject)).open]
 		]
 	}
 	
@@ -116,7 +120,7 @@ class NuevoVillanoWindow extends SimpleWindow<EditorDeVillano> {
 		new List(mainPanel) => [
 			width = 280
 			height = 60
-			bindItemsToProperty("villano.hobbies")
+			bindItemsToProperty("hobbies")
 		]
 	}
 	
@@ -125,7 +129,7 @@ class NuevoVillanoWindow extends SimpleWindow<EditorDeVillano> {
 		buttonPanel.layout = new HorizontalLayout
 		new Button(buttonPanel) => [
 			caption = "Aceptar"
-			onClick [ | modelObject.expediente.agregarVillano(modelObject.villano) 
+			onClick [ | modelObject.agregarVillano() 
 						close
 			]
 			bindEnabledToProperty("puedeCrearVillano")
@@ -134,11 +138,6 @@ class NuevoVillanoWindow extends SimpleWindow<EditorDeVillano> {
 		]
 	}
 	
-		
-//	def static void main(String[] args) {
-//		new NuevoVillanoWindow(new Villano, new Expedientes).startApplication 
-//	}
-	
 	override protected addActions(Panel actionsPanel) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
@@ -146,5 +145,6 @@ class NuevoVillanoWindow extends SimpleWindow<EditorDeVillano> {
 	override protected createFormPanel(Panel mainPanel) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
+
 	
 }

@@ -41,7 +41,7 @@ class EditarSeniasParticularesDeVillanoWindow extends Dialog<EditorDeSeniasParti
 			width = 300
 			height = 150
 			bindValueToProperty("seniaSeleccionada")
-			bindItemsToProperty("villano.seniasParticulares")
+			bindItemsToProperty("seniasParticulares")
 		]
 	}
 	

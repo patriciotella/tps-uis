@@ -64,7 +64,7 @@ class EditarCaracteristicasDePaisWindow extends EditorDePropiedadDeModeloWindow<
 			width = 300
 			height = 150
 			bindValueToProperty("caracteristicaSeleccionada")
-			bindItemsToProperty("pais.caracteristicas")
+			bindItemsToProperty("caracteristicas")
 		]
 	}
 

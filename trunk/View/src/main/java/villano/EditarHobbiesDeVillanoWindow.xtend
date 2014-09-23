@@ -41,7 +41,7 @@ class EditarHobbiesDeVillanoWindow extends Dialog<EditorDeHobbiesDeVillano>{
 			width = 300
 			height = 150
 			bindValueToProperty("hobbieSeleccionado")
-			bindItemsToProperty("villano.hobbies")
+			bindItemsToProperty("hobbies")
 		]	
 	}
 	
