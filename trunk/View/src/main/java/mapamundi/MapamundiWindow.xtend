@@ -1,7 +1,6 @@
 package mapamundi
 
 import java.awt.Color
-import mapamundi.Mapamundi
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.layout.VerticalLayout
@@ -9,19 +8,16 @@ import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.windows.MainWindow
+import org.uqbar.arena.windows.SimpleWindow
+import org.uqbar.arena.windows.WindowOwner
 import pais.EditorDePais
 import pais.PaisWindow
-import lugarDeInteres.Embajada
-import lugarDeInteres.Banco
-import lugarDeInteres.Club
-import pais.Pais
 
-class MapamundiWindow extends MainWindow<EditorDeMapamundi> {
+class MapamundiWindow extends SimpleWindow<EditorDeMapamundi> {
 	
 	
-	new(EditorDeMapamundi model) {
-		super(model)
+	new(WindowOwner owner, EditorDeMapamundi model) {
+		super(owner, model)
 	}
 	
 	override createContents(Panel mainPanel) {
@@ -123,15 +119,24 @@ class MapamundiWindow extends MainWindow<EditorDeMapamundi> {
 			]
 	}
 	
-	def static void main(String[] args) {
-		var mapamundi = new Mapamundi
-		mapamundi.agregarPais(new Pais("Argentina", 
-			newHashSet => [add("Toman mate")],
-			newHashSet, newHashSet => [
-				add(new Club) add(new Banco) add(new Embajada)
-			]
-		))
-		var editor = new EditorDeMapamundi(mapamundi)
-		new MapamundiWindow(editor).startApplication
+//	def static void main(String[] args) {
+//		var mapamundi = new Mapamundi
+//		mapamundi.agregarPais(new Pais("Argentina", 
+//			newHashSet => [add("Toman mate")],
+//			newHashSet, newHashSet => [
+//				add(new Club) add(new Banco) add(new Embajada)
+//			]
+//		))
+//		var editor = new EditorDeMapamundi(mapamundi)
+//		new MapamundiWindow(editor).startApplication
+//	}
+	
+	override protected addActions(Panel actionsPanel) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
+	
+	override protected createFormPanel(Panel mainPanel) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
 }

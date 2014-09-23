@@ -1,6 +1,7 @@
 package carmenSanDiegoUIs
 
 import java.awt.Color
+import org.uqbar.arena.bindings.PropertyAdapter
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.layout.VerticalLayout
@@ -8,16 +9,17 @@ import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.windows.MainWindow
-import villano.Villano
-import org.uqbar.arena.bindings.PropertyAdapter
-import villano.NuevoVillanoWindow
+import org.uqbar.arena.windows.SimpleWindow
 import villano.EditorDeVillano
+import villano.NuevoVillanoWindow
+import villano.Villano
+import org.uqbar.arena.windows.WindowOwner
 
-class ExpedienteWindow extends MainWindow<ExpedientesModelApp> {
+class ExpedienteWindow extends SimpleWindow<ExpedientesModelApp> {
 
-	new(ExpedientesModelApp model) {
-		super(model)
+	
+	new(WindowOwner owner, ExpedientesModelApp model) {
+		super(owner, model)
 	}
 
 	override createContents(Panel mainPanel) {
@@ -120,8 +122,17 @@ class ExpedienteWindow extends MainWindow<ExpedientesModelApp> {
 		]
 	}
 
-	def static void main(String[] args) {
-		val alberto = new Villano("Alberto", "Masculino", newHashSet => [add("Seña") add("Otra seña")], newHashSet => [add("Jugador")])
-		new ExpedienteWindow(new ExpedientesModelApp() => [agregarVillano(alberto)]).startApplication
+//	def static void main(String[] args) {
+//		val alberto = new Villano("Alberto", "Masculino", newHashSet => [add("Seña") add("Otra seña")], newHashSet => [add("Jugador")])
+//		new ExpedienteWindow(new ExpedientesModelApp() => [agregarVillano(alberto)]).startApplication
+//	}
+	
+	override protected addActions(Panel actionsPanel) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
+	
+	override protected createFormPanel(Panel mainPanel) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
 }
