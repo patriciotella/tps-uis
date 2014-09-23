@@ -52,6 +52,7 @@ class EditarHobbiesDeVillanoWindow extends Dialog<EditorDeHobbiesDeVillano>{
 			caption = "Eliminar"
 			onClick [ | this.modelObject.borrarHobbie ]
 			setBackground(Color::lightGray)
+			bindEnabledToProperty("seleccionoHobbieAEliminar")
 		]
 	}
 	
@@ -65,6 +66,7 @@ class EditarHobbiesDeVillanoWindow extends Dialog<EditorDeHobbiesDeVillano>{
 			caption = "Agregar"
 			onClick [ | this.modelObject.agregarHobbie ]
 			setBackground(Color::lightGray)
+			bindEnabledToProperty("hayHobbieParaAgregar")
 		]	
 	}
 	
