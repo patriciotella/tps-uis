@@ -13,12 +13,6 @@ class Caso {
 	@Property ObjetoRobado objeto
 	@Property Pais pais
 	
-	new () {
-		planDeEscape = newArrayList
-//		reporte = ""
-//		objeto = ""
-	}
-	
 	new (Villano villanoResponsable, List<Pais> planDeEscape, Reporte reporteDelCaso,
 		ObjetoRobado objetoRobado) {
 		responsable = villanoResponsable

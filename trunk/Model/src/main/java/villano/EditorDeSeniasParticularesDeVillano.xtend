@@ -1,23 +1,32 @@
 package villano
 
 import org.uqbar.commons.utils.Observable
+import org.uqbar.commons.model.ObservableUtils
 
 @Observable
 class EditorDeSeniasParticularesDeVillano {
 	
-	@Property Villano villano
+	@Property EditorDeVillano editorDeVillano
 	@Property String seniaNueva
 	@Property String seniaSeleccionada
 	
-	new(Villano villano) {
-		this._villano = villano
+	new(EditorDeVillano editorDeVillano) {
+		_editorDeVillano = editorDeVillano
 	}
 	
 	def agregarSeniaParticular() {
-		this.villano.agregarSeniaParticular(seniaNueva)
+		_editorDeVillano.agregarSeniaParticular(seniaNueva)
+		ObservableUtils.firePropertyChanged(this, "seniasParticulares", seniasParticulares)
+		_seniaNueva = ""	
 	}
 	
 	def borrarSeniaParticular() {
-		this.villano.eliminarSeniaPArticular(seniaSeleccionada)
+		_editorDeVillano.eliminarSeniaPArticular(seniaSeleccionada)
+		ObservableUtils.firePropertyChanged(this, "seniasParticulares", seniasParticulares)
 	}
+	
+	def getSeniasParticulares() {
+		_editorDeVillano.seniasParticulares
+	}
+
 }

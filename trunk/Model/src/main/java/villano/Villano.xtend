@@ -1,23 +1,27 @@
 package villano
 
-import java.util.List
 import org.uqbar.commons.utils.Observable
 import org.uqbar.commons.model.ObservableUtils
+import java.util.Set
+import org.uqbar.commons.model.UserException
 
 @Observable
 class Villano {
 	@Property String nombre
 	@Property String sexo
-	@Property List<String> seniasParticulares
-	@Property List<String> hobbies
-			
-	new() {
-		seniasParticulares = newArrayList
-		hobbies = newArrayList
-		nombre = ""
-		sexo = ""
-	}
+	@Property Set<String> seniasParticulares
+	@Property Set<String> hobbies
 	
+	new(String nombre, String sexo, Set<String> seniasParticulares,
+		Set<String> hobbies) {
+		if(nombre == "" || hobbies.size == 0 || seniasParticulares.size < 2) {
+			throw new UserException("El villano debe tener nombre y, al menos, 2 señas particulares y un hobbie.")
+		}
+		_nombre = nombre
+		_sexo = sexo
+		_hobbies = hobbies
+		_seniasParticulares = seniasParticulares
+	}
 	/*
 	 * Tengan en cuenta que es obligatorio ingresar el nombre del villano y,
 	 * al menos, 2 señas particulares y un hobbie.
@@ -49,11 +53,13 @@ class Villano {
 	
 	def setNombre (String nombre) {
 		this._nombre = nombre
-//		ObservableUtils.firePropertyChanged(this, "puedeCrearVillano", puedeCrearVillano)
 	}
 	
-//	def puedeCrearVillano() {
-//		!this._nombre.equals("")
-//	}
-
+	def syncWith(Villano unVillano) {
+		nombre = unVillano.nombre
+		sexo = unVillano.sexo
+		hobbies = unVillano.hobbies
+		seniasParticulares = unVillano.seniasParticulares
+	}
+	
 }

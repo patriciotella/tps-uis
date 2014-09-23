@@ -4,6 +4,7 @@ import org.uqbar.commons.utils.Observable
 import mapamundi.Mapamundi
 import java.util.Set
 import lugarDeInteres.LugarDeInteres
+import java.util.HashSet
 
 @Observable
 class EditorDePais {
@@ -28,9 +29,9 @@ class EditorDePais {
 		this._mapamundi = mapamundi
 		this._pais = pais
 		_nombre = pais.nombre
-		_conexiones = pais.conexiones
-		_caracteristicas = pais.caracteristicas
-		_lugaresDeInteres = pais.lugaresDeInteres
+		_conexiones = new HashSet(pais.conexiones)
+		_caracteristicas = new HashSet(pais.caracteristicas)
+		_lugaresDeInteres = new HashSet(pais.lugaresDeInteres)
 	}
 	
 	new(Mapamundi mapamundi) {

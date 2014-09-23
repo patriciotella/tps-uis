@@ -13,7 +13,7 @@ import java.util.Set
 class EditorDeLugaresDeInteres {
 	
 	@Property 
-	EditorDePais pais
+	EditorDePais editorDePais
 	
 	@Property
 	LugarDeInteres lugarNuevo
@@ -25,25 +25,29 @@ class EditorDeLugaresDeInteres {
 		#{new Club, new Biblioteca, new Banco, new Embajada}
 		
 	new(EditorDePais editorDePais){
-		this._pais = editorDePais
+		this._editorDePais = editorDePais
 	}
 	
 	def borrarLugarDeInteres() {
-		_pais.borrarLugarDeInteres(lugarSeleccionado)
+		_editorDePais.borrarLugarDeInteres(lugarSeleccionado)
 		cambioPuedeAgregarLugar()
 		ObservableUtils.firePropertyChanged(this,"lugaresDeInteres", lugaresDeInteres)
 		ObservableUtils.firePropertyChanged(this,"lugaresPosibles", lugaresPosibles)
 	}
 	
 	def agregarLugarDeInteres() {
-		_pais.agregarLugarDeInteres(lugarNuevo)
+		_editorDePais.agregarLugarDeInteres(lugarNuevo)
 		cambioPuedeAgregarLugar()	
 		ObservableUtils.firePropertyChanged(this,"lugaresDeInteres", lugaresDeInteres)
 		ObservableUtils.firePropertyChanged(this,"lugaresPosibles", lugaresPosibles)
 	}
 	
 	def getLugaresPosibles() {
-		LUGARESPOSIBLES.filter([!_pais.lugaresDeInteres.contains(it)]).toList
+		var resultado = LUGARESPOSIBLES
+		for(LugarDeInteres lugar : editorDePais.lugaresDeInteres) {
+			resultado = resultado.filter[!it.class.equals(lugar.class)].toSet
+		}
+		resultado
 	}
 	
 	def isPuedeAgregarLugar() {
@@ -69,6 +73,6 @@ class EditorDeLugaresDeInteres {
 	}
 	
 	def getLugaresDeInteres() {
-		_pais.lugaresDeInteres
+		_editorDePais.lugaresDeInteres
 	}
 }

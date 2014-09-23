@@ -6,23 +6,23 @@ import org.uqbar.commons.model.ObservableUtils
 @Observable
 class EditorDeCaracteristicasDePais {
 	
-	@Property EditorDePais pais
+	@Property EditorDePais editor
 	@Property String caracteristicaNueva
 	@Property String caracteristicaSeleccionada
 	
 	new(EditorDePais pais){
-		this._pais = pais
+		this._editor = pais
 	}
 	
 	def agregarCaracteristica() {
-		this.pais.agregarCaracteristica(caracteristicaNueva)
+		_editor.agregarCaracteristica(caracteristicaNueva)
 		_caracteristicaNueva = null
 		ObservableUtils.firePropertyChanged(this, "puedeEliminarCaracteristica", puedeEliminarCaracteristica)
 		ObservableUtils.firePropertyChanged(this, "hayCaracteristicaParaAgregar", hayCaracteristicaParaAgregar)
 	}
 	
 	def borrarCaracteristica() {
-		this.pais.borrarCaracteristica(caracteristicaSeleccionada)
+		_editor.borrarCaracteristica(caracteristicaSeleccionada)
 		ObservableUtils.firePropertyChanged(this, "puedeEliminarCaracteristica", puedeEliminarCaracteristica)
 	}
 	
@@ -41,6 +41,10 @@ class EditorDeCaracteristicasDePais {
 	}
 	
 	def isPuedeEliminarCaracteristica() {
-		_caracteristicaSeleccionada != null && pais.caracteristicas.size > 0
+		_caracteristicaSeleccionada != null && getEditor.caracteristicas.size > 0
+	}
+	
+	def getCaracteristicas() {
+		_editor.caracteristicas
 	}
 }
