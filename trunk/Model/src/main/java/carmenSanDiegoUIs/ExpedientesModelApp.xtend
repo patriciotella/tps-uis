@@ -14,8 +14,8 @@ class ExpedientesModelApp {
 	@Property
 	Villano villanoSeleccionado
 	
-	new() {
-		villanos = newHashSet
+	new(Set<Villano> villanos) {
+		this.villanos = villanos
 	}
 	
 	def agregarVillano(Villano unVillano) {
