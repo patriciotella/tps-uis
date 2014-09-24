@@ -94,7 +94,7 @@ class Pais {
 	}
 	
 	def void marcarComoUltimoPaisDeLaRutaDelVillano(Villano unVillano) {
-		_lugaresDeInteres.forEach[marcarComoEsconditeDeVillano(unVillano)]
+//		_lugaresDeInteres.forEach[marcarComoEsconditeDeVillano(unVillano)]
 //		le paso el villano y marca a ese pais con el estado que tiene al villano.
 	}
 	

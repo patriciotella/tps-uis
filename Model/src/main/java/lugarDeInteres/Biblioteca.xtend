@@ -3,6 +3,10 @@ package lugarDeInteres
 
 class Biblioteca extends LugarDeInteres {
 	
+	new() {
+		super()
+	}
+	
 	override darPista() {
 		val randomInt = (Math.random() * ( pais.caracteristicas.size - 0 )).intValue
 		val anotherRandomInt = (Math.random() * (villano.seniasParticulares.size - 0)).intValue

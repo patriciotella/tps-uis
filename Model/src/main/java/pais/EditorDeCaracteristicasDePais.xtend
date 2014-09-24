@@ -17,14 +17,14 @@ class EditorDeCaracteristicasDePais {
 	def agregarCaracteristica() {
 		_editor.agregarCaracteristica(caracteristicaNueva)
 		_caracteristicaNueva = null
-		ObservableUtils.firePropertyChanged(this, "puedeEliminarCaracteristica", puedeEliminarCaracteristica)
+		cambioLaListaDeCaracteristicasParaEliminar()
 		ObservableUtils.firePropertyChanged(this, "hayCaracteristicaParaAgregar", hayCaracteristicaParaAgregar)
 		ObservableUtils.firePropertyChanged(this, "caracteristicas", caracteristicas)
 	}
 	
 	def borrarCaracteristica() {
 		_editor.borrarCaracteristica(caracteristicaSeleccionada)
-		ObservableUtils.firePropertyChanged(this, "puedeEliminarCaracteristica", puedeEliminarCaracteristica)
+		cambioLaListaDeCaracteristicasParaEliminar()
 	}
 	
 	def isHayCaracteristicaParaAgregar() {
@@ -38,7 +38,7 @@ class EditorDeCaracteristicasDePais {
 	
 	def setCaracteristicaSeleccionada(String unaCaracteristica) {
 		_caracteristicaSeleccionada = unaCaracteristica
-		ObservableUtils.firePropertyChanged(this, "puedeEliminarCaracteristica", puedeEliminarCaracteristica)
+		cambioLaListaDeCaracteristicasParaEliminar()
 	}
 	
 	def isPuedeEliminarCaracteristica() {
@@ -47,5 +47,10 @@ class EditorDeCaracteristicasDePais {
 	
 	def getCaracteristicas() {
 		_editor.caracteristicas
+	}
+	
+	def cambioLaListaDeCaracteristicasParaEliminar() {
+		ObservableUtils.firePropertyChanged(this, "caracteristicas", caracteristicas)
+		ObservableUtils.firePropertyChanged(this, "puedeEliminarCaracteristica", puedeEliminarCaracteristica)
 	}
 }

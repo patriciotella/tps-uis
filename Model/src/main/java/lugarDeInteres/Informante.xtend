@@ -1,6 +1,6 @@
 package lugarDeInteres
 
-class LugarConoceAlMalechor extends EstadoDelLugar {
+class Informante extends Ocupante {
 	
 	override pista(LugarDeInteres unLugarDeInteres) {
 		return unLugarDeInteres.darPista()
