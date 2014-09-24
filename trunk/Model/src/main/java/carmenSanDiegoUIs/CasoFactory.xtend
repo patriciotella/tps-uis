@@ -34,7 +34,8 @@ class CasoFactory {
 		
 		unSistema.setRutas(rutaDeEscape)
 		
-		return new Caso(villano, new Reporte(rutaDeEscape.get(0), unObjetoRobado),
+		val nombre = "Robo de " + unObjetoRobado.nombre
+		return new Caso(nombre, villano, new Reporte(rutaDeEscape.get(0), unObjetoRobado),
 			rutaDeEscape.get(0), unObjetoRobado)
 	}
 	

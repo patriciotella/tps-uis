@@ -11,12 +11,19 @@ class Caso {
 	@Property ObjetoRobado objetoRobado
 	@Property Pais paisDondeOcurrio
 	
-	new (Villano villanoResponsable, Reporte reporteDelCaso,
+	String nombre
+	
+	new (String nombre, Villano villanoResponsable, Reporte reporteDelCaso,
 			Pais paisDondeOcurrio, ObjetoRobado objetoRobado) {
+		this.nombre = nombre
 		responsable = villanoResponsable
 		this.paisDondeOcurrio = paisDondeOcurrio
 		reporte = reporteDelCaso
 		this.objetoRobado = objetoRobado
+	}
+	
+	def getNombre() {
+		nombre
 	}
 
 }
