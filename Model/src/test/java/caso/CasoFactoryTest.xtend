@@ -90,6 +90,9 @@ class SistemaTest {
 		unSistema.crearCaso
 		assertEquals(unSistema.caso.getObjetoRobado.nombre, "Tumba del faraón")
 		assertTrue(unSistema.mapamundi.paises.contains(unSistema.caso.paisDondeOcurrio))
+		unSistema.paisActual
+		assertTrue(unSistema.caso.reporte.descripcion != null)
+		assertTrue(unSistema.caso.objetoRobado.nombre != null)
 	}
 	
 }
