@@ -18,7 +18,7 @@ class MapamundiWindow extends SimpleWindow<EditorDeMapamundi> {
 	
 	new(WindowOwner owner, EditorDeMapamundi model) {
 		super(owner, model)
-	}
+	}	
 	
 	override createContents(Panel mainPanel) {
 		this.setTitle("Mapamundi")
@@ -40,33 +40,11 @@ class MapamundiWindow extends SimpleWindow<EditorDeMapamundi> {
 		val botonesPanel = new Panel (paisesPanel)
 		botonesPanel.layout = new VerticalLayout
 		
-			new Button(botonesPanel) =>[
-				caption = "Eliminar"
-				width = 100
-				onClick [|this.modelObject.eliminarPais()]
-				bindEnabledToProperty("seleccionoPais")
-			]
+		setEliminarButton(botonesPanel)
+		setEditarButton(botonesPanel)
+		setNuevoButton(botonesPanel)
 		
-			new Button(botonesPanel) =>[
-				caption = "Editar"
-				width = 100
-				onClick [ | new PaisWindow(this, new EditorDePais(modelObject.mapamundi, modelObject.paisSeleccionado)) => [
-					setTitle("Mapamundi - Editar País")
-					open
-					]
-				]
-				bindEnabledToProperty("seleccionoPais")
-			]
-		
-			new Button(botonesPanel) =>[
-				caption = "Nuevo"
-				width = 100
-				onClick [ | new PaisWindow(this, new EditorDePais(modelObject.mapamundi)) => [
-					setTitle("Mapamundi - Nuevo País")
-					open
-					]
-				]
-			]
+
 		
 		val datosPais = new Panel(mainPanel)
 		datosPais.layout = new VerticalLayout
@@ -119,6 +97,40 @@ class MapamundiWindow extends SimpleWindow<EditorDeMapamundi> {
 			]
 	}
 	
+	def setEliminarButton(Panel aPanel) {
+		new Button(aPanel) =>[
+			caption = "Eliminar"
+			width = 100
+			onClick [|this.modelObject.eliminarPais()]
+			bindEnabledToProperty("seleccionoPais")
+		]
+	}
+	
+	def setEditarButton(Panel aPanel) {
+		new Button(aPanel) =>[
+			caption = "Editar"
+			width = 100
+			onClick [ | new PaisWindow(this, new EditorDePais(modelObject.mapamundi, modelObject.paisSeleccionado)) => [
+				setTitle("Mapamundi - Editar País")
+				open
+				]
+			]
+			bindEnabledToProperty("seleccionoPais")
+		]
+	}
+	
+	def setNuevoButton(Panel aPanel) {
+		new Button(aPanel) =>[
+			caption = "Nuevo"
+			width = 100
+			onClick [ | new PaisWindow(this, new EditorDePais(modelObject.mapamundi)) => [
+				setTitle("Mapamundi - Nuevo País")
+				open
+				]
+			]
+		]
+	}
+	
 //	def static void main(String[] args) {
 //		var mapamundi = new Mapamundi
 //		mapamundi.agregarPais(new Pais("Argentina", 
@@ -132,11 +144,11 @@ class MapamundiWindow extends SimpleWindow<EditorDeMapamundi> {
 //	}
 	
 	override protected addActions(Panel actionsPanel) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		
 	}
 	
 }
