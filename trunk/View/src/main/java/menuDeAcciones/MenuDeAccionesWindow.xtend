@@ -1,6 +1,5 @@
 package menuDeAcciones
 
-import carmenSanDiegoUIs.MenuDeAcciones
 import java.awt.Color
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
@@ -9,17 +8,19 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.MainWindow
 import java.util.HashSet
 import villano.Villano
-import carmenSanDiegoUIs.Caso
 import java.util.Set
 import mapamundi.Mapamundi
 import mapamundi.MapamundiWindow
 import mapamundi.EditorDeMapamundi
 import carmenSanDiegoUIs.ExpedienteWindow
 import carmenSanDiegoUIs.ExpedientesModelApp
+import carmenSanDiegoUIs.Sistema
+import carmenSanDiegoUIs.ObjetoRobado
+import carmenSanDiegoUIs.InicioDeJuegoWindow
 
-class MenuDeAccionesWindow extends MainWindow<MenuDeAcciones> {
+class MenuDeAccionesWindow extends MainWindow<Sistema> {
 
-	new(MenuDeAcciones model) {
+	new(Sistema model) {
 		super(model)
 	}
 
@@ -42,7 +43,7 @@ class MenuDeAccionesWindow extends MainWindow<MenuDeAcciones> {
 		val label = new Panel(mainPanel)
 		label.layout = new HorizontalLayout
 		new Label(label) => [
-			setText("¿Que haremos ahora detective?")
+			setText("¿Qué haremos ahora detective?")
 			width = 340
 		]
 	}
@@ -63,9 +64,7 @@ class MenuDeAccionesWindow extends MainWindow<MenuDeAcciones> {
 		buttonPanel.layout = new HorizontalLayout
 		new Button(buttonPanel) => [
 			caption = "Resolver Misterio"
-			//onClick [ onClick [ | new ResolverMisterioWindow(this, new EditorDeLugaresDeInteres(this.modelObject)).open ]
-			//			bindEnabledToProperty("caso")
-			//			disableOnError
+			onClick [ | new InicioDeJuegoWindow(this, modelObject).open ]
 			setBackground(Color::lightGray)
 		]
 	}
@@ -83,8 +82,10 @@ class MenuDeAccionesWindow extends MainWindow<MenuDeAcciones> {
 
 	def static void main(String[] args) {
 		val Set<Villano> villanos = new HashSet
-		val Set<Caso> caso = new HashSet
-		new MenuDeAccionesWindow(new MenuDeAcciones(new Mapamundi, villanos, caso)).startApplication
+		val objetosRobados = new HashSet => [
+			add(new ObjetoRobado("Tumba del faraón", "El sarcófago del faraón Usermaatra-Meriamón Ramsés-Heqaiunu, mejor conocido como Ramsés III"))
+		]
+		new MenuDeAccionesWindow(new Sistema(new Mapamundi, villanos, objetosRobados)).startApplication
 	}
 
 }

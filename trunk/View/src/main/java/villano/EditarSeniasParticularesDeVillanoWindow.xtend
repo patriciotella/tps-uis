@@ -52,7 +52,7 @@ class EditarSeniasParticularesDeVillanoWindow extends Dialog<EditorDeSeniasParti
 			caption = "Eliminar"
 			onClick [ | this.modelObject.borrarSeniaParticular ]
 			setBackground(Color::lightGray)
-			bindEnabledToProperty("seleccionoSeniaAEliminar")
+			bindEnabledToProperty("seleccionoSeniaABorrar")
 		]
 	}
 	
