@@ -84,4 +84,7 @@ class Sistema {
 		villanoAcusado
 	}
 	
+	def Set<Pais> getRecorridoCriminal(){
+		recorridoCriminal
+	}
 }
