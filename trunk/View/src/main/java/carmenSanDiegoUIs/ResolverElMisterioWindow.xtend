@@ -9,6 +9,7 @@ import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.layout.ColumnLayout
 import java.awt.Color
 import org.uqbar.arena.widgets.List
+import org.uqbar.arena.layout.HorizontalLayout
 
 class ResolverElMisterioWindow extends Dialog<Sistema> {
 
@@ -27,7 +28,17 @@ class ResolverElMisterioWindow extends Dialog<Sistema> {
 		val primerColumna = new Panel(columnas)
 		primerColumna.layout = new VerticalLayout
 		
-		new Label(primerColumna).text = "Estás en: " + "Argentina"
+		//new Label(primerColumna).text = "Estás en: " + "Argentina"
+		val estasEn = new Panel(primerColumna)
+		estasEn.layout = new HorizontalLayout
+		new Label(estasEn).setText("Estás en: ")
+		new Label(estasEn) => [
+			bindValueToProperty("paisActual")
+			width = 150
+			height = 20
+		]
+		
+		
 		
 		new Button(primerColumna) => [
 			caption = "Orden de Arresto"
