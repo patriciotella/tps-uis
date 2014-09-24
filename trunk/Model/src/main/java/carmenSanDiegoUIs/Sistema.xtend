@@ -76,4 +76,8 @@ class Sistema {
 			destinosFallidos.add(paisActual)
 	}
 	
+	def Villano getVillanoAcusado() {
+		villanoAcusado
+	}
+	
 }
