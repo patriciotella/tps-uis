@@ -34,7 +34,7 @@ class ExpedienteWindow extends SimpleWindow<ExpedientesModelApp> {
 		]
 		new List(villanosPanel) => [
 			width = 150
-			height = 300
+			height = 280
 			bindItemsToProperty("villanos").adapter = new PropertyAdapter(Villano, "nombre")
 			bindValueToProperty("villanoSeleccionado")
 		]
@@ -103,8 +103,8 @@ class ExpedienteWindow extends SimpleWindow<ExpedientesModelApp> {
 			setBackground(Color::lightGray)
 		]
 		new List(seniasVillano) => [
-			width = 100
-			height = 50
+			width = 150
+			height = 100
 			bindItemsToProperty("villanoSeleccionado.seniasParticulares")
 		]
 
@@ -116,23 +116,16 @@ class ExpedienteWindow extends SimpleWindow<ExpedientesModelApp> {
 			setBackground(Color::lightGray)
 		]
 		new List(hobbiesVillano) => [
-			width = 100
-			height = 50
+			width = 150
+			height = 100
 			bindItemsToProperty("villanoSeleccionado.hobbies")
 		]
 	}
-
-//	def static void main(String[] args) {
-//		val alberto = new Villano("Alberto", "Masculino", newHashSet => [add("Seña") add("Otra seña")], newHashSet => [add("Jugador")])
-//		new ExpedienteWindow(new ExpedientesModelApp() => [agregarVillano(alberto)]).startApplication
-//	}
 	
 	override protected addActions(Panel actionsPanel) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 }
