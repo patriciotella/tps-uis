@@ -87,8 +87,8 @@ class MapamundiWindow extends SimpleWindow<EditorDeMapamundi> {
 				setBackground(Color::lightGray)
 			]
 			new List(caracteristicasPais) =>[
-				width= 100
-				height= 50
+				width= 150
+				height= 70
 				bindItemsToProperty("paisSeleccionado.caracteristicas")
 			]
 			
@@ -100,8 +100,8 @@ class MapamundiWindow extends SimpleWindow<EditorDeMapamundi> {
 				setBackground(Color::lightGray)
 			]
 			new List(conexionesPais) =>[
-				width= 100
-				height= 50
+				width= 150
+				height= 70
 				bindItemsToProperty("paisSeleccionado.conexiones")
 			]
 			
@@ -113,8 +113,8 @@ class MapamundiWindow extends SimpleWindow<EditorDeMapamundi> {
 				setBackground(Color::lightGray)
 			]
 			new List(lugaresDeInteresPais) =>[
-				width= 100
-				height= 50
+				width= 150
+				height= 70
 				bindItemsToProperty("paisSeleccionado.lugaresDeInteres")
 			]
 	}
