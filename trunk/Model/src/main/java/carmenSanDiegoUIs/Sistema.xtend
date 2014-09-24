@@ -42,9 +42,13 @@ class Sistema {
 	}
 	
 	def crearCaso(){
-		val indiceDeObjetoRobado = (Math.random() * (posiblesObjetosRobados.size - 0)).intValue
-		val caso = CASO_FACTORY.crearCaso(this, posiblesObjetosRobados.get(indiceDeObjetoRobado))
-		this._caso = caso
+//		val indiceDeObjetoRobado = (Math.random() * (posiblesObjetosRobados.size - 0)).intValue
+//		var casoF = new CasoFactory
+//		this._caso = casoF.crearCaso(this, posiblesObjetosRobados.get(indiceDeObjetoRobado))
+		_caso = new Caso("Robo del Faraón", _villanos.head, 
+					new Reporte(_mapamundi.paises.head, posiblesObjetosRobados.head),
+					_mapamundi.paises.head,
+					posiblesObjetosRobados.head)
 		this.paisActual = _caso.paisDondeOcurrio
 	}
 	
