@@ -18,12 +18,12 @@ class InicioDeJuegoWindow extends SimpleWindow<Sistema> {
 	override createContents(Panel mainPanel) {
 		setWindowTitle()
 		setLabel(mainPanel, "Detective, tenemos un caso para usted!!")
-		setLabel(mainPanel, modelObject.caso.reporte.descripcion)
+//		setLabel(mainPanel, modelObject.caso.reporte.descripcion)
 		setButton(mainPanel)
 	}
 	
 	private def setWindowTitle() {
-		this.setTitle(modelObject.caso.objetoRobado.nombre) //cada caso deberia tener un titulo, este se usa en varias ventanas	
+//		this.setTitle(modelObject.caso.getObjetoRobado.nombre) //cada caso deberia tener un titulo, este se usa en varias ventanas	
 	}
 	
 	private def setLabel(Panel mainPanel, String text) {
@@ -35,7 +35,7 @@ class InicioDeJuegoWindow extends SimpleWindow<Sistema> {
 		buttonPanel.layout = new HorizontalLayout
 		new Button(buttonPanel) => [
 			caption = "Aceptar el caso"
-//			onClick [ | new ResolverElMisterioWindow(this, new Caso).open]
+			onClick [ | new ResolverElMisterioWindow(this, modelObject).open]
 		]
 	}
 	
