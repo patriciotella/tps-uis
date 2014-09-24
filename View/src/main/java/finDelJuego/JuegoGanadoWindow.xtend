@@ -40,7 +40,7 @@ class JuegoGanadoWindow extends MainWindow<Sistema>{
 		]
 		
 		new Label(mainPanel) => [
-			setText('''Ha detenido a «"villanoAcusado"» y recuperado «"caso.objetoRobado"»''')
+			setText('''Ha detenido a «modelObject.getVillanoAcusado» y recuperado modelObject.caso.objetoRobado.getNombre''')
 			setHeight(30)
 		]
 		
