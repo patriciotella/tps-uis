@@ -37,7 +37,7 @@ class EditorDeVillano {
 	}
 	
 	def agregarVillano(){
-		val villanoParaAgregar = new Villano(_nombre, _sexo, _hobbies, _seniasParticulares)
+		val villanoParaAgregar = new Villano(_nombre, _sexo, _seniasParticulares, _hobbies)
 		if(villano == null){
 			villano = villanoParaAgregar
 			this._expedientes.agregarVillano(villano)

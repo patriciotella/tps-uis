@@ -87,6 +87,7 @@ class SistemaTest {
 	
 	@Test
 	def void test(){
+		unSistema.crearCaso
 		assertEquals(unSistema.caso.getObjetoRobado.nombre, "Tumba del faraón")
 		assertTrue(unSistema.mapamundi.paises.contains(unSistema.caso.paisDondeOcurrio))
 	}

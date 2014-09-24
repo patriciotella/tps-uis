@@ -1,11 +1,13 @@
 package lugarDeInteres
 
-import org.uqbar.commons.model.UserException
+import java.util.LinkedList
 
 class Cuidador extends Ocupante {
 	
 	override pista(LugarDeInteres unLugarDeInteres) {
-		throw new UserException("La persona que busca no pasó por este lugar!")
+		new LinkedList => [
+			add("Lo siento, crea que se ha equivocado de ciudad, no hay nadie con esas características.")
+		]
 	}
 	
 }

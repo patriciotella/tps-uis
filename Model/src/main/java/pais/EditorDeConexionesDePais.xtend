@@ -19,11 +19,11 @@ class EditorDeConexionesDePais {
 
 	def borrarConexion() {
 		//Le pasa el mensaje a ejecutar en un bloque.
-		modificarConexion([getEditorDePais.borrarConexion(conexionSeleccionada)])
+		modificarConexion([_editorDePais.borrarConexion(conexionSeleccionada)])
 	}
 
 	def agregarConexion() {
-		modificarConexion([getEditorDePais.agregarConexion(conexionNueva)])
+		modificarConexion([_editorDePais.agregarConexion(conexionNueva)])
 	}
 
 	def getConexiones() {

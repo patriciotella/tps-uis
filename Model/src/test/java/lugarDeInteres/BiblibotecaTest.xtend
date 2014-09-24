@@ -4,7 +4,6 @@ import org.junit.Before
 import org.junit.Test
 
 import static org.junit.Assert.*
-import org.uqbar.commons.model.UserException
 import villano.Villano
 import pais.Pais
 
@@ -19,12 +18,7 @@ class BiblibotecaTest {
 	
 	@Test
 	def void testLaBibliotecaNoTieneDatosSobreNingunVillanoYAlPedirleUnaPistaTiraExcepcion() {
-		unaBiblioteca.noConoceAlVillano
-		try{
-			unaBiblioteca.pista
-		}catch (UserException e){
-			assertEquals(e.message, "La persona que busca no pasó por este lugar!")			
-		}
+		assertEquals(unaBiblioteca.pista.get(0), "Lo siento, crea que se ha equivocado de ciudad, no hay nadie con esas características.")			
 	}
 	
 	@Test

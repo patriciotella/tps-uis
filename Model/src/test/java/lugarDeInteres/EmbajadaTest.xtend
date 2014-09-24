@@ -35,7 +35,7 @@ class EmbajadaTest {
 		try{
 			unaEmbajada.pista
 		}catch (UserException e){
-			assertEquals(e.message, "La persona que busca no pasó por este lugar!")			
+			assertEquals(e.message, "Lo siento, crea que se ha equivocado de ciudad, no hay nadie con esas características.")			
 		}
 	}
 	
