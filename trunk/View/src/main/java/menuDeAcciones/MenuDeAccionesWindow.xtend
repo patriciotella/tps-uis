@@ -64,7 +64,10 @@ class MenuDeAccionesWindow extends MainWindow<Sistema> {
 		buttonPanel.layout = new HorizontalLayout
 		new Button(buttonPanel) => [
 			caption = "Resolver Misterio"
-			onClick [ | new InicioDeJuegoWindow(this, modelObject).open ]
+			onClick [ |
+//				modelObject.crearCaso 
+				new InicioDeJuegoWindow(this, modelObject).open
+			]
 			setBackground(Color::lightGray)
 		]
 	}

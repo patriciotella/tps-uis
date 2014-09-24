@@ -3,17 +3,18 @@ package carmenSanDiegoUIs
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.WindowOwner
-import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.layout.ColumnLayout
+import java.awt.Color
+import org.uqbar.arena.widgets.List
 
-class ResolverElMisterioWindow extends Dialog<Caso> {
+class ResolverElMisterioWindow extends Dialog<Sistema> {
 
 	
-	new(WindowOwner owner, Caso caso) {
-		super(owner, caso)
+	new(WindowOwner owner, Sistema unSistema) {
+		super(owner, unSistema)
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
@@ -26,12 +27,16 @@ class ResolverElMisterioWindow extends Dialog<Caso> {
 		val primerColumna = new Panel(columnas)
 		primerColumna.layout = new VerticalLayout
 		
+		new Label(primerColumna).text = "Estás en: " + "Argentina"
+		
 		new Button(primerColumna) => [
 			caption = "Orden de Arresto"
 			width = 200
 			//onClick [ | new OrdenDeArrestoWindow(lalal).open]
 		]
-
+		
+		new Label(primerColumna)//<= si emitió orden de arresto
+		
 		new Button(primerColumna) => [
 			caption = "Viajar"
 			width = 200
@@ -49,9 +54,10 @@ class ResolverElMisterioWindow extends Dialog<Caso> {
 		new Label(segundaColumna).setText("Lugares")
 
 		new Button(segundaColumna) => [
-			caption = "Biblioteca"
-			width = 200
-		]
+			caption = "Biblioteca" //Relacionarlo con los lugares de interés
+								//del país, director con el objeto (llama al
+			width = 200			// toString) un botón por cada uno.
+		]// En el onclick abrir ventanita dialog con la pista que te tira.
 
 		new Button(segundaColumna) => [
 			caption = "Club"
@@ -63,6 +69,29 @@ class ResolverElMisterioWindow extends Dialog<Caso> {
 			width = 200
 		]
 		
+		val footer = new Panel(mainPanel)
+		footer.layout = new ColumnLayout(2)
+		
+		val columnaFooter = new Panel(footer)
+		columnaFooter.layout = new VerticalLayout
+		
+		new Label(columnaFooter).setText("Recorrido criminal: ")
+		
+		new Label(columnaFooter) => [
+			setText("Argentina <- Chile <- Bolivia")
+			fontSize = 12
+		]
+
+		new Label(columnaFooter).setText("Destinos fallidos: ")
+		
+		new Label(columnaFooter) => [
+			setText("Pais")
+			setBackground(Color::lightGray)
+		]
+		new List(columnaFooter) => [
+			height = 50
+			width = 20
+		]
 		/*setWindowTitle()
 		setEstasEnLabel(mainPanel)
 		
@@ -156,4 +185,5 @@ class ResolverElMisterioWindow extends Dialog<Caso> {
 			bindItemsToProperty("pais.conexiones")
 		]*/
 	}
+	
 }
