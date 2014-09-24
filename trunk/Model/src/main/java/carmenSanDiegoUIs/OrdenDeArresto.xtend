@@ -1,5 +1,0 @@
-package carmenSanDiegoUIs
-
-class OrdenDeArresto {
-	
-}

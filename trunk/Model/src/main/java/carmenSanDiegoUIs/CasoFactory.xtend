@@ -32,7 +32,7 @@ class CasoFactory {
 		paisAMarcar.marcarComoUltimoPaisDeLaRutaDelVillano(villano)
 		rutaDeEscape.add(paisAMarcar)
 		
-		unSistema.setRutaDeEscape(rutaDeEscape)
+		unSistema.setRutas(rutaDeEscape)
 		
 		return new Caso(villano, new Reporte(rutaDeEscape.get(0), unObjetoRobado),
 			rutaDeEscape.get(0), unObjetoRobado)
