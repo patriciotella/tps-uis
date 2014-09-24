@@ -90,12 +90,13 @@ class Pais {
 	
 	def void marcarSinVillano() {
 		_lugaresDeInteres.forEach[noConoceAlVillano]
-//		marca el país como si no hubiera pasado el villano
 	}
 	
 	def void marcarComoUltimoPaisDeLaRutaDelVillano(Villano unVillano) {
-//		_lugaresDeInteres.forEach[marcarComoEsconditeDeVillano(unVillano)]
-//		le paso el villano y marca a ese pais con el estado que tiene al villano.
+		val lugarDelVillano = _lugaresDeInteres.get((Math.random() * (_lugaresDeInteres.size - 0)).intValue) 
+		val lugaresFiltrados = _lugaresDeInteres.filter[!equals(lugarDelVillano)]
+		lugaresFiltrados.forEach[marcarComoEsconditeDelVillano(unVillano)]
+		lugarDelVillano.elVillanoEstaEnElPais(unVillano)
 	}
 	
 }

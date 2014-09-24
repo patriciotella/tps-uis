@@ -1,13 +1,13 @@
 package lugarDeInteres 
 import pais.Pais
 import villano.Villano
-import java.util.List
 
 abstract class LugarDeInteres {
 	
 	private Ocupante ocupante
 	private Pais proximoPaisDondeFueElMalechor
 	private Villano villano
+	private EstadoDeLugarDeInteres estado
 	
 	protected new() {
 		this.ocupante = new Cuidador()
@@ -25,7 +25,11 @@ abstract class LugarDeInteres {
 		ocupante
 	}
 	
-	def protected List<String> darPista()
+	def protected String darPista() {
+		estado.pista(this)
+	}
+	
+	def protected abstract String darPistaSegunPolitica()
 	
 	def getVillano() {
 		villano
@@ -39,6 +43,7 @@ abstract class LugarDeInteres {
 		villano = unVillano
 		proximoPaisDondeFueElMalechor = siguientePais
 		ocupante = new Informante
+		estado = new ElVillanoPasoPorElPais
 	}
 	
 	def noConoceAlVillano() {
@@ -46,5 +51,17 @@ abstract class LugarDeInteres {
 		proximoPaisDondeFueElMalechor = null
 		ocupante = new Cuidador
 	}
+	
+	def marcarComoEsconditeDelVillano(Villano unVillano) {
+		villano = unVillano
+		proximoPaisDondeFueElMalechor = null
+		estado = new LugarEscondeAlVillano
+	}
+	
+	def elVillanoEstaEnElPais(Villano unVillano) {
+		villano = unVillano
+		proximoPaisDondeFueElMalechor = null
+		estado = new ElVillanoEstaEnElPais
+	} 
 	
 }

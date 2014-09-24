@@ -7,13 +7,12 @@ class Embajada extends LugarDeInteres {
 		super()
 	}
 	
-	override darPista() {
+	override darPistaSegunPolitica() {
 		val high = pais.caracteristicas.size
 		var randomInt = (Math.random() * ( high - 0 )).intValue
 		
-		var pistas = newArrayList
-//		pistas.add("Características del país: ")
-		pistas.add(pais.caracteristicas.get(randomInt))
+		var pistas = "Vi a alguien como describe, estaba interesado en " +
+		pais.caracteristicas.get(randomInt)
 		
 		if(pais.caracteristicas.size > 1) {
 			var anotherRandomInt = (Math.random() * ( high - 0 )).intValue
@@ -21,7 +20,7 @@ class Embajada extends LugarDeInteres {
 				anotherRandomInt = (Math.random() * ( high - 0 )).intValue
 			}
 			
-			pistas.add(pais.caracteristicas.get(anotherRandomInt))
+			pistas + " y " + pais.caracteristicas.get(anotherRandomInt)
 		}
 		
 		pistas

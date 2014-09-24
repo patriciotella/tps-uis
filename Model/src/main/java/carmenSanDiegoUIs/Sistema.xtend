@@ -43,4 +43,8 @@ class Sistema {
 		this._caso = caso
 		this.paisActual = _caso.paisDondeOcurrio
 	}
+	
+	def emitirOrdenDeArresto(Villano unVillano) {
+		villanoAcusado = unVillano
+	}
 }
