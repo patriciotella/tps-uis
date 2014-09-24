@@ -22,7 +22,7 @@ class JuegoPerdidoWindow extends MainWindow<Sistema> {
 	override createContents(Panel mainPanel) {
 		mainPanel.layout = new VerticalLayout
 		
-		//this.setTitle(modelObject.caso.getNombre())
+		this.setTitle(modelObject.caso.getNombre())
 		
 		new Label(mainPanel) => [
 			setText = "Malas noticias ... "
