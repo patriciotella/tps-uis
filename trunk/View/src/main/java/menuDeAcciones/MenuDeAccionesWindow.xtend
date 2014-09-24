@@ -17,6 +17,11 @@ import carmenSanDiegoUIs.ExpedientesModelApp
 import carmenSanDiegoUIs.Sistema
 import carmenSanDiegoUIs.ObjetoRobado
 import carmenSanDiegoUIs.InicioDeJuegoWindow
+import pais.Pais
+import lugarDeInteres.Club
+import lugarDeInteres.Banco
+import lugarDeInteres.Embajada
+import lugarDeInteres.Biblioteca
 
 class MenuDeAccionesWindow extends MainWindow<Sistema> {
 
@@ -65,7 +70,7 @@ class MenuDeAccionesWindow extends MainWindow<Sistema> {
 		new Button(buttonPanel) => [
 			caption = "Resolver Misterio"
 			onClick [ |
-//				modelObject.crearCaso 
+				modelObject.crearCaso 
 				new InicioDeJuegoWindow(this, modelObject).open
 			]
 			setBackground(Color::lightGray)
@@ -84,11 +89,55 @@ class MenuDeAccionesWindow extends MainWindow<Sistema> {
 
 
 	def static void main(String[] args) {
-		val Set<Villano> villanos = new HashSet
+		val alberto = new Villano("Alberto", "Masculino",
+			newHashSet => [add("Seña") add("Otra seña")],
+			newHashSet => [add("Jugador")]
+		)
+		val carlos = new Villano("Carlos", "Masculino",
+			newHashSet => [add("Guiña el ojo") add("Aplaude")],
+			newHashSet => [add("Hacker")]
+		)
+		val brasil = new Pais("Brasil", 
+			newHashSet => [add("Tiene playa")],
+			newHashSet, newHashSet => [
+				add(new Club) add(new Banco) add(new Embajada)
+			]
+		)
+		val argentina = new Pais("Argentina", 
+			newHashSet => [add("Toman mate")],
+			newHashSet, newHashSet => [
+				add(new Club) add(new Banco) add(new Embajada)
+			]
+		)
+		val uruguay = new Pais("Uruguay", 
+			newHashSet => [add("Algo")],
+			newHashSet, newHashSet => [
+				add(new Club) add(new Banco) add(new Biblioteca)
+			]
+		)
+		val chile = new Pais("Chile", 
+			newHashSet => [add("Malos al futbol")],
+			newHashSet, newHashSet => [
+				add(new Club) add(new Biblioteca) add(new Banco)
+			]
+		)
+		val mapamundi = new Mapamundi(
+			new HashSet => [
+				add(argentina)
+				add(chile)
+				add(brasil)
+				add(uruguay)
+			]
+		)		
 		val objetosRobados = new HashSet => [
 			add(new ObjetoRobado("Tumba del faraón", "El sarcófago del faraón Usermaatra-Meriamón Ramsés-Heqaiunu, mejor conocido como Ramsés III"))
 		]
-		new MenuDeAccionesWindow(new Sistema(new Mapamundi, villanos, objetosRobados)).startApplication
+		val villanos = new HashSet => [
+			add(alberto)
+			add(carlos)
+		]
+		val unSistema = new Sistema(mapamundi, villanos, objetosRobados)
+		new MenuDeAccionesWindow(unSistema).startApplication
 	}
 
 }
