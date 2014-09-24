@@ -21,6 +21,7 @@ class ResolverElMisterioWindow extends Dialog<Sistema> {
 	override protected createFormPanel(Panel mainPanel) {
 		
 		mainPanel.layout = new VerticalLayout
+		title = "Resolviendo: " + modelObject.caso.nombre
 		
 		val columnas = new Panel(mainPanel)
 		columnas.layout = new ColumnLayout(2)		
@@ -89,7 +90,7 @@ class ResolverElMisterioWindow extends Dialog<Sistema> {
 		new Label(columnaFooter).setText("Recorrido criminal: ")
 		
 		new Label(columnaFooter) => [
-			setText("Argentina <- Chile <- Bolivia")
+			setText(modelObject.getRecorridoCriminal.forEach[getNombre].)
 			fontSize = 12
 		]
 
