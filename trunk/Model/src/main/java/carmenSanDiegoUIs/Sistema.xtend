@@ -41,5 +41,6 @@ class Sistema {
 		val indiceDeObjetoRobado = (Math.random() * (posiblesObjetosRobados.size - 0)).intValue
 		val caso = CASO_FACTORY.crearCaso(this, posiblesObjetosRobados.get(indiceDeObjetoRobado))
 		this._caso = caso
+		this.paisActual = _caso.paisDondeOcurrio
 	}
 }
