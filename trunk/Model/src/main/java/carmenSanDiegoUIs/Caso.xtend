@@ -1,6 +1,5 @@
 package carmenSanDiegoUIs
 
-import java.util.List
 import villano.Villano
 import pais.Pais
 import org.uqbar.commons.utils.Observable
@@ -8,17 +7,16 @@ import org.uqbar.commons.utils.Observable
 @Observable
 class Caso {
 	@Property Villano responsable
-	@Property List<Pais> planDeEscape
 	@Property Reporte reporte
-	@Property ObjetoRobado objeto
-	@Property Pais pais
+	@Property ObjetoRobado objetoRobado
+	@Property Pais paisDondeOcurrio
 	
-	new (Villano villanoResponsable, List<Pais> planDeEscape, Reporte reporteDelCaso,
-		ObjetoRobado objetoRobado) {
+	new (Villano villanoResponsable, Reporte reporteDelCaso,
+			Pais paisDondeOcurrio, ObjetoRobado objetoRobado) {
 		responsable = villanoResponsable
-		this.planDeEscape = planDeEscape
+		this.paisDondeOcurrio = paisDondeOcurrio
 		reporte = reporteDelCaso
-		objeto = objetoRobado
+		this.objetoRobado = objetoRobado
 	}
 
 }

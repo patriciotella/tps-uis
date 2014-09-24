@@ -34,20 +34,15 @@ class EditorDeConexionesDePais {
 		_mapamundi.paises.filter[it != _editorDePais.pais && !_editorDePais.conexiones.contains(it)].toSet
 	}
 	
-	def isTieneConexiones() {
-		getConexionesParaAgregar.size != 0
-	}
-	
 	//(Tipo del parámetro)=>Tipo del bloque nombreDelBloque
 	/*
 	 * Los métodos son objetos, así que se pueden pasar como parámetros y 
 	 * ejecutarse cuando se le pida.
 	 */
-	def modificarConexion((Void)=>void func){
+	def private modificarConexion((Void)=>void func){
 		func.apply(null)
 		ObservableUtils.firePropertyChanged(this, "conexiones", conexiones)
 		ObservableUtils.firePropertyChanged(this, "conexionesParaAgregar", conexionesParaAgregar)
-		ObservableUtils.firePropertyChanged(this, "tieneConexiones", tieneConexiones)
 		ObservableUtils.firePropertyChanged(this, "seleccionoConexionParaAgregar", seleccionoConexionParaAgregar)
 	}
 	

@@ -21,8 +21,8 @@ class EditorDeSeniasParticularesDeVillano {
 		_seniaNueva = ""	
 	}
 	
-		private def cambioPuedeAgregarSenia() {
-		ObservableUtils.firePropertyChanged(this,"puedeAgregarSenia",puedeAgregarSenia)
+	private def cambioPuedeAgregarSenia() {
+		ObservableUtils.firePropertyChanged(this,"haySeniaParaAgregar",haySeniaParaAgregar)
 	}
 	
 	
@@ -40,8 +40,17 @@ class EditorDeSeniasParticularesDeVillano {
 		_seniaSeleccionada != null
 	}
 	
-	def isPuedeAgregarSenia(){
+	def isHaySeniaParaAgregar(){
 		_seniaNueva != null && _seniaNueva != ""
 	}
 
+	def setSeniaNueva(String unaSenia) {
+		_seniaNueva = unaSenia
+		cambioPuedeAgregarSenia
+	}
+	
+	def setSeniaSeleccionada(String unaSenia) {
+		_seniaSeleccionada = unaSenia
+		ObservableUtils.firePropertyChanged(this, "seleccionoSeniaABorrar", seleccionoSeniaABorrar)
+	}
 }

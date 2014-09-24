@@ -24,7 +24,7 @@ class EditorDeHobbiesDeVillano {
 	def borrarHobbie() {
 		_editorDeVillano.eliminarHobbie(hobbieSeleccionado)
 		ObservableUtils.firePropertyChanged(this, "hobbies", hobbies)
-		ObservableUtils.firePropertyChanged(this, "puedeEliminarHobbie", puedeEliminarHobbie)
+		ObservableUtils.firePropertyChanged(this, "seleccionoHobbieAEliminar", seleccionoHobbieAEliminar)
 	}
 	
 	def getHobbies() {
@@ -35,8 +35,8 @@ class EditorDeHobbiesDeVillano {
 		_hobbieNuevo != null && _hobbieNuevo != ""
 	}
 	
-	def isPuedeEliminarHobbie(){
-		_hobbieSeleccionado != null && getHobbies().size > 0
+	def isSeleccionoHobbieAEliminar(){
+		_hobbieSeleccionado != null && _hobbieSeleccionado != ""
 	}
 	
 	def setHobbieNuevo(String unHobbie) {
@@ -46,6 +46,6 @@ class EditorDeHobbiesDeVillano {
 	
 	def setHobbieSeleccionado(String unHobbie) {
 		_hobbieSeleccionado = unHobbie
-		ObservableUtils.firePropertyChanged(this, "puedeEliminarHobbie", puedeEliminarHobbie)
+		ObservableUtils.firePropertyChanged(this, "seleccionoHobbieAEliminar", seleccionoHobbieAEliminar)
 	}
 }

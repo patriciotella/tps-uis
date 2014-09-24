@@ -3,6 +3,9 @@ package lugarDeInteres
 
 class Club extends LugarDeInteres {
 	
+	new() {
+		super()
+	}
 	override darPista() {
 		val high = villano.seniasParticulares.size
 		var randomInt = (Math.random() * ( high - 0 )).intValue

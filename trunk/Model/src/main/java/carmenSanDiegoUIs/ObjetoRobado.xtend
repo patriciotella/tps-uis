@@ -1,19 +1,19 @@
 package carmenSanDiegoUIs
 
 class ObjetoRobado {
+	private String nombre
 	private String descripcion
-	private String descripcionAdicional
 	
-	new(String descripcionDelObjeto, String descripcionAdicional) {
-		descripcion = descripcionDelObjeto
-		this.descripcionAdicional = descripcionAdicional
+	new(String nombreDelObjeto, String descripcionDelObjeto) {
+		nombre = nombreDelObjeto
+		this.descripcion = descripcionDelObjeto
 	}
 	
-	def getDescripcion() {
-		descripcion
+	def getNombre() {
+		nombre
 	}
 	
 	def getDescripcionCompleta() {
-		'''descripcion. descripcionAdicional'''
+		descripcion
 	}
 }

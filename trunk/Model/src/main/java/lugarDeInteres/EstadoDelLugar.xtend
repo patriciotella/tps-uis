@@ -2,7 +2,7 @@ package lugarDeInteres
 
 import java.util.List
 
-abstract class EstadoDelLugar {
+abstract class Ocupante {
 	
 	def List<String> pista(LugarDeInteres unLugarDeInteres)
 }

@@ -3,8 +3,8 @@ package lugarDeInteres
 
 class Banco extends LugarDeInteres {
 	
-	def Banco() {
-		super
+	new() {
+		super()
 	}
 	
 	override protected darPista() {

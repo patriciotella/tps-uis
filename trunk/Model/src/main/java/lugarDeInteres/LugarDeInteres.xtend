@@ -5,12 +5,12 @@ import java.util.List
 
 abstract class LugarDeInteres {
 	
-	private EstadoDelLugar estado
+	private Ocupante ocupante
 	private Pais proximoPaisDondeFueElMalechor
 	private Villano villano
 	
-	def protected LugarDeInteres() {
-		this.estado = new LugarNoConoceAlMalechor()
+	protected new() {
+		this.ocupante = new Cuidador()
 	}
 	
 	override toString() {
@@ -18,11 +18,11 @@ abstract class LugarDeInteres {
 	}
 	
 	def pista() {
-		estado.pista(this)
+		ocupante.pista(this)
 	}
 	
 	def getEstado() {
-		estado
+		ocupante
 	}
 	
 	def protected List<String> darPista()
@@ -38,19 +38,13 @@ abstract class LugarDeInteres {
 	def marcarComoRutaDeEscapeDeVillano(Villano unVillano, Pais siguientePais) {
 		villano = unVillano
 		proximoPaisDondeFueElMalechor = siguientePais
-		estado = new LugarConoceAlMalechor
-	}
-	
-	def marcarComoEsconditeDeVillano(Villano unVillano) {
-		villano = unVillano
-		proximoPaisDondeFueElMalechor = null
-		estado = new LugarContieneAlVillano
+		ocupante = new Informante
 	}
 	
 	def noConoceAlVillano() {
 		villano = null
 		proximoPaisDondeFueElMalechor = null
-		estado = new LugarNoConoceAlMalechor
+		ocupante = new Cuidador
 	}
 	
 }

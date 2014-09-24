@@ -3,6 +3,10 @@ package lugarDeInteres
 
 class Embajada extends LugarDeInteres {
 
+	new() {
+		super()
+	}
+	
 	override darPista() {
 		val high = pais.caracteristicas.size
 		var randomInt = (Math.random() * ( high - 0 )).intValue
