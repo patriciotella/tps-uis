@@ -1,36 +1,27 @@
 package villano
 
-import org.uqbar.arena.windows.WindowOwner
-import org.uqbar.arena.windows.Dialog
-import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.layout.VerticalLayout
-import org.uqbar.arena.widgets.Label
+import editorDePropiedadDeModelo.EditorDePropiedadDeModeloWindow
 import java.awt.Color
-import org.uqbar.arena.widgets.List
 import org.uqbar.arena.layout.HorizontalLayout
+import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.List
+import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.TextBox
+import org.uqbar.arena.windows.WindowOwner
 
-class EditarSeniasParticularesDeVillanoWindow extends Dialog<EditorDeSeniasParticularesDeVillano> {
+class EditarSeniasParticularesDeVillanoWindow extends EditorDePropiedadDeModeloWindow<EditorDeSeniasParticularesDeVillano> {
 	
 	new(WindowOwner owner, EditorDeSeniasParticularesDeVillano model) {
 		super(owner, model)
 	}
 	
-	override protected createFormPanel(Panel mainPanel) {
-		setWindowTitle()
-		mainPanel.setLayout(new VerticalLayout)
-		verSenias(mainPanel)
-		eliminarSeniaButton(mainPanel)
-		agregarSenia(mainPanel)
-		aceptarButton(mainPanel)
-	}
-	
-	def setWindowTitle() {
+	override setWindowTitle() {
 		this.setTitle("Editar señas particulares")
 	}
 	
-	def verSenias(Panel mainPanel) {
+	override listaDePropiedades(Panel mainPanel) {
 		mainPanel.setLayout(new VerticalLayout)
 		new Label(mainPanel) => [
 			setText("Seña")
@@ -45,7 +36,7 @@ class EditarSeniasParticularesDeVillanoWindow extends Dialog<EditorDeSeniasParti
 		]
 	}
 	
-	def eliminarSeniaButton(Panel mainPanel) {
+	override eliminarButton(Panel mainPanel) {
 		val eliminarButtonPanel = new Panel(mainPanel)
 		eliminarButtonPanel.layout = new HorizontalLayout
 		new Button(eliminarButtonPanel) => [
@@ -56,7 +47,7 @@ class EditarSeniasParticularesDeVillanoWindow extends Dialog<EditorDeSeniasParti
 		]
 	}
 	
-	def agregarSenia(Panel mainPanel) {
+	override agregarPropiedadInput(Panel mainPanel) {
 		val agregarPanel = new Panel(mainPanel)
 		agregarPanel.layout = new HorizontalLayout
 		val seniaParticular = new TextBox(agregarPanel).width = 230
@@ -70,7 +61,7 @@ class EditarSeniasParticularesDeVillanoWindow extends Dialog<EditorDeSeniasParti
 		]
 	}
 	
-	def aceptarButton(Panel mainPanel) {
+	override aceptarButton(Panel mainPanel) {
 		val buttonPanel = new Panel(mainPanel)
 		buttonPanel.layout = new HorizontalLayout
 		new Button(buttonPanel) => [
@@ -79,5 +70,4 @@ class EditarSeniasParticularesDeVillanoWindow extends Dialog<EditorDeSeniasParti
 			setBackground(Color::lightGray)
 		]
 	}
-
 }
