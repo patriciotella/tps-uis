@@ -10,10 +10,10 @@ import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.SimpleWindow
+import org.uqbar.arena.windows.WindowOwner
 import villano.EditorDeVillano
 import villano.NuevoVillanoWindow
 import villano.Villano
-import org.uqbar.arena.windows.WindowOwner
 
 class ExpedienteWindow extends SimpleWindow<ExpedientesModelApp> {
 
@@ -26,6 +26,12 @@ class ExpedienteWindow extends SimpleWindow<ExpedientesModelApp> {
 		this.setTitle("Expedientes")
 		mainPanel.layout = new ColumnLayout(2)
 
+		agregarContenidoPrimerColumna(mainPanel)
+
+		agregarContenidoSegundaColumna(mainPanel)
+	}
+	
+	def agregarContenidoPrimerColumna(Panel mainPanel) {
 		val villanosPanel = new Panel(mainPanel)
 		villanosPanel.layout = new VerticalLayout
 		new Label(villanosPanel) => [
@@ -38,10 +44,10 @@ class ExpedienteWindow extends SimpleWindow<ExpedientesModelApp> {
 			bindItemsToProperty("villanos").adapter = new PropertyAdapter(Villano, "nombre")
 			bindValueToProperty("villanoSeleccionado")
 		]
-
+		
 		val botonesPanel = new Panel(villanosPanel)
 		botonesPanel.layout = new VerticalLayout
-
+		
 		new Button(botonesPanel) => [
 			caption = "Eliminar"
 			width = 100
@@ -63,7 +69,7 @@ class ExpedienteWindow extends SimpleWindow<ExpedientesModelApp> {
 			bindEnabledToProperty("seleccionoVillano")
 			disableOnError
 		]
-
+		
 		new Button(botonesPanel) => [
 			caption = "Nuevo"
 			width = 100
@@ -74,7 +80,9 @@ class ExpedienteWindow extends SimpleWindow<ExpedientesModelApp> {
 				]
 			]
 		]
-
+	}
+	
+	def agregarContenidoSegundaColumna(Panel mainPanel) {
 		val datosVillano = new Panel(mainPanel)
 		datosVillano.layout = new VerticalLayout
 		val nombreVillano = new Panel(datosVillano)
@@ -85,7 +93,7 @@ class ExpedienteWindow extends SimpleWindow<ExpedientesModelApp> {
 			width = 150
 			height = 20
 		]
-
+		
 		val sexoVillano = new Panel(datosVillano)
 		sexoVillano.layout = new HorizontalLayout
 		new Label(sexoVillano).setText("Sexo:")
@@ -94,7 +102,7 @@ class ExpedienteWindow extends SimpleWindow<ExpedientesModelApp> {
 			width = 150
 			height = 20
 		]
-
+		
 		val seniasVillano = new Panel(datosVillano)
 		seniasVillano.layout = new VerticalLayout
 		new Label(seniasVillano).setText("Señas Particulares:")
@@ -107,7 +115,7 @@ class ExpedienteWindow extends SimpleWindow<ExpedientesModelApp> {
 			height = 100
 			bindItemsToProperty("villanoSeleccionado.seniasParticulares")
 		]
-
+		
 		val hobbiesVillano = new Panel(datosVillano)
 		hobbiesVillano.layout = new VerticalLayout
 		new Label(hobbiesVillano).setText("Hobbies:")

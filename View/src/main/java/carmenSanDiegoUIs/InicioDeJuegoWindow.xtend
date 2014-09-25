@@ -23,7 +23,7 @@ class InicioDeJuegoWindow extends SimpleWindow<Sistema> {
 	}
 	
 	private def setWindowTitle() {
-		this.setTitle(modelObject.caso.nombre) //cada caso deberia tener un titulo, este se usa en varias ventanas	
+		this.setTitle(modelObject.caso.nombre)	
 	}
 	
 	private def setLabel(Panel mainPanel, String text) {
