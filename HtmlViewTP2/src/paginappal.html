@@ -3,12 +3,16 @@
     
     <head>
             <title> Carmen San Diego UIs</title>
+            <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+            <link href="main.css" rel="stylesheet">
+			
+			<script src="jquery-2.1.1.min.js"></script>
+    		<script src="bootstrap/js/bootstrap.min.js"></script>            
     </head>
     
-    <body>
-            <h1> ¿Donde esta Carmen San Diego?</h1>
-        
-            <img src="http://img391.imageshack.us/img391/5126/2llm0wnkw2.gif">
+    <body background="Mapamundi.png">
+            <h1> ï¿½Donde esta Carmen San Diego?</h1>
+<!--             <img src="http://img391.imageshack.us/img391/5126/2llm0wnkw2.gif"> -->
             <h2> Estas en: "bind con ubicacion actual"</h2>
             <table style="width:100%">
                 <tr>
@@ -20,35 +24,40 @@
                 <tr>
                     <td>
                         <ul style="list-style-type:none">
-                         <li>bindConPais1</li>
-                         <li>bindConPais2</li>
-                         <li>bindConPais3</li>
+                         <li class="country-list">Uruguay</li>
+                         <li class="country-list">Chile</li>
+                         <li class="country-list">Marruecos</li>
                         </ul>
                     </td>
                     <td><ul style="list-style-type:none">
-                         <li>bindConLugar1</li>
-                         <li>bindConlugar2</li>
-                         <li>bindConlugar3</li>
+                         <div class="btn-group">
+						  	<button class="btn">Biblioteca</button>
+						  	<button class="btn">Club</button>
+						  	<button class="btn">Embajada</button>
+						</div>
                         </ul></td>
-                    <td>selector "selecionar un villano"</td>
-                </tr>
-                
-                <tr>
-                    <td><h3>Viajar a :</h3></td>
-                    <td>button "pedir pista"</td>
-                    
-                </tr>
-                
-                <tr>
-                    <td>selector "seleccionar un pais"</td>
-                    <td> "bind con pista del lugar seleccionado"</td>
-                </tr>
-                
-                <tr>
-                    <td>button "viajar"</td>
-                    <td>button "ok"</td>
-                    <td>button "Emitir orden"</td>
+                    <td>
+						<div>
+							<select class="input-large">
+								<option>Elton John</option>
+								<option>Johnny Lennon</option>
+								<option>X Politico</option>
+							</select>
+							<button class="btn btn-success">Emitir Orden</button>
+						</div>
+                    </td>
                 </tr>
             </table>
+            <div>
+            	<h3>Viajar a :</h3>
+            	<div>
+					<select class="input-large">
+						<option>Argentina</option>
+						<option>Egipto</option>
+						<option>Rusia</option>
+					</select>
+					<button class="btn btn-success">Viajar</button>
+				</div>
+            </div>
     </body>
 </html>
