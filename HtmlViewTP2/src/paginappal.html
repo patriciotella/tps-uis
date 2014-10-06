@@ -25,11 +25,11 @@
                 
                 <tr>
                     <td>
-                    		<ul>
- 								<li ng-repeat="pais in paises">
+                    	<ul>
+ 							<li ng-repeat="pais in paises">
       								{{pais.nombrePais}}
- 								</li>
- 							</ul>
+ 							</li>
+ 						</ul>
 <!--                         <ul style="list-style-type:none"> -->
 <!--                          <li class="country-list">Uruguay</li> -->
 <!--                          <li class="country-list">Chile</li> -->
@@ -43,11 +43,11 @@
                     </td>
                    
                     <td>
-                    	<ul>
-                         	<div class="btn-group">        <!-- Faltaba hacerle el css o esta en bootstrap ?? -->
-							  	<button class="btn">Biblioteca</button>
-						  		<button class="btn">Club</button>
-						  		<button class="btn">Embajada</button>
+                    	<ul>					
+							<div class="btn-toolbar" role="toolbar">
+  								<div class="btn-group"> <button type="button" class="btn btn-default">Museo</button> </div>
+  								<div class="btn-group"> <button type="button" class="btn btn-default">Biblioteca</button> </div>
+  								<div class="btn-group"> <button type="button" class="btn btn-default">Embajada</button> </div>
 							</div>
                         </ul>
                     </td>
