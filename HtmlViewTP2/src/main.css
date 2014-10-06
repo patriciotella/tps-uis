@@ -1,6 +1,5 @@
-.country-list {
-	border: 1px solid;
-	width: 50%;
+body {
+	background-image: url("Mapamundi.png");
 }
 
 h1 {
@@ -8,5 +7,29 @@ h1 {
 }
 
 h2 {
+	font-weight: normal
+}
+
+table {
+	width: 100%;
+	padding: 25px; /*deja espacio entre borde y contenido */
+}
+
+ul {
+	list-style-type:none
+}
+
+.country-list {
+	border: 1px solid;
+	width: 50%;
+	margin: 25px
+}
+
+.btn-group {
+	margin-left: 30px;
 	text-align: center
+}
+
+.verticalLine {
+    border-left: thick solid #ff0000;
 }

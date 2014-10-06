@@ -10,33 +10,37 @@
     		<script src="bootstrap/js/bootstrap.min.js"></script>            
     </head>
     
-    <body background="Mapamundi.png">
+    <body>
             <h1> &iquest;D&oacute;nde est&aacute; Carmen San Diego?</h1>
 <!--             <img src="http://img391.imageshack.us/img391/5126/2llm0wnkw2.gif"> -->
             <h2> Est&aacute;s en: Tu casa</h2>
             
-            <table style="width:100%">
+            <table>
                 <tr>
-                    <td><h3> Paises Recorridos: </h3></td>
-                    <td><h3> Lugares: </h3></td>
-                    <td><h3> Pedir orden de arresto para el sospechoso:</h3></td>
+                    <th><h3> Paises Recorridos: </h3></th>
+                    <th><h3> Lugares: </h3></th>
+                    <th><h3> Pedir orden de arresto para el sospechoso:</h3></th>
                 </tr>
                 
                 <tr>
                     <td>
-                        <ul style="list-style-type:none">
-                         <li class="country-list">Uruguay</li>
-                         <li class="country-list">Chile</li>
-                         <li class="country-list">Marruecos</li>
+                        <ul class="country-list">
+                         	<li>Uruguay</li>
+                        	<li>Chile</li>
+                        	<li>Marruecos</li>
                         </ul>
                     </td>
-                    <td><ul style="list-style-type:none">
-                         <div class="btn-group">
-						  	<button class="btn">Biblioteca</button>
-						  	<button class="btn">Club</button>
-						  	<button class="btn">Embajada</button>
-						</div>
-                        </ul></td>
+                   
+                    <td>
+                    	<ul>
+                         	<div class="btn-group">        <!-- Faltaba hacerle el css o esta en bootstrap ?? -->
+							  	<button class="btn">Biblioteca</button>
+						  		<button class="btn">Club</button>
+						  		<button class="btn">Embajada</button>
+							</div>
+                        </ul>
+                    </td>
+                    
                     <td>
 						<div>
 							<select class="input-large">
@@ -44,11 +48,15 @@
 								<option>Johnny Lennon</option>
 								<option>X Politico</option>
 							</select>
+							
 							<button class="btn btn-success">Emitir Orden</button>
 						</div>
                     </td>
+                
                 </tr>
+                
             </table>
+           
             <div>
             	<h3>Viajar a :</h3>
             	<div>
