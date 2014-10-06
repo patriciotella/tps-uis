@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app="CarmenSanDiegoApp">
     
     <head>
             <title> Carmen San Diego UIs</title>
@@ -7,9 +7,10 @@
             <link href="main.css" rel="stylesheet">
 			
 			<script src="jquery-2.1.1.min.js"></script>
-    		<script src="bootstrap/js/bootstrap.min.js"></script>            
+    		<script src="bootstrap/js/bootstrap.min.js"></script>
+    		       
     </head>
-    
+    <body ng-controller ="ListaDePaisesRecorridos" background="Mapamundi.png">
     <body>
             <h1> &iquest;D&oacute;nde est&aacute; Carmen San Diego?</h1>
 <!--             <img src="http://img391.imageshack.us/img391/5126/2llm0wnkw2.gif"> -->
@@ -24,6 +25,16 @@
                 
                 <tr>
                     <td>
+                    		<ul>
+ 								<li ng-repeat="pais in paises">
+      								{{pais.nombrePais}}
+ 								</li>
+ 							</ul>
+<!--                         <ul style="list-style-type:none"> -->
+<!--                          <li class="country-list">Uruguay</li> -->
+<!--                          <li class="country-list">Chile</li> -->
+<!--                          <li class="country-list">Marruecos</li> -->
+<!--                         </ul> -->
                         <ul class="country-list">
                          	<li>Uruguay</li>
                         	<li>Chile</li>
@@ -111,5 +122,8 @@
 <!--             		</div> -->
 <!--             	</div> -->
 <!--             </div> -->
+	<script src="lib/angular.js"></script>
+    <script src="lib/app.js"></script>
+    <script src="lib/controllers.js"></script>
     </body>
 </html>
