@@ -1,90 +1,92 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="CarmenSanDiegoApp">
-    
-    <head>
-            <title> Carmen San Diego UIs</title>
-            <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-            <link href="main.css" rel="stylesheet">
-			
-			<script src="jquery-2.1.1.min.js"></script>
-    		<script src="bootstrap/js/bootstrap.min.js"></script>       
-    </head>
-    
-    <body ng-controller ="ListaDePaisesRecorridos" background="Mapamundi.png">
-  	<body>
-		<h1> &iquest;D&oacute;nde est&aacute; Carmen San Diego? </h1>
-        <h2> Est&aacute;s en: Tu casa</h2>
-        
+<html>
 
-   		<div class="columnaIzquierda">
-   			<div>
-	   			<h3>Paises recorridos: </h3>
-	   				<ul class="country-list">
-	                	<li>Uruguay</li>
-	                    <li>Chile</li>
-	                    <li>Marruecos</li>
-	                </ul>
-	    	</div>
-	    	
-				<div>
-	   				<h3>Destinos fallidos: </h3>
-	   					<ul class="country-list">
-		                	<li>Lisboa</li>
-		                    <li>Israel</li>
-	                	</ul>
-	    		</div>
-   		</div>  
- 		
-   		<div class="columnaCentral">
-   			<div>
-   				<h3>Lugares </h3>
-   				
-   				<div class="btn-toolbar" role="toolbar">
-	  				<div class="btn-group"> <button type="button" class="btn btn-default">Museo</button> </div>
-	  				<div class="btn-group"> <button type="button" class="btn btn-default">Biblioteca</button> </div>
-	  				<div class="btn-group"> <button type="button" class="btn btn-default">Embajada</button> </div>
+<head>
+	<title>Carmen San Diego UIs</title>
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"
+		media="screen">
+	<link href="main.css" rel="stylesheet">
+	
+	<script src="jquery-2.1.1.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="../lib/angular.js"></script>
+	<script src="../lib/app.js"></script>
+	<script src="../lib/controllers.js"></script>
+
+</head>
+<body ng-app="carmenSanDiegoApp" ng-controller="ListaDePaisesRecorridos"
+	background="Mapamundi.png">
+
+	<h1>&iquest;D&oacute;nde est&aacute; Carmen San Diego?</h1>
+	<h2>Est&aacute;s en: Tu casa</h2>
+
+
+	<div class="columnaIzquierda">
+		<div>
+			<h3>Paises recorridos:</h3>
+			<ul class="country-list">
+				<li ng-repeat="pais in paises">{{pais.nombrePais}}</li>
+			</ul>
+		</div>
+
+		<div>
+			<h3>Destinos fallidos:</h3>
+			<ul class="country-list">
+				<li>Lisboa</li>
+				<li>Israel</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="columnaCentral">
+		<div>
+			<h3>Lugares</h3>
+
+			<div class="btn-toolbar" role="toolbar">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default">Museo</button>
 				</div>
-				
-				<h5>Clickea sobre un lugar para obtener una pista</h5>
-   			</div>
-   			
-   			<div class="col-xs-5">
-   				<input class="form-control" id="disabledInput" type="text" placeholder="ACA IRIA ESCRITA LA PISTA PERO ESTO ES MUY CHICO" disabled>
- 			</div>
- 			
-	    	<div>
-            	<h3>Viajar a :</h3>
-            		<div class="viajarABoton">
-						<select class="input-large">
-							<option>Argentina</option>
-							<option>Egipto</option>
-							<option>Rusia</option>
-						</select>
-						<div><button class="btn btn-success">Viajar</button></div>
-					</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default">Biblioteca</button>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default">Embajada</button>
+				</div>
 			</div>
-   		</div>
-   				
-   		<div class= "columnaDerecha">
-        	<h3>Emitir orden de arresto para el sospechoso: </h3>
-            <div>
-					<select class="input-large">
-						<option>Carlos Monte</option>
-						<option>Daniel Miller</option>
-						<option>Maria Romualda de los Valles</option>
-					</select>
-				<div><button class="btn btn-success">Emitir orden</button></div>	
-   			</div> 
-        </div>
-        
-        
-        
-        
-        
-        
-        
-        <script src="lib/angular.js"></script>
-    	<script src="lib/app.js"></script>
-    	<script src="lib/controllers.js"></script>
- 	</body>
+
+			<h5>Clickea sobre un lugar para obtener una pista</h5>
+		</div>
+
+		<div class="col-xs-5">
+			<input class="form-control" id="disabledInput" type="text"
+				placeholder="ACA IRIA ESCRITA LA PISTA PERO ESTO ES MUY CHICO"
+				disabled>
+		</div>
+
+		<div>
+			<h3>Viajar a :</h3>
+			<div class="viajarABoton">
+				<select class="input-large">
+					<option>Argentina</option>
+					<option>Egipto</option>
+					<option>Rusia</option>
+				</select>
+				<button class="btn btn-success">Viajar</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="columnaDerecha">
+		<h3>Emitir orden de arresto para el sospechoso:</h3>
+		<div>
+			<select class="input-large">
+				<option>Carlos Monte</option>
+				<option>Daniel Miller</option>
+				<option>Maria Romualda de los Valles</option>
+			</select>
+			<button class="btn btn-warning">Detalles</button>
+			<button class="btn btn-success">Emitir orden</button>
+		</div>
+	</div>
+</body>
 </html>
