@@ -2,68 +2,72 @@
 <html>
 
 <head>
-	<title>Carmen San Diego UIs</title>
-	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"
-		media="screen">
-	<link href="main.css" rel="stylesheet">
-	
-	<script src="jquery-2.1.1.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	<script src="../lib/angular.js"></script>
-	<script src="../lib/app.js"></script>
-	<script src="../lib/controllers.js"></script>
+<title>Carmen San Diego UIs</title>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"
+	media="screen">
+<link href="main.css" rel="stylesheet">
+
+<script src="jquery-2.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="../lib/angular.js"></script>
+<script src="../lib/controllers.js"></script>
 
 </head>
-<body ng-app="carmenSanDiegoApp" ng-controller="ListaDePaisesRecorridos"
-	background="Mapamundi.png">
+<body ng-app="carmenSanDiegoApp" background="Mapamundi.png">
 
 	<h1>&iquest;D&oacute;nde est&aacute; Carmen San Diego?</h1>
-	<h2>Est&aacute;s en: Tu casa</h2>
+	<div data-ng-controller="PaisesCtrl">
+		<h2>Est&aacute;s en: {{paisActual.nombrePais}}</h2>
 
 
-	<div class="columnaIzquierda">
-		<div>
-			<h3>Paises recorridos:</h3>
-			<ul class="country-list">
-				<li ng-repeat="pais in paises">{{pais.nombrePais}}</li>
-			</ul>
-		</div>
+		<div class="columnaIzquierda">
+			<div>
+				<h3>Paises recorridos:</h3>
+				<ul class="country-list">
+					<li ng-repeat="pais in paises">{{pais.nombrePais}}</li>
+				</ul>
+			</div>
 
-		<div>
-			<h3>Destinos fallidos:</h3>
-			<ul class="country-list">
-				<li>Lisboa</li>
-				<li>Israel</li>
-			</ul>
+			<div>
+				<h3>Destinos fallidos:</h3>
+				<ul class="country-list">
+					<li ng-repeat="paisFallido in paisesFallidos">
+						{{paisFallido.nombrePais}}</li>
+				</ul>
+			</div>
 		</div>
 	</div>
-
 	<div class="columnaCentral">
-		<div>
+		<div data-ng-controller="LugaresCtrl">
 			<h3>Lugares</h3>
 
-			<div class="btn-toolbar" role="toolbar">
-				<div class="btn-group">
-					<button type="button" class="btn btn-default">Museo</button>
+				<div class="btn-toolbar" role="toolbar">
+					<div class="btn-group">
+						<button ng_repeat="lugar in lugares" type="button" class="btn btn-default">{{lugar.nombreLugar}}</button>
+					</div>
 				</div>
-				<div class="btn-group">
-					<button type="button" class="btn btn-default">Biblioteca</button>
-				</div>
-				<div class="btn-group">
-					<button type="button" class="btn btn-default">Embajada</button>
-				</div>
-			</div>
+<!-- 			<div class="btn-toolbar" role="toolbar"> -->
+<!-- 				<div class="btn-group"> -->
+<!-- 					<button type="button" class="btn btn-default">{{lugares[0].nombreLugar}}</button> -->
+<!-- 				</div> -->
+<!-- 				<div class="btn-group"> -->
+<!-- 					<button type="button" class="btn btn-default">{{lugares[1].nombreLugar}}</button> -->
+<!-- 				</div> -->
+<!-- 				<div class="btn-group"> -->
+<!-- 					<button type="button" class="btn btn-default">{{lugares[2].nombreLugar}}</button> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 
 			<h5>Clickea sobre un lugar para obtener una pista</h5>
 		</div>
 
 		<div>
 			<h3>Viajar a :</h3>
-			<div class="viajarABoton">
+			<div data-ng-controller="PaisesCtrl" class="viajarABoton">
 				<select class="input-large">
-					<option>Argentina</option>
-					<option>Egipto</option>
-					<option>Rusia</option>
+					<option ng-repeat="destino in destinos">{{destino.nombrePais}}</option>
+<!-- 					<option>Egipto</option> -->
+<!-- 					<option>Rusia</option> -->
 				</select>
 				<button class="btn btn-success">Viajar</button>
 			</div>
@@ -72,11 +76,9 @@
 
 	<div class="columnaDerecha">
 		<h3>Emitir orden de arresto para el sospechoso:</h3>
-		<div>
-			<select class="input-large">
-				<option>Carlos Monte</option>
-				<option>Daniel Miller</option>
-				<option>Maria Romualda de los Valles</option>
+		<div data-ng-controller = "VillanosCtrl">
+			<select class="input-large" >
+				<option ng-repeat="villano in villanos">{{villano.nombre}}</option>
 			</select>
 			<button class="btn btn-danger">Detalles</button>
 			<button class="btn btn-success">Emitir orden</button>
