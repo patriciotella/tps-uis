@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="CarmenSanDiegoApp">
+<html>
     
     <head>
             <title> Carmen San Diego UIs</title>
@@ -8,9 +8,12 @@
 			
 			<script src="jquery-2.1.1.min.js"></script>
     		<script src="bootstrap/js/bootstrap.min.js"></script>
+    		<script src="../lib/angular.js"></script>
+		    <script src="../lib/app.js"></script>
+		    <script src="../lib/controllers.js"></script>
     		       
     </head>
-    <body ng-controller ="ListaDePaisesRecorridos" background="Mapamundi.png">
+    <body ng-app="carmenSanDiegoApp" ng-controller ="ListaDePaisesRecorridos" background="Mapamundi.png">
     <body>
             <h1> &iquest;D&oacute;nde est&aacute; Carmen San Diego?</h1>
 <!--             <img src="http://img391.imageshack.us/img391/5126/2llm0wnkw2.gif"> -->
@@ -25,31 +28,19 @@
                 
                 <tr>
                     <td>
-                    	<ul>
- 							<li ng-repeat="pais in paises">
+                        <ul class="country-list">
+                         	<li ng-repeat="pais in paises">
       								{{pais.nombrePais}}
  							</li>
- 						</ul>
-<!--                         <ul style="list-style-type:none"> -->
-<!--                          <li class="country-list">Uruguay</li> -->
-<!--                          <li class="country-list">Chile</li> -->
-<!--                          <li class="country-list">Marruecos</li> -->
-<!--                         </ul> -->
-                        <ul class="country-list">
-                         	<li>Uruguay</li>
-                        	<li>Chile</li>
-                        	<li>Marruecos</li>
                         </ul>
                     </td>
                    
                     <td>
-                    	<ul>					
-							<div class="btn-toolbar" role="toolbar">
-  								<div class="btn-group"> <button type="button" class="btn btn-default">Museo</button> </div>
-  								<div class="btn-group"> <button type="button" class="btn btn-default">Biblioteca</button> </div>
-  								<div class="btn-group"> <button type="button" class="btn btn-default">Embajada</button> </div>
-							</div>
-                        </ul>
+						<div class="btn-toolbar" role="toolbar">
+ 								<div class="btn-group"> <button type="button" class="btn btn-default">Museo</button> </div>
+ 								<div class="btn-group"> <button type="button" class="btn btn-default">Biblioteca</button> </div>
+ 								<div class="btn-group"> <button type="button" class="btn btn-default">Embajada</button> </div>
+						</div>
                     </td>
                     
                     <td>
@@ -59,7 +50,7 @@
 								<option>Johnny Lennon</option>
 								<option>X Politico</option>
 							</select>
-							
+							<button class="btn btn-warning">Detalles</button>
 							<button class="btn btn-success">Emitir Orden</button>
 						</div>
                     </td>
@@ -122,8 +113,5 @@
 <!--             		</div> -->
 <!--             	</div> -->
 <!--             </div> -->
-	<script src="lib/angular.js"></script>
-    <script src="lib/app.js"></script>
-    <script src="lib/controllers.js"></script>
     </body>
 </html>

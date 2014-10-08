@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('CarmenSanDiegoApp', []).controller('ListaDePaisesRecorridos', function ($scope) {
+angular.module('carmenSanDiegoApp', []).controller('ListaDePaisesRecorridos', function ($scope) {
 	
 	$scope.paises = [
 	                 {'nombrePais' : 'Uruguay'},
@@ -8,3 +8,13 @@ angular.module('CarmenSanDiegoApp', []).controller('ListaDePaisesRecorridos', fu
 	                 {'nombrePais' : 'Marruecos'}
 	];
 });
+
+/*
+ *Villano {'nombre': 'Carmen Sandiego',
+    	   'sexo': 'Femenino',
+    	   'señas_particulares': ['Pelo rojo',
+    	   						  'maneja un convertible',
+    	   						  'posee un collar de rubies',
+    	   						  'su comida favorita son los tacos mexicanos'],
+    	   'hobbies': 'Juega Tenis'}
+ */
