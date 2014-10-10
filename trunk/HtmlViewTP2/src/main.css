@@ -75,17 +75,21 @@ select {
 	margin-bottom: 0px;
 }
 
-.btn-success {
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #08233f;
-  *background-color: #08233f;
-  background-image: -moz-linear-gradient(top, #08233f, #08233f);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#08233f), to(#08233f));
-  background-image: -webkit-linear-gradient(top, #08233f, #08233f);
-  background-image: -o-linear-gradient(top, #08233f, #08233f);
-  background-image: linear-gradient(to bottom, #08233f, #08233f);
-  background-repeat: repeat-x;
-  border-color: #08233f #08233f #800080;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+.lugar-button {
+	margin-right: 10px;
+    margin-left: 10px;
 }
+/* .btn-success { */
+/*   color: #ffffff; */
+/*   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); */
+/*   background-color: #08233f; */
+/*   *background-color: #08233f; */
+/*   background-image: -moz-linear-gradient(top, #08233f, #08233f); */
+/*   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#08233f), to(#08233f)); */
+/*   background-image: -webkit-linear-gradient(top, #08233f, #08233f); */
+/*   background-image: -o-linear-gradient(top, #08233f, #08233f); */
+/*   background-image: linear-gradient(to bottom, #08233f, #08233f); */
+/*   background-repeat: repeat-x; */
+/*   border-color: #08233f #08233f #800080; */
+/*   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); */
+/* } */
