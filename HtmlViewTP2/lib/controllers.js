@@ -22,6 +22,7 @@ app.controller('PaisesCtrl', function ($scope) {
 	                 {'nombrePais' : 'Rusia'},
 	                 {'nombrePais' : 'Brasil'}
 	];
+
 });
 
 app.controller('LugaresCtrl', function ($scope) {
