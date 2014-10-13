@@ -63,6 +63,10 @@ ul {
      margin:-100px 0 0 -150px;
 }
 
+.columnaIzquierda {
+	position: absolute;
+}
+
 .verticalLine {
     border-left: thick solid #ff0000;
 }
@@ -116,4 +120,9 @@ table {
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0b3965', endColorstr='#0b3965', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.alert {
+	width: 50%;
+	margin-left: 60px;
 }
