@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Carmen San Diego UIs</title>
+<link href="lib/css/bootstrap.min.css" rel="stylesheet"
+	media="screen">
+<link href="stylesheets/main.css" rel="stylesheet">
+
+<script src="lib/jquery-2.1.1.min.js"></script>
+<script src="lib/js/bootstrap.min.js"></script>
+<script src="lib/angular.js"></script>
+<script src="javascripts/controllers.js"></script>
+
+</head>
+<body ng-app="carmenSanDiegoApp" ng-controller="PaisesCtrl"
+	background= "images/mapamundi.png">
+	<div class="modal fade" id='myModal'>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only"></span>
+					</button>
+					<h4 class="modal-title"></h4>
+				</div>
+				<div class="modal-body">
+					<p>El villano puede que haya pasado por aquí, no te puedo
+						decir...&hellip;</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<h1>&iquest;D&oacute;nde est&aacute; Carmen San Diego?</h1>
+	<ul id="myTab" class="nav nav-tabs" role="tablist">
+		<li class=""><a href="#caso" role="tab" data-toggle="tab"
+			onclick="casoTab()">Caso</a></li>
+		<li class="active"><a href="#jugar" role="tab" data-toggle="tab"
+			onclick="jugarTab()">Jugar</a></li>
+	</ul>
+
+	<script>
+		function casoTab() {
+// 			$("#jugar").hide();
+			$('#myTab a:first').off('click');
+			$("#casoBody").show();
+// 			$('#myTab a:first').tab('show');
+		}
+	</script>
+
+	<script>
+		function jugarTab(){
+			$("#casoBody").hide();
+// 			$("#jugar").show();
+// 			$('#myTab a:last').tab('show');
+		}
+	</script>
+
+	<div class="tab-pane fade active in" id="caso">
+		<div class='hide' id="casoBody">
+			<h2> Detective!! Tenemos un caso para usted:</h2>
+			<div class="alert alert-danger" role="alert">
+  				<p>
+  					OH NO! SE ROBARON UN DIAMANTE DEL MUSEO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! AHUDA DETECTIVE, SOLO TU PUEDES HACERLO!!!!!!!!!!!!!!!11
+  				</p>
+			</div>
+		</div>
+	</div>
+	<div class="tab-pane fade active in" id="jugar">
+
+		<div data-ng-controller="PaisesCtrl">
+			<h2>Est&aacute;s en: {{paisActual.nombrePais}}</h2>
+
+
+			<div class="columnaIzquierda">
+				<div>
+					<h3>Paises recorridos:</h3>
+					<table class="table table-striped">
+						<tr ng-repeat="pais in paises">
+							<td>{{pais.nombrePais}}</td>
+					</table>
+				</div>
+
+				<div>
+					<h3>Destinos fallidos:</h3>
+					<table class="table table-striped">
+						<tr ng-repeat="paisFallido in paisesFallidos">
+							<td>{{paisFallido.nombrePais}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script>
+			function mostrarNombreDelLugar(id) {
+				$('.modal-title')[0].innerHTML = 'Est&aacute;s visitando: '
+						+ id
+			}
+		</script>
+		<div class="columnaCentral">
+			<div data-ng-controller="LugaresCtrl">
+				<h3>Lugares</h3>
+				<div class="btn-toolbar" role="toolbar">
+					<div class="btn-group">
+						<button type="button" class="btn btn-default lugar-button"
+							data-toggle="modal" data-target="#myModal"
+							title="Visitar lugar para obtener pista" id={{lugar.nombreLugar}}
+							onclick="mostrarNombreDelLugar(this.id)"
+							ng-repeat="lugar in lugares">{{lugar.nombreLugar}}</button>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<h3>Viajar a :</h3>
+				<div data-ng-controller="PaisesCtrl" class="viajarABoton">
+					<select class="input-large">
+						<option ng-repeat="destino in destinos">{{destino.nombrePais}}</option>
+					</select>
+					<button class="btn btn-success">Viajar</button>
+				</div>
+			</div>
+		</div>
+		<div class="columnaDerecha">
+			<h3>Emitir orden de arresto para:</h3>
+			<div data-ng-controller="VillanosCtrl">
+				<select class="input-large">
+					<option ng-repeat="villano in villanos">{{villano.nombre}}</option>
+				</select>
+				<button class="btn btn-danger">Detalles</button>
+				<button class="btn btn-success">Emitir orden</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
