@@ -3,6 +3,7 @@ package carmenSanDiegoUIs
 import villano.Villano
 import pais.Pais
 import org.uqbar.commons.utils.Observable
+import java.util.Set
 
 @Observable
 class Caso {
@@ -10,7 +11,7 @@ class Caso {
 	@Property Reporte reporte
 	@Property ObjetoRobado objetoRobado
 	@Property Pais paisDondeOcurrio
-	
+	Set<Pais> planDeEscape
 	String nombre
 	
 	new (String nombre, Villano villanoResponsable, Reporte reporteDelCaso,
@@ -24,6 +25,10 @@ class Caso {
 	
 	def getNombre() {
 		nombre
+	}
+	
+	def getPlanDeEscape() {
+		planDeEscape
 	}
 
 }

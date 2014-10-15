@@ -18,7 +18,6 @@ class EditorDeConexionesDePais {
 	}
 
 	def borrarConexion() {
-		//Le pasa el mensaje a ejecutar en un bloque.
 		modificarConexion([_editorDePais.borrarConexion(conexionSeleccionada)])
 	}
 
