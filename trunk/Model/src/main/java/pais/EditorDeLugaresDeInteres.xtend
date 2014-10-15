@@ -1,15 +1,12 @@
 package pais
 
-import org.uqbar.commons.model.ObservableUtils
-import org.uqbar.commons.utils.Observable
-import lugarDeInteres.LugarDeInteres
-import lugarDeInteres.Club
-import lugarDeInteres.Biblioteca
-import lugarDeInteres.Banco
-import lugarDeInteres.Embajada
 import java.util.Set
+import lugarDeInteres.Banco
+import lugarDeInteres.Biblioteca
+import lugarDeInteres.Club
+import lugarDeInteres.Embajada
+import lugarDeInteres.LugarDeInteres
 
-@Observable
 class EditorDeLugaresDeInteres {
 	
 	@Property 
@@ -31,15 +28,11 @@ class EditorDeLugaresDeInteres {
 	def borrarLugarDeInteres() {
 		_editorDePais.borrarLugarDeInteres(lugarSeleccionado)
 		cambioPuedeAgregarLugar()
-		ObservableUtils.firePropertyChanged(this,"lugaresDeInteres", lugaresDeInteres)
-		ObservableUtils.firePropertyChanged(this,"lugaresPosibles", lugaresPosibles)
 	}
 	
 	def agregarLugarDeInteres() {
 		_editorDePais.agregarLugarDeInteres(lugarNuevo)
 		cambioPuedeAgregarLugar()	
-		ObservableUtils.firePropertyChanged(this,"lugaresDeInteres", lugaresDeInteres)
-		ObservableUtils.firePropertyChanged(this,"lugaresPosibles", lugaresPosibles)
 	}
 	
 	def getLugaresPosibles() {
@@ -60,12 +53,11 @@ class EditorDeLugaresDeInteres {
 	}
 	
 	private def cambioPuedeAgregarLugar() {
-		ObservableUtils.firePropertyChanged(this,"puedeAgregarLugar",puedeAgregarLugar)
+
 	}
 	
 	def setLugarSeleccionado(LugarDeInteres lugarASeleccionar) {
 		_lugarSeleccionado = lugarASeleccionar
-		ObservableUtils.firePropertyChanged(this,"seleccionoLugarABorrar", seleccionoLugarABorrar)
 	}
 	
 	def isSeleccionoLugarABorrar() {

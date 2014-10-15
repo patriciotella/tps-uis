@@ -1,12 +1,9 @@
-package pais 
-import org.uqbar.commons.model.ObservableUtils
-import org.uqbar.commons.utils.Observable
-import lugarDeInteres.LugarDeInteres
-import java.util.Set
-import villano.Villano
-import org.uqbar.commons.model.UserException
+package pais
 
-@Observable
+import java.util.Set
+import lugarDeInteres.LugarDeInteres
+import villano.Villano
+
 class Pais {
 	@Property String nombre
 	@Property Set<String> caracteristicas
@@ -19,13 +16,12 @@ class Pais {
 	}
 	
 	private def cambiaronCaracteristicas() {
-		ObservableUtils.firePropertyChanged(this,"caracteristicas",caracteristicas)
 	}
 	
 	new(String unNombre, Set<String> caracteristicas,
 		Set<Pais> conexiones, Set<LugarDeInteres> lugaresDeInteres) {
 		if(unNombre.empty || caracteristicas.empty || lugaresDeInteres.size < 3) {
-			throw new UserException("El país debe tener nombre, al menos una característica y exactamente 3 lugares de interés.")
+			throw new RuntimeException("El país debe tener nombre, al menos una característica y exactamente 3 lugares de interés.")
 		}
 		_nombre = unNombre
 		_caracteristicas = caracteristicas
@@ -59,7 +55,6 @@ class Pais {
 	}
 	
 	private def cambiaronConexiones() {
-		ObservableUtils.firePropertyChanged(this,"conexiones",conexiones)
 	}
 	
 	override toString() {
@@ -72,7 +67,6 @@ class Pais {
 	}
 	
 	private def cambiaronLugaresDeInteres() {
-		ObservableUtils.firePropertyChanged(this,"lugaresDeInteres",lugaresDeInteres)
 	}
 	
 	def borrarLugarDeInteres(LugarDeInteres lugarDeInteres) {

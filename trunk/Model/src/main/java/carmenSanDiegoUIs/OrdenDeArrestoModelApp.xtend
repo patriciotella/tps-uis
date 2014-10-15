@@ -2,10 +2,7 @@ package carmenSanDiegoUIs
 
 import java.util.Set
 import villano.Villano
-import org.uqbar.commons.utils.Observable
-import org.uqbar.commons.model.ObservableUtils
 
-@Observable
 class OrdenDeArrestoModelApp {
 	
 	ResolverMisterioModelApp juego
@@ -28,8 +25,6 @@ class OrdenDeArrestoModelApp {
 	
 	def setVillanoSeleccionado(Villano unVillano) {
 		_villanoSeleccionado = unVillano
-		ObservableUtils.firePropertyChanged(this, "seleccionoVillano", seleccionoVillano)
-		ObservableUtils.firePropertyChanged(this, "villanoSeleccionado", villanoSeleccionado)
 	}
 	
 	def getVillanos() {

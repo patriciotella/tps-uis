@@ -1,10 +1,7 @@
 package pais
 
-import org.uqbar.commons.utils.Observable
 import mapamundi.Mapamundi
-import org.uqbar.commons.model.ObservableUtils
 
-@Observable
 class EditorDeConexionesDePais {
 
 	@Property EditorDePais editorDePais
@@ -40,9 +37,6 @@ class EditorDeConexionesDePais {
 	 */
 	def private modificarConexion((Void)=>void func){
 		func.apply(null)
-		ObservableUtils.firePropertyChanged(this, "conexiones", conexiones)
-		ObservableUtils.firePropertyChanged(this, "conexionesParaAgregar", conexionesParaAgregar)
-		ObservableUtils.firePropertyChanged(this, "seleccionoConexionParaAgregar", seleccionoConexionParaAgregar)
 	}
 	
 	def isSeleccionoConexionParaAgregar() {
@@ -51,7 +45,6 @@ class EditorDeConexionesDePais {
 	
 	def setConexionNueva(Pais unPais) {
 		_conexionNueva = unPais
-		ObservableUtils.firePropertyChanged(this, "seleccionoConexionParaAgregar", seleccionoConexionParaAgregar)
 	}
 	
 	def isSeleccionoConexionAEliminar() {
@@ -60,6 +53,5 @@ class EditorDeConexionesDePais {
 	
 	def setConexionSeleccionada(Pais unPais) {
 		_conexionSeleccionada = unPais
-		ObservableUtils.firePropertyChanged(this, "seleccionoConexionAEliminar", seleccionoConexionAEliminar)
 	}
 }

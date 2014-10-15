@@ -2,10 +2,7 @@ package carmenSanDiegoUIs
 
 import java.util.ArrayList
 import villano.Villano
-import org.uqbar.commons.utils.Observable
-import org.uqbar.commons.model.ObservableUtils
 
-@Observable
 class ResolverMisterioModelApp {
 	
 	Sistema repositorio
@@ -55,8 +52,6 @@ class ResolverMisterioModelApp {
 	
 	def emitirOrdenDeArresto(Villano unVillano) {
 		juegoActual.emitirOrdenContraVillano(unVillano)
-		ObservableUtils.firePropertyChanged(this, "emitioOrdenDeArresto", emitioOrdenDeArresto)
-		ObservableUtils.firePropertyChanged(this, "villanoAcusado", villanoAcusado)
 	}
 	
 	def getDescripcionDelCaso() {

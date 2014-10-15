@@ -1,13 +1,10 @@
 package villano
 
-import org.uqbar.commons.utils.Observable
 import carmenSanDiegoUIs.ExpedientesModelApp
-import java.util.Set
-import java.util.List
-import org.uqbar.commons.model.ObservableUtils
 import java.util.HashSet
+import java.util.List
+import java.util.Set
 
-@Observable
 class EditorDeVillano {
 	
 	private List<String> sexos = #["Masculino", "Femenino"]
@@ -52,22 +49,18 @@ class EditorDeVillano {
 	
 	def agregarHobbie(String unHobbie) {
 		_hobbies.add(unHobbie)
-		ObservableUtils.firePropertyChanged(this, "hobbies", hobbies)
 	}
 	
 	def eliminarHobbie(String unHobbie) {
 		_hobbies.remove(unHobbie)
-		ObservableUtils.firePropertyChanged(this, "hobbies", hobbies)
 	}
 	
 	def eliminarSeniaPArticular(String unaSenia) {
 		_seniasParticulares.remove(unaSenia)
-		ObservableUtils.firePropertyChanged(this, "seniasParticulares", seniasParticulares)
 	}
 	
 	def agregarSeniaParticular(String unaSenia) {
 		_seniasParticulares.add(unaSenia)
-		ObservableUtils.firePropertyChanged(this, "seniasParticulares", seniasParticulares)
 	}
 	
 	def getSexos() {

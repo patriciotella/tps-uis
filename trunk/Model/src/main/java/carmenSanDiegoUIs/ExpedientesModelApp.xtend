@@ -1,11 +1,8 @@
 package carmenSanDiegoUIs
 
-import villano.Villano
 import java.util.Set
-import org.uqbar.commons.model.ObservableUtils
-import org.uqbar.commons.utils.Observable
+import villano.Villano
 
-@Observable
 class ExpedientesModelApp {
 	
 	@Property
@@ -20,16 +17,10 @@ class ExpedientesModelApp {
 	
 	def agregarVillano(Villano unVillano) {
 		_villanos.add(unVillano)
-		ObservableUtils.firePropertyChanged(this, "villanos", villanos)
-		ObservableUtils.firePropertyChanged(this, "tieneVillanos", tieneVillanos)
-		ObservableUtils.firePropertyChanged(this, "seleccionoVillano", seleccionoVillano)
 	}
 	
 	def eliminarVillano() {
 		_villanos.remove(_villanoSeleccionado)
-		ObservableUtils.firePropertyChanged(this, "villanos", villanos)
-		ObservableUtils.firePropertyChanged(this, "tieneVillanos", tieneVillanos)
-		ObservableUtils.firePropertyChanged(this, "seleccionoVillano", seleccionoVillano)
 	}
 	
 	def isTieneVillanos() {
@@ -42,7 +33,6 @@ class ExpedientesModelApp {
 	
 	def setVillanoSeleccionado(Villano unVillano) {
 		_villanoSeleccionado = unVillano
-		ObservableUtils.firePropertyChanged(this, "seleccionoVillano", seleccionoVillano)
 	}
 	
 	def getVillanos() {
