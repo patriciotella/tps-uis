@@ -1,12 +1,10 @@
 package pais
 
-import org.uqbar.commons.utils.Observable
-import mapamundi.Mapamundi
+import java.util.HashSet
 import java.util.Set
 import lugarDeInteres.LugarDeInteres
-import java.util.HashSet
+import mapamundi.Mapamundi
 
-@Observable
 class EditorDePais {
 	
 	Pais _pais

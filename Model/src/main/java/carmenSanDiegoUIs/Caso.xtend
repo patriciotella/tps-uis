@@ -1,11 +1,9 @@
 package carmenSanDiegoUIs
 
-import villano.Villano
-import pais.Pais
-import org.uqbar.commons.utils.Observable
 import java.util.Set
+import pais.Pais
+import villano.Villano
 
-@Observable
 class Caso {
 	@Property Villano responsable
 	@Property Reporte reporte

@@ -1,15 +1,9 @@
 package carmenSanDiegoUIs
 
-import java.util.ArrayList
-import java.util.HashSet
 import java.util.Set
 import mapamundi.Mapamundi
-import org.uqbar.commons.model.ObservableUtils
-import org.uqbar.commons.utils.Observable
-import pais.Pais
 import villano.Villano
 
-@Observable
 class Sistema {
 	@Property Mapamundi mapamundi
 	@Property Set<Villano> villanos

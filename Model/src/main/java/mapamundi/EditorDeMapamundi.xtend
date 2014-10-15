@@ -1,10 +1,7 @@
 package mapamundi
 
-import org.uqbar.commons.model.ObservableUtils
-import org.uqbar.commons.utils.Observable
 import pais.Pais
 
-@Observable
 class EditorDeMapamundi {
 	
 	@Property Pais paisSeleccionado
@@ -20,8 +17,7 @@ class EditorDeMapamundi {
 	}
 	
 	def actualizarPaises() {
-		ObservableUtils.firePropertyChanged(this, "mapamundi", _mapamundi)
-		ObservableUtils.firePropertyChanged(this, "seleccionoPais", seleccionoPais)
+
 	}
 	
 	def agregarPais(Pais unPais){
@@ -35,6 +31,5 @@ class EditorDeMapamundi {
 	
 	def setPaisSeleccionado(Pais unPais) {
 		_paisSeleccionado = unPais
-		ObservableUtils.firePropertyChanged(this, "seleccionoPais", seleccionoPais)
 	}
 }

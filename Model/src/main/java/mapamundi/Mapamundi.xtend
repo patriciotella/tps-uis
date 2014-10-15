@@ -1,11 +1,8 @@
 package mapamundi
 
-import org.uqbar.commons.utils.Observable
-import org.uqbar.commons.model.ObservableUtils
-import pais.Pais
 import java.util.Set
+import pais.Pais
 
-@Observable
 class Mapamundi {
 	@Property Set<Pais> paises
 	
@@ -19,12 +16,10 @@ class Mapamundi {
 	
 	def agregarPais(Pais pais) {
 		this._paises.add(pais)
-		ObservableUtils.firePropertyChanged(this, "paises", paises)
 	}
 	
 	def eliminarPais(Pais pais){
 		this.paises.remove(pais)
-		ObservableUtils.firePropertyChanged(this,"paises",paises)
 	}
 	
 }

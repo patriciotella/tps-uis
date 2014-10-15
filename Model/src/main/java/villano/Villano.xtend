@@ -1,11 +1,7 @@
 package villano
 
-import org.uqbar.commons.utils.Observable
-import org.uqbar.commons.model.ObservableUtils
 import java.util.Set
-import org.uqbar.commons.model.UserException
 
-@Observable
 class Villano {
 	@Property String nombre
 	@Property String sexo
@@ -15,7 +11,7 @@ class Villano {
 	new(String nombre, String sexo, Set<String> seniasParticulares,
 		Set<String> hobbies) {
 		if(nombre == "" || hobbies.size.equals(0) || seniasParticulares.size < 2) {
-			throw new UserException("El villano debe tener nombre y, al menos, 2 señas particulares y un hobbie.")
+			throw new RuntimeException("El villano debe tener nombre y, al menos, 2 señas particulares y un hobbie.")
 		}
 		_nombre = nombre
 		_sexo = sexo
@@ -29,12 +25,10 @@ class Villano {
 	 
 	def agregarSeniaParticular(String senia) {
 		this._seniasParticulares.add(senia)
-		ObservableUtils.firePropertyChanged(this,"seniasParticulares", seniasParticulares)
 	}
 	
 	def eliminarSeniaPArticular (String senia) {
 		this._seniasParticulares.remove(senia)
-		ObservableUtils.firePropertyChanged(this, "seniasParticulares", seniasParticulares)
 	}
 
 	override toString() {
@@ -43,12 +37,10 @@ class Villano {
 	
 	def agregarHobbie (String hobbie) {
 		this._hobbies.add(hobbie)
-		ObservableUtils.firePropertyChanged(this, "hobbies", hobbies)
 	}
 	
 	def eliminarHobbie (String hobbie) {
 		this._hobbies.remove(hobbie)
-		ObservableUtils.firePropertyChanged(this,"hobbies",hobbies)
 	}
 	
 	def setNombre (String nombre) {

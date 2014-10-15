@@ -1,11 +1,8 @@
 package carmenSanDiegoUIs
 
-import pais.Pais
 import java.util.Set
-import org.uqbar.commons.model.ObservableUtils
-import org.uqbar.commons.utils.Observable
+import pais.Pais
 
-@Observable
 class ViajarModelApp {
 	
 	Pais paisActual
@@ -29,7 +26,6 @@ class ViajarModelApp {
 	
 	def setPaisSeleccionado(Pais unPais) {
 		_paisSeleccionado = unPais
-		ObservableUtils.firePropertyChanged(this, "seleccionoPais", seleccionoPais)
 	}
 	
 	def getPosiblesPaises() {
@@ -42,12 +38,10 @@ class ViajarModelApp {
 	
 	def viajarAlPaisAnterior() {
 		juego.viajarAlPaisAnterior
-		ObservableUtils.firePropertyChanged(this, "paisActual", paisActual)
 	}
 	
 	def viajar() {
 		juego.viajarAPais(_paisSeleccionado)
-		ObservableUtils.firePropertyChanged(this, "paisActual", paisActual)
 	}
 	
 	def isHayPaisAnterior(){

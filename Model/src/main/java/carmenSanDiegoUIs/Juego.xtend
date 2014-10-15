@@ -1,13 +1,10 @@
 package carmenSanDiegoUIs
 
-import villano.Villano
-import pais.Pais
-import java.util.Set
 import java.util.HashSet
-import org.uqbar.commons.model.ObservableUtils
-import org.uqbar.commons.utils.Observable
+import java.util.Set
+import pais.Pais
+import villano.Villano
 
-@Observable
 class Juego {
 	
 	Villano villanoAcusado
@@ -32,7 +29,6 @@ class Juego {
 	
 	def viajarAlPaisAnterior() {
 		paisActual = paisAnterior
-		ObservableUtils.firePropertyChanged(this, "paisActual", paisActual)
 	}
 	
 	def viajarAPais(Pais unPais) {
