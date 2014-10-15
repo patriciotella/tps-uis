@@ -8,18 +8,18 @@ import org.uqbar.commons.model.ObservableUtils
 @Observable
 class OrdenDeArrestoModelApp {
 	
-	Sistema unSistema
+	ResolverMisterioModelApp juego
 	Set<Villano> villanos
 	@Property
 	Villano villanoSeleccionado
 	
-	new(Sistema unSistema) {
-		this.unSistema = unSistema
-		villanos = unSistema.villanos
+	new(ResolverMisterioModelApp modeloDeJuego) {
+		juego = modeloDeJuego
+		villanos = juego.villanos
 	}
 	
 	def emitirOrdenDeArresto() {
-		unSistema.emitirOrdenDeArresto(villanoSeleccionado)
+		juego.emitirOrdenDeArresto(villanoSeleccionado)
 	}
 	
 	def isSeleccionoVillano() {
@@ -29,5 +29,10 @@ class OrdenDeArrestoModelApp {
 	def setVillanoSeleccionado(Villano unVillano) {
 		_villanoSeleccionado = unVillano
 		ObservableUtils.firePropertyChanged(this, "seleccionoVillano", seleccionoVillano)
+		ObservableUtils.firePropertyChanged(this, "villanoSeleccionado", villanoSeleccionado)
+	}
+	
+	def getVillanos() {
+		villanos
 	}
 }

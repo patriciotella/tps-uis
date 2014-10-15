@@ -77,13 +77,12 @@ class EditorDePais {
 	}
 	
 	def borrarConexion(Pais unaConexion) {
+		//Borrar la conexion unaConexion.borrarConexion(this) pero this debe ser un país
 		conexiones.remove(unaConexion)
-		unaConexion.borrarConexion(_pais)
 	}
 	
 	def agregarConexion(Pais unaConexion) {
 		conexiones.add(unaConexion)
-		unaConexion.agregarConexion(_pais)
 	}
 	
 }

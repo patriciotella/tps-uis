@@ -3,10 +3,10 @@ package carmenSanDiegoUIs
 import pais.Pais
 import java.util.Set
 import org.uqbar.commons.model.ObservableUtils
+import org.uqbar.commons.utils.Observable
 
+@Observable
 class ViajarModelApp {
-	
-	Sistema sistema
 	
 	Pais paisActual
 	
@@ -15,9 +15,11 @@ class ViajarModelApp {
 	
 	Set<Pais> posiblesPaises
 	
-	new(Sistema unSistema) {
-		this.sistema = unSistema
-		this.paisActual = sistema.paisActual
+	Juego juego
+	
+	new(Juego unJuego) {
+		this.juego = unJuego
+		this.paisActual = juego.paisActual
 		this.posiblesPaises = paisActual.conexiones
 	}
 	
@@ -39,11 +41,17 @@ class ViajarModelApp {
 	}
 	
 	def viajarAlPaisAnterior() {
-		sistema.viajarAlPaisAnterior
+		juego.viajarAlPaisAnterior
+		ObservableUtils.firePropertyChanged(this, "paisActual", paisActual)
 	}
 	
 	def viajar() {
-		sistema.viajarAPais(_paisSeleccionado)
+		juego.viajarAPais(_paisSeleccionado)
+		ObservableUtils.firePropertyChanged(this, "paisActual", paisActual)
+	}
+	
+	def isHayPaisAnterior(){
+		juego.paisAnterior != null
 	}
 	
 }

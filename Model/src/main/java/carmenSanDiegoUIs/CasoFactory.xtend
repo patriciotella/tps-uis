@@ -1,29 +1,29 @@
 package carmenSanDiegoUIs
 
 import pais.Pais
-import java.util.Set
-import java.util.HashSet
+import java.util.ArrayList
+import java.util.List
 
 class CasoFactory {
 	
-	def Caso crearCaso(Sistema unSistema, ObjetoRobado unObjetoRobado) {
-		val indiceDeVillano = (Math.random() * (unSistema.villanos.size - 0)).intValue
-		val villano  = unSistema.villanos.get(indiceDeVillano)
+	def Caso crearCaso(Sistema unSistema) {
+		val indiceDeVillano = (Math.random() * (unSistema.villanos.size)).intValue
+		val villano  = new ArrayList(unSistema.villanos).get(indiceDeVillano)
 		val paises = unSistema.mapamundi.paises
-		val largoRutaDeEscape = (Math.random() * (paises.size - 0)).intValue
-		val indiceDelPaisDeComienzo = (Math.random() * (paises.size - 0)).intValue
+		val largoRutaDeEscape = (Math.random() * (paises.size)).intValue
+		val indiceDelPaisDeComienzo = (Math.random() * (paises.size)).intValue
 		var Pais paisAnterior
 		var Pais siguientePaisDeLaRuta
 		var cantidadDePaisesMarcados = 0
-		var paisAMarcar = paises.get(indiceDelPaisDeComienzo)
-		val rutaDeEscape = new HashSet
+		var paisAMarcar = new ArrayList(paises).get(indiceDelPaisDeComienzo)
+		val rutaDeEscape = newArrayList
 		
 		while(largoRutaDeEscape < cantidadDePaisesMarcados){
-			var conexionesSinPaisAnterior = filtrarConexiones(paisAMarcar.conexiones, paisAnterior).toSet
-			var indiceDeProximoPais = (Math.random() * (conexionesSinPaisAnterior.size - 0)).intValue
+			var conexionesSinPaisAnterior = filtrarConexiones(new ArrayList(paisAMarcar.conexiones), paisAnterior).toList
+			var indiceDeProximoPais = (Math.random() * (conexionesSinPaisAnterior.size)).intValue
 			siguientePaisDeLaRuta = conexionesSinPaisAnterior.get(indiceDeProximoPais)
 			paisAMarcar.marcarComoRutaDeEscapeDeVillano(villano, siguientePaisDeLaRuta)
-			filtrarConexiones(conexionesSinPaisAnterior, siguientePaisDeLaRuta).toSet.forEach[it.marcarSinVillano]
+			filtrarConexiones(conexionesSinPaisAnterior, siguientePaisDeLaRuta).forEach[it.marcarSinVillano]
 			rutaDeEscape.add(paisAMarcar)
 			paisAnterior = paisAMarcar
 			paisAMarcar = siguientePaisDeLaRuta
@@ -31,15 +31,13 @@ class CasoFactory {
 		
 		paisAMarcar.marcarComoUltimoPaisDeLaRutaDelVillano(villano)
 		rutaDeEscape.add(paisAMarcar)
-		
-		unSistema.setRutas(rutaDeEscape)
-		
-		val nombre = "Robo de " + unObjetoRobado.nombre
-		return new Caso(nombre, villano, new Reporte(rutaDeEscape.get(0), unObjetoRobado),
-			rutaDeEscape.get(0), unObjetoRobado)
+		var objetoRobado =  new ArrayList(unSistema.posiblesObjetosRobados).get((Math.random() * (unSistema.posiblesObjetosRobados.size)).intValue)
+		val nombre = "Robo de " + objetoRobado.nombre
+		return new Caso(nombre, villano, new Reporte(rutaDeEscape.get(0), objetoRobado),
+			rutaDeEscape.get(0), objetoRobado)
 	}
 	
-	def filtrarConexiones(Set<Pais> listaDeConexiones, Pais pais) {
+	def filtrarConexiones(List<Pais> listaDeConexiones, Pais pais) {
 		listaDeConexiones.filter[!equals(pais)]
 	}
 	

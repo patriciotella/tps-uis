@@ -34,22 +34,32 @@ class Pais {
 	}
 	
 	def borrarCaracteristica(String caracteristica) {
-		this._caracteristicas.remove(caracteristica)
+		_caracteristicas.remove(caracteristica)
 		cambiaronCaracteristicas
 	}
 	
 	def borrarConexion(Pais conexion) {
-		this._conexiones.remove(conexion)
+		conexion.borrarConexionDeLista(this)
+		borrarConexionDeLista(conexion)
+	}
+	
+	private def borrarConexionDeLista(Pais conexion) {
+		_conexiones.remove(conexion)
+		cambiaronConexiones		
+	}
+	
+	private def agregarConexionALista(Pais conexion) {
+		_conexiones.add(conexion)
 		cambiaronConexiones
+	}
+	
+	def agregarConexion(Pais conexion) {
+		conexion.agregarConexionALista(this)
+		agregarConexionALista(conexion)
 	}
 	
 	private def cambiaronConexiones() {
 		ObservableUtils.firePropertyChanged(this,"conexiones",conexiones)
-	}
-	
-	def agregarConexion(Pais conexion) {
-		this._conexiones.add(conexion)
-		cambiaronConexiones
 	}
 	
 	override toString() {
@@ -93,10 +103,10 @@ class Pais {
 	}
 	
 	def void marcarComoUltimoPaisDeLaRutaDelVillano(Villano unVillano) {
-		val lugarDelVillano = _lugaresDeInteres.get((Math.random() * (_lugaresDeInteres.size - 0)).intValue) 
+		val lugarDelVillano = _lugaresDeInteres.head 
 		val lugaresFiltrados = _lugaresDeInteres.filter[!equals(lugarDelVillano)]
-		lugaresFiltrados.forEach[marcarComoEsconditeDelVillano(unVillano)]
-		lugarDelVillano.elVillanoEstaEnElPais(unVillano)
+		lugaresFiltrados.forEach[elVillanoEstaEnElPais(unVillano)]
+		lugarDelVillano.marcarComoEsconditeDelVillano(unVillano)
 	}
 	
 }
