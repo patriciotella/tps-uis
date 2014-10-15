@@ -1,4 +1,4 @@
-[0m[[0minfo[0m] [0mUpdating {file:/home/julian/Documentos/UNQ/UI-Workspace/HtmlViewTP2/carmen-sandiego/}carmen-sandiego...[0m
+[0m[[0minfo[0m] [0mUpdating {file:/C:/Users/Pato/Desktop/UNQ/UIs/WorkspaceUIs/HtmlViewTP2/carmen-sandiego/}carmen-sandiego...[0m
 [0m[[0mdebug[0m] [0m:: resolving dependencies :: carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT[0m
 [0m[[0mdebug[0m] [0m	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool][0m
 [0m[[0mdebug[0m] [0m	validate = true[0m
@@ -7,7 +7,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT [compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.10.3 ...[0m
-[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@3d319fc[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@aaacc0[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-library;2.10.3[0m
 [0m[[0mdebug[0m] [0m	local: revision in cache: org.scala-lang#scala-library;2.10.3[0m
 [0m[[0mdebug[0m] [0m	found org.scala-lang#scala-library;2.10.3 in sbt-chain[0m
@@ -16,7 +16,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.3 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT->com.typesafe.play#play_2.10;2.2.5 [compile->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving com.typesafe.play#play_2.10;2.2.5 ...[0m
-[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@6d11b913[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@46675a[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.typesafe.play#play_2.10;2.2.5[0m
 [0m[[0mdebug[0m] [0m	local: revision in cache: com.typesafe.play#play_2.10;2.2.5[0m
 [0m[[0mdebug[0m] [0m	found com.typesafe.play#play_2.10;2.2.5 in sbt-chain[0m
@@ -530,11 +530,11 @@
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: Carlines.org#UIs-UNQ-2014-Model;0.0.1-SNAPSHOT {compile=[default(compile)]}[0m
 [0m[[0mdebug[0m] [0mdon't use cache for Carlines.org#UIs-UNQ-2014-Model;0.0.1-SNAPSHOT: changing=true[0m
 [0m[[0mdebug[0m] [0mdon't use cache for Carlines.org#UIs-UNQ-2014-Model;0.0.1-SNAPSHOT: changing=true[0m
-[0m[[0mdebug[0m] [0m		tried /home/julian/Documentos/UNQ/play-2.2.5/repository/local/Carlines.org/UIs-UNQ-2014-Model/0.0.1-SNAPSHOT/ivys/ivy.xml[0m
+[0m[[0mdebug[0m] [0m		tried C:\Users\Pato\Desktop\UNQ\UIs\play-2.2.5\repository\local\Carlines.org\UIs-UNQ-2014-Model\0.0.1-SNAPSHOT\ivys\ivy.xml[0m
 [0m[[0mdebug[0m] [0m	local: no ivy file found for Carlines.org#UIs-UNQ-2014-Model;0.0.1-SNAPSHOT[0m
 [0m[[0mdebug[0m] [0mdon't use cache for Carlines.org#UIs-UNQ-2014-Model;0.0.1-SNAPSHOT: changing=true[0m
-[0m[[0mdebug[0m] [0m	maven-metadata not available: file:/home/julian/.m2/repository/Carlines/org/UIs-UNQ-2014-Model/0.0.1-SNAPSHOT/maven-metadata.xml[0m
-[0m[[0mdebug[0m] [0m		tried file:/home/julian/.m2/repository/Carlines/org/UIs-UNQ-2014-Model/0.0.1-SNAPSHOT/UIs-UNQ-2014-Model-0.0.1-SNAPSHOT.pom[0m
+[0m[[0mdebug[0m] [0m	maven-metadata not available: file:/C:/Users/Pato/.m2/repository/Carlines/org/UIs-UNQ-2014-Model/0.0.1-SNAPSHOT/maven-metadata.xml[0m
+[0m[[0mdebug[0m] [0m		tried file:/C:/Users/Pato/.m2/repository/Carlines/org/UIs-UNQ-2014-Model/0.0.1-SNAPSHOT/UIs-UNQ-2014-Model-0.0.1-SNAPSHOT.pom[0m
 [0m[[0mdebug[0m] [0m	Maven2 Local: no ivy file found for Carlines.org#UIs-UNQ-2014-Model;0.0.1-SNAPSHOT[0m
 [0m[[0mdebug[0m] [0mdon't use cache for Carlines.org#UIs-UNQ-2014-Model;0.0.1-SNAPSHOT: changing=true[0m
 [0m[[0mdebug[0m] [0mCLIENT ERROR: Not Found url=http://repo1.maven.org/maven2/Carlines/org/UIs-UNQ-2014-Model/0.0.1-SNAPSHOT/maven-metadata.xml[0m
@@ -560,9 +560,9 @@
 [0m[[0mdebug[0m] [0m	Typesafe Releases Repository: no ivy file found for Carlines.org#UIs-UNQ-2014-Model;0.0.1-SNAPSHOT[0m
 [0m[[33mwarn[0m] [0m	module not found: Carlines.org#UIs-UNQ-2014-Model;0.0.1-SNAPSHOT[0m
 [0m[[33mwarn[0m] [0m==== local: tried[0m
-[0m[[33mwarn[0m] [0m  /home/julian/Documentos/UNQ/play-2.2.5/repository/local/Carlines.org/UIs-UNQ-2014-Model/0.0.1-SNAPSHOT/ivys/ivy.xml[0m
+[0m[[33mwarn[0m] [0m  C:\Users\Pato\Desktop\UNQ\UIs\play-2.2.5\repository\local\Carlines.org\UIs-UNQ-2014-Model\0.0.1-SNAPSHOT\ivys\ivy.xml[0m
 [0m[[33mwarn[0m] [0m==== Maven2 Local: tried[0m
-[0m[[33mwarn[0m] [0m  file:/home/julian/.m2/repository/Carlines/org/UIs-UNQ-2014-Model/0.0.1-SNAPSHOT/UIs-UNQ-2014-Model-0.0.1-SNAPSHOT.pom[0m
+[0m[[33mwarn[0m] [0m  file:/C:/Users/Pato/.m2/repository/Carlines/org/UIs-UNQ-2014-Model/0.0.1-SNAPSHOT/UIs-UNQ-2014-Model-0.0.1-SNAPSHOT.pom[0m
 [0m[[33mwarn[0m] [0m==== public: tried[0m
 [0m[[33mwarn[0m] [0m  http://repo1.maven.org/maven2/Carlines/org/UIs-UNQ-2014-Model/0.0.1-SNAPSHOT/UIs-UNQ-2014-Model-0.0.1-SNAPSHOT.pom[0m
 [0m[[33mwarn[0m] [0m==== Typesafe Releases Repository: tried[0m
@@ -1701,7 +1701,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT->com.typesafe.play#play-java_2.10;2.2.5 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT->com.typesafe.play#play-test_2.10;2.2.5 [test->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving com.typesafe.play#play-test_2.10;2.2.5 ...[0m
-[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@60551563[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@15f57f5[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.typesafe.play#play-test_2.10;2.2.5[0m
 [0m[[0mdebug[0m] [0m	local: revision in cache: com.typesafe.play#play-test_2.10;2.2.5[0m
 [0m[[0mdebug[0m] [0m	found com.typesafe.play#play-test_2.10;2.2.5 in sbt-chain[0m
@@ -4662,7 +4662,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT [docs][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT->com.typesafe.play#play-docs_2.10;2.2.5 [docs->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving com.typesafe.play#play-docs_2.10;2.2.5 ...[0m
-[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@1de3e50c[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@1e1e8de[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.typesafe.play#play-docs_2.10;2.2.5[0m
 [0m[[0mdebug[0m] [0m	local: revision in cache: com.typesafe.play#play-docs_2.10;2.2.5[0m
 [0m[[0mdebug[0m] [0m	found com.typesafe.play#play-docs_2.10;2.2.5 in sbt-chain[0m
@@ -5159,7 +5159,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.3 [scala-tool->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.3 [scala-tool->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.3 [scala-tool->optional(default)][0m
-[0m[[0mdebug[0m] [0m	resolved ivy file produced in /home/julian/Documentos/UNQ/UI-Workspace/HtmlViewTP2/carmen-sandiego/target/resolution-cache/carmen-sandiego/carmen-sandiego_2.10/1.0-SNAPSHOT/resolved.xml.xml[0m
+[0m[[0mdebug[0m] [0m	resolved ivy file produced in C:\Users\Pato\Desktop\UNQ\UIs\WorkspaceUIs\HtmlViewTP2\carmen-sandiego\target\resolution-cache\carmen-sandiego\carmen-sandiego_2.10\1.0-SNAPSHOT\resolved.xml.xml[0m
 [0m[[0mdebug[0m] [0m:: downloading artifacts ::[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-library;2.10.3!scala-library.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] com.typesafe.play#play_2.10;2.2.5!play_2.10.jar[0m
@@ -5286,26 +5286,26 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-compiler;2.10.3!scala-compiler.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#jline;2.10.3!jline.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 16050ms :: artifacts dl 203ms[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 6770ms :: artifacts dl 421ms[0m
 [0m[[33mwarn[0m] [0m	::::::::::::::::::::::::::::::::::::::::::::::[0m
 [0m[[33mwarn[0m] [0m	::          UNRESOLVED DEPENDENCIES         ::[0m
 [0m[[33mwarn[0m] [0m	::::::::::::::::::::::::::::::::::::::::::::::[0m
 [0m[[33mwarn[0m] [0m	:: Carlines.org#UIs-UNQ-2014-Model;0.0.1-SNAPSHOT: not found[0m
 [0m[[33mwarn[0m] [0m	::::::::::::::::::::::::::::::::::::::::::::::[0m
-[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT compile produced in /home/julian/Documentos/UNQ/UI-Workspace/HtmlViewTP2/carmen-sandiego/target/resolution-cache/reports/carmen-sandiego-carmen-sandiego_2.10-compile.xml[0m
-[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT runtime produced in /home/julian/Documentos/UNQ/UI-Workspace/HtmlViewTP2/carmen-sandiego/target/resolution-cache/reports/carmen-sandiego-carmen-sandiego_2.10-runtime.xml[0m
-[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT test produced in /home/julian/Documentos/UNQ/UI-Workspace/HtmlViewTP2/carmen-sandiego/target/resolution-cache/reports/carmen-sandiego-carmen-sandiego_2.10-test.xml[0m
-[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT provided produced in /home/julian/Documentos/UNQ/UI-Workspace/HtmlViewTP2/carmen-sandiego/target/resolution-cache/reports/carmen-sandiego-carmen-sandiego_2.10-provided.xml[0m
-[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT optional produced in /home/julian/Documentos/UNQ/UI-Workspace/HtmlViewTP2/carmen-sandiego/target/resolution-cache/reports/carmen-sandiego-carmen-sandiego_2.10-optional.xml[0m
-[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT compile-internal produced in /home/julian/Documentos/UNQ/UI-Workspace/HtmlViewTP2/carmen-sandiego/target/resolution-cache/reports/carmen-sandiego-carmen-sandiego_2.10-compile-internal.xml[0m
-[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT runtime-internal produced in /home/julian/Documentos/UNQ/UI-Workspace/HtmlViewTP2/carmen-sandiego/target/resolution-cache/reports/carmen-sandiego-carmen-sandiego_2.10-runtime-internal.xml[0m
-[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT test-internal produced in /home/julian/Documentos/UNQ/UI-Workspace/HtmlViewTP2/carmen-sandiego/target/resolution-cache/reports/carmen-sandiego-carmen-sandiego_2.10-test-internal.xml[0m
-[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT plugin produced in /home/julian/Documentos/UNQ/UI-Workspace/HtmlViewTP2/carmen-sandiego/target/resolution-cache/reports/carmen-sandiego-carmen-sandiego_2.10-plugin.xml[0m
-[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT sources produced in /home/julian/Documentos/UNQ/UI-Workspace/HtmlViewTP2/carmen-sandiego/target/resolution-cache/reports/carmen-sandiego-carmen-sandiego_2.10-sources.xml[0m
-[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT docs produced in /home/julian/Documentos/UNQ/UI-Workspace/HtmlViewTP2/carmen-sandiego/target/resolution-cache/reports/carmen-sandiego-carmen-sandiego_2.10-docs.xml[0m
-[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT pom produced in /home/julian/Documentos/UNQ/UI-Workspace/HtmlViewTP2/carmen-sandiego/target/resolution-cache/reports/carmen-sandiego-carmen-sandiego_2.10-pom.xml[0m
-[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT scala-tool produced in /home/julian/Documentos/UNQ/UI-Workspace/HtmlViewTP2/carmen-sandiego/target/resolution-cache/reports/carmen-sandiego-carmen-sandiego_2.10-scala-tool.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (16050ms resolve - 203ms download)[0m
+[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT compile produced in C:\Users\Pato\Desktop\UNQ\UIs\WorkspaceUIs\HtmlViewTP2\carmen-sandiego\target\resolution-cache\reports\carmen-sandiego-carmen-sandiego_2.10-compile.xml[0m
+[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT runtime produced in C:\Users\Pato\Desktop\UNQ\UIs\WorkspaceUIs\HtmlViewTP2\carmen-sandiego\target\resolution-cache\reports\carmen-sandiego-carmen-sandiego_2.10-runtime.xml[0m
+[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT test produced in C:\Users\Pato\Desktop\UNQ\UIs\WorkspaceUIs\HtmlViewTP2\carmen-sandiego\target\resolution-cache\reports\carmen-sandiego-carmen-sandiego_2.10-test.xml[0m
+[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT provided produced in C:\Users\Pato\Desktop\UNQ\UIs\WorkspaceUIs\HtmlViewTP2\carmen-sandiego\target\resolution-cache\reports\carmen-sandiego-carmen-sandiego_2.10-provided.xml[0m
+[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT optional produced in C:\Users\Pato\Desktop\UNQ\UIs\WorkspaceUIs\HtmlViewTP2\carmen-sandiego\target\resolution-cache\reports\carmen-sandiego-carmen-sandiego_2.10-optional.xml[0m
+[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT compile-internal produced in C:\Users\Pato\Desktop\UNQ\UIs\WorkspaceUIs\HtmlViewTP2\carmen-sandiego\target\resolution-cache\reports\carmen-sandiego-carmen-sandiego_2.10-compile-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT runtime-internal produced in C:\Users\Pato\Desktop\UNQ\UIs\WorkspaceUIs\HtmlViewTP2\carmen-sandiego\target\resolution-cache\reports\carmen-sandiego-carmen-sandiego_2.10-runtime-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT test-internal produced in C:\Users\Pato\Desktop\UNQ\UIs\WorkspaceUIs\HtmlViewTP2\carmen-sandiego\target\resolution-cache\reports\carmen-sandiego-carmen-sandiego_2.10-test-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT plugin produced in C:\Users\Pato\Desktop\UNQ\UIs\WorkspaceUIs\HtmlViewTP2\carmen-sandiego\target\resolution-cache\reports\carmen-sandiego-carmen-sandiego_2.10-plugin.xml[0m
+[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT sources produced in C:\Users\Pato\Desktop\UNQ\UIs\WorkspaceUIs\HtmlViewTP2\carmen-sandiego\target\resolution-cache\reports\carmen-sandiego-carmen-sandiego_2.10-sources.xml[0m
+[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT docs produced in C:\Users\Pato\Desktop\UNQ\UIs\WorkspaceUIs\HtmlViewTP2\carmen-sandiego\target\resolution-cache\reports\carmen-sandiego-carmen-sandiego_2.10-docs.xml[0m
+[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT pom produced in C:\Users\Pato\Desktop\UNQ\UIs\WorkspaceUIs\HtmlViewTP2\carmen-sandiego\target\resolution-cache\reports\carmen-sandiego-carmen-sandiego_2.10-pom.xml[0m
+[0m[[0mdebug[0m] [0m	report for carmen-sandiego#carmen-sandiego_2.10;1.0-SNAPSHOT scala-tool produced in C:\Users\Pato\Desktop\UNQ\UIs\WorkspaceUIs\HtmlViewTP2\carmen-sandiego\target\resolution-cache\reports\carmen-sandiego-carmen-sandiego_2.10-scala-tool.xml[0m
+[0m[[0mdebug[0m] [0m	resolve done (6770ms resolve - 421ms download)[0m
 sbt.ResolveException: unresolved dependency: Carlines.org#UIs-UNQ-2014-Model;0.0.1-SNAPSHOT: not found
 	at sbt.IvyActions$.sbt$IvyActions$$resolve(IvyActions.scala:213)
 	at sbt.IvyActions$$anonfun$update$1.apply(IvyActions.scala:122)
@@ -5351,10 +5351,10 @@ sbt.ResolveException: unresolved dependency: Carlines.org#UIs-UNQ-2014-Model;0.0
 	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:237)
 	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:160)
 	at sbt.CompletionService$$anon$2.call(CompletionService.scala:30)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
-	at java.lang.Thread.run(Thread.java:745)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
 [0m[[31merror[0m] [0m(*:[31mupdate[0m) sbt.ResolveException: unresolved dependency: Carlines.org#UIs-UNQ-2014-Model;0.0.1-SNAPSHOT: not found[0m
