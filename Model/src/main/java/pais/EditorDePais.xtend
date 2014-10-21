@@ -4,6 +4,8 @@ import java.util.HashSet
 import java.util.Set
 import lugarDeInteres.LugarDeInteres
 import mapamundi.Mapamundi
+import java.util.List
+import java.util.ArrayList
 
 class EditorDePais {
 	
@@ -13,7 +15,7 @@ class EditorDePais {
 	String nombre
 	
 	@Property
-	Set<Pais> conexiones
+	List<Pais> conexiones
 	
 	@Property
 	Set<String> caracteristicas
@@ -27,7 +29,7 @@ class EditorDePais {
 		this._mapamundi = mapamundi
 		this._pais = pais
 		_nombre = pais.nombre
-		_conexiones = new HashSet(pais.conexiones)
+		_conexiones = new ArrayList(pais.conexiones)
 		_caracteristicas = new HashSet(pais.caracteristicas)
 		_lugaresDeInteres = new HashSet(pais.lugaresDeInteres)
 	}
@@ -35,7 +37,7 @@ class EditorDePais {
 	new(Mapamundi mapamundi) {
 		_mapamundi = mapamundi
 		_nombre = ""
-		_conexiones = newHashSet
+		_conexiones = newArrayList
 		_caracteristicas = newHashSet
 		_lugaresDeInteres = newHashSet	
 	}

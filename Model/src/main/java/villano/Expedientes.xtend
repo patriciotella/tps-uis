@@ -1,0 +1,32 @@
+package villano
+
+import java.util.List
+
+class Expedientes {
+	@Property List<Villano> villanos;
+	
+	new() {
+		villanos = newArrayList()
+	}
+	
+	new(List<Villano> villanos) {
+		this.villanos = villanos
+	}
+	
+	def agregarVillano(Villano unVillano) {
+		villanos.add(unVillano)
+	}
+	
+	def eliminarVillano(Villano unVillano){
+		villanos.remove(unVillano)
+	}
+	
+	def getVillanoPorNombre(String nombreDeVillano) {
+		val villanoConNombre = villanos.filter[nombre == nombreDeVillano]
+		if(villanoConNombre.empty)
+			villanos.filter[nombre == nombreDeVillano].head
+		else
+			throw new RuntimeException
+	}
+	
+}

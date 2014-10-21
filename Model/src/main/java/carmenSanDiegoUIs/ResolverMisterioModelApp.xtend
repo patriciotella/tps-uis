@@ -2,20 +2,22 @@ package carmenSanDiegoUIs
 
 import java.util.ArrayList
 import villano.Villano
+import pais.Pais
+import villano.Expedientes
 
 class ResolverMisterioModelApp {
 	
-	Sistema repositorio
+	Expedientes expedientesDeVillanos
 	
-	@Property Juego juegoActual
+	Juego juegoActual
 	
-	new(Sistema unRepositorio){
-		repositorio = unRepositorio
-		juegoActual = new Juego(repositorio)
+	new(Expedientes expedientes){
+		expedientesDeVillanos = expedientes
+//		juegoActual = new Juego(repositorio)
 	}
 	
-	def villanos() {
-		repositorio.villanos
+	def getVillanos() {
+		expedientesDeVillanos
 	}
 	
 	def getNombreDelCaso() {
@@ -24,22 +26,6 @@ class ResolverMisterioModelApp {
 	
 	def getLugaresDeInteresActuales() {
 		new ArrayList(juegoActual.paisActual.lugaresDeInteres)
-	}
-	
-	def getPrimerLugarDeInteres() {
-		getLugarDeInteres(0)
-	}
-	
-	def getSegundoLugarDeInteres() {
-		getLugarDeInteres(1)
-	}
-	
-	def getTercerLugarDeInteres() {
-		getLugarDeInteres(2)
-	}
-	
-	def private getLugarDeInteres(int indiceDelLugar) {
-		lugaresDeInteresActuales.get(indiceDelLugar)
 	}
 	
 	def determinarSiEstaEnUnPaisFallido() {
@@ -67,6 +53,30 @@ class ResolverMisterioModelApp {
 	}
 	
 	def getVillanoAcusado() {
-		_juegoActual.villanoAcusado
+		juegoActual.villanoAcusado
+	}
+	
+	def iniciarJuego(Juego unJuego) {
+		juegoActual = unJuego
+	}
+	
+	def getPistaDePaisActual(String nombreDeLugarDeInteres) {
+		juegoActual.getPistaDeLugarDeInteres(nombreDeLugarDeInteres)
+	}
+	
+	def getVillano(String nombreDelVillano) {
+		expedientesDeVillanos.getVillanoPorNombre(nombreDelVillano)
+	}
+	
+	def getDestino(String nombreDelDestino) {
+		juegoActual.getDestinoPorNombre(nombreDelDestino)
+	}
+	
+	def viajarADestino(Pais unPais) {
+		juegoActual.viajarAPais(unPais)
+	}
+	
+	def getJuegoActual() {
+		juegoActual
 	}
 }

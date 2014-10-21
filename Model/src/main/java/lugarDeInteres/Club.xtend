@@ -6,6 +6,7 @@ class Club extends LugarDeInteres {
 	new() {
 		super()
 	}
+	
 	override darPistaSegunPolitica() {
 		val high = villano.seniasParticulares.size
 		var randomInt = (Math.random() * ( high - 0 )).intValue

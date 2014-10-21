@@ -17,21 +17,21 @@ class EditorDeLugaresDeInteresTest {
 	Pais argentina
 	Mapamundi mapamundi
 	
-	@Before
-	def void setUp() {
-		argentina = new Pais("Argentina", 
-			newHashSet => [add("Toman mate")],
-			newHashSet, newHashSet => [
-				add(new Club) add(new Banco) add(new Embajada)
-			]
-		)
-		mapamundi = new Mapamundi => [agregarPais(argentina)]
-		editorDePais = new EditorDePais(mapamundi, argentina)
-		editorDeLugares = new EditorDeLugaresDeInteres(editorDePais)
-	}
-	
-	@Test
-	def testLosLugaresPosiblesSonLaDiferenciaEntreLosLugaresDeInteresDelPaisYTodosLosLugaresDeInteres() {
-		assertEquals(editorDeLugares.lugaresPosibles.get(0).class, new Biblioteca.class)
-	}
+//	@Before
+//	def void setUp() {
+//		argentina = new Pais("Argentina", 
+//			newHashSet => [add("Toman mate")],
+//			newHashSet, newHashSet => [
+//				add(new Club) add(new Banco) add(new Embajada)
+//			]
+//		)
+//		mapamundi = new Mapamundi => [agregarPais(argentina)]
+//		editorDePais = new EditorDePais(mapamundi, argentina)
+//		editorDeLugares = new EditorDeLugaresDeInteres(editorDePais)
+//	}
+//	
+//	@Test
+//	def testLosLugaresPosiblesSonLaDiferenciaEntreLosLugaresDeInteresDelPaisYTodosLosLugaresDeInteres() {
+//		assertEquals(editorDeLugares.lugaresPosibles.get(0).class, new Biblioteca.class)
+//	}
 }

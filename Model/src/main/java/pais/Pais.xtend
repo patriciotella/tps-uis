@@ -3,12 +3,13 @@ package pais
 import java.util.Set
 import lugarDeInteres.LugarDeInteres
 import villano.Villano
+import java.util.List
 
 class Pais {
 	@Property String nombre
 	@Property Set<String> caracteristicas
 	@Property Set<LugarDeInteres> lugaresDeInteres
-	@Property Set<Pais> conexiones
+	@Property List<Pais> conexiones
 	
 	def agregarCaracteristica(String caracteristica) {
 		this._caracteristicas.add(caracteristica)
@@ -19,7 +20,7 @@ class Pais {
 	}
 	
 	new(String unNombre, Set<String> caracteristicas,
-		Set<Pais> conexiones, Set<LugarDeInteres> lugaresDeInteres) {
+		List<Pais> conexiones, Set<LugarDeInteres> lugaresDeInteres) {
 		if(unNombre.empty || caracteristicas.empty || lugaresDeInteres.size < 3) {
 			throw new RuntimeException("El país debe tener nombre, al menos una característica y exactamente 3 lugares de interés.")
 		}
@@ -50,7 +51,7 @@ class Pais {
 	}
 	
 	def agregarConexion(Pais conexion) {
-		conexion.agregarConexionALista(this)
+//		conexion.agregarConexionALista(this)
 		agregarConexionALista(conexion)
 	}
 	
@@ -101,6 +102,11 @@ class Pais {
 		val lugaresFiltrados = _lugaresDeInteres.filter[!equals(lugarDelVillano)]
 		lugaresFiltrados.forEach[elVillanoEstaEnElPais(unVillano)]
 		lugarDelVillano.marcarComoEsconditeDelVillano(unVillano)
+	}
+	
+	def getPistaDeLugar(String nombreDelLugar) {
+		val lugar = _lugaresDeInteres.filter[nombre != nombreDelLugar]
+		return lugar.head.pista
 	}
 	
 }

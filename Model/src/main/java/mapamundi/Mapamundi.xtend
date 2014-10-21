@@ -2,15 +2,16 @@ package mapamundi
 
 import java.util.Set
 import pais.Pais
+import java.util.List
 
 class Mapamundi {
-	@Property Set<Pais> paises
+	@Property List<Pais> paises
 	
 	new() {
-		paises = newHashSet()
+		paises = newArrayList()
 	}
 	
-	new(Set<Pais> paises) {
+	new(List<Pais> paises) {
 		this.paises = paises
 	}
 	
