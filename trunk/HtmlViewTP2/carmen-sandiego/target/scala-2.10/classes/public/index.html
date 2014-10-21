@@ -13,7 +13,7 @@
 <script src="javascripts/controllers.js"></script>
 
 </head>
-<body ng-app="carmenSanDiegoApp" ng-controller="PaisesCtrl"
+<body ng-app="carmenSanDiegoApp" ng-controller="Controller"
 	background= "images/mapamundi.png">
 	<div class="modal fade" id='myModal'>
 		<div class="modal-dialog">
@@ -64,15 +64,15 @@
 			<h2> Detective!! Tenemos un caso para usted:</h2>
 			<div class="alert alert-danger" role="alert">
   				<p>
-  					OH NO! SE ROBARON UN DIAMANTE DEL MUSEO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! AHUDA DETECTIVE, SOLO TU PUEDES HACERLO!!!!!!!!!!!!!!!11
+  					{{descripcionDelCaso}}
   				</p>
 			</div>
 		</div>
 	</div>
 	<div class="tab-pane fade active in" id="jugar">
 
-		<div data-ng-controller="PaisesCtrl">
-			<h2>Est&aacute;s en: {{paisActual.nombrePais}}</h2>
+		<div >
+			<h2>Est&aacute;s en: {{paisActual.nombre}}</h2>
 
 
 			<div class="columnaIzquierda">
@@ -101,24 +101,24 @@
 			}
 		</script>
 		<div class="columnaCentral">
-			<div data-ng-controller="LugaresCtrl">
+			<div>
 				<h3>Lugares</h3>
 				<div class="btn-toolbar" role="toolbar">
 					<div class="btn-group">
 						<button type="button" class="btn btn-default lugar-button"
 							data-toggle="modal" data-target="#myModal"
-							title="Visitar lugar para obtener pista" id={{lugar.nombreLugar}}
+							title="Visitar lugar para obtener pista" id={{lugar.nombre}}
 							onclick="mostrarNombreDelLugar(this.id)"
-							ng-repeat="lugar in lugares">{{lugar.nombreLugar}}</button>
+							ng-repeat="lugar in paisActual.lugaresDeInteres">{{lugar.nombre}}</button>
 					</div>
 				</div>
 			</div>
 
 			<div>
 				<h3>Viajar a :</h3>
-				<div data-ng-controller="PaisesCtrl" class="viajarABoton">
+				<div class="viajarABoton">
 					<select class="input-large">
-						<option ng-repeat="destino in destinos">{{destino.nombrePais}}</option>
+						<option ng-repeat="destino in paisActual.conexiones">{{destino.nombre}}</option>
 					</select>
 					<button class="btn btn-success">Viajar</button>
 				</div>
@@ -126,7 +126,7 @@
 		</div>
 		<div class="columnaDerecha">
 			<h3>Emitir orden de arresto para:</h3>
-			<div data-ng-controller="VillanosCtrl">
+			<div>
 				<select class="input-large">
 					<option ng-repeat="villano in villanos">{{villano.nombre}}</option>
 				</select>
