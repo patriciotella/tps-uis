@@ -16,10 +16,10 @@ class Juego {
 	
 	val casoFactory = new CasoFactory
 	 
-	new(Sistema unRepositorio){
+	new(Repositorio unRepositorio){
 		recorridoCriminal = new HashSet
 		destinosFallidos = new HashSet
-		casoAResolver =  casoFactory.crearCaso(unRepositorio)
+		casoAResolver =  casoFactory.crearCasoDefault(unRepositorio)
 		paisActual = casoAResolver.paisDondeOcurrio
 	}
 	
@@ -35,12 +35,6 @@ class Juego {
 		paisAnterior = paisActual
 		paisActual = unPais
 	}
-	
-	/*No se me ocurre dónde hacer esta validación, puede ser cuando viaja 
-	 * o cada vez que haces click en un lugar de interés así
-	 * no sabés si la cagaste y recorrés los lugares de interés
-	 */
-	
 	
 	def Villano getVillanoAcusado() {
 		villanoAcusado
@@ -77,4 +71,13 @@ class Juego {
 	def getPaisAnterior() {
 		paisAnterior
 	}
+	
+	def getPistaDeLugarDeInteres(String nombreLugarDeInteres) {
+		paisActual.getPistaDeLugar(nombreLugarDeInteres)
+	}
+	
+	def getDestinoPorNombre(String nombreDelDestino) {
+		paisActual.conexiones.filter[nombre == nombreDelDestino].head
+	}
+	
 }

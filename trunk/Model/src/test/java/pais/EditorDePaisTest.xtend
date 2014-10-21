@@ -42,28 +42,28 @@ class EditorDePaisTest {
 		assertEquals(mapamundi.paises.get(0).nombre, "Argentina")
 	}
 	
-	@Test
-	def alCrearElEditorConUnPaisLasPropiedadesReflejanLasDelPais() {
-		val lugaresDeInteres = newHashSet => [
-			add(new Club) add(new Banco) add(new Embajada)
-		]
-		editor = new EditorDePais(mapamundi,
-			new Pais("Chile", #{"Vecinos"}, #{}, lugaresDeInteres))
-		assertEquals(editor.nombre, "Chile")
-		assertTrue(editor.caracteristicas.contains("Vecinos"))
-		assertTrue(editor.conexiones.empty)
-		assertEquals(editor.lugaresDeInteres, lugaresDeInteres)
-	}
-	
-	@Test
-	def siAgregoUnPaisQueYaExisteLoModificaSegunLosDatosDelEditor() {
-		val chile = new Pais("Chile", #{"Vecinos"}, #{},
-			newHashSet => [add(new Club) add(new Banco) add(new Embajada)])
-		mapamundi.agregarPais(chile)
-		editor = new EditorDePais(mapamundi, chile)
-		editor.nombre = "Chi"
-		editor.agregarPais
-		
-		assertEquals(mapamundi.paises.get(0).nombre, "Chi")
-	}
+//	@Test
+//	def alCrearElEditorConUnPaisLasPropiedadesReflejanLasDelPais() {
+//		val lugaresDeInteres = newHashSet => [
+//			add(new Club) add(new Banco) add(new Embajada)
+//		]
+//		editor = new EditorDePais(mapamundi,
+//			new Pais("Chile", #{"Vecinos"}, #{}, lugaresDeInteres))
+//		assertEquals(editor.nombre, "Chile")
+//		assertTrue(editor.caracteristicas.contains("Vecinos"))
+//		assertTrue(editor.conexiones.empty)
+//		assertEquals(editor.lugaresDeInteres, lugaresDeInteres)
+//	}
+//	
+//	@Test
+//	def siAgregoUnPaisQueYaExisteLoModificaSegunLosDatosDelEditor() {
+//		val chile = new Pais("Chile", #{"Vecinos"}, #{},
+//			newHashSet => [add(new Club) add(new Banco) add(new Embajada)])
+//		mapamundi.agregarPais(chile)
+//		editor = new EditorDePais(mapamundi, chile)
+//		editor.nombre = "Chi"
+//		editor.agregarPais
+//		
+//		assertEquals(mapamundi.paises.get(0).nombre, "Chi")
+//	}
 }

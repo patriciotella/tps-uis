@@ -2,6 +2,7 @@ package carmenSanDiegoUIs
 
 import java.util.Set
 import pais.Pais
+import java.util.List
 
 class ViajarModelApp {
 	
@@ -10,7 +11,7 @@ class ViajarModelApp {
 	@Property
 	Pais paisSeleccionado
 	
-	Set<Pais> posiblesPaises
+	List<Pais> posiblesPaises
 	
 	Juego juego
 	

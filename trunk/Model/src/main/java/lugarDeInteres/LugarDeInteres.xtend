@@ -4,21 +4,27 @@ import villano.Villano
 
 abstract class LugarDeInteres {
 	
-	private Ocupante ocupante
+	@Property Ocupante ocupante
 	private Pais proximoPaisDondeFueElMalechor
 	private Villano villano
 	private EstadoDeLugarDeInteres estado
+	private String nombre
 	
 	protected new() {
 		this.ocupante = new Cuidador()
+		this.nombre = this.class.toString.substring(21)
 	}
 	
 	override toString() {
-		this.class.toString.substring(21)
+		nombre
+	}
+	
+	def getNombre() {
+		nombre
 	}
 	
 	def pista() {
-		ocupante.pista(this)
+		_ocupante.pista(this)
 	}
 	
 	def getEstado() {
