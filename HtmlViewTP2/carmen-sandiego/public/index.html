@@ -34,6 +34,43 @@
 			</div>
 		</div>
 	</div>
+	
+		<div class="modal fade" id='modalVillano'>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only"></span>
+					</button>
+					<h3 class="modal-title"> Estas inspeccionando al villano: #NOMBREdelVILLANO</h3>
+				</div>
+				<div class="modal-body">
+					<span><h4>Sexo: #SEXOdelVILLANO</h4></span>
+					<span>
+						<h4> Caracteristicas particulares: <h4>
+						<table class="table table-striped">
+							<tr ng-repeat="caracteristica in caracteristicas">
+								<td>{{caracteristica}}</td>
+							</tr>
+						</table>
+					</span>	
+					<span>
+						<h4> Hobbies: <h4>
+						<table class="table table-striped">
+							<tr ng-repeat="hobbie in hobbies">
+								<td>{{hobbie}}</td>
+							</tr>
+						</table>
+					</span>					
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<h1>&iquest;D&oacute;nde est&aacute; Carmen San Diego?</h1>
 	<ul id="myTab" class="nav nav-tabs" role="tablist">
 		<li class=""><a href="#caso" role="tab" data-toggle="tab"
@@ -100,6 +137,12 @@
 						+ id
 			}
 		</script>
+		<script>
+			function mostrarNombreVillano(idVillano){
+				$('.modal-title')[0].innerHTML = 'Est&aacute;s inspeccionando a: '
+					+ idVillano
+			}
+		</script>
 		<div class="columnaCentral">
 			<div>
 				<h3>Lugares</h3>
@@ -130,7 +173,11 @@
 				<select class="input-large">
 					<option ng-repeat="villano in villanos">{{villano.nombre}}</option>
 				</select>
-				<button class="btn btn-danger">Detalles</button>
+				<button class="btn btn-danger" 
+						data-toggle="modal" data-target="#modalVillano"
+						title="Ver caracteristicas del villano seleccionado" id={{villano.nombre}}
+						onclick="mostrarNombreDelVillano(this.id)">Detalles</button>
+
 				<button class="btn btn-success">Emitir orden</button>
 			</div>
 		</div>
