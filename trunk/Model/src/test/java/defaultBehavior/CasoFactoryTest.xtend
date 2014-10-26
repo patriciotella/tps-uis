@@ -1,28 +1,29 @@
 package defaultBehavior
 
-import static org.junit.Assert.*;
-
-import org.junit.Before;
-import org.junit.Test;
-import carmenSanDiegoUIs.Repositorio
-import villano.Expedientes
-import java.util.ArrayList
-import carmenSanDiegoUIs.ObjetoRobado
-import java.util.HashSet
-import mapamundi.Mapamundi
-import lugarDeInteres.Biblioteca
-import lugarDeInteres.Embajada
-import lugarDeInteres.Club
-import pais.Pais
-import lugarDeInteres.Banco
-import villano.Villano
 import carmenSanDiegoUIs.Juego
+import carmenSanDiegoUIs.ObjetoRobado
+import carmenSanDiegoUIs.Repositorio
+import java.util.ArrayList
+import java.util.HashSet
+import lugarDeInteres.Banco
+import lugarDeInteres.Biblioteca
+import lugarDeInteres.Club
+import lugarDeInteres.Embajada
+import mapamundi.Mapamundi
+import org.junit.Before
+import org.junit.Test
+import pais.Pais
+import villano.Expedientes
+import villano.Villano
+
+import static org.junit.Assert.*
 
 class CasoFactoryTest {
 	
 	Repositorio repositorio
 	Pais argentina
 	Villano alberto
+	Juego juego
 	
 	@Before
 	def void setUp(){
@@ -151,7 +152,7 @@ class CasoFactoryTest {
 			]
 		)
 		val eeuu = new Pais(
-			"Estado Unidos",
+			"Estados Unidos",
 			newHashSet => [
 				add("Bandera con 50 estrellas")
 			],
@@ -217,12 +218,20 @@ class CasoFactoryTest {
 		val expedientes = new Expedientes(villanos)
 		
 		repositorio = new Repositorio(mapamundi, expedientes, objetosRobados)
+		juego = new Juego(repositorio)
 	}
 	
 	@Test
 	def void test(){
-		val juego = new Juego(repositorio)
 		assertEquals(juego.paisActual, argentina)
 		assertEquals(juego.getCaso.responsable, alberto)
+	}
+	
+	@Test
+	def void test2(){
+		val ultimoPaisDeRutaDeEscape = juego.caso.planDeEscape.last
+		assertEquals(ultimoPaisDeRutaDeEscape.nombre, "Estados Unidos")
+		assertEquals(ultimoPaisDeRutaDeEscape.getPistaDeLugar("Embajada"), "Tenga cuidado, el villano está en el lugar")
+		assertEquals(ultimoPaisDeRutaDeEscape.getPistaDeLugar("Club"), "CUIDADO DETECTIVE! Ha estado a punto de caer en una trampa... la persona que busca está en la ciudad.")
 	}
 }

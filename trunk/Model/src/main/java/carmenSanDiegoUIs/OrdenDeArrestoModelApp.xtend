@@ -14,7 +14,7 @@ class OrdenDeArrestoModelApp {
 	}
 	
 	def emitirOrdenDeArresto() {
-		juego.emitirOrdenDeArresto(villanoSeleccionado)
+//		juego.emitirOrdenDeArresto(villanoSeleccionado)
 	}
 	
 	def isSeleccionoVillano() {

@@ -24,9 +24,9 @@ class Expedientes {
 	def getVillanoPorNombre(String nombreDeVillano) {
 		val villanoConNombre = villanos.filter[nombre == nombreDeVillano]
 		if(villanoConNombre.empty)
-			villanos.filter[nombre == nombreDeVillano].head
-		else
 			throw new RuntimeException
+		else
+			villanoConNombre.head
 	}
 	
 }

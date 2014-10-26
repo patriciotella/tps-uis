@@ -13,12 +13,13 @@ class Caso {
 	String nombre
 	
 	new (String nombre, Villano villanoResponsable, Reporte reporteDelCaso,
-			Pais paisDondeOcurrio, ObjetoRobado objetoRobado) {
+			Pais paisDondeOcurrio, ObjetoRobado objetoRobado, Set<Pais> planDeEscape) {
 		this.nombre = nombre
 		responsable = villanoResponsable
 		this.paisDondeOcurrio = paisDondeOcurrio
 		reporte = reporteDelCaso
 		this.objetoRobado = objetoRobado
+		this.planDeEscape = planDeEscape
 	}
 	
 	def getNombre() {

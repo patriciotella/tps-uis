@@ -68,7 +68,7 @@ class CasoFactory {
 		val nombre = "Robo de " + objetoRobado.nombre
 		
 		return new Caso(nombre, villano, new Reporte(rutaDeEscape.get(0), objetoRobado),
-			rutaDeEscape.get(0), objetoRobado)
+			rutaDeEscape.get(0), objetoRobado, rutaDeEscape.toSet)
 	}
 	
 }
