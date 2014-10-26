@@ -3,8 +3,7 @@
 
 <head>
 <title>Carmen San Diego UIs</title>
-<link href="lib/css/bootstrap.min.css" rel="stylesheet"
-	media="screen">
+<link href="lib/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="stylesheets/main.css" rel="stylesheet">
 
 <script src="lib/jquery-2.1.1.min.js"></script>
@@ -14,7 +13,7 @@
 
 </head>
 <body ng-app="carmenSanDiegoApp" ng-controller="Controller"
-	background= "images/mapamundi.png">
+	background="images/mapamundi.png">
 	<div class="modal fade" id='myModal'>
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -22,47 +21,38 @@
 					<button type="button" class="close" data-dismiss="modal">
 						<span aria-hidden="true">&times;</span><span class="sr-only"></span>
 					</button>
-					<h4 class="modal-title"></h4>
+					<h4 class="modal-title titulo"></h4>
 				</div>
 				<div class="modal-body">
-					<p>El villano puede que haya pasado por aquí, no te puedo
-						decir...&hellip;</p>
+					<p class="pistaDelLugar">{{pista}}&hellip;</p>
 				</div>
 				<div class="modal-footer">
+					<button type="button" class="btn btn-default" ng-show="escondeAlVillano" data-ng-click="finalizarJuego()">Resolver Caso</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-		<div class="modal fade" id='modalVillano'>
+
+	<div class="modal fade" id='modalVillano'>
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">
 						<span aria-hidden="true">&times;</span><span class="sr-only"></span>
 					</button>
-					<h3 class="modal-title"> Estas inspeccionando al villano: #NOMBREdelVILLANO</h3>
+					<h3 class="modal-title">Villano: {{villanoSeleccionado}}</h3>
 				</div>
 				<div class="modal-body">
-					<span><h4>Sexo: #SEXOdelVILLANO</h4></span>
-					<span>
-						<h4> Caracteristicas particulares: <h4>
-						<table class="table table-striped">
-							<tr ng-repeat="caracteristica in caracteristicas">
-								<td>{{caracteristica}}</td>
-							</tr>
-						</table>
-					</span>	
-					<span>
-						<h4> Hobbies: <h4>
-						<table class="table table-striped">
-							<tr ng-repeat="hobbie in hobbies">
-								<td>{{hobbie}}</td>
-							</tr>
-						</table>
-					</span>					
-					
+					<span><h4>Sexo: {{sexoDelVillano}}</h4></span> <span>
+						<h4>Caracteristicas particulares:</h4> <label class="datoVillano"
+						ng-repeat="caracteristica in caracteristicasDelVillano">
+							{{caracteristica}} </label>
+					</span> <span>
+						<h4>Hobbies:</h4> <label class="datoVillano"
+						ng-repeat="hobbie in hobbiesDelVillano"> {{hobbie}} </label>
+					</span>
+
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
@@ -70,7 +60,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<h1>&iquest;D&oacute;nde est&aacute; Carmen San Diego?</h1>
 	<ul id="myTab" class="nav nav-tabs" role="tablist">
 		<li class=""><a href="#caso" role="tab" data-toggle="tab"
@@ -81,51 +71,49 @@
 
 	<script>
 		function casoTab() {
-// 			$("#jugar").hide();
+			// 			$("#jugar").hide();
 			$('#myTab a:first').off('click');
 			$("#casoBody").show();
-// 			$('#myTab a:first').tab('show');
+			// 			$('#myTab a:first').tab('show');
 		}
 	</script>
 
 	<script>
-		function jugarTab(){
+		function jugarTab() {
 			$("#casoBody").hide();
-// 			$("#jugar").show();
-// 			$('#myTab a:last').tab('show');
+			// 			$("#jugar").show();
+			// 			$('#myTab a:last').tab('show');
 		}
 	</script>
 
 	<div class="tab-pane fade active in" id="caso">
 		<div class='hide' id="casoBody">
-			<h2> Detective!! Tenemos un caso para usted:</h2>
-			<div class="alert alert-danger" role="alert">
-  				<p>
-  					{{descripcionDelCaso}}
-  				</p>
+			<h2 class="tituloCaso">Detective, tenemos un caso para usted:</h2>
+			<div class="alert alert-info msgCaso" role="alert">
+				<p>{{descripcionDelCaso}}</p>
 			</div>
 		</div>
 	</div>
 	<div class="tab-pane fade active in" id="jugar">
 
-		<div >
+		<div>
 			<h2>Est&aacute;s en: {{paisActual.nombre}}</h2>
 
 
 			<div class="columnaIzquierda">
 				<div>
 					<h3>Paises recorridos:</h3>
-					<table class="table table-striped">
-						<tr ng-repeat="pais in paises">
-							<td>{{pais.nombrePais}}</td>
+					<table class="table table-striped tablaPaises">
+						<tr ng-repeat="pais in paisesPorDondePasoElCriminal">
+							<td style="text-align: center">{{pais.nombre}}</td>
 					</table>
 				</div>
 
 				<div>
 					<h3>Destinos fallidos:</h3>
-					<table class="table table-striped">
-						<tr ng-repeat="paisFallido in paisesFallidos">
-							<td>{{paisFallido.nombrePais}}</td>
+					<table class="table table-striped tablaPaises">
+						<tr ng-repeat="paisFallido in destinosFallidos">
+							<td style="text-align: center">{{paisFallido.nombre}}</td>
 						</tr>
 					</table>
 				</div>
@@ -134,16 +122,24 @@
 		<script>
 			function mostrarNombreDelLugar(id) {
 				$('.modal-title')[0].innerHTML = 'Est&aacute;s visitando: '
-						+ id
+						+ id;
+				$('.modal-title')[0].id = id;
 			}
 		</script>
 		<script>
-			function mostrarNombreVillano(idVillano){
-				$('.modal-title')[0].innerHTML = 'Est&aacute;s inspeccionando a: '
-					+ idVillano
+			function mostrarNombreVillano(idVillano) {
+				document.getElementById('modalVillano').innerHTML = 'Est&aacute;s inspeccionando a: '
+						+ idVillano
 			}
 		</script>
 		<div class="columnaCentral">
+			<div class="row alert alert-success msgSucc"
+				ng-show="msgs.length > 0" role="alert">
+				<ul class="example-animate-container">
+					<li class="message bg-success animate-repeat"
+						data-ng-repeat="msg in msgs">{{msg}}</li>
+				</ul>
+			</div>
 			<div>
 				<h3>Lugares</h3>
 				<div class="btn-toolbar" role="toolbar">
@@ -152,6 +148,7 @@
 							data-toggle="modal" data-target="#myModal"
 							title="Visitar lugar para obtener pista" id={{lugar.nombre}}
 							onclick="mostrarNombreDelLugar(this.id)"
+							data-ng-click="mostrarLugarConPista()"
 							ng-repeat="lugar in paisActual.lugaresDeInteres">{{lugar.nombre}}</button>
 					</div>
 				</div>
@@ -160,25 +157,34 @@
 			<div>
 				<h3>Viajar a :</h3>
 				<div class="viajarABoton">
-					<select class="input-large">
+					<select class="input-large" ng-model="paisSeleccionado">
 						<option ng-repeat="destino in paisActual.conexiones">{{destino.nombre}}</option>
 					</select>
-					<button class="btn btn-success">Viajar</button>
+					<button class="btn btn-success" data-ng-click="viajarAPais()"
+						ng-disabled="!paisSeleccionado"
+						title="Viajar al pais seleccionado">Viajar</button>
+					<button class="btn btn-danger"
+						data-ng-click="viajarAPaisAnterior()" ng-show="paisAnterior"
+						title="Volver al pais anterior">Volver</button>
 				</div>
 			</div>
 		</div>
 		<div class="columnaDerecha">
 			<h3>Emitir orden de arresto para:</h3>
 			<div>
-				<select class="input-large">
+				<select class="input-large" ng-model="villanoSeleccionado">
 					<option ng-repeat="villano in villanos">{{villano.nombre}}</option>
 				</select>
-				<button class="btn btn-danger" 
-						data-toggle="modal" data-target="#modalVillano"
-						title="Ver caracteristicas del villano seleccionado" id={{villano.nombre}}
-						onclick="mostrarNombreDelVillano(this.id)">Detalles</button>
+				<button class="btn btn-danger" data-toggle="modal"
+					data-target="#modalVillano"
+					title="Ver caracteristicas del villano seleccionado"
+					id={{villano.nombre}} data-ng-click="mostrarDetallesDelVillano()"
+					ng-disabled="!villanoSeleccionado">Detalles</button>
 
-				<button class="btn btn-success">Emitir orden</button>
+				<button class="btn btn-success" data-ng-click="acusarVillano()"
+					title="Emitir orden de arresto contra villano"
+					ng-hide="villanoAcusado" ng-disabled="!villanoSeleccionado">Emitir
+					orden</button>
 			</div>
 		</div>
 	</div>
