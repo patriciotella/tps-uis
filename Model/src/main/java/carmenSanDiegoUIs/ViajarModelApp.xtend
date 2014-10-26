@@ -45,8 +45,8 @@ class ViajarModelApp {
 		juego.viajarAPais(_paisSeleccionado)
 	}
 	
-	def isHayPaisAnterior(){
-		juego.paisAnterior != null
-	}
+//	def isHayPaisAnterior(){
+//		juego.paisAnterior != null
+//	}
 	
 }

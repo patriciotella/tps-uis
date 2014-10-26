@@ -105,7 +105,7 @@ class Pais {
 	}
 	
 	def getPistaDeLugar(String nombreDelLugar) {
-		val lugar = _lugaresDeInteres.filter[nombre != nombreDelLugar]
+		val lugar = _lugaresDeInteres.filter[nombre == nombreDelLugar]
 		return lugar.head.pista
 	}
 	

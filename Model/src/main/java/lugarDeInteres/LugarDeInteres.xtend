@@ -61,12 +61,14 @@ abstract class LugarDeInteres {
 	def marcarComoEsconditeDelVillano(Villano unVillano) {
 		villano = unVillano
 		proximoPaisDondeFueElMalechor = null
+		ocupante = new CuidadorDeEsconditeDeVillano
 		estado = new LugarEscondeAlVillano
 	}
 	
 	def elVillanoEstaEnElPais(Villano unVillano) {
 		villano = unVillano
 		proximoPaisDondeFueElMalechor = null
+		ocupante = new CuidadorDeEsconditeDeVillano
 		estado = new ElVillanoEstaEnElPais
 	} 
 	

@@ -4,6 +4,8 @@ import java.util.HashSet
 import java.util.Set
 import pais.Pais
 import villano.Villano
+import java.util.List
+import java.util.ArrayList
 
 class Juego {
 	
@@ -11,14 +13,16 @@ class Juego {
 	Pais paisActual
 	Set<Pais> recorridoCriminal
 	Set<Pais> destinosFallidos
-	Pais paisAnterior
+	List<Pais> paisesAnteriores
 	Caso casoAResolver
+	int id
 	
 	val casoFactory = new CasoFactory
 	 
 	new(Repositorio unRepositorio){
 		recorridoCriminal = new HashSet
 		destinosFallidos = new HashSet
+		paisesAnteriores = new ArrayList
 		casoAResolver =  casoFactory.crearCasoDefault(unRepositorio)
 		paisActual = casoAResolver.paisDondeOcurrio
 	}
@@ -28,12 +32,22 @@ class Juego {
 	}
 	
 	def viajarAlPaisAnterior() {
-		paisActual = paisAnterior
+		paisActual = paisesAnteriores.last
+		paisesAnteriores.remove(paisesAnteriores.size - 1)
 	}
 	
 	def viajarAPais(Pais unPais) {
-		paisAnterior = paisActual
+		paisesAnteriores.add(paisActual)
 		paisActual = unPais
+		determinarSiPerteneceAlRecorridoCriminal
+	}
+	
+	def determinarSiPerteneceAlRecorridoCriminal() {
+		if(casoAResolver.planDeEscape.contains(paisActual)){
+			recorridoCriminal.add(paisActual)
+		}else{
+			destinosFallidos.add(paisActual)
+		}
 	}
 	
 	def Villano getVillanoAcusado() {
@@ -44,12 +58,12 @@ class Juego {
 		recorridoCriminal
 	}
 	
-	def isEmitioOrdenDeArresto() {
-		villanoAcusado != null
+	def getDestinosFallidos() {
+		destinosFallidos
 	}
 	
-	def getPrimerLugarDeInteres() {
-		this.paisActual.lugaresDeInteres.head
+	def isEmitioOrdenDeArresto() {
+		villanoAcusado != null
 	}
 	
 	def getCaso() {
@@ -69,7 +83,7 @@ class Juego {
 	}
 	
 	def getPaisAnterior() {
-		paisAnterior
+		paisesAnteriores.last
 	}
 	
 	def getPistaDeLugarDeInteres(String nombreLugarDeInteres) {
@@ -78,6 +92,14 @@ class Juego {
 	
 	def getDestinoPorNombre(String nombreDelDestino) {
 		paisActual.conexiones.filter[nombre == nombreDelDestino].head
+	}
+	
+	def setId(int unId){
+		id = unId
+	}
+	
+	def getId(){
+		id
 	}
 	
 }

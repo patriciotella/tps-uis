@@ -4,15 +4,21 @@ import java.util.ArrayList
 import villano.Villano
 import pais.Pais
 import villano.Expedientes
+import java.util.HashMap
+import java.util.Map
 
 class ResolverMisterioModelApp {
 	
 	Expedientes expedientesDeVillanos
 	
-	Juego juegoActual
+	Map<Integer, Juego> juegosEnCurso
+	
+	int proximoIdDeJuego
 	
 	new(Expedientes expedientes){
 		expedientesDeVillanos = expedientes
+		juegosEnCurso = new HashMap<Integer, Juego>
+		proximoIdDeJuego = 0
 //		juegoActual = new Juego(repositorio)
 	}
 	
@@ -20,47 +26,60 @@ class ResolverMisterioModelApp {
 		expedientesDeVillanos
 	}
 	
-	def getNombreDelCaso() {
+	def getNombreDelCaso(int idDeJuego) {
+		val juegoActual = juegosEnCurso.get(idDeJuego)
 		juegoActual.caso.nombre
 	}
 	
-	def getLugaresDeInteresActuales() {
+	def getLugaresDeInteresActuales(int idDeJuego) {
+		val juegoActual = juegosEnCurso.get(idDeJuego)
 		new ArrayList(juegoActual.paisActual.lugaresDeInteres)
 	}
 	
-	def determinarSiEstaEnUnPaisFallido() {
+	def determinarSiEstaEnUnPaisFallido(int idDeJuego) {
+		val juegoActual = juegosEnCurso.get(idDeJuego)
 		juegoActual.determinarSiEstaEnUnPaisFallido
 	}
 	
-	def getRecorridoCriminal() {
+	def getRecorridoCriminal(int idDeJuego) {
+		val juegoActual = juegosEnCurso.get(idDeJuego)
 		juegoActual.recorridoCriminal
 	}
 	
-	def emitirOrdenDeArresto(Villano unVillano) {
+	def emitirOrdenDeArresto(int idDeJuego, Villano unVillano) {
+		val juegoActual = juegosEnCurso.get(idDeJuego)
 		juegoActual.emitirOrdenContraVillano(unVillano)
 	}
 	
-	def getDescripcionDelCaso() {
+	def getDescripcionDelCaso(int idDeJuego) {
+		val juegoActual = juegosEnCurso.get(idDeJuego)
 		juegoActual.descripcionDelCaso
 	}
 
-	def getPaisActual() {
+	def getPaisActual(int idDeJuego) {
+		val juegoActual = juegosEnCurso.get(idDeJuego)
 		juegoActual.paisActual
 	}
 	
-	def isEmitioOrdenDeArresto() {
+	def isEmitioOrdenDeArresto(int idDeJuego) {
+		val juegoActual = juegosEnCurso.get(idDeJuego)
 		juegoActual.emitioOrdenDeArresto
 	}
 	
-	def getVillanoAcusado() {
+	def getVillanoAcusado(int idDeJuego) {
+		val juegoActual = juegosEnCurso.get(idDeJuego)
 		juegoActual.villanoAcusado
 	}
 	
 	def iniciarJuego(Juego unJuego) {
-		juegoActual = unJuego
+		unJuego.id = proximoIdDeJuego
+		juegosEnCurso.put(proximoIdDeJuego, unJuego)
+		proximoIdDeJuego++
+		return new JuegoIniciadoModelApp(unJuego, expedientesDeVillanos)
 	}
 	
-	def getPistaDePaisActual(String nombreDeLugarDeInteres) {
+	def getPistaDePaisActual(int id, String nombreDeLugarDeInteres) {
+		val juegoActual = juegosEnCurso.get(id)
 		juegoActual.getPistaDeLugarDeInteres(nombreDeLugarDeInteres)
 	}
 	
@@ -68,15 +87,17 @@ class ResolverMisterioModelApp {
 		expedientesDeVillanos.getVillanoPorNombre(nombreDelVillano)
 	}
 	
-	def getDestino(String nombreDelDestino) {
+	def getDestino(int idDeJuego, String nombreDelDestino) {
+		val juegoActual = juegosEnCurso.get(idDeJuego)
 		juegoActual.getDestinoPorNombre(nombreDelDestino)
 	}
 	
-	def viajarADestino(Pais unPais) {
+	def viajarADestino(int idDeJuego, Pais unPais) {
+		val juegoActual = juegosEnCurso.get(idDeJuego)
 		juegoActual.viajarAPais(unPais)
 	}
 	
-	def getJuegoActual() {
-		juegoActual
+	def getJuegoActual(int id) {
+		juegosEnCurso.get(id)
 	}
 }
