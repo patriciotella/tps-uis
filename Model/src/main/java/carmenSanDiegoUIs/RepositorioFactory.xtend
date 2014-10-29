@@ -11,9 +11,9 @@ import java.util.HashSet
 import villano.Expedientes
 import java.util.ArrayList
 
-class XXXFactory {
+class RepositorioFactory {
 	
-	def static Repositorio xxxDefault(){
+	def static Repositorio repositorioDefault(){
 		val alberto = new Villano(
 			"Alberto",
 			"Masculino",
