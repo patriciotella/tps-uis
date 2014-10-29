@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>Carmen San Diego UIs</title>
+<title>Carmen San Diego</title>
 <link href="lib/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="stylesheets/main.css" rel="stylesheet">
 
@@ -10,11 +10,43 @@
 <script src="lib/js/bootstrap.min.js"></script>
 <script src="lib/angular.js"></script>
 <script src="javascripts/controllers.js"></script>
+<script src="javascripts/pageBehavior.js"></script>
 
 </head>
 <body ng-app="carmenSanDiegoApp" ng-controller="Controller"
 	background="images/mapamundi.png">
-	<div class="modal fade" id='myModal'>
+	
+	<div class="modal fade" id='resolucionModal'>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Fin del juego - {{nombreDelCaso}}</h4>
+				</div>
+				<div class="modal-body">
+					<div class="resolucion" ng-show="!gano">
+						<p>Malas noticias</p>
+						<p ng-show="villanoAcusado">Ha detenido a {{culpableDelRobo}}
+							pero ud. tenia una orden de arresto contra {{villanoAcusado}}
+						<p ng-show="!villanoAcusado">Ha detenido a {{culpableDelRobo}}
+							pero ud. no tenia ninguna orden de arrestro en su contra.</p>
+					</div>
+					<div class="resolucion" ng-show="gano">
+						<p>Felicitaciones</p>
+						<p>Ha detenido a {{villanoAcusado}} y recuperado la
+							{{nombreDelObjetoRobado}}</p>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default"
+						data-dismiss="modal" data-ng-click="iniciarJuego()">Volver a jugar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="modal fade" id='pistaModal'>
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -27,8 +59,12 @@
 					<p class="pistaDelLugar">{{pista}}&hellip;</p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" ng-show="escondeAlVillano" data-ng-click="finalizarJuego()">Resolver Caso</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+					<button type="button" class="btn btn-default"
+						ng-show="escondeAlVillano" data-dismiss="modal"
+						data-ng-click="finalizarJuego()" data-toggle="modal"
+						data-target="#resolucionModal">Resolver Caso</button>
+					<button type="button" class="btn btn-default"
+						ng-hide="escondeAlVillano" data-dismiss="modal">Ok</button>
 				</div>
 			</div>
 		</div>
@@ -70,36 +106,19 @@
 	</ul>
 
 	<script>
-		function casoTab() {
-			// 			$("#jugar").hide();
-			$('#myTab a:first').off('click');
-			$("#casoBody").show();
-			// 			$('#myTab a:first').tab('show');
-		}
-	</script>
-
-	<script>
-		function jugarTab() {
-			$("#casoBody").hide();
-			// 			$("#jugar").show();
-			// 			$('#myTab a:last').tab('show');
-		}
+		
 	</script>
 
 	<div class="tab-pane fade active in" id="caso">
 		<div class='hide' id="casoBody">
-			<h2 class="tituloCaso">Detective, tenemos un caso para usted:</h2>
+			<h3 class="tituloCaso">Detective, tenemos un caso para usted:</h3>
 			<div class="alert alert-info msgCaso" role="alert">
 				<p>{{descripcionDelCaso}}</p>
 			</div>
 		</div>
 	</div>
 	<div class="tab-pane fade active in" id="jugar">
-
 		<div>
-			<h2>Est&aacute;s en: {{paisActual.nombre}}</h2>
-
-
 			<div class="columnaIzquierda">
 				<div>
 					<h3>Paises recorridos:</h3>
@@ -120,17 +139,7 @@
 			</div>
 		</div>
 		<script>
-			function mostrarNombreDelLugar(id) {
-				$('.modal-title')[0].innerHTML = 'Est&aacute;s visitando: '
-						+ id;
-				$('.modal-title')[0].id = id;
-			}
-		</script>
-		<script>
-			function mostrarNombreVillano(idVillano) {
-				document.getElementById('modalVillano').innerHTML = 'Est&aacute;s inspeccionando a: '
-						+ idVillano
-			}
+			
 		</script>
 		<div class="columnaCentral">
 			<div class="row alert alert-success msgSucc"
@@ -141,21 +150,24 @@
 				</ul>
 			</div>
 			<div>
-				<h3>Lugares</h3>
+				<h2>Est&aacute;s en: {{paisActual.nombre}}</h2>
+			</div>
+			<div>
+<!-- 				<h4>Lugares</h4> -->
 				<div class="btn-toolbar" role="toolbar">
 					<div class="btn-group">
 						<button type="button" class="btn btn-default lugar-button"
-							data-toggle="modal" data-target="#myModal"
+							data-toggle="modal" data-target="#pistaModal"
 							title="Visitar lugar para obtener pista" id={{lugar.nombre}}
 							onclick="mostrarNombreDelLugar(this.id)"
 							data-ng-click="mostrarLugarConPista()"
 							ng-repeat="lugar in paisActual.lugaresDeInteres">{{lugar.nombre}}</button>
 					</div>
 				</div>
-			</div>
+			</div><br>
 
 			<div>
-				<h3>Viajar a :</h3>
+				<h4>Viajar a :</h4>
 				<div class="viajarABoton">
 					<select class="input-large" ng-model="paisSeleccionado">
 						<option ng-repeat="destino in paisActual.conexiones">{{destino.nombre}}</option>
