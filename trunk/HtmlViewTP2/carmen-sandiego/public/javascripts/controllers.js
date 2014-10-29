@@ -7,13 +7,14 @@ app.controller('Controller', function($scope, $http, $timeout) {
 	$scope.iniciarJuego = function() {
     	$http.get('/iniciarJuego')
     		.success(function(data) {
-    			console.log(data.juegoActual);
     			$scope.juegoId = data.juegoActual.id;
     			$scope.villanos = data.expedientesDeVillanos.villanos;
     			$scope.paisActual = data.juegoActual.paisActual;
     			$scope.descripcionDelCaso = data.juegoActual.descripcionDelCaso;
     			$scope.villanoAcusado = data.juegoActual.villanoAcusado;
     			$scope.paisAnterior = data.juegoActual.paisAnterior;
+    			$scope.destinosFallidos = data.juegoActual.destinosFallidos;
+    			$scope.paisesPorDondePasoElCriminal = data.juegoActual.recorridoCriminal;
     		}
     	)
     }
@@ -21,7 +22,7 @@ app.controller('Controller', function($scope, $http, $timeout) {
     $scope.iniciarJuego();
     
 	$scope.mostrarLugarConPista = function() {
-		$http.get('/pista/' +$scope.juegoId + '/'+ $('.modal-title')[0].id)
+		$http.get('/pista/' +$scope.juegoId + '/'+ $('.titulo')[0].id)
 		.success(function(data) {
 			$scope.pista = data;
 			$scope.escondeAlVillano = (data.toString().indexOf("Tenga cuidado, el villano está en el lugar") > -1);
@@ -74,7 +75,14 @@ app.controller('Controller', function($scope, $http, $timeout) {
 	};
 	
 	$scope.finalizarJuego = function() {
-		
+		$http.post('/finalizarPartida/' + $scope.juegoId)
+		.success(function(data) {
+			$scope.gano = (data.resolucionDePartida.toString().indexOf("Ganaste") > -1);
+			$scope.culpableDelRobo = data.culpableDelRobo;
+			$scope.nombreDelCaso = data.nombreDelCaso;
+			$scope.nombreDelObjetoRobado = data.nombreDelObjetoRobado;
+			$scope.villanoAcusado = data.villanoAcusado;
+		});
 	};
 	
 //...........................................FEEDBACK & ERRORES.............................................//
