@@ -19,7 +19,6 @@ class ResolverMisterioModelApp {
 		expedientesDeVillanos = expedientes
 		juegosEnCurso = new HashMap<Integer, Juego>
 		proximoIdDeJuego = 0
-//		juegoActual = new Juego(repositorio)
 	}
 	
 	def getVillanos() {
@@ -47,8 +46,7 @@ class ResolverMisterioModelApp {
 	}
 	
 	def emitirOrdenDeArresto(int idDeJuego, Villano unVillano) {
-		val juegoActual = juegosEnCurso.get(idDeJuego)
-		juegoActual.emitirOrdenContraVillano(unVillano)
+		getJuegoValido(idDeJuego).emitirOrdenContraVillano(unVillano)
 	}
 	
 	def getDescripcionDelCaso(int idDeJuego) {
@@ -79,25 +77,51 @@ class ResolverMisterioModelApp {
 	}
 	
 	def getPistaDePaisActual(int id, String nombreDeLugarDeInteres) {
-		val juegoActual = juegosEnCurso.get(id)
-		juegoActual.getPistaDeLugarDeInteres(nombreDeLugarDeInteres)
+		val pista = getJuegoValido(id).getPistaDeLugarDeInteres(nombreDeLugarDeInteres)
+		if(pista == null)
+			throw new JuegoException("El lugar de interes no existe")
+		
+		pista
 	}
 	
 	def getVillano(String nombreDelVillano) {
-		expedientesDeVillanos.getVillanoPorNombre(nombreDelVillano)
+		val villano = expedientesDeVillanos.getVillanoPorNombre(nombreDelVillano)
+		if(villano == null)
+			throw new JuegoException("No existe el villano")
+			
+		villano
 	}
 	
 	def getDestino(int idDeJuego, String nombreDelDestino) {
-		val juegoActual = juegosEnCurso.get(idDeJuego)
-		juegoActual.getDestinoPorNombre(nombreDelDestino)
+		val destino = getJuegoValido(idDeJuego).getDestinoPorNombre(nombreDelDestino)
+		if(destino == null)
+			throw new JuegoException("No existe el destino")
+			
+		destino
 	}
 	
 	def viajarADestino(int idDeJuego, Pais unPais) {
-		val juegoActual = juegosEnCurso.get(idDeJuego)
-		juegoActual.viajarAPais(unPais)
+		getJuegoValido(idDeJuego).viajarAPais(unPais)
 	}
 	
 	def getJuegoActual(int id) {
-		juegosEnCurso.get(id)
+		getJuegoValido(id)
+	}
+	
+	def finalizarPartida(int idDeJuego) {
+		val juego = getJuegoValido(idDeJuego).finalizar
+		juegosEnCurso.remove(idDeJuego)
+		return juego
+	}
+	
+	def viajarAlPaisAnterior(int idDeJuego) {
+		getJuegoValido(idDeJuego).viajarAlPaisAnterior
+	}
+	
+	def getJuegoValido(int idDeJuego){
+		val juegoActual = juegosEnCurso.get(idDeJuego)
+		if(juegoActual == null)
+			throw new JuegoException("Juego no existente")
+		return juegoActual
 	}
 }
