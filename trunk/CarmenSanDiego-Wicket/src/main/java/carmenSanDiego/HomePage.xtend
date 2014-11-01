@@ -40,7 +40,7 @@ public class HomePage extends WebPage {
 		form.addChild(new DropDownChoice<EditorDePais>("caracteristicas") => [
 			choices = loadableModel([| EditorDePais.getCaracteristicas ])
 			choiceRenderer = choiceRenderer([Modelo m| m.descripcion ])
-		]) 
+		]) //ESTO SE ME COMPLICO 
 //		VER LISTAS EN EJEMPLO DE CELULARES PARA LISTA DE CARACTERISTICAS
 		form.addChild(crearCaracteristicaPaisTextField(form))
 //		VER LISTAS EN EJEMPLO DE CELULARES PARA LISTA DE CONEXIONES
