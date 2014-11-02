@@ -19,10 +19,6 @@ import org.apache.wicket.markup.html.form.DropDownChoice
 public class HomePage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
 	
-//	val List<Villano> villanos = new ArrayList
-//	new() {
-//		val form = new XForm<ResolverMisterioModelApp>("EditorForm", new CompoundPropertyModel(new ResolverMisterioModelApp(new Expedientes(villanos))))
-
 	new(){
 		val form = new XForm<EditorDePais>("EditorDePaisForm", new CompoundPropertyModel(new EditorDePais(new Mapamundi)))	
 	
@@ -36,10 +32,10 @@ public class HomePage extends WebPage {
 		
 //		FALTA AGREGAR LAS PROPERTIES DE LUGAR DE INTERES Y CONEXION PARA PODER MANIPULARLAS DESDE ACA
 		form.addChild(crearNombrePaisTextField(form))
-		form.addChild(crearCaracteristicasPaisTextField(form))
+//		form.addChild(crearCaracteristicasPaisTextField(form))
 		form.addChild(new DropDownChoice<EditorDePais>("caracteristicas") => [
-			choices = loadableModel([| EditorDePais.getCaracteristicas ])
-			choiceRenderer = choiceRenderer([Modelo m| m.descripcion ])
+//			choices = loadableModel([| EditorDePais.caracteristicas ])
+			choiceRenderer = choiceRenderer([EditorDePais m| m.caracteristicas ])
 		]) //ESTO SE ME COMPLICO 
 //		VER LISTAS EN EJEMPLO DE CELULARES PARA LISTA DE CARACTERISTICAS
 		form.addChild(crearCaracteristicaPaisTextField(form))
@@ -62,11 +58,11 @@ public class HomePage extends WebPage {
 		return caracteristicaPaisTextField
 	}
 	
-	def crearCaracteristicasPaisTextField(Form<EditorDePais> form) {
-		
-		val caracteristicasPaisTextField = new TextField<String>("caracteristicas")
-		return caracteristicasPaisTextField
-	}
+//	def crearCaracteristicasPaisTextField(Form<EditorDePais> form) {
+//		
+//		val caracteristicasPaisTextField = new TextField<String>("caracteristicas")
+//		return caracteristicasPaisTextField
+//	}
 //	
 //	def crearConexionPaisTextField(Form<EditorDePais> form) {
 //		
