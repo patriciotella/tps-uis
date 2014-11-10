@@ -9,14 +9,15 @@ class EditorDeVillano {
 	
 	private List<String> sexos = #["Masculino", "Femenino"]
 	private Villano villano
-	@Property ExpedientesModelApp expedientes
+	@Property Expedientes expedientes
 	
 	@Property String nombre
 	@Property String sexo
 	@Property Set<String> hobbies
 	@Property Set<String> seniasParticulares
+	@Property String hobbieNuevo
 	
-	new(Villano unVillano, ExpedientesModelApp expedientes){
+	new(Villano unVillano, Expedientes expedientes){
 		_expedientes = expedientes
 		villano = unVillano
 		_nombre = unVillano.nombre
@@ -25,7 +26,7 @@ class EditorDeVillano {
 		_seniasParticulares = new HashSet(unVillano.seniasParticulares)
 	}
 	
-	new(ExpedientesModelApp expedientes) {
+	new(Expedientes expedientes) {
 		_expedientes = expedientes
 		_nombre = ""
 		_sexo = ""
