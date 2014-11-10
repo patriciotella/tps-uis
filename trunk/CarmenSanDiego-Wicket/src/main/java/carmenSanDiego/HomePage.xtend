@@ -12,52 +12,86 @@ import org.uqbar.wicket.xtend.XButton
 import org.uqbar.wicket.xtend.XForm
 import pais.EditorDePais
 import org.apache.wicket.markup.html.form.DropDownChoice
+import villano.EditorDeVillano
+import villano.Expedientes
+import carmenSanDiegoUIs.HomePageModApp
+import org.uqbar.wicket.xtend.XListView
+import villano.Villano
 
 /**
  * Homepage
  */
 public class HomePage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
-	
-	new(){
-		val form = new XForm<EditorDePais>("EditorDePaisForm", new CompoundPropertyModel(new EditorDePais(new Mapamundi)))	
-	
-	
-		this.addChild(form)
-		this.addFields(form)
-		this.addActions(form)
-	}
-	
-	def addFields(Form<EditorDePais> form) {
-		
-//		FALTA AGREGAR LAS PROPERTIES DE LUGAR DE INTERES Y CONEXION PARA PODER MANIPULARLAS DESDE ACA
-		form.addChild(crearNombrePaisTextField(form))
-//		form.addChild(crearCaracteristicasPaisTextField(form))
-		form.addChild(new DropDownChoice<EditorDePais>("caracteristicas") => [
-//			choices = loadableModel([| EditorDePais.caracteristicas ])
-			choiceRenderer = choiceRenderer([EditorDePais m| m.caracteristicas ])
-		]) //ESTO SE ME COMPLICO 
-//		VER LISTAS EN EJEMPLO DE CELULARES PARA LISTA DE CARACTERISTICAS
-		form.addChild(crearCaracteristicaPaisTextField(form))
-//		VER LISTAS EN EJEMPLO DE CELULARES PARA LISTA DE CONEXIONES
-//		form.addChild(crearConexionPaisTextField(form))
-//		VER LISTAS EN EJEMPLO DE CELULARES PARA LISTA DE LUGAR DE INTERES
-//		form.addChild(crearLugarDeInteresPaisTextField(form))
-//		form.addChild(new FeedbackPanel("feedbackPanel")) //ESTE ES EL QUE MUESTRA ERRORES
-	}
-	
-	def crearNombrePaisTextField(Form<EditorDePais> form) {
 
-		val nombrePaisTextField = new TextField<String>("nombre")
-		return nombrePaisTextField
+	HomePageModApp modelApp
+
+	new() {
+		modelApp = new HomePageModApp
+		val editorVillanoform = new XForm<EditorDeVillano>("editorDeVillanoForm",
+			new CompoundPropertyModel(new EditorDeVillano(modelApp.expedientes)))
+
+		//		val editorPaisform = new XForm<EditorDePais>("EditorDePaisForm", new CompoundPropertyModel(new EditorDePais(modelApp.mapamundi)))	
+		this.add(new XListView("modelApp.expedientes.villanos"))
+
+		//		this.add(new XListView("modelApp.mapamundi.paises"))
+		this.addChild(editorVillanoform)
+
+		//		this.addChild(editorPaisform)
+		this.addFieldsVillano(editorVillanoform)
+
+	//		this.addActionsVillano(editorVillanoform)
+	//		
+	//		this.addFieldsPais(editorPaisform)
+	//		this.addActionsPais(editorPaisform)
+	}
+
+	def addActionsPais(XForm<EditorDePais> form) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+
+	def addFieldsPais(XForm<EditorDePais> form) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+
+	def addActionsVillano(XForm<EditorDeVillano> form) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+
+	def addFieldsVillano(XForm<EditorDeVillano> form) {
+
+		form.addChild(nombreVillanoTextField(form))
+		form.addChild(
+			new DropDownChoice<String>("hobbies") => [
+				choices = loadableModel([|form.modelObject.hobbies.toList])
+				choiceRenderer = choiceRenderer([h|h])
+			])
+		form.addChild(agregarHobbieTextField(form))
+		form.addChild(agregarSexoTextField(form))
+
+	//		VER LISTAS EN EJEMPLO DE CELULARES PARA LISTA DE CONEXIONES
+	//		form.addChild(crearConexionPaisTextField(form))
+	//		VER LISTAS EN EJEMPLO DE CELULARES PARA LISTA DE LUGAR DE INTERES
+	//		form.addChild(crearLugarDeInteresPaisTextField(form))
+	//		form.addChild(new FeedbackPanel("feedbackPanel")) //ESTE ES EL QUE MUESTRA ERRORES
+	}
+
+	def nombreVillanoTextField(Form<EditorDeVillano> form) {
+
+		val a = new TextField<String>("nombre")
+		return a
+	}
+
+	def agregarHobbieTextField(Form<EditorDeVillano> form) {
+
+		return new TextField<String>("hobbieNuevo")
 	}
 	
-	def crearCaracteristicaPaisTextField(Form<EditorDePais> form) {
+	def agregarSexoTextField(Form<EditorDeVillano> form) {
 		
-		val caracteristicaPaisTextField = new TextField<String>("caracteristica")
-		return caracteristicaPaisTextField
+		return new TextField<String>("sexo")
 	}
-	
+
 //	def crearCaracteristicasPaisTextField(Form<EditorDePais> form) {
 //		
 //		val caracteristicasPaisTextField = new TextField<String>("caracteristicas")
@@ -75,23 +109,4 @@ public class HomePage extends WebPage {
 //		val lugarDeInteresPaisTextField = new TextField<String>("lugarDeInteres")
 //		return lugarDeInteresPaisTextField
 //	}
-	
-	def addActions(Form<EditorDePais> form) {
-		val caracteristicaButton = new XButton("AgregarCaracteristica")
-		caracteristicaButton.onClick = [| form.modelObject.agregarCaracteristica("caracteristica") ]
-		form.addChild(caracteristicaButton)
-//		
-//		val conexionButton = new XButton("Agregar Conexion")
-//		conexionButton.onClick = [| form.modelObject.agregarConexion("conexion")]
-//		form.addChild(conexionButton)
-//		
-//		val lugarButton = new XButton("Agregar Lugar De Interes")
-//		lugarButton.onClick = [| form.modelObject.agregarLugarDeInteres("lugarDeInteres")]
-//		form.addChild(lugarButton)
-//		
-//		val guardarPaisButton = new XButton("Aceptar")
-//		guardarPaisButton.onClick = [| form.modelObject.agregarPais]
-//		form.addChild(guardarPaisButton)
-	}
-
 }
