@@ -1,11 +1,11 @@
 package villano
 
-import carmenSanDiegoUIs.ExpedientesModelApp
 import java.util.HashSet
 import java.util.List
 import java.util.Set
+import java.io.Serializable
 
-class EditorDeVillano {
+class EditorDeVillano implements Serializable{
 	
 	private List<String> sexos = #["Masculino", "Femenino"]
 	private Villano villano
@@ -15,6 +15,7 @@ class EditorDeVillano {
 	@Property String sexo
 	@Property Set<String> hobbies
 	@Property Set<String> seniasParticulares
+	@Property String seniaNueva
 	@Property String hobbieNuevo
 	
 	new(Villano unVillano, Expedientes expedientes){
@@ -56,7 +57,7 @@ class EditorDeVillano {
 		_hobbies.remove(unHobbie)
 	}
 	
-	def eliminarSeniaPArticular(String unaSenia) {
+	def eliminarSeniaParticular(String unaSenia) {
 		_seniasParticulares.remove(unaSenia)
 	}
 	

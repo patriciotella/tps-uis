@@ -15,7 +15,7 @@ class Club extends LugarDeInteres {
 			anotherRandomInt = (Math.random() * ( high - 0 )).intValue
 		}
 		
-		var pistas = "Vi a alguien como describe" +
+		var pistas = "Vi a alguien como describe " +
 		villano.seniasParticulares.get(randomInt) + ". " +
 		villano.seniasParticulares.get(anotherRandomInt)
 		if(((Math.random() * ( 9 - 0 )).intValue) <= 6) {

@@ -17,14 +17,14 @@ class RepositorioFactory {
 		val alberto = new Villano(
 			"Alberto",
 			"Masculino",
-			newHashSet => [add("Seña") add("Otra seña")],
-			newHashSet => [add("Jugador")]
+			newHashSet => [add("es alto") add("es pelado")],
+			newHashSet => [add("es jugador")]
 		)
 		val carlos = new Villano(
 			"Carlos",
 			"Masculino",
-			newHashSet => [add("Guiña el ojo") add("Aplaude")],
-			newHashSet => [add("Hacker")]
+			newHashSet => [add("guiña el ojo") add("aplaude")],
+			newHashSet => [add("es hacker")]
 		)
 		
 		val brasil = new Pais(
@@ -39,7 +39,7 @@ class RepositorioFactory {
 		)
 		val argentina = new Pais(
 			"Argentina",
-			newHashSet => [add("Toman mate")],
+			newHashSet => [add("tomar mate") add("bailar tango")],
 			newArrayList,
 			newHashSet => [
 				add(new Club)
@@ -49,7 +49,7 @@ class RepositorioFactory {
 		)
 		val uruguay = new Pais(
 			"Uruguay",
-			newHashSet => [add("Algo")],
+			newHashSet => [add("visitar una murga")],
 			newArrayList,
 			newHashSet => [
 				add(new Club)
@@ -59,7 +59,7 @@ class RepositorioFactory {
 		)
 		val chile = new Pais(
 			"Chile",
-			newHashSet => [add("Malos al futbol")],
+			newHashSet => [add("ver partidos malos de futbol")],
 			newArrayList,
 			newHashSet => [
 				add(new Club)
@@ -69,7 +69,7 @@ class RepositorioFactory {
 		)
 		val egipto = new Pais(
 			"Egipto",
-			newHashSet => [add("Hay piramides")],
+			newHashSet => [add("ver piramides")],
 			newArrayList,
 			newHashSet => [
 				add(new Club)
@@ -79,7 +79,7 @@ class RepositorioFactory {
 		)
 		val rusia = new Pais(
 			"Rusia",
-			newHashSet => [add("Tiene la plaza Roja")],
+			newHashSet => [add("ver la plaza Roja")],
 			newArrayList,
 			newHashSet => [
 				add(new Embajada)
@@ -90,8 +90,8 @@ class RepositorioFactory {
 		val mexico = new Pais(
 			"Mexico",
 			newHashSet => [
-				add("Tiene tacos")
-				add("Beben tequila")
+				add("comer tacos")
+				add("beber tequila")
 			],
 			newArrayList,
 			newHashSet => [

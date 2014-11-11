@@ -21,7 +21,7 @@ class EditorDeSeniasParticularesDeVillano {
 	
 	
 	def borrarSeniaParticular() {
-		_editorDeVillano.eliminarSeniaPArticular(seniaSeleccionada)
+		_editorDeVillano.eliminarSeniaParticular(seniaSeleccionada)
 		cambioPuedeAgregarSenia()
 	}
 	

@@ -12,7 +12,7 @@ class Banco extends LugarDeInteres {
 		val randomInt = (Math.random() * (pais.caracteristicas.size - 0)).intValue
 		val anotherRandomInt = (Math.random() * (villano.seniasParticulares.size - 0)).intValue
 
-		"Vi a alguien como describe" +  
+		"Vi a alguien como describe " +  
 		villano.seniasParticulares.get(anotherRandomInt) + ". " +
 		pais.caracteristicas.get(randomInt)
 	}

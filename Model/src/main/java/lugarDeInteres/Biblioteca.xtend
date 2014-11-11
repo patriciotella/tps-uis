@@ -12,7 +12,7 @@ class Biblioteca extends LugarDeInteres {
 		val anotherRandomInt = (Math.random() * (villano.seniasParticulares.size - 0)).intValue
 		val probabilidades = (Math.random() * ( 3 - 1 )).intValue
 		
-		val pistas = "Vi a alguien como describe" +
+		val pistas = "Vi a alguien como describe " +
 		villano.seniasParticulares.get(anotherRandomInt)
 		
 		if(probabilidades % 2 == 0) {
@@ -20,7 +20,7 @@ class Biblioteca extends LugarDeInteres {
 			pistas + ". " + (villano.hobbies.get(rand))
 		}
 		
-		pistas + ". " + pais.caracteristicas.get(randomInt)
+		pistas + ". Estaba interesado en " + pais.caracteristicas.get(randomInt)
 		
 		return pistas
 		/*
