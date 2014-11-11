@@ -15,38 +15,70 @@
 			<a href="#">Expedientes</a>
 		</li>
 	</ul>
+	<!-- 	<DIV CLASS="BTN-GROUP"> -->
+	<!-- 		<BUTTON WICKET:ID="EDITARVILLANO" CLASS="BTN-LINK">EDITARVILLANO</BUTTON> -->
+	<!-- 	</DIV> -->
 	<div>
-		<ul >
+		<ul>
 			<li wicket:id="modelApp.expedientes.villanos"></li>
 		</ul>
 	</div>
 
 	<form wicket:id="editorDeVillanoForm" class="form">
-	<div class="form-group">
-					<label for="nombre">Nombre:</label>
-					<div>
-						<input wicket:id="nombre" class="form-control" type="text"
-							size="6" />
-					</div>
-				</div>	
-<!-- 	<div> -->
-<!-- 		<input wicket:id="nombre"/> -->
-<!-- 	</div> -->
-	<div><select wicket:id="hobbies"></select></div>
-	<div class="form-group">
-					<div>
-						<label for="hobbieNuevo">Agregar Hobbie:</label>
-						<input wicket:id="hobbieNuevo" class="form-control" type="text"
-							size="6" />
-					</div>
-				</div>
-	<div class="form-group">
-					<div>
-					<label for="sexo">Sexo:</label>
-						<input wicket:id="sexo" class="form-control" type="text"
-							size="6" />
-					</div>
-				</div>	
+		<div class="form-group">
+			<label for="nombre">Nombre:</label>
+			<div>
+				<input wicket:id="nombre" class="form-control" type="text" size="6" />
+			</div>
+		</div>
+		<!-- 	<div> -->
+		<!-- 		<input wicket:id="nombre"/> -->
+		<!-- 	</div> -->
+		<div>
+			<label for="hobbies">Hobbies:</label>
+			<select wicket:id="hobbies"></select>
+		</div>
+			<div class="form">
+				<input wicket:id="EliminarHobbie" type="submit"
+					class="btn btn-primary" value="Eliminar">
+			</div>
+		<div class="form-group">
+			<div>
+				<label for="hobbieNuevo">Agregar Hobbie:</label> <input
+					wicket:id="hobbieNuevo" class="form-control" type="text" size="6" />
+			</div>
+			<div class="form">
+				<input wicket:id="AgregarHobbie" type="submit"
+					class="btn btn-primary" value="Agregar">
+			</div>
+		</div>
+		
+		
+		<div>
+			<label for="seniasParticulares">Señas Particulares:</label>
+			<select wicket:id="seniasParticulares"></select>
+		</div>
+			<div class="form">
+				<input wicket:id="EliminarSeniaParticular" type="submit"
+					class="btn btn-primary" value="Eliminar">
+			</div>
+		<div class="form-group">
+			<div>
+				<label for="seniaNueva">Agregar seña particular:</label> <input
+					wicket:id="seniaNueva" class="form-control" type="text" size="6" />
+			</div>
+			<div class="form">
+				<input wicket:id="AgregarSeniaParticular" type="submit"
+					class="btn btn-primary" value="Agregar">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<div>
+				<label for="sexo">Sexo:</label> <input wicket:id="sexo"
+					class="form-control" type="text" size="6" />
+			</div>
+		</div>
 	</form>
 </body>
 </html>

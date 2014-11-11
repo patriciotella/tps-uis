@@ -34,29 +34,28 @@ public class HomePage extends WebPage {
 		//		val editorPaisform = new XForm<EditorDePais>("EditorDePaisForm", new CompoundPropertyModel(new EditorDePais(modelApp.mapamundi)))	
 		this.add(new XListView("modelApp.expedientes.villanos"))
 
-		//		this.add(new XListView("modelApp.mapamundi.paises"))
 		this.addChild(editorVillanoform)
-
-		//		this.addChild(editorPaisform)
 		this.addFieldsVillano(editorVillanoform)
+		this.addActionsVillano(editorVillanoform)
 
-	//		this.addActionsVillano(editorVillanoform)
-	//		
-	//		this.addFieldsPais(editorPaisform)
-	//		this.addActionsPais(editorPaisform)
+//		this.add(new XListView("modelApp.mapamundi.paises"))
+//		this.addChild(editorPaisform)
+//		this.addFieldsPais(editorPaisform)
+//		this.addActionsPais(editorPaisform)
 	}
 
-	def addActionsPais(XForm<EditorDePais> form) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-
-	def addFieldsPais(XForm<EditorDePais> form) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-
+	
 	def addActionsVillano(XForm<EditorDeVillano> form) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+//		form.addChild(new XButton("EditarVillano").onClick = [| editarVillano() ])
+		form.addChild(new XButton("AgregarHobbie").onClick = [| form.modelObject.agregarHobbie("hobbieNuevo")])
+		form.addChild(new XButton("EliminarHobbie").onClick = [|form.modelObject.eliminarHobbie("hobbieSeleccionado")])
+		form.addChild(new XButton("AgregarSeniaParticular").onClick = [| form.modelObject.agregarSeniaParticular("seniaNueva")])
+		form.addChild(new XButton("EliminarSeniaParticular").onClick = [| form.modelObject.eliminarSeniaParticular("seniaSeleccionada")])
 	}
+//	
+//	def editarVillano () {
+//		responsePage = new EditorDeVillanoPage(this) 
+//	}
 
 	def addFieldsVillano(XForm<EditorDeVillano> form) {
 
@@ -68,12 +67,14 @@ public class HomePage extends WebPage {
 			])
 		form.addChild(agregarHobbieTextField(form))
 		form.addChild(agregarSexoTextField(form))
+		form.addChild(agregarSeniasTextField(form))
+		form.addChild(
+			new DropDownChoice<String>("seniasParticulares") => [
+				choices = loadableModel([|form.modelObject.seniasParticulares.toList])
+				choiceRenderer = choiceRenderer([s|s])
+			])
 
-	//		VER LISTAS EN EJEMPLO DE CELULARES PARA LISTA DE CONEXIONES
-	//		form.addChild(crearConexionPaisTextField(form))
-	//		VER LISTAS EN EJEMPLO DE CELULARES PARA LISTA DE LUGAR DE INTERES
-	//		form.addChild(crearLugarDeInteresPaisTextField(form))
-	//		form.addChild(new FeedbackPanel("feedbackPanel")) //ESTE ES EL QUE MUESTRA ERRORES
+//		form.addChild(new FeedbackPanel("feedbackPanel")) //ESTE ES EL QUE MUESTRA ERRORES
 	}
 
 	def nombreVillanoTextField(Form<EditorDeVillano> form) {
@@ -91,7 +92,26 @@ public class HomePage extends WebPage {
 		
 		return new TextField<String>("sexo")
 	}
+	
+	def agregarSeniasTextField(Form<EditorDeVillano> form) {
+		
+		return new TextField<String>("seniaNueva")
+	}
 
+
+//		VER LISTAS EN EJEMPLO DE CELULARES PARA LISTA DE CONEXIONES
+	//		form.addChild(crearConexionPaisTextField(form))
+	//		VER LISTAS EN EJEMPLO DE CELULARES PARA LISTA DE LUGAR DE INTERES
+	//		form.addChild(crearLugarDeInteresPaisTextField(form))
+	//	
+//	def addActionsPais(XForm<EditorDePais> form) {
+//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+//	}
+//
+//	def addFieldsPais(XForm<EditorDePais> form) {
+//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+//	}
+//
 //	def crearCaracteristicasPaisTextField(Form<EditorDePais> form) {
 //		
 //		val caracteristicasPaisTextField = new TextField<String>("caracteristicas")
