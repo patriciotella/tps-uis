@@ -53,6 +53,7 @@ class EditorDeVillano implements Serializable{
 	
 	def agregarHobbie(String unHobbie) {
 		_hobbies.add(unHobbie)
+		_hobbieNuevo = ""
 	}
 	
 	def eliminarHobbie(String unHobbie) {
@@ -65,6 +66,7 @@ class EditorDeVillano implements Serializable{
 	
 	def agregarSeniaParticular(String unaSenia) {
 		_seniasParticulares.add(unaSenia)
+		_seniaNueva = ""
 	}
 	
 	def getSexos() {
