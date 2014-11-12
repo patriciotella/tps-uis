@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Crear villano</title>
+<link href="lib/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+<script src="javascripts/jquery-2.1.1.min.js"></script>
+<script src="javascripts/pageBehavior.js"></script>
+</head>
+<body>
+	<form wicket:id="crearVillanoForm" class="form">
+		<div style="margin-left: 40%;" id="editorVillano">
+			<div class="form-group">
+				<label for="nombre">Nombre:</label>
+				<div>
+					<input wicket:id="nombre" class="form-control" type="text" />
+				</div>
+			</div>
+			<div>
+				<label for="hobbies">Hobbies:</label> <select wicket:id="hobbies"></select>
+				<input wicket:id="eliminarHobbie" type="submit"
+					class="btn btn-danger" value="Eliminar">
+			</div>
+			<div class="form-group">
+				<div>
+					<label for="hobbieNuevo">Agregar Hobbie:</label> <input
+						wicket:id="hobbieNuevo" class="form-control" type="text" /> <input
+						wicket:id="agregarHobbie" type="submit" class="btn btn-primary"
+						value="Agregar">
+				</div>
+			</div>
+			<div>
+				<label for="seniasParticulares">Se&ntilde;as Particulares:</label> <select
+					wicket:id="seniasParticulares"></select> <input
+					wicket:id="eliminarSeniaParticular" type="submit"
+					class="btn btn-danger" value="Eliminar">
+			</div>
+			<div class="form-group">
+				<div>
+					<label for="seniaNueva">Agregar se&ntilde;a particular:</label> <input
+						wicket:id="seniaNueva" class="form-control" type="text" /> <input
+						wicket:id="agregarSeniaParticular" type="submit"
+						class="btn btn-primary" value="Agregar">
+				</div>
+			</div>
+			<div class="form-group">
+				<div>
+					<label for="sexos">Sexo:</label> <select wicket:id="sexos"></select>
+				</div>
+			</div>
+			<input wicket:id="cancelar" type="submit" class="btn btn-warning"
+				value="Cancelar"> <input wicket:id="crearVillano"
+				type="submit" class="btn btn-success" value="Crear">
+		</div>
+	</form>
+</body>
+</html>
