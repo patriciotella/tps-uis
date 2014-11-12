@@ -27,7 +27,10 @@ class CrearVillanoPage extends WebPage {
 	}
 	
 	def addActions(XForm<EditorDeVillano> form) {
-		form.addChild(new XButton("cancelar").onClick = [| volver])
+		form.addChild(new XButton("cancelar") => [
+			onClick = [| volver]
+			defaultFormProcessing = false
+		])
 		form.addChild(new XButton("crearVillano").onClick = [| crearVillano(form.modelObject)])
 		form.addChild(new XButton("agregarHobbie").onClick = [| form.modelObject.agregarHobbie("hobbieNuevo")])
 		form.addChild(new XButton("eliminarHobbie").onClick = [|form.modelObject.eliminarHobbie("hobbieSeleccionado")])

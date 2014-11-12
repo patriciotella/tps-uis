@@ -21,16 +21,13 @@
 	<!-- 	</DIV> -->
 	<div>
 		<ul>
-			<li><p>soy una lista</p></li>
-			<li wicket:id="modelApp.expedientes.villanos.nombre"></li>
-			<li><p>fin de lista</p></li>
+			<li wicket:id="modelApp.expedientes.villanos"></li>
 		</ul>
-		<label for="hobbies">Hobbies:</label> <select wicket:id="hobbies"></select>
 	</div>
 
 	<form wicket:id="editorDeVillanoForm" class="form">
 		<input wicket:id="crearVillano" type="submit" class="btn btn-success"
-			value="+ crear villano">
+			value="+">
 
 		<div style="margin-left: 50%;" id="editorVillano">
 			<div class="form-group">
@@ -40,7 +37,7 @@
 				</div>
 			</div>
 			<div>
-				<label for="hobbies">Hobbies:</label> <select wicket:id="hobbies"></select>
+				<label for="hobbies">Hobbies:</label> <select wicket:id="hobbieSeleccionado"></select>
 				<button wicket:id="eliminarHobbie" type="submit"
 					class="btn btn-danger">Eliminar</button>
 			</div>
@@ -52,7 +49,7 @@
 			</div>
 			<div class="form-group">
 				<label for="seniasParticulares">Se&ntilde;as Particulares:</label> <select
-					wicket:id="seniasParticulares"></select>
+					wicket:id="seniaSeleccionada"></select>
 				<button wicket:id="eliminarSeniaParticular" type="submit"
 					class="btn btn-danger">Eliminar</button>
 			</div>
@@ -64,9 +61,9 @@
 			</div>
 
 			<div class="form-group">
-				<!-- 				<div> -->
-				<!-- 					<label for="sexo">Sexo:</label> <select wicket:id="sexos"></select> -->
-				<!-- 				</div> -->
+				<div>
+					<label for="sexos">Sexo:</label> <select wicket:id="sexo"></select>
+				</div>
 			</div>
 		</div>
 	</form>
