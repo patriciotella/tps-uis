@@ -17,6 +17,8 @@ class EditorDeVillano implements Serializable{
 	@Property Set<String> seniasParticulares
 	@Property String seniaNueva
 	@Property String hobbieNuevo
+	@Property String hobbieSeleccionado
+	@Property String seniaSeleccionada
 	
 	new(Villano unVillano, Expedientes expedientes){
 		_expedientes = expedientes
@@ -31,8 +33,8 @@ class EditorDeVillano implements Serializable{
 		_expedientes = expedientes
 		_nombre = ""
 		_sexo = ""
-		_hobbies = newHashSet
-		_seniasParticulares = newHashSet
+		_hobbies = new HashSet
+		_seniasParticulares = new HashSet
 	}
 	
 	def agregarVillano(){
@@ -67,5 +69,13 @@ class EditorDeVillano implements Serializable{
 	
 	def getSexos() {
 		this.sexos
+	}
+	
+	def getHobbies() {
+		_hobbies.toList
+	}
+	
+	def getSeniasParticulares() {
+		_seniasParticulares.toList
 	}
 }
