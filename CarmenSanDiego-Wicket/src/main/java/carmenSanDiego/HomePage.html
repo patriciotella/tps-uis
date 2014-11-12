@@ -19,54 +19,61 @@
 	<!-- 	<DIV CLASS="BTN-GROUP"> -->
 	<!-- 		<BUTTON WICKET:ID="EDITARVILLANO" CLASS="BTN-LINK">EDITARVILLANO</BUTTON> -->
 	<!-- 	</DIV> -->
-	<div>
-		<ul>
-			<li wicket:id="modelApp.expedientes.villanos"></li>
-		</ul>
+	<div id="expedientes" style="display: none;">
+		<div>
+			<ul>
+				<li wicket:id="modelApp.expedientes.villanos"></li>
+			</ul>
+		</div>
+
+		<form wicket:id="editorDeVillanoForm" class="form">
+			<input wicket:id="crearVillano" type="submit" class="btn btn-success"
+				value="+">
+
+			<div style="margin-left: 50%;" id="editorVillano">
+				<div class="form-group">
+					<label for="nombre">Nombre:</label>
+					<div>
+						<input wicket:id="nombre" class="form-control" type="text" />
+					</div>
+				</div>
+				<div>
+					<label for="hobbies">Hobbies:</label> <select
+						wicket:id="hobbieSeleccionado"></select>
+					<button wicket:id="eliminarHobbie" type="submit"
+						class="btn btn-danger">Eliminar</button>
+				</div>
+				<div class="form-group">
+					<label for="hobbieNuevo">Agregar Hobbie:</label> <input
+						wicket:id="hobbieNuevo" class="form-control" type="text" />
+					<button wicket:id="agregarHobbie" type="submit"
+						class="btn btn-primary">Agregar</button>
+				</div>
+				<div class="form-group">
+					<label for="seniasParticulares">Se&ntilde;as Particulares:</label>
+					<select wicket:id="seniaSeleccionada"></select>
+					<button wicket:id="eliminarSeniaParticular" type="submit"
+						class="btn btn-danger">Eliminar</button>
+				</div>
+				<div class="form-group">
+					<label for="seniaNueva">Agregar se&ntilde;a particular:</label> <input
+						wicket:id="seniaNueva" class="form-control" type="text" />
+					<button wicket:id="agregarSeniaParticular" type="submit"
+						class="btn btn-primary">Agregar</button>
+				</div>
+
+				<div class="form-group">
+					<div>
+						<label for="sexos">Sexo:</label> <select wicket:id="sexo"></select>
+					</div>
+					<button wicket:id="submitCambios" type="submit"
+						class="btn btn-success">Aceptar</button>
+					<button class="btn btn-danger" onclick="cancelarEdicionVillano()">Cancelar</button>
+				</div>
+			</div>
+		</form>
 	</div>
 
-	<form wicket:id="editorDeVillanoForm" class="form">
-		<input wicket:id="crearVillano" type="submit" class="btn btn-success"
-			value="+">
-
-		<div style="margin-left: 50%;" id="editorVillano">
-			<div class="form-group">
-				<label for="nombre">Nombre:</label>
-				<div>
-					<input wicket:id="nombre" class="form-control" type="text" />
-				</div>
-			</div>
-			<div>
-				<label for="hobbies">Hobbies:</label> <select wicket:id="hobbieSeleccionado"></select>
-				<button wicket:id="eliminarHobbie" type="submit"
-					class="btn btn-danger">Eliminar</button>
-			</div>
-			<div class="form-group">
-				<label for="hobbieNuevo">Agregar Hobbie:</label> <input
-					wicket:id="hobbieNuevo" class="form-control" type="text" />
-				<button wicket:id="agregarHobbie" type="submit"
-					class="btn btn-primary">Agregar</button>
-			</div>
-			<div class="form-group">
-				<label for="seniasParticulares">Se&ntilde;as Particulares:</label> <select
-					wicket:id="seniaSeleccionada"></select>
-				<button wicket:id="eliminarSeniaParticular" type="submit"
-					class="btn btn-danger">Eliminar</button>
-			</div>
-			<div class="form-group">
-				<label for="seniaNueva">Agregar se&ntilde;a particular:</label> <input
-					wicket:id="seniaNueva" class="form-control" type="text" />
-				<button wicket:id="agregarSeniaParticular" type="submit"
-					class="btn btn-primary">Agregar</button>
-			</div>
-
-			<div class="form-group">
-				<div>
-					<label for="sexos">Sexo:</label> <select wicket:id="sexo"></select>
-				</div>
-			</div>
-		</div>
-	</form>
 </body>
 </html>
 

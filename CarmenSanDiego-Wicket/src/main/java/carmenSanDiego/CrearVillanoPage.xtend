@@ -9,6 +9,7 @@ import org.uqbar.wicket.xtend.XForm
 import org.uqbar.wicket.xtend.XButton
 import org.apache.wicket.markup.html.form.DropDownChoice
 import org.apache.wicket.markup.html.form.TextField
+import org.apache.wicket.model.PropertyModel
 
 class CrearVillanoPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
@@ -32,30 +33,30 @@ class CrearVillanoPage extends WebPage {
 			defaultFormProcessing = false
 		])
 		form.addChild(new XButton("crearVillano").onClick = [| crearVillano(form.modelObject)])
-		form.addChild(new XButton("agregarHobbie").onClick = [| form.modelObject.agregarHobbie("hobbieNuevo")])
-		form.addChild(new XButton("eliminarHobbie").onClick = [|form.modelObject.eliminarHobbie("hobbieSeleccionado")])
-		form.addChild(new XButton("agregarSeniaParticular").onClick = [| form.modelObject.agregarSeniaParticular("seniaNueva")])
-		form.addChild(new XButton("eliminarSeniaParticular").onClick = [| form.modelObject.eliminarSeniaParticular("seniaSeleccionada")])
+		form.addChild(new XButton("agregarHobbie").onClick = [| form.modelObject.agregarHobbie(form.modelObject.hobbieNuevo)])
+		form.addChild(new XButton("eliminarHobbie").onClick = [|form.modelObject.eliminarHobbie(form.modelObject.hobbieSeleccionado)])
+		form.addChild(new XButton("agregarSeniaParticular").onClick = [| form.modelObject.agregarSeniaParticular(form.modelObject.seniaNueva)])
+		form.addChild(new XButton("eliminarSeniaParticular").onClick = [| form.modelObject.eliminarSeniaParticular(form.modelObject.seniaSeleccionada)])
 	}
 
 	def addFields(XForm<EditorDeVillano> form) {
 
 		form.addChild(nombreVillanoTextField(form))
 		form.addChild(
-			new DropDownChoice<String>("hobbies") => [
-				choices = loadableModel([|form.modelObject.hobbies.toList])
+			new DropDownChoice<String>("hobbieSeleccionado") => [
+				choices = new PropertyModel(form.modelObject, "hobbies")
 				choiceRenderer = choiceRenderer([h|h])
 			])
 		form.addChild(agregarHobbieTextField(form))
 		form.addChild(
-			new DropDownChoice<String>("sexos") => [
-				choices = loadableModel([|form.modelObject.sexos])
+			new DropDownChoice<String>("sexo") => [
+          		choices = new PropertyModel(form.modelObject, "sexos")				
 				choiceRenderer = choiceRenderer([s|s])
 			])
 		form.addChild(agregarSeniasTextField(form))
 		form.addChild(
-			new DropDownChoice<String>("seniasParticulares") => [
-				choices = loadableModel([|form.modelObject.seniasParticulares.toList])
+			new DropDownChoice<String>("seniaSeleccionada") => [
+				choices = new PropertyModel(form.modelObject, "seniasParticulares")
 				choiceRenderer = choiceRenderer([s|s])
 			])
 

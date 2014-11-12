@@ -44,11 +44,12 @@ public class HomePage extends WebPage {
 		form.addChild(new XButton("crearVillano").onClick = [| crearVillano])
 		val agregarHobbieButton = new XButton("agregarHobbie").onClick = [| form.modelObject.agregarHobbie(form.modelObject.hobbieNuevo)]
 		form.addChild(agregarHobbieButton)
-		form.addChild(new XButton("eliminarHobbie").onClick = [|form.modelObject.eliminarHobbie("hobbieSeleccionado")])
+		form.addChild(new XButton("eliminarHobbie").onClick = [|form.modelObject.eliminarHobbie(form.modelObject.hobbieSeleccionado)])
 		form.addChild(new XButton("agregarSeniaParticular").onClick = [| 
 			form.modelObject.agregarSeniaParticular(form.modelObject.seniaNueva)
 		])
-		form.addChild(new XButton("eliminarSeniaParticular").onClick = [| form.modelObject.eliminarSeniaParticular("seniaSeleccionada")])
+		form.addChild(new XButton("eliminarSeniaParticular").onClick = [| form.modelObject.eliminarSeniaParticular(form.modelObject.seniaSeleccionada)])
+		form.addChild(new XButton("submitCambios").onClick = [| form.modelObject.agregarVillano])
 	}
 
 	def addFieldsVillano(XForm<EditorDeVillano> form) {
@@ -71,23 +72,18 @@ public class HomePage extends WebPage {
 				choices = new PropertyModel(form.modelObject, "seniasParticulares")
 				choiceRenderer = choiceRenderer([s|s])
 			])
-
 //		form.addChild(new FeedbackPanel("feedbackPanel")) //ESTE ES EL QUE MUESTRA ERRORES
 	}
 
 	def nombreVillanoTextField(Form<EditorDeVillano> form) {
-
-		val a = new TextField<String>("nombre")
-		return a
+		return new TextField<String>("nombre")
 	}
 
 	def agregarHobbieTextField(Form<EditorDeVillano> form) {
-
 		return new TextField<String>("hobbieNuevo")
 	}
 	
 	def agregarSeniasTextField(Form<EditorDeVillano> form) {
-		
 		return new TextField<String>("seniaNueva")
 	}
 
