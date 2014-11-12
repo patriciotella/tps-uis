@@ -12,8 +12,9 @@ class HomePageModApp {
 	Expedientes expedientes
 	
 	new(){
-		mapamundi = new Mapamundi
-		expedientes = new Expedientes
+		val repo = new RepositorioWicket
+		mapamundi = repo.mapamundi
+		expedientes = repo.expedientes
 	}
 	
 }
