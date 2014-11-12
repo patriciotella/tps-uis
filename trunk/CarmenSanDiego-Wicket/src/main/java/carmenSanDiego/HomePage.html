@@ -21,13 +21,16 @@
 	<!-- 	</DIV> -->
 	<div>
 		<ul>
-			<li wicket:id="modelApp.expedientes.villanos"></li>
+			<li><p>soy una lista</p></li>
+			<li wicket:id="modelApp.expedientes.villanos.nombre"></li>
+			<li><p>fin de lista</p></li>
 		</ul>
+		<label for="hobbies">Hobbies:</label> <select wicket:id="hobbies"></select>
 	</div>
 
 	<form wicket:id="editorDeVillanoForm" class="form">
 		<input wicket:id="crearVillano" type="submit" class="btn btn-success"
-			value="+">
+			value="+ crear villano">
 
 		<div style="margin-left: 50%;" id="editorVillano">
 			<div class="form-group">

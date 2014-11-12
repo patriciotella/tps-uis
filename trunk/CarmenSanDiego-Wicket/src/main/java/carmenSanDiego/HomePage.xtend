@@ -22,12 +22,17 @@ public class HomePage extends WebPage {
 
 	new() {
 		modelApp = new HomePageModApp
+//		val homePageform = new XForm<HomePageModApp>("homePageForm",
+//			new CompoundPropertyModel(new HomePageModApp)
+//		)
 		val editorVillanoform = new XForm<EditorDeVillano>("editorDeVillanoForm",
 			new CompoundPropertyModel(new EditorDeVillano(modelApp.expedientes)))
 
-		//		val editorPaisform = new XForm<EditorDePais>("EditorDePaisForm", new CompoundPropertyModel(new EditorDePais(modelApp.mapamundi)))	
-		this.add(new XListView("modelApp.expedientes.villanos"))
+		//		val editorPaisform = new XForm<EditorDePais>("EditorDePaisForm",
+//		 new CompoundPropertyModel(new EditorDePais(modelApp.mapamundi)))	
 
+//		this.addChild(homePageform)
+		this.add(new XListView("modelApp.expedientes.villanos.nombre"))
 		this.addChild(editorVillanoform)
 		this.addFieldsVillano(editorVillanoform)
 		this.addActionsVillano(editorVillanoform)
@@ -38,7 +43,6 @@ public class HomePage extends WebPage {
 //		this.addActionsPais(editorPaisform)
 	}
 
-	
 	def addActionsVillano(XForm<EditorDeVillano> form) {
 		form.addChild(new XButton("crearVillano").onClick = [| crearVillano])
 		val agregarHobbieButton = new XButton("agregarHobbie").onClick = [| form.modelObject.agregarHobbie(form.modelObject.hobbieNuevo)]
