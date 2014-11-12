@@ -11,6 +11,7 @@ import org.apache.wicket.markup.html.form.DropDownChoice
 import villano.EditorDeVillano
 import carmenSanDiegoUIs.HomePageModApp
 import org.uqbar.wicket.xtend.XListView
+import org.apache.wicket.model.PropertyModel
 
 /**
  * Homepage
@@ -22,17 +23,12 @@ public class HomePage extends WebPage {
 
 	new() {
 		modelApp = new HomePageModApp
-//		val homePageform = new XForm<HomePageModApp>("homePageForm",
-//			new CompoundPropertyModel(new HomePageModApp)
-//		)
 		val editorVillanoform = new XForm<EditorDeVillano>("editorDeVillanoForm",
 			new CompoundPropertyModel(new EditorDeVillano(modelApp.expedientes)))
 
-		//		val editorPaisform = new XForm<EditorDePais>("EditorDePaisForm",
-//		 new CompoundPropertyModel(new EditorDePais(modelApp.mapamundi)))	
+		//		val editorPaisform = new XForm<EditorDePais>("EditorDePaisForm", new CompoundPropertyModel(new EditorDePais(modelApp.mapamundi)))	
+		this.add(new XListView("modelApp.expedientes.villanos"))
 
-//		this.addChild(homePageform)
-		this.add(new XListView("modelApp.expedientes.villanos.nombre"))
 		this.addChild(editorVillanoform)
 		this.addFieldsVillano(editorVillanoform)
 		this.addActionsVillano(editorVillanoform)
@@ -43,12 +39,15 @@ public class HomePage extends WebPage {
 //		this.addActionsPais(editorPaisform)
 	}
 
+	
 	def addActionsVillano(XForm<EditorDeVillano> form) {
 		form.addChild(new XButton("crearVillano").onClick = [| crearVillano])
 		val agregarHobbieButton = new XButton("agregarHobbie").onClick = [| form.modelObject.agregarHobbie(form.modelObject.hobbieNuevo)]
 		form.addChild(agregarHobbieButton)
 		form.addChild(new XButton("eliminarHobbie").onClick = [|form.modelObject.eliminarHobbie("hobbieSeleccionado")])
-		form.addChild(new XButton("agregarSeniaParticular").onClick = [| form.modelObject.agregarSeniaParticular("seniaNueva")])
+		form.addChild(new XButton("agregarSeniaParticular").onClick = [| 
+			form.modelObject.agregarSeniaParticular(form.modelObject.seniaNueva)
+		])
 		form.addChild(new XButton("eliminarSeniaParticular").onClick = [| form.modelObject.eliminarSeniaParticular("seniaSeleccionada")])
 	}
 
@@ -56,20 +55,20 @@ public class HomePage extends WebPage {
 
 		form.addChild(nombreVillanoTextField(form))
 		form.addChild(
-			new DropDownChoice<String>("hobbies") => [
-				choices = loadableModel([|form.modelObject.hobbies.toList])
+			new DropDownChoice<String>("hobbieSeleccionado") => [
+				choices = new PropertyModel(form.modelObject, "hobbies")
 				choiceRenderer = choiceRenderer([h|h])
 			])
 		form.addChild(agregarHobbieTextField(form))
-//		form.addChild(
-//			new DropDownChoice<String>("sexos") => [
-//				choices = loadableModel([|form.modelObject.sexos])
-//				choiceRenderer = choiceRenderer([s|s])
-//			])
+		form.addChild(
+			new DropDownChoice<String>("sexo") => [
+          		choices = new PropertyModel(form.modelObject, "sexos")				
+				choiceRenderer = choiceRenderer([s|s])
+			])
 		form.addChild(agregarSeniasTextField(form))
 		form.addChild(
-			new DropDownChoice<String>("seniasParticulares") => [
-				choices = loadableModel([|form.modelObject.seniasParticulares.toList])
+			new DropDownChoice<String>("seniaSeleccionada") => [
+				choices = new PropertyModel(form.modelObject, "seniasParticulares")
 				choiceRenderer = choiceRenderer([s|s])
 			])
 
@@ -85,11 +84,6 @@ public class HomePage extends WebPage {
 	def agregarHobbieTextField(Form<EditorDeVillano> form) {
 
 		return new TextField<String>("hobbieNuevo")
-	}
-	
-	def agregarSexoTextField(Form<EditorDeVillano> form) {
-		
-		return new TextField<String>("sexo")
 	}
 	
 	def agregarSeniasTextField(Form<EditorDeVillano> form) {
