@@ -1,20 +1,18 @@
 package carmenSanDiego;
 
+import carmenSanDiegoUIs.HomePageModApp
 import org.apache.wicket.markup.html.WebPage
+import org.apache.wicket.markup.html.basic.Label
+import org.apache.wicket.markup.html.form.DropDownChoice
 import org.apache.wicket.markup.html.form.Form
 import org.apache.wicket.markup.html.form.TextField
 import org.apache.wicket.model.CompoundPropertyModel
+import org.apache.wicket.model.PropertyModel
 import org.uqbar.wicket.xtend.WicketExtensionFactoryMethods
 import org.uqbar.wicket.xtend.XButton
 import org.uqbar.wicket.xtend.XForm
-import org.apache.wicket.markup.html.form.DropDownChoice
-import villano.EditorDeVillano
-import carmenSanDiegoUIs.HomePageModApp
 import org.uqbar.wicket.xtend.XListView
-import org.apache.wicket.model.PropertyModel
-import pais.EditorDePais
-import org.apache.wicket.markup.html.basic.Label
-import com.google.common.collect.ComputationException
+import villano.EditorDeVillano
 
 /**
  * Homepage
@@ -23,43 +21,49 @@ public class HomePage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
 
 	HomePageModApp aModelApp
+	EditorDeVillano editorVillano
 
 	new() {
 		aModelApp = new HomePageModApp
-		val modelApp = new XForm<HomePageModApp>("modelApp",
-			new CompoundPropertyModel(new HomePageModApp)
-		)
+		editorVillano = new EditorDeVillano(aModelApp.expedientes)
+		val modelApp = new XForm<HomePageModApp>(
+			"modelApp",
+			new CompoundPropertyModel(aModelApp))
+			
 		val editorVillanoform = new XForm<EditorDeVillano>("editorDeVillanoForm",
-			new CompoundPropertyModel(new EditorDeVillano(aModelApp.expedientes)))
+			new CompoundPropertyModel(editorVillano))
 
-//		val editorPaisform = new XForm<EditorDePais>("EditorDePaisForm", new CompoundPropertyModel(new EditorDePais(modelApp.mapamundi)))	
-//		this.add(new XListView("modelApp.expedientes.villanos"))
-		
-
+		//		val editorPaisform = new XForm<EditorDePais>("EditorDePaisForm", new CompoundPropertyModel(new EditorDePais(modelApp.mapamundi)))	
+		//		this.add(new XListView("modelApp.expedientes.villanos"))
 		this.addChild(modelApp)
 		this.addList(modelApp)
-		
+
 		this.addChild(editorVillanoform)
 		this.addFieldsVillano(editorVillanoform)
 		this.addActionsVillano(editorVillanoform)
 
-//		this.add(new XListView("modelApp.mapamundi.paises"))
-//		this.addChild(editorPaisform)
-//		this.addFieldsPais(editorPaisform)
-//		this.addActionsPais(editorPaisform)
+	//		this.add(new XListView("modelApp.mapamundi.paises"))
+	//		this.addChild(editorPaisform)
+	//		this.addFieldsPais(editorPaisform)
+	//		this.addActionsPais(editorPaisform)
 	}
 
-	
 	def addActionsVillano(XForm<EditorDeVillano> form) {
-		form.addChild(new XButton("crearVillano").onClick = [| crearVillano])
-		val agregarHobbieButton = new XButton("agregarHobbie").onClick = [| form.modelObject.agregarHobbie(form.modelObject.hobbieNuevo)]
+		form.addChild(new XButton("crearVillano").onClick = [|crearVillano])
+		val agregarHobbieButton = new XButton("agregarHobbie").onClick = [|
+			form.modelObject.agregarHobbie(form.modelObject.hobbieNuevo)]
 		form.addChild(agregarHobbieButton)
-		form.addChild(new XButton("eliminarHobbie").onClick = [|form.modelObject.eliminarHobbie(form.modelObject.hobbieSeleccionado)])
-		form.addChild(new XButton("agregarSeniaParticular").onClick = [| 
-			form.modelObject.agregarSeniaParticular(form.modelObject.seniaNueva)
-		])
-		form.addChild(new XButton("eliminarSeniaParticular").onClick = [| form.modelObject.eliminarSeniaParticular(form.modelObject.seniaSeleccionada)])
-		form.addChild(new XButton("submitCambios").onClick = [| form.modelObject.agregarVillano])
+		form.addChild(
+			new XButton("eliminarHobbie").onClick = [|
+				form.modelObject.eliminarHobbie(form.modelObject.hobbieSeleccionado)])
+		form.addChild(
+			new XButton("agregarSeniaParticular").onClick = [ |
+				form.modelObject.agregarSeniaParticular(form.modelObject.seniaNueva)
+			])
+		form.addChild(
+			new XButton("eliminarSeniaParticular").onClick = [|
+				form.modelObject.eliminarSeniaParticular(form.modelObject.seniaSeleccionada)])
+		form.addChild(new XButton("submitCambios").onClick = [|form.modelObject.agregarVillano])
 	}
 
 	def addFieldsVillano(XForm<EditorDeVillano> form) {
@@ -73,7 +77,7 @@ public class HomePage extends WebPage {
 		form.addChild(agregarHobbieTextField(form))
 		form.addChild(
 			new DropDownChoice<String>("sexo") => [
-          		choices = new PropertyModel(form.modelObject, "sexos")				
+				choices = new PropertyModel(form.modelObject, "sexos")
 				choiceRenderer = choiceRenderer([s|s])
 			])
 		form.addChild(agregarSeniasTextField(form))
@@ -82,7 +86,8 @@ public class HomePage extends WebPage {
 				choices = new PropertyModel(form.modelObject, "seniasParticulares")
 				choiceRenderer = choiceRenderer([s|s])
 			])
-//		form.addChild(new FeedbackPanel("feedbackPanel")) //ESTE ES EL QUE MUESTRA ERRORES
+
+	//		form.addChild(new FeedbackPanel("feedbackPanel")) //ESTE ES EL QUE MUESTRA ERRORES
 	}
 
 	def nombreVillanoTextField(Form<EditorDeVillano> form) {
@@ -92,55 +97,55 @@ public class HomePage extends WebPage {
 	def agregarHobbieTextField(Form<EditorDeVillano> form) {
 		return new TextField<String>("hobbieNuevo")
 	}
-	
+
 	def agregarSeniasTextField(Form<EditorDeVillano> form) {
 		return new TextField<String>("seniaNueva")
 	}
 
-	def crearVillano(){
-		responsePage = new CrearVillanoPage(aModelApp.expedientes, this) 
+	def crearVillano() {
+		responsePage = new CrearVillanoPage(aModelApp.expedientes, this)
 	}
-//	def addActionsPais(XForm<EditorDePais> form) {
-//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-//	}
-//
-//	def addFieldsPais(XForm<EditorDePais> form) {
-//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-//	}
-//
-//	def crearCaracteristicasPaisTextField(Form<EditorDePais> form) {
-//		
-//		val caracteristicasPaisTextField = new TextField<String>("caracteristicas")
-//		return caracteristicasPaisTextField
-//	}
-//	
-//	def crearConexionPaisTextField(Form<EditorDePais> form) {
-//		
-//		val conexionPaisTextField = new TextField<String>("conexion")
-//		return conexionPaisTextField
-//	}
-//	
-//	def crearLugarDeInteresPaisTextField(Form<EditorDePais> form) {
-//		
-//		val lugarDeInteresPaisTextField = new TextField<String>("lugarDeInteres")
-//		return lugarDeInteresPaisTextField
-//	}
 
-	def addList (Form<HomePageModApp> parent) {
+	//	def addActionsPais(XForm<EditorDePais> form) {
+	//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	//	}
+	//
+	//	def addFieldsPais(XForm<EditorDePais> form) {
+	//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	//	}
+	//
+	//	def crearCaracteristicasPaisTextField(Form<EditorDePais> form) {
+	//		
+	//		val caracteristicasPaisTextField = new TextField<String>("caracteristicas")
+	//		return caracteristicasPaisTextField
+	//	}
+	//	
+	//	def crearConexionPaisTextField(Form<EditorDePais> form) {
+	//		
+	//		val conexionPaisTextField = new TextField<String>("conexion")
+	//		return conexionPaisTextField
+	//	}
+	//	
+	//	def crearLugarDeInteresPaisTextField(Form<EditorDePais> form) {
+	//		
+	//		val lugarDeInteresPaisTextField = new TextField<String>("lugarDeInteres")
+	//		return lugarDeInteresPaisTextField
+	//	}
+	def addList(Form<HomePageModApp> parent) {
 		val listView = new XListView("expedientes.villanos")
 		listView.populateItem = [ item |
 			item.model = item.modelObject.asCompoundModel
 			item.addChild(new Label("nombre"))
-			
-			
-//			item.addChild(new XButton("editar").onClick = [| editar(item.modelObject) ])
-//			item.addChild(new XButton("eliminar")
-//				.onClick = [|
-//					 
-//					buscador.celularSeleccionado = item.modelObject
-//					buscador.eliminarCelularSeleccionado
-//				]
-//			)
+			item.addChild(
+				new XButton("editar").onClick = [|
+					editorVillano = new EditorDeVillano(item.modelObject, aModelApp.expedientes)])
+					item.addChild(new XButton("eliminar")
+						.onClick = [| parent.modelObject.expedientes.eliminarVillano(item.modelObject)
+							 
+//							buscador.celularSeleccionado = item.modelObject
+//							buscador.eliminarCelularSeleccionado
+						]
+					)
 		]
 		parent.addChild(listView)
 	}

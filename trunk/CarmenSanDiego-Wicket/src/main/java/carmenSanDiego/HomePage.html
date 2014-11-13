@@ -31,21 +31,27 @@
 	               	<tr wicket:id="expedientes.villanos">
 	                   	<td>
 	                   	    <span wicket:id="nombre">unNombre</span> 
-	               	    </td> 
+	               	    </td>
+	               	    <td>
+	           	        	<div class="btn-group">
+	           	        		<button wicket:id="editar" class="btn-link">Editar</button>
+	           	        		<button wicket:id="eliminar" class="btn-link">Eliminar</button>
+	           	        	</div>
+	   	                </td>  
 	               	</tr>
                	</tbody>
            	</table>
 <!-- <ul wicket:id="expedientes.villanos">  -->
 <!-- 			<li wicket:id="nombre"> unNombre</li> -->
 <!-- 		</ul> -->
+<!-- 	<div wicket:id="expedientes.villanos" style="display: none;"> -->
+<!-- 		<div> -->
+<!-- 			<ul> -->
+<!-- 				<li wicket:id="nombre"></li> -->
+<!-- 			</ul> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
            	</form>
-	</div>
-	<div id="expedientes" style="display: none;">
-		<div>
-			<ul>
-				<li wicket:id="modelApp.expedientes.villanos"></li>
-			</ul>
-		</div>
 
 		<form wicket:id="editorDeVillanoForm" class="form">
 			<input wicket:id="crearVillano" type="submit" class="btn btn-success"
