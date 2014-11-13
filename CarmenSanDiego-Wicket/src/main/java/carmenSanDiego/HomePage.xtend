@@ -12,6 +12,9 @@ import villano.EditorDeVillano
 import carmenSanDiegoUIs.HomePageModApp
 import org.uqbar.wicket.xtend.XListView
 import org.apache.wicket.model.PropertyModel
+import pais.EditorDePais
+import org.apache.wicket.markup.html.basic.Label
+import com.google.common.collect.ComputationException
 
 /**
  * Homepage
@@ -19,16 +22,23 @@ import org.apache.wicket.model.PropertyModel
 public class HomePage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
 
-	HomePageModApp modelApp
+	HomePageModApp aModelApp
 
 	new() {
-		modelApp = new HomePageModApp
+		aModelApp = new HomePageModApp
+		val modelApp = new XForm<HomePageModApp>("modelApp",
+			new CompoundPropertyModel(new HomePageModApp)
+		)
 		val editorVillanoform = new XForm<EditorDeVillano>("editorDeVillanoForm",
-			new CompoundPropertyModel(new EditorDeVillano(modelApp.expedientes)))
+			new CompoundPropertyModel(new EditorDeVillano(aModelApp.expedientes)))
 
-		//		val editorPaisform = new XForm<EditorDePais>("EditorDePaisForm", new CompoundPropertyModel(new EditorDePais(modelApp.mapamundi)))	
-		this.add(new XListView("modelApp.expedientes.villanos"))
+//		val editorPaisform = new XForm<EditorDePais>("EditorDePaisForm", new CompoundPropertyModel(new EditorDePais(modelApp.mapamundi)))	
+//		this.add(new XListView("modelApp.expedientes.villanos"))
+		
 
+		this.addChild(modelApp)
+		this.addList(modelApp)
+		
 		this.addChild(editorVillanoform)
 		this.addFieldsVillano(editorVillanoform)
 		this.addActionsVillano(editorVillanoform)
@@ -88,7 +98,7 @@ public class HomePage extends WebPage {
 	}
 
 	def crearVillano(){
-		responsePage = new CrearVillanoPage(modelApp.expedientes, this) 
+		responsePage = new CrearVillanoPage(aModelApp.expedientes, this) 
 	}
 //	def addActionsPais(XForm<EditorDePais> form) {
 //		throw new UnsupportedOperationException("TODO: auto-generated method stub")
@@ -115,4 +125,23 @@ public class HomePage extends WebPage {
 //		val lugarDeInteresPaisTextField = new TextField<String>("lugarDeInteres")
 //		return lugarDeInteresPaisTextField
 //	}
+
+	def addList (Form<HomePageModApp> parent) {
+		val listView = new XListView("expedientes.villanos")
+		listView.populateItem = [ item |
+			item.model = item.modelObject.asCompoundModel
+			item.addChild(new Label("nombre"))
+			
+			
+//			item.addChild(new XButton("editar").onClick = [| editar(item.modelObject) ])
+//			item.addChild(new XButton("eliminar")
+//				.onClick = [|
+//					 
+//					buscador.celularSeleccionado = item.modelObject
+//					buscador.eliminarCelularSeleccionado
+//				]
+//			)
+		]
+		parent.addChild(listView)
+	}
 }

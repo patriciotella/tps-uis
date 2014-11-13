@@ -19,6 +19,27 @@
 	<!-- 	<DIV CLASS="BTN-GROUP"> -->
 	<!-- 		<BUTTON WICKET:ID="EDITARVILLANO" CLASS="BTN-LINK">EDITARVILLANO</BUTTON> -->
 	<!-- 	</DIV> -->
+	<div>
+	<form wicket:id="modelApp" class="form">
+	<table class="table table-striped table-bordered table-condensed">
+           		<thead>
+	           		<tr>
+	               		<th id="nombre">Nombre Villano</th>
+	               	</tr>
+	            </thead>
+				<tbody>
+	               	<tr wicket:id="expedientes.villanos">
+	                   	<td>
+	                   	    <span wicket:id="nombre">unNombre</span> 
+	               	    </td> 
+	               	</tr>
+               	</tbody>
+           	</table>
+<!-- <ul wicket:id="expedientes.villanos">  -->
+<!-- 			<li wicket:id="nombre"> unNombre</li> -->
+<!-- 		</ul> -->
+           	</form>
+	</div>
 	<div id="expedientes" style="display: none;">
 		<div>
 			<ul>
