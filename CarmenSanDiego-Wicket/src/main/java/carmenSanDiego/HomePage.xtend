@@ -26,10 +26,8 @@ public class HomePage extends WebPage {
 	new() {
 		aModelApp = new HomePageModApp
 		editorVillano = new EditorDeVillano(aModelApp.expedientes)
-		val modelApp = new XForm<HomePageModApp>(
-			"modelApp",
-			new CompoundPropertyModel(aModelApp))
-			
+		val modelApp = new XForm<HomePageModApp>("modelApp", new CompoundPropertyModel(aModelApp))
+
 		val editorVillanoform = new XForm<EditorDeVillano>("editorDeVillanoForm",
 			new CompoundPropertyModel(editorVillano))
 
@@ -49,7 +47,7 @@ public class HomePage extends WebPage {
 	}
 
 	def addActionsVillano(XForm<EditorDeVillano> form) {
-		form.addChild(new XButton("crearVillano").onClick = [|crearVillano])
+//		form.addChild(new XButton("crearVillano").onClick = [|crearVillano])
 		val agregarHobbieButton = new XButton("agregarHobbie").onClick = [|
 			form.modelObject.agregarHobbie(form.modelObject.hobbieNuevo)]
 		form.addChild(agregarHobbieButton)
@@ -139,13 +137,13 @@ public class HomePage extends WebPage {
 			item.addChild(
 				new XButton("editar").onClick = [|
 					editorVillano = new EditorDeVillano(item.modelObject, aModelApp.expedientes)])
-					item.addChild(new XButton("eliminar")
-						.onClick = [| parent.modelObject.expedientes.eliminarVillano(item.modelObject)
-							 
-//							buscador.celularSeleccionado = item.modelObject
-//							buscador.eliminarCelularSeleccionado
-						]
-					)
+			item.addChild(
+				new XButton("eliminar").onClick = [ |
+					parent.modelObject.expedientes.eliminarVillano(item.modelObject)
+				//							buscador.celularSeleccionado = item.modelObject
+				//							buscador.eliminarCelularSeleccionado
+				]
+			)
 		]
 		parent.addChild(listView)
 	}
