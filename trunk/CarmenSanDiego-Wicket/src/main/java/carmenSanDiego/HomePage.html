@@ -17,9 +17,6 @@
 		</li>
 	</ul>
 	<hr>
-	<!-- 	<DIV CLASS="BTN-GROUP"> -->
-	<!-- 		<BUTTON WICKET:ID="EDITARVILLANO" CLASS="BTN-LINK">EDITARVILLANO</BUTTON> -->
-	<!-- 	</DIV> -->
 	<div id="expedientes" style="display: none;">
 		<div id="tablaDeVillanos">
 			<form wicket:id="modelApp" class="form">
@@ -34,22 +31,18 @@
 							<td><span wicket:id="nombre">unNombre</span></td>
 							<td>
 								<div class="btn-group" id="botones_de_edicion">
-									<button wicket:id="editar" class="btn-link">Editar</button>
+<!-- 									<button wicket:id="editar" class="btn-link">Editar</button> -->
 									<button wicket:id="eliminar" class="btn-link">Eliminar</button>
 								</div>
 							</td>
 						</tr>
 					</tbody>
 				</table>
-				<button id="crearVillano" class="btn btn-success" >+</button>
+				<button wicket:id="crearVillano" class="btn btn-success">+</button>
 			</form>
 		</div>
 
-<!-- 		<div id="editorDeVillano"> -->
 			<form wicket:id="editorDeVillanoForm" class="form">
-<!-- 				<input wicket:id="crearVillano" type="submit" -->
-<!-- 					class="btn btn-success" value="+"> -->
-
 				<div id="editorDeVillano">
 					<div class="form-group">
 						<label for="nombre">Nombre:</label>
@@ -92,7 +85,6 @@
 					</div>
 				</div>
 			</form>
-<!-- 		</div> -->
 	</div>
 
 </body>

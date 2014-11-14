@@ -13,6 +13,7 @@ import org.uqbar.wicket.xtend.XButton
 import org.uqbar.wicket.xtend.XForm
 import org.uqbar.wicket.xtend.XListView
 import villano.EditorDeVillano
+import org.uqbar.wicket.xtend.XAjaxLink
 
 /**
  * Homepage
@@ -22,23 +23,29 @@ public class HomePage extends WebPage {
 
 	HomePageModApp aModelApp
 	EditorDeVillano editorVillano
+	
+	XForm<EditorDeVillano> editorVillanoform
 
 	new() {
 		aModelApp = new HomePageModApp
 		editorVillano = new EditorDeVillano(aModelApp.expedientes)
 		val modelApp = new XForm<HomePageModApp>("modelApp", new CompoundPropertyModel(aModelApp))
 
-		val editorVillanoform = new XForm<EditorDeVillano>("editorDeVillanoForm",
+		editorVillanoform = new XForm<EditorDeVillano>("editorDeVillanoForm",
 			new CompoundPropertyModel(editorVillano))
-
-		//		val editorPaisform = new XForm<EditorDePais>("EditorDePaisForm", new CompoundPropertyModel(new EditorDePais(modelApp.mapamundi)))	
-		//		this.add(new XListView("modelApp.expedientes.villanos"))
-		this.addChild(modelApp)
-		this.addList(modelApp)
-
+		
+		
 		this.addChild(editorVillanoform)
 		this.addFieldsVillano(editorVillanoform)
 		this.addActionsVillano(editorVillanoform)
+		editorVillanoform.outputMarkupId = true
+		
+		//		val editorPaisform = new XForm<EditorDePais>("EditorDePaisForm", new CompoundPropertyModel(new EditorDePais(modelApp.mapamundi)))	
+		//		this.add(new XListView("modelApp.expedientes.villanos"))
+		this.addChild(modelApp)
+		modelApp.addChild(new XButton("crearVillano").onClick = [|crearVillano])
+		this.addList(modelApp)
+
 
 	//		this.add(new XListView("modelApp.mapamundi.paises"))
 	//		this.addChild(editorPaisform)
@@ -134,14 +141,17 @@ public class HomePage extends WebPage {
 		listView.populateItem = [ item |
 			item.model = item.modelObject.asCompoundModel
 			item.addChild(new Label("nombre"))
-			item.addChild(
-				new XButton("editar").onClick = [|
-					editorVillano = new EditorDeVillano(item.modelObject, aModelApp.expedientes)])
+//			this.addChild(
+//				new XAjaxLink<Object>("editar") => [
+//					onClick = [ target |
+//						editorVillano.sincWith(item.modelObject, parent.modelObject.expedientes)
+//						target.add(editorVillanoform)
+//					]
+//				]
+//			)
 			item.addChild(
 				new XButton("eliminar").onClick = [ |
 					parent.modelObject.expedientes.eliminarVillano(item.modelObject)
-				//							buscador.celularSeleccionado = item.modelObject
-				//							buscador.eliminarCelularSeleccionado
 				]
 			)
 		]
