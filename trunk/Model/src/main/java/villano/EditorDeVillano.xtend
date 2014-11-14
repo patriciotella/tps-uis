@@ -80,4 +80,18 @@ class EditorDeVillano implements Serializable{
 	def getSeniasParticulares() {
 		_seniasParticulares.toList
 	}
+	
+	def void sincWith(Villano unVillano, Expedientes expedientes) {
+		_expedientes = expedientes
+		this.villano = unVillano
+		_nombre = unVillano.nombre
+		_sexo = unVillano.sexo
+		_hobbies = new HashSet(unVillano.hobbies)
+		_seniasParticulares = new HashSet(unVillano.seniasParticulares)
+		_seniaNueva = ""
+		_hobbieNuevo = ""
+		_hobbieSeleccionado = ""
+		_seniaSeleccionada = ""
+	}
+	
 }
