@@ -109,4 +109,8 @@ class Pais {
 		return lugar.head.pista
 	}
 	
+	def getNombreDePais() {
+		_nombre
+	}
+	
 }
