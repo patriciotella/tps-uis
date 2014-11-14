@@ -21,15 +21,15 @@ import org.uqbar.wicket.xtend.XAjaxLink
 public class HomePage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
 
-	HomePageModApp aModelApp
+	HomePageModApp modelApp
 	EditorDeVillano editorVillano
 	
 	XForm<EditorDeVillano> editorVillanoform
 
 	new() {
-		aModelApp = new HomePageModApp
-		editorVillano = new EditorDeVillano(aModelApp.expedientes)
-		val modelApp = new XForm<HomePageModApp>("modelApp", new CompoundPropertyModel(aModelApp))
+		modelApp = new HomePageModApp
+		editorVillano = new EditorDeVillano(modelApp.expedientes)
+		val modelApp = new XForm<HomePageModApp>("modelApp", new CompoundPropertyModel(modelApp))
 
 		editorVillanoform = new XForm<EditorDeVillano>("editorDeVillanoForm",
 			new CompoundPropertyModel(editorVillano))
@@ -44,7 +44,7 @@ public class HomePage extends WebPage {
 		//		this.add(new XListView("modelApp.expedientes.villanos"))
 		this.addChild(modelApp)
 		modelApp.addChild(new XButton("crearVillano").onClick = [|crearVillano])
-		this.addList(modelApp)
+		this.addLists(modelApp)
 
 
 	//		this.add(new XListView("modelApp.mapamundi.paises"))
@@ -108,35 +108,29 @@ public class HomePage extends WebPage {
 	}
 
 	def crearVillano() {
-		responsePage = new CrearVillanoPage(aModelApp.expedientes, this)
+		responsePage = new CrearVillanoPage(modelApp.expedientes, this)
 	}
 
-	//	def addActionsPais(XForm<EditorDePais> form) {
-	//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	//	}
-	//
-	//	def addFieldsPais(XForm<EditorDePais> form) {
-	//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	//	}
-	//
-	//	def crearCaracteristicasPaisTextField(Form<EditorDePais> form) {
-	//		
-	//		val caracteristicasPaisTextField = new TextField<String>("caracteristicas")
-	//		return caracteristicasPaisTextField
-	//	}
-	//	
-	//	def crearConexionPaisTextField(Form<EditorDePais> form) {
-	//		
-	//		val conexionPaisTextField = new TextField<String>("conexion")
-	//		return conexionPaisTextField
-	//	}
-	//	
-	//	def crearLugarDeInteresPaisTextField(Form<EditorDePais> form) {
-	//		
-	//		val lugarDeInteresPaisTextField = new TextField<String>("lugarDeInteres")
-	//		return lugarDeInteresPaisTextField
-	//	}
-	def addList(Form<HomePageModApp> parent) {
+	def addLists(Form<HomePageModApp> parent) {
+		addVillanosList(parent)
+		addPaisesList(parent)
+	}
+	
+	def addPaisesList(Form<HomePageModApp> form) {
+		val paises = new XListView("paises", modelApp.mapamundi.paises)
+		paises.populateItem = [ item |
+			item.model = item.modelObject.asCompoundModel
+			item.addChild(new Label("nombreDePais"))
+			item.addChild(
+				new XButton("eliminarPais").onClick = [ |
+					form.modelObject.mapamundi.eliminarPais(item.modelObject)
+				]
+			)
+		]
+		form.addChild(paises)
+	}
+	
+	def addVillanosList(Form<HomePageModApp> parent) {
 		val listView = new XListView("expedientes.villanos")
 		listView.populateItem = [ item |
 			item.model = item.modelObject.asCompoundModel
