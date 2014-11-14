@@ -3,7 +3,7 @@ package villano
 import java.util.List
 import java.io.Serializable
 
-class Expedientes implements Serializable{
+class Expedientes implements Serializable {
 	@Property List<Villano> villanos;
 	
 	new() {

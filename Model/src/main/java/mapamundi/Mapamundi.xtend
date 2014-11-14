@@ -1,10 +1,10 @@
 package mapamundi
 
-import java.util.Set
 import pais.Pais
 import java.util.List
+import java.io.Serializable
 
-class Mapamundi {
+class Mapamundi implements Serializable {
 	@Property List<Pais> paises
 	
 	new() {
