@@ -40,7 +40,6 @@ class CrearVillanoPage extends WebPage {
 	}
 
 	def addFields(XForm<EditorDeVillano> form) {
-
 		form.addChild(nombreVillanoTextField(form))
 		form.addChild(
 			new DropDownChoice<String>("hobbieSeleccionado") => [
@@ -64,23 +63,19 @@ class CrearVillanoPage extends WebPage {
 	}
 
 	def nombreVillanoTextField(XForm<EditorDeVillano> form) {
-
 		val a = new TextField<String>("nombre")
 		return a
 	}
 
 	def agregarHobbieTextField(XForm<EditorDeVillano> form) {
-
 		return new TextField<String>("hobbieNuevo")
 	}
 	
 	def agregarSexoTextField(XForm<EditorDeVillano> form) {
-		
 		return new TextField<String>("sexo")
 	}
 	
 	def agregarSeniasTextField(XForm<EditorDeVillano> form) {
-		
 		return new TextField<String>("seniaNueva")
 	}
 	
