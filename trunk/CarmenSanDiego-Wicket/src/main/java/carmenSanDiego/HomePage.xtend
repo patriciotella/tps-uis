@@ -43,7 +43,7 @@ public class HomePage extends WebPage {
 		//		val editorPaisform = new XForm<EditorDePais>("EditorDePaisForm", new CompoundPropertyModel(new EditorDePais(modelApp.mapamundi)))	
 		//		this.add(new XListView("modelApp.expedientes.villanos"))
 		this.addChild(modelApp)
-		modelApp.addChild(new XButton("crearVillano").onClick = [|crearVillano])
+		this.addCrearButtons(modelApp)
 		this.addLists(modelApp)
 
 
@@ -52,9 +52,17 @@ public class HomePage extends WebPage {
 	//		this.addFieldsPais(editorPaisform)
 	//		this.addActionsPais(editorPaisform)
 	}
+	
+	def addCrearButtons(XForm<HomePageModApp> form) {
+		form.addChild(new XButton("crearVillano").onClick = [|crearVillano])
+		form.addChild(new XButton("crearPais").onClick = [|crearPais])
+	}
+	
+	def crearPais() {
+		responsePage = new EditorDePaisPage(modelApp.mapamundi, this)
+	}
 
 	def addActionsVillano(XForm<EditorDeVillano> form) {
-//		form.addChild(new XButton("crearVillano").onClick = [|crearVillano])
 		val agregarHobbieButton = new XButton("agregarHobbie").onClick = [|
 			form.modelObject.agregarHobbie(form.modelObject.hobbieNuevo)]
 		form.addChild(agregarHobbieButton)
@@ -135,7 +143,7 @@ public class HomePage extends WebPage {
 		listView.populateItem = [ item |
 			item.model = item.modelObject.asCompoundModel
 			item.addChild(new Label("nombre"))
-//			this.addChild(
+//			item.addChild(
 //				new XAjaxLink<Object>("editar") => [
 //					onClick = [ target |
 //						editorVillano.sincWith(item.modelObject, parent.modelObject.expedientes)
