@@ -86,28 +86,30 @@ class EditorDePais {
 	}
 	
 	def agregarCaracteristica(String caracteristica) {
-		caracteristicas.add(caracteristica)
+		_caracteristicas.add(caracteristica)
+		_caracteristicaNueva=""
+		
 	}
 	
 	def borrarCaracteristica(String caracteristica) {
-		caracteristicas.remove(caracteristica)
+		_caracteristicas.remove(caracteristica)
 	}
 	
 	def borrarLugarDeInteres(LugarDeInteres unLugarDeInteres) {
-		lugaresDeInteres.remove(unLugarDeInteres)
+		_lugaresDeInteres.remove(unLugarDeInteres)
 	}
 	
 	def agregarLugarDeInteres(LugarDeInteres unLugarDeInteres) {
-		lugaresDeInteres.add(unLugarDeInteres)
+		_lugaresDeInteres.add(unLugarDeInteres)
 	}
 	
 	def borrarConexion(Pais unaConexion) {
 		//Borrar la conexion unaConexion.borrarConexion(this) pero this debe ser un país
-		conexiones.remove(unaConexion)
+		_conexiones.remove(unaConexion)
 	}
 	
 	def agregarConexion(Pais unaConexion) {
-		conexiones.add(unaConexion)
+		_conexiones.add(unaConexion)
 	}
 	
 	def getLugaresPosibles() {
@@ -118,4 +120,11 @@ class EditorDePais {
 		resultado.toList
 	}
 	
+	def getCaracteristicas(){
+		_caracteristicas.toList
+	}
+	
+	def getLugaresDeInteres(){
+		_lugaresDeInteres.toList
+	}
 }
