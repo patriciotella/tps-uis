@@ -14,6 +14,8 @@ import org.uqbar.wicket.xtend.XForm
 import org.uqbar.wicket.xtend.XListView
 import villano.EditorDeVillano
 import org.uqbar.wicket.xtend.XAjaxLink
+import villano.Villano
+import pais.Pais
 
 /**
  * Homepage
@@ -60,6 +62,10 @@ public class HomePage extends WebPage {
 	
 	def crearPais() {
 		responsePage = new EditorDePaisPage(modelApp.mapamundi, this)
+	}
+	
+	def editarPais(Pais unPais){
+		responsePage = new EditorDePaisPage(modelApp.mapamundi, unPais, this)
 	}
 
 	def addActionsVillano(XForm<EditorDeVillano> form) {
@@ -118,6 +124,10 @@ public class HomePage extends WebPage {
 	def crearVillano() {
 		responsePage = new CrearVillanoPage(modelApp.expedientes, this)
 	}
+	
+	def editarVillano(Villano unVillano){
+		responsePage = new CrearVillanoPage(unVillano, modelApp.expedientes, this)
+	}
 
 	def addLists(Form<HomePageModApp> parent) {
 		addVillanosList(parent)
@@ -134,6 +144,9 @@ public class HomePage extends WebPage {
 					form.modelObject.mapamundi.eliminarPais(item.modelObject)
 				]
 			)
+			item.addChild(new XButton("editar").onClick = [ |
+				editarPais(item.modelObject)
+			])
 		]
 		form.addChild(paises)
 	}
@@ -152,10 +165,19 @@ public class HomePage extends WebPage {
 //				]
 //			)
 			item.addChild(
+//				new XAjaxLink<Object>("eliminar") => [
+//					onClick = [ target |
+//						parent.modelObject.expedientes.eliminarVillano(item.modelObject)
+//						target.(parent)
+//					]
+//				]
 				new XButton("eliminar").onClick = [ |
 					parent.modelObject.expedientes.eliminarVillano(item.modelObject)
 				]
 			)
+			item.addChild(new XButton("editar").onClick = [ |
+				editarVillano(item.modelObject)
+			])
 		]
 		parent.addChild(listView)
 	}

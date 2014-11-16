@@ -10,6 +10,7 @@ import org.uqbar.wicket.xtend.XButton
 import org.apache.wicket.markup.html.form.DropDownChoice
 import org.apache.wicket.markup.html.form.TextField
 import org.apache.wicket.model.PropertyModel
+import villano.Villano
 
 class CrearVillanoPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
@@ -25,6 +26,16 @@ class CrearVillanoPage extends WebPage {
 		this.addChild(crearVillanoform)
 		this.addActions(crearVillanoform)
 		this.addFields(crearVillanoform)
+	}
+	
+	new(Villano unVillano, Expedientes expedientes, HomePage mainPage){
+		this.mainPage = mainPage
+		this.expedientes = expedientes
+		val crearVillanoform = new XForm<EditorDeVillano>("crearVillanoForm",
+			new CompoundPropertyModel(new EditorDeVillano(unVillano,expedientes)))
+		this.addChild(crearVillanoform)
+		this.addActions(crearVillanoform)
+		this.addFields(crearVillanoform)		
 	}
 	
 	def addActions(XForm<EditorDeVillano> form) {
