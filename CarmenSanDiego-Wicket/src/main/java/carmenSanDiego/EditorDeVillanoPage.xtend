@@ -11,6 +11,7 @@ import org.apache.wicket.markup.html.form.DropDownChoice
 import org.apache.wicket.markup.html.form.TextField
 import org.apache.wicket.model.PropertyModel
 import villano.Villano
+import org.apache.wicket.markup.html.panel.FeedbackPanel
 
 class EditorDeVillanoPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
@@ -43,11 +44,37 @@ class EditorDeVillanoPage extends WebPage {
 			onClick = [| volver]
 			defaultFormProcessing = false
 		])
-		form.addChild(new XButton("crearVillano").onClick = [| crearVillano(form.modelObject)])
-		form.addChild(new XButton("agregarHobbie").onClick = [| form.modelObject.agregarHobbie(form.modelObject.hobbieNuevo)])
-		form.addChild(new XButton("eliminarHobbie").onClick = [|form.modelObject.eliminarHobbie(form.modelObject.hobbieSeleccionado)])
-		form.addChild(new XButton("agregarSeniaParticular").onClick = [| form.modelObject.agregarSeniaParticular(form.modelObject.seniaNueva)])
-		form.addChild(new XButton("eliminarSeniaParticular").onClick = [| form.modelObject.eliminarSeniaParticular(form.modelObject.seniaSeleccionada)])
+		form.addChild(new XButton("crearVillano").onClick = [| 
+			try{
+				crearVillano(form.modelObject)
+			} catch (RuntimeException e){
+				error("El villano debe tener nombre y, al menos, 2 señas particulares y un hobbie.")
+			}
+		])
+		form.addChild(new XButton("agregarHobbie").onClick = [|
+			if(form.modelObject.hobbieNuevo == null)
+				error("Debe ingresar un hobbie para agregar")
+			else
+				form.modelObject.agregarHobbie(form.modelObject.hobbieNuevo)
+		])
+		form.addChild(new XButton("eliminarHobbie").onClick = [|
+			if(form.modelObject.hobbieSeleccionado == null)
+				error("Debe seleccionar un hobbie para eliminar")
+			else
+				form.modelObject.eliminarHobbie(form.modelObject.hobbieSeleccionado)
+		])
+		form.addChild(new XButton("agregarSeniaParticular").onClick = [|
+			if(form.modelObject.seniaNueva == null)
+				error("Debe ingresar una seña para agregar")
+			else
+				form.modelObject.agregarSeniaParticular(form.modelObject.seniaNueva)
+		])
+		form.addChild(new XButton("eliminarSeniaParticular").onClick = [|
+			if(form.modelObject.seniaSeleccionada == null)
+				error("Debe seleccionar una seña para borrar")
+			else
+				form.modelObject.eliminarSeniaParticular(form.modelObject.seniaSeleccionada)
+		])
 	}
 
 	def addFields(XForm<EditorDeVillano> form) {
@@ -69,8 +96,7 @@ class EditorDeVillanoPage extends WebPage {
 				choices = new PropertyModel(form.modelObject, "seniasParticulares")
 				choiceRenderer = choiceRenderer([s|s])
 			])
-
-//		form.addChild(new FeedbackPanel("feedbackPanel")) //ESTE ES EL QUE MUESTRA ERRORES
+		form.addChild(new FeedbackPanel("feedbackPanel"))
 	}
 
 	def nombreVillanoTextField(XForm<EditorDeVillano> form) {
