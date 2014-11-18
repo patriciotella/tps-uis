@@ -99,21 +99,43 @@ class EditorDePaisPage extends WebPage {
 		form.addChild(new XButton("crearPais").onClick = [|crearPais(form.modelObject)])
 		form.addChild(
 			new XButton("agregarCaracteristica").onClick = [|
-				form.modelObject.agregarCaracteristica(form.modelObject.caracteristicaNueva)])
+				if(form.modelObject.caracteristicaNueva == null)
+					error("Debe ingresar una característica")
+				else
+					form.modelObject.agregarCaracteristica(form.modelObject.caracteristicaNueva)])
 		form.addChild(
 			new XButton("eliminarCaracteristica").onClick = [|
-				form.modelObject.borrarCaracteristica(form.modelObject.caracteristicaSeleccionada)])
+				if(form.modelObject.caracteristicaSeleccionada == null)
+					error("Debe seleccionar una característica para borrar")
+				else
+					form.modelObject.borrarCaracteristica(form.modelObject.caracteristicaSeleccionada)])
 		form.addChild(
-			new XButton("agregarConexion").onClick = [|form.modelObject.agregarConexion(form.modelObject.conexionNueva)])
+			new XButton("agregarConexion").onClick = [|
+				if(form.modelObject.conexionNueva == null)
+					error("Debe ingresar una conexión")
+				else
+					form.modelObject.agregarConexion(form.modelObject.conexionNueva)
+			])
 		form.addChild(
 			new XButton("eliminarConexion").onClick = [|
-				form.modelObject.borrarConexion(form.modelObject.conexionSeleccionada)])
+				if(form.modelObject.conexionSeleccionada == null)
+					error("Debe seleccionar una conexión para borrar")
+				else
+					form.modelObject.borrarConexion(form.modelObject.conexionSeleccionada)])
 		form.addChild(
 			new XButton("agregarLugar").onClick = [|
-				form.modelObject.agregarLugarDeInteres(form.modelObject.lugarDeInteresNuevo)])
+				if(form.modelObject.lugarDeInteresNuevo == null)
+					error("Debe seleccionar un lugar para agregar")
+				if(form.modelObject.lugaresDeInteres.size == 3)
+					error("No puede haber más de 3 lugares de interés")
+				else
+					form.modelObject.agregarLugarDeInteres(form.modelObject.lugarDeInteresNuevo)])
 		form.addChild(
 			new XButton("eliminarLugar").onClick = [|
-				form.modelObject.borrarLugarDeInteres(form.modelObject.lugarSeleccionado)])
+				if(form.modelObject.lugarSeleccionado == null)
+					error("Debe seleccionar un lugar para borrar")
+				else
+					form.modelObject.borrarLugarDeInteres(form.modelObject.lugarSeleccionado)])
 	}
 
 	def crearPais(EditorDePais editor) {
