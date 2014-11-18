@@ -11,6 +11,7 @@ function mapamundiTab() {
 	$("#mapamundiTab")[0].setAttribute("class","active")
 	$("#expedientes").hide();
 	$("#mapamundi").show();
+	$("#editorDePais").hide();
 }
 
 function cancelarEdicionVillano() {
@@ -24,4 +25,13 @@ function inspeccionarVillano() {
 
 function volverInspeccionVillano() {
 	$("#editorDeVillano").hide();
+}
+
+function inspeccionarPais() {
+	$("#editorDePais")[0];
+	$("#editorDePais").show();
+}
+
+function volverInspeccionPais() {
+	$("#editorDePais").hide();
 }

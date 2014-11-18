@@ -31,6 +31,7 @@
 							<td><span wicket:id="nombreDePais"></span></td>
 							<td>
 								<div class="btn-group" id="botones_de_edicion">
+									<button wicket:id="inspeccionarPais" class="btn-link" onclick="inspeccionarPais()">Ver</button>
 									<button wicket:id="editar" class="btn-link">Editar</button>
 									<button wicket:id="eliminarPais" class="btn-link">Eliminar</button>
 								</div>
@@ -41,6 +42,33 @@
 				<button wicket:id="crearPais" class="btn btn-success">+</button>
 			</div>
 		</div>
+		<div id="editorDePais" class="">
+				<div class="form-group">
+					<label for="nombre">Nombre:</label>
+					<label wicket:id="nombre" class="form-control"></label>
+				</div>
+				<div>
+					<label for="conexiones">Conexiones:</label> 
+					<ul wicket:id="conexiones">
+						<li wicket:id="conexion"></li>
+					</ul>
+				</div>
+				<div>
+					<label for="caracteristicass">Caracteristicas:</label> 
+					<ul wicket:id="caracteristicas">
+						<li wicket:id="caracteristica"></li>
+					</ul>
+				</div>
+				<div>
+					<label for="lugaresDeInteres">Lugares de Interes:</label> 
+					<ul wicket:id="lugaresDeInteres">
+						<li wicket:id="lugarDeInteres"></li>
+					</ul>
+				</div>
+				<div class="btn-group">
+					<button class="btn-link" onclick="volverInspeccionPais()">Ok</button>
+				</div>
+			</div>
 	</form>
  	<div id="expedientes" style="display: none;">
 		<form wicket:id="editorDeVillanoForm" class="form">
@@ -56,7 +84,7 @@
 							<td><span wicket:id="nombre">unNombre</span></td>
 							<td>
 								<div class="btn-group" id="botones_de_edicion">
-									<button wicket:id="inspeccionarVillano" class="btn-link" onclick="inspeccionarVillano()">Inspeccionar</button>
+									<button wicket:id="inspeccionarVillano" class="btn-link" onclick="inspeccionarVillano()">Ver</button>
 									<button wicket:id="editar" class="btn-link">Editar</button>
 									<button wicket:id="eliminar" class="btn-link">Eliminar</button>
 								</div>
@@ -78,18 +106,24 @@
 						<li wicket:id="hobbie"></li>
 					</ul>
 				</div>
-				<div class="form-group">
-					<label for="seniasParticulares">Se&ntilde;as Particulares:</label>
-					<select wicket:id="seniaSeleccionada"></select>
+				<div>
+					<label for="seniasParticulares">Senias Particulares:</label> 
+					<ul wicket:id="seniasParticulares">
+						<li wicket:id="seniaSeleccionada"></li>
+					</ul>
 				</div>
+<!-- 				<div class="form-group"> -->
+<!-- 					<label for="seniasParticulares">Se&ntilde;as Particulares:</label> -->
+<!-- 					<select wicket:id="seniaSeleccionada"></select> -->
+<!-- 				</div> -->
 				<div class="form-group">
 					<div>
 						<label for="sexos">Sexo:</label>
 						<label wicket:id="sexo" class="form-control"></label>
 					</div>
 				</div>
-				<div class="btn-group" id="botones_de_edicion">
-					<button wicket:id="volver" class="btn-link" onclick="volverInspeccionVillano()">Ok</button>
+				<div class="btn-group">
+					<button class="btn-link" onclick="volverInspeccionVillano()">Ok</button>
 				</div>
 			</div>
 		</form>

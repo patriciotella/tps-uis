@@ -28,13 +28,15 @@ public class HomePage extends WebPage {
 
 	HomePageModApp modelApp
 	EditorDeVillano editorVillano
+	EditorDePais editorPais
 	
 	XForm<EditorDeVillano> editorVillanoform
 
 	new() {
 		modelApp = new HomePageModApp
 		editorVillano = new EditorDeVillano(modelApp.expedientes)
-		val paisForm = new XForm<EditorDePais>("paisForm", new CompoundPropertyModel(modelApp))
+		editorPais = new EditorDePais(modelApp.mapamundi)
+		val paisForm = new XForm<EditorDePais>("paisForm", new CompoundPropertyModel(editorPais))
 		paisForm.outputMarkupId = true
 
 		editorVillanoform = new XForm<EditorDeVillano>("editorDeVillanoForm",
@@ -53,6 +55,7 @@ public class HomePage extends WebPage {
 		this.addChild(paisForm)
 		this.addCrearPaisButton(paisForm)
 		this.addPaisesList(paisForm)
+		this.addFieldsPais(paisForm)
 
 
 	//		this.add(new XListView("modelApp.mapamundi.paises"))
@@ -79,6 +82,28 @@ public class HomePage extends WebPage {
 	def addActionsVillano(XForm<EditorDeVillano> form) {
 	}
 
+	def addFieldsPais(XForm<EditorDePais> form) {
+		form.addChild(new Label("nombre", new PropertyModel(form.modelObject, "nombre")))
+		val conexiones = new XListView("conexiones")
+		conexiones.populateItem = [item |
+			item.model = item.modelObject.asCompoundModel
+			item.addChild(new Label("conexion", item.model))
+		]
+		form.addChild(conexiones)
+		val caracteristicas = new XListView("caracteristicas")
+		caracteristicas.populateItem = [item |
+			item.model = item.modelObject.asCompoundModel
+			item.addChild(new Label("caracteristica", item.model))
+		]
+		form.addChild(caracteristicas)
+		val lugaresDeInteres = new XListView("lugaresDeInteres")
+		lugaresDeInteres.populateItem = [item |
+			item.model = item.modelObject.asCompoundModel
+			item.addChild(new Label("lugarDeInteres", item.model))
+		]
+		form.addChild(lugaresDeInteres)
+	}
+	
 	def addFieldsVillano(XForm<EditorDeVillano> form) {
 		form.addChild(new Label("nombre", new PropertyModel(form.modelObject, "nombre")))
 		val hobbies = new XListView("hobbies")
@@ -91,20 +116,30 @@ public class HomePage extends WebPage {
 //				choices = new PropertyModel(form.modelObject, "hobbies")
 //				choiceRenderer = choiceRenderer([h|h])
 //			])
-		form.addChild(
-			new DropDownChoice<String>("seniaSeleccionada") => [
-				choices = new PropertyModel(form.modelObject, "seniasParticulares")
-				choiceRenderer = choiceRenderer([s|s])
-			])
+		val seniasParticulares = new XListView("seniasParticulares")
+		seniasParticulares.populateItem = [item |
+			item.model = item.modelObject.asCompoundModel
+			item.addChild(new Label("seniaSeleccionada", item.model))
+		]
+		form.addChild(seniasParticulares)
+//		form.addChild(
+//			new DropDownChoice<String>("seniaSeleccionada") => [
+//				choices = new PropertyModel(form.modelObject, "seniasParticulares")
+//				choiceRenderer = choiceRenderer([s|s])
+//			])
 		form.addChild(new Label("sexo", new PropertyModel(form.modelObject, "sexo")))
 	//		form.addChild(new FeedbackPanel("feedbackPanel")) //ESTE ES EL QUE MUESTRA ERRORES
-		form.addChild(new XButton("volver"))
+//		form.addChild(new XButton("volver").onClick = [|])
+//		form.addChild(new XAjaxLink<Object>("volver") => [])
 	}
 
 	def nombreVillanoTextField(Form<EditorDeVillano> form) {
 		new Label("nombre")
 	}
 	
+	def nombrePaisTextField(Form<EditorDePais> form) {
+		new Label("nombre")
+	}
 	def sexoTextField(Form<EditorDeVillano> form) {
 		new Label("sexo")
 	}
@@ -138,6 +173,14 @@ public class HomePage extends WebPage {
 			item.addChild(new XButton("editar").onClick = [ |
 				editarPais(item.modelObject)
 			])
+			item.addChild(
+				new XAjaxLink<Object>("inspeccionarPais") => [
+					onClick = [ target |
+						editorPais.sincWith(item.modelObject, modelApp.mapamundi)
+						target.addComponent(parent, parent.markupId);
+					]
+				]
+			)
 		]
 		form.addChild(paises)
 	}
