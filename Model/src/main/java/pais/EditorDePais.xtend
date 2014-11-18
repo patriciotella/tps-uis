@@ -19,7 +19,7 @@ class EditorDePais {
 	String nombre
 	
 	@Property
-	List<Pais> conexiones
+	Set<Pais> conexiones
 	
 	@Property
 	Set<String> caracteristicas
@@ -49,32 +49,37 @@ class EditorDePais {
 	
 	Set<? extends LugarDeInteres> LUGARESPOSIBLES = 
 		#{new Club, new Biblioteca, new Banco, new Embajada}
+	
+	Set<Pais> conexionesParaAgregarPais
 		
 	new(Mapamundi mapamundi, Pais pais){
 		this._mapamundi = mapamundi
 		this._pais = pais
 		_nombre = pais.nombre
-		_conexiones = new ArrayList(pais.conexiones)
+		_conexiones = new HashSet(pais.conexiones)
 		_caracteristicas = new HashSet(pais.caracteristicas)
 		_lugaresDeInteres = new HashSet(pais.lugaresDeInteres)
+		conexionesParaAgregarPais = new HashSet
 	}
 	
 	new(Mapamundi mapamundi) {
 		_mapamundi = mapamundi
 		_nombre = ""
-		_conexiones = newArrayList
-		_caracteristicas = newHashSet
-		_lugaresDeInteres = newHashSet	
+		_conexiones = new HashSet
+		_caracteristicas = new HashSet
+		_lugaresDeInteres = new HashSet
+		conexionesParaAgregarPais = new HashSet
 	}
 	
 	def agregarPais(){
-		val paisParaAgregar = new Pais(_nombre, _caracteristicas, _conexiones, _lugaresDeInteres)
+		val paisParaAgregar = new Pais(_nombre, _caracteristicas, _conexiones.toList, _lugaresDeInteres)
 		if(_pais == null){
 			_pais = paisParaAgregar
 			this._mapamundi.agregarPais(this._pais)
 		}else{
 			_pais.syncWith(paisParaAgregar)
 		}
+		agregarConexionesAlFinalizar
 	}
 	
 	def getPais(){
@@ -106,10 +111,16 @@ class EditorDePais {
 	def borrarConexion(Pais unaConexion) {
 		//Borrar la conexion unaConexion.borrarConexion(this) pero this debe ser un país
 		_conexiones.remove(unaConexion)
+		if(conexionesParaAgregarPais.contains(unaConexion))
+			conexionesParaAgregarPais.remove(unaConexion)
+		else
+			unaConexion.borrarConexion(_pais)
 	}
 	
 	def agregarConexion(Pais unaConexion) {
 		_conexiones.add(unaConexion)
+		conexionesParaAgregarPais.add(unaConexion)
+		_conexionNueva = null
 	}
 	
 	def getLugaresPosibles() {
@@ -126,5 +137,17 @@ class EditorDePais {
 	
 	def getLugaresDeInteres(){
 		_lugaresDeInteres.toList
+	}
+	
+	def getConexiones() {
+		_conexiones.toList
+	}
+	
+	def getConexionesParaAgregar() {
+		_mapamundi.paises.filter[it != _pais && !_conexiones.contains(it)].toList
+	}
+	
+	def agregarConexionesAlFinalizar() {
+		conexionesParaAgregarPais.forEach([agregarConexion(_pais)])
 	}
 }
