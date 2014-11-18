@@ -12,7 +12,7 @@ import org.apache.wicket.markup.html.form.TextField
 import org.apache.wicket.model.PropertyModel
 import villano.Villano
 
-class CrearVillanoPage extends WebPage {
+class EditorDeVillanoPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
 	
 	private final HomePage mainPage

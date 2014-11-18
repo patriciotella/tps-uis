@@ -4,6 +4,7 @@
 <head>
 <title>Crear villano</title>
 <link href="lib/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="stylesheets/main.css" rel="stylesheet" media="screen">
 
 <script src="javascripts/jquery-2.1.1.min.js"></script>
 <script src="javascripts/pageBehavior.js"></script>
@@ -55,6 +56,9 @@
 			</div>
 			<button wicket:id="cancelar" type="submit" class="btn btn-warning">Cancelar</button>
 			<button wicket:id="crearPais" type="submit" class="btn btn-success">Aceptar</button>
+			<div wicket:id="feedbackPanel" class="alert alert-error" id="panelDeErrores" style="width:33%;">
+				<strong>Warning!</strong> Best check yourself, you're not looking too good.  
+			</div>
 		</div>
 	</form>
 </body>

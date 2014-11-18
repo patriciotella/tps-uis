@@ -12,6 +12,7 @@ import org.apache.wicket.markup.html.form.DropDownChoice
 import org.apache.wicket.markup.html.form.TextField
 import org.apache.wicket.model.PropertyModel
 import lugarDeInteres.LugarDeInteres
+import org.apache.wicket.markup.html.panel.FeedbackPanel
 
 class EditorDePaisPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
@@ -56,7 +57,7 @@ class EditorDePaisPage extends WebPage {
 			])
 		form.addChild(
 			new DropDownChoice<Pais>("conexionNueva") => [
-				choices = new PropertyModel(mapamundi, "paises")
+				choices = new PropertyModel(form.modelObject, "conexionesParaAgregar")
 				choiceRenderer = choiceRenderer([getNombre(it)])
 			])
 
@@ -70,6 +71,7 @@ class EditorDePaisPage extends WebPage {
 				choices = new PropertyModel(form.modelObject, "lugaresPosibles")
 				choiceRenderer = choiceRenderer([getNombreDeLugar(it)])
 			])
+		form.addChild(new FeedbackPanel("feedbackPanel"))
 	}
 
 	def getNombreDeLugar(LugarDeInteres lugarDeInteres) {
@@ -115,8 +117,12 @@ class EditorDePaisPage extends WebPage {
 	}
 
 	def crearPais(EditorDePais editor) {
-		editor.agregarPais
-		volver
+		try{
+			editor.agregarPais
+			volver
+		}catch (RuntimeException e){
+			error("El país debe tener nombre, al menos una característica y exactamente 3 lugares de interés.")
+		}
 	}
 
 	def volver() {
