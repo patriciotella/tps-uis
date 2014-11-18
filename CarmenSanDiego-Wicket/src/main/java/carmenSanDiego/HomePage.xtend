@@ -82,10 +82,11 @@ public class HomePage extends WebPage {
 	def addFieldsVillano(XForm<EditorDeVillano> form) {
 		form.addChild(new Label("nombre", new PropertyModel(form.modelObject, "nombre")))
 		form.addChild(
-			new DropDownChoice<String>("hobbieSeleccionado") => [
-				choices = new PropertyModel(form.modelObject, "hobbies")
-				choiceRenderer = choiceRenderer([h|h])
-			])
+			new XListView("hobbies", form.modelObject.hobbies))
+//			new DropDownChoice<String>("hobbieSeleccionado") => [
+//				choices = new PropertyModel(form.modelObject, "hobbies")
+//				choiceRenderer = choiceRenderer([h|h])
+//			])
 		form.addChild(
 			new DropDownChoice<String>("seniaSeleccionada") => [
 				choices = new PropertyModel(form.modelObject, "seniasParticulares")
@@ -93,6 +94,7 @@ public class HomePage extends WebPage {
 			])
 		form.addChild(new Label("sexo", new PropertyModel(form.modelObject, "sexo")))
 	//		form.addChild(new FeedbackPanel("feedbackPanel")) //ESTE ES EL QUE MUESTRA ERRORES
+		form.addChild(new XButton("volver"))
 	}
 
 	def nombreVillanoTextField(Form<EditorDeVillano> form) {
