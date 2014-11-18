@@ -3,6 +3,7 @@ function expedientesTab() {
 	$("#expedientesTab")[0].setAttribute("class","active")
 	$("#mapamundi").hide();
 	$("#expedientes").show();
+	$("#editorDeVillano").hide();
 }
 
 function mapamundiTab() {
@@ -17,6 +18,10 @@ function cancelarEdicionVillano() {
 }
 
 function inspeccionarVillano() {
-	console.log($("#editorDeVillano")[0]);
+	$("#editorDeVillano")[0];
 	$("#editorDeVillano").show();
+}
+
+function volverInspeccionVillano() {
+	$("#editorDeVillano").hide();
 }
