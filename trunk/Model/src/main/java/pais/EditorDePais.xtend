@@ -105,7 +105,8 @@ class EditorDePais {
 	}
 	
 	def agregarLugarDeInteres(LugarDeInteres unLugarDeInteres) {
-		_lugaresDeInteres.add(unLugarDeInteres)
+		if(unLugarDeInteres != null)
+			_lugaresDeInteres.add(unLugarDeInteres)
 	}
 	
 	def borrarConexion(Pais unaConexion) {
