@@ -1,6 +1,8 @@
 package carmenSanDiego;
 
 import carmenSanDiegoUIs.HomePageModApp
+import org.apache.wicket.Component
+import org.apache.wicket.ajax.AjaxRequestTarget
 import org.apache.wicket.markup.html.WebPage
 import org.apache.wicket.markup.html.basic.Label
 import org.apache.wicket.markup.html.form.DropDownChoice
@@ -9,13 +11,14 @@ import org.apache.wicket.markup.html.form.TextField
 import org.apache.wicket.model.CompoundPropertyModel
 import org.apache.wicket.model.PropertyModel
 import org.uqbar.wicket.xtend.WicketExtensionFactoryMethods
+import org.uqbar.wicket.xtend.XAjaxLink
 import org.uqbar.wicket.xtend.XButton
 import org.uqbar.wicket.xtend.XForm
 import org.uqbar.wicket.xtend.XListView
-import villano.EditorDeVillano
-import org.uqbar.wicket.xtend.XAjaxLink
-import villano.Villano
 import pais.Pais
+import villano.EditorDeVillano
+import villano.Villano
+import pais.EditorDePais
 
 /**
  * Homepage
@@ -31,22 +34,25 @@ public class HomePage extends WebPage {
 	new() {
 		modelApp = new HomePageModApp
 		editorVillano = new EditorDeVillano(modelApp.expedientes)
-		val modelApp = new XForm<HomePageModApp>("modelApp", new CompoundPropertyModel(modelApp))
+		val paisForm = new XForm<EditorDePais>("paisForm", new CompoundPropertyModel(modelApp))
+		paisForm.outputMarkupId = true
 
 		editorVillanoform = new XForm<EditorDeVillano>("editorDeVillanoForm",
 			new CompoundPropertyModel(editorVillano))
 		
 		
 		this.addChild(editorVillanoform)
+		this.addCrearVillanoButton(editorVillanoform)
+		this.addVillanosList(editorVillanoform)
 		this.addFieldsVillano(editorVillanoform)
 		this.addActionsVillano(editorVillanoform)
 		editorVillanoform.outputMarkupId = true
 		
 		//		val editorPaisform = new XForm<EditorDePais>("EditorDePaisForm", new CompoundPropertyModel(new EditorDePais(modelApp.mapamundi)))	
 		//		this.add(new XListView("modelApp.expedientes.villanos"))
-		this.addChild(modelApp)
-		this.addCrearButtons(modelApp)
-		this.addLists(modelApp)
+		this.addChild(paisForm)
+		this.addCrearPaisButton(paisForm)
+		this.addPaisesList(paisForm)
 
 
 	//		this.add(new XListView("modelApp.mapamundi.paises"))
@@ -55,11 +61,13 @@ public class HomePage extends WebPage {
 	//		this.addActionsPais(editorPaisform)
 	}
 	
-	def addCrearButtons(XForm<HomePageModApp> form) {
-		form.addChild(new XButton("crearVillano").onClick = [|crearVillano])
+	def addCrearPaisButton(XForm<EditorDePais> form) {
 		form.addChild(new XButton("crearPais").onClick = [|crearPais])
 	}
 	
+	def addCrearVillanoButton(XForm<EditorDeVillano> form){
+		form.addChild(new XButton("crearVillano").onClick = [|crearVillano])
+	}
 	def crearPais() {
 		responsePage = new EditorDePaisPage(modelApp.mapamundi, this)
 	}
@@ -69,79 +77,56 @@ public class HomePage extends WebPage {
 	}
 
 	def addActionsVillano(XForm<EditorDeVillano> form) {
-		val agregarHobbieButton = new XButton("agregarHobbie").onClick = [|
-			form.modelObject.agregarHobbie(form.modelObject.hobbieNuevo)]
-		form.addChild(agregarHobbieButton)
-		form.addChild(
-			new XButton("eliminarHobbie").onClick = [|
-				form.modelObject.eliminarHobbie(form.modelObject.hobbieSeleccionado)])
-		form.addChild(
-			new XButton("agregarSeniaParticular").onClick = [ |
-				form.modelObject.agregarSeniaParticular(form.modelObject.seniaNueva)
-			])
-		form.addChild(
-			new XButton("eliminarSeniaParticular").onClick = [|
-				form.modelObject.eliminarSeniaParticular(form.modelObject.seniaSeleccionada)])
-		form.addChild(new XButton("submitCambios").onClick = [|form.modelObject.agregarVillano])
 	}
 
 	def addFieldsVillano(XForm<EditorDeVillano> form) {
-
-		form.addChild(nombreVillanoTextField(form))
+		form.addChild(new Label("nombre", new PropertyModel(form.modelObject, "nombre")))
 		form.addChild(
 			new DropDownChoice<String>("hobbieSeleccionado") => [
 				choices = new PropertyModel(form.modelObject, "hobbies")
 				choiceRenderer = choiceRenderer([h|h])
 			])
-		form.addChild(agregarHobbieTextField(form))
-		form.addChild(
-			new DropDownChoice<String>("sexo") => [
-				choices = new PropertyModel(form.modelObject, "sexos")
-				choiceRenderer = choiceRenderer([s|s])
-			])
-		form.addChild(agregarSeniasTextField(form))
 		form.addChild(
 			new DropDownChoice<String>("seniaSeleccionada") => [
 				choices = new PropertyModel(form.modelObject, "seniasParticulares")
 				choiceRenderer = choiceRenderer([s|s])
 			])
-
+		form.addChild(new Label("sexo", new PropertyModel(form.modelObject, "sexo")))
 	//		form.addChild(new FeedbackPanel("feedbackPanel")) //ESTE ES EL QUE MUESTRA ERRORES
 	}
 
 	def nombreVillanoTextField(Form<EditorDeVillano> form) {
-		return new TextField<String>("nombre")
+		new Label("nombre")
 	}
-
-	def agregarHobbieTextField(Form<EditorDeVillano> form) {
-		return new TextField<String>("hobbieNuevo")
+	
+	def sexoTextField(Form<EditorDeVillano> form) {
+		new Label("sexo")
 	}
-
-	def agregarSeniasTextField(Form<EditorDeVillano> form) {
-		return new TextField<String>("seniaNueva")
-	}
-
+	
 	def crearVillano() {
-		responsePage = new CrearVillanoPage(modelApp.expedientes, this)
+		responsePage = new EditorDeVillanoPage(modelApp.expedientes, this)
 	}
 	
 	def editarVillano(Villano unVillano){
-		responsePage = new CrearVillanoPage(unVillano, modelApp.expedientes, this)
+		responsePage = new EditorDeVillanoPage(unVillano, modelApp.expedientes, this)
 	}
 
-	def addLists(Form<HomePageModApp> parent) {
-		addVillanosList(parent)
-		addPaisesList(parent)
-	}
+//	def addLists(Form<EditorDePais> parent) {
+//		addVillanosList(parent)
+//		addPaisesList(parent)
+//	}
 	
-	def addPaisesList(Form<HomePageModApp> form) {
+	def addPaisesList(Form<EditorDePais> form) {
 		val paises = new XListView("paises", modelApp.mapamundi.paises)
 		paises.populateItem = [ item |
 			item.model = item.modelObject.asCompoundModel
 			item.addChild(new Label("nombreDePais"))
 			item.addChild(
-				new XButton("eliminarPais").onClick = [ |
-					form.modelObject.mapamundi.eliminarPais(item.modelObject)
+				new XAjaxLink<Object>("eliminarPais") => [
+					onClick = [ target |
+						modelApp.mapamundi.eliminarPais(item.modelObject)
+						target.addComponent(form, form.markupId);
+					]
 				]
 			)
 			item.addChild(new XButton("editar").onClick = [ |
@@ -151,33 +136,30 @@ public class HomePage extends WebPage {
 		form.addChild(paises)
 	}
 	
-	def addVillanosList(Form<HomePageModApp> parent) {
+	def addVillanosList(Form<EditorDeVillano> parent) {
 		val listView = new XListView("expedientes.villanos")
 		listView.populateItem = [ item |
 			item.model = item.modelObject.asCompoundModel
 			item.addChild(new Label("nombre"))
-//			item.addChild(
-//				new XAjaxLink<Object>("editar") => [
-//					onClick = [ target |
-//						editorVillano.sincWith(item.modelObject, parent.modelObject.expedientes)
-//						target.add(editorVillanoform)
-//					]
-//				]
-//			)
 			item.addChild(
-//				new XAjaxLink<Object>("eliminar") => [
-//					onClick = [ target |
-//						parent.modelObject.expedientes.eliminarVillano(item.modelObject)
-//						target.(parent)
-//					]
-//				]
-				new XButton("eliminar").onClick = [ |
-					parent.modelObject.expedientes.eliminarVillano(item.modelObject)
+				new XAjaxLink<Object>("eliminar") => [
+					onClick = [ target |
+						modelApp.expedientes.eliminarVillano(item.modelObject)
+						target.addComponent(parent, parent.markupId);
+					]
 				]
 			)
 			item.addChild(new XButton("editar").onClick = [ |
 				editarVillano(item.modelObject)
 			])
+			item.addChild(
+				new XAjaxLink<Object>("inspeccionarVillano") => [
+					onClick = [ target |
+						editorVillano.sincWith(item.modelObject, modelApp.expedientes)
+						target.addComponent(parent, parent.markupId);
+					]
+				]
+			)
 		]
 		parent.addChild(listView)
 	}

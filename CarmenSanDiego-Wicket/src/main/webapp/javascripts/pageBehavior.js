@@ -15,3 +15,8 @@ function mapamundiTab() {
 function cancelarEdicionVillano() {
 	$("#expedientes").hide();
 }
+
+function inspeccionarVillano() {
+	console.log($("#editorDeVillano")[0]);
+	$("#editorDeVillano").show();
+}
