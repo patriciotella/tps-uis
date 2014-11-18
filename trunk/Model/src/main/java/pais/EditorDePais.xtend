@@ -150,4 +150,13 @@ class EditorDePais {
 	def agregarConexionesAlFinalizar() {
 		conexionesParaAgregarPais.forEach([agregarConexion(_pais)])
 	}
+	
+	def void sincWith(Pais unPais, Mapamundi mapamundi) {
+		_mapamundi = mapamundi
+		this._pais = unPais
+		_nombre = unPais.nombre
+		_conexiones = new HashSet(unPais.conexiones)
+		_caracteristicas = new HashSet(unPais.caracteristicas)
+		_lugaresDeInteres = new HashSet(unPais.lugaresDeInteres)
+	}
 }
