@@ -21,13 +21,17 @@ class Pais {
 	
 	new(String unNombre, Set<String> caracteristicas,
 		List<Pais> conexiones, Set<LugarDeInteres> lugaresDeInteres) {
-		if(unNombre.empty || caracteristicas.empty || lugaresDeInteres.size < 3) {
-			throw new RuntimeException("El país debe tener nombre, al menos una característica y exactamente 3 lugares de interés.")
-		}
+		validarParametros(unNombre, caracteristicas, lugaresDeInteres)
 		_nombre = unNombre
 		_caracteristicas = caracteristicas
 		_conexiones = conexiones
 		_lugaresDeInteres = lugaresDeInteres
+	}
+	
+	def validarParametros(String unNombre, Set<String> caracteristicas, Set<LugarDeInteres> lugaresDeInteres) {
+		if(unNombre.empty || caracteristicas.empty || lugaresDeInteres.size < 3) {
+			throw new RuntimeException("El país debe tener nombre, al menos una característica y exactamente 3 lugares de interés.")
+		}
 	}
 	
 	def borrarCaracteristica(String caracteristica) {

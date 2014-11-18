@@ -10,7 +10,7 @@ class Villano {
 	
 	new(String nombre, String sexo, Set<String> seniasParticulares,
 		Set<String> hobbies) {
-		if(nombre == "" || hobbies.size.equals(0) || seniasParticulares.size < 2) {
+		if(nombre.empty || hobbies.size.equals(0) || seniasParticulares.size < 2) {
 			throw new RuntimeException("El villano debe tener nombre y, al menos, 2 señas particulares y un hobbie.")
 		}
 		_nombre = nombre
