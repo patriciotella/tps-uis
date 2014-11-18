@@ -81,8 +81,12 @@ public class HomePage extends WebPage {
 
 	def addFieldsVillano(XForm<EditorDeVillano> form) {
 		form.addChild(new Label("nombre", new PropertyModel(form.modelObject, "nombre")))
-		form.addChild(
-			new XListView("hobbies", form.modelObject.hobbies))
+		val hobbies = new XListView("hobbies")
+		hobbies.populateItem = [item |
+			item.model = item.modelObject.asCompoundModel
+			item.addChild(new Label("hobbie", item.model))
+		]
+		form.addChild(hobbies)
 //			new DropDownChoice<String>("hobbieSeleccionado") => [
 //				choices = new PropertyModel(form.modelObject, "hobbies")
 //				choiceRenderer = choiceRenderer([h|h])
