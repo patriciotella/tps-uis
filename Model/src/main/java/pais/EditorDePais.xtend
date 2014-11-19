@@ -2,14 +2,12 @@ package pais
 
 import java.util.HashSet
 import java.util.Set
+import lugarDeInteres.Banco
+import lugarDeInteres.Biblioteca
+import lugarDeInteres.Club
+import lugarDeInteres.Embajada
 import lugarDeInteres.LugarDeInteres
 import mapamundi.Mapamundi
-import java.util.List
-import java.util.ArrayList
-import lugarDeInteres.Club
-import lugarDeInteres.Biblioteca
-import lugarDeInteres.Banco
-import lugarDeInteres.Embajada
 
 class EditorDePais {
 	
