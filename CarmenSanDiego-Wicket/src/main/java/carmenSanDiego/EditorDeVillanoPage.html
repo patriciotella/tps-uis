@@ -4,11 +4,13 @@
 <head>
 <title>Crear villano</title>
 <link href="lib/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="stylesheets/main.css" rel="stylesheet" media="screen">
 
 <script src="javascripts/jquery-2.1.1.min.js"></script>
 <script src="javascripts/pageBehavior.js"></script>
 </head>
 <body>
+	<h1>Crear / Editar villano</h1>
 	<form wicket:id="crearVillanoForm" class="form">
 		<div style="margin-left: 40%;" id="editorVillano">
 			<div class="form-group">
@@ -26,7 +28,7 @@
 				<div>
 					<label for="hobbieNuevo">Agregar Hobbie:</label> <input
 						wicket:id="hobbieNuevo" class="form-control" type="text" /> <input
-						wicket:id="agregarHobbie" type="submit" class="btn btn-primary"
+						wicket:id="agregarHobbie" type="submit" class="btn btn-info"
 						value="Agregar">
 				</div>
 			</div>
@@ -41,7 +43,7 @@
 					<label for="seniaNueva">Agregar se&ntilde;a particular:</label> <input
 						wicket:id="seniaNueva" class="form-control" type="text" /> <input
 						wicket:id="agregarSeniaParticular" type="submit"
-						class="btn btn-primary" value="Agregar">
+						class="btn btn-info" value="Agregar">
 				</div>
 			</div>
 			<div class="form-group">
@@ -49,8 +51,10 @@
 					<label for="sexo">Sexo:</label> <select wicket:id="sexo"></select>
 				</div>
 			</div>
-			<button wicket:id="cancelar" type="submit" class="btn btn-warning">Cancelar</button>
-			<button wicket:id="crearVillano" type="submit" class="btn btn-success">Aceptar</button>
+			<div class="botones">
+				<button wicket:id="crearVillano" type="submit" class="btn btn-primary">Aceptar</button>
+				<button wicket:id="cancelar" type="submit" class="btn btn-warning">Cancelar</button>			
+			</div>
 			<div wicket:id="feedbackPanel" class="alert alert-error" id="panelDeErrores" style="width:33%;"></div>
 		</div>
 	</form>

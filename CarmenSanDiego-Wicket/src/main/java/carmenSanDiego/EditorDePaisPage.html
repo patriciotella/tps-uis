@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Crear villano</title>
+<title>Crear pais</title>
 <link href="lib/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="stylesheets/main.css" rel="stylesheet" media="screen">
 
@@ -10,6 +10,7 @@
 <script src="javascripts/pageBehavior.js"></script>
 </head>
 <body>
+	<h1>Crear / Editar pais</h1>
 	<form wicket:id="editorDePaisForm" class="form">
 		<div style="margin-left: 40%;" id="">
 			<div class="form-group">
@@ -29,7 +30,7 @@
 					<label for="caracteristicaNueva">Agregar caracteristica:</label> <input
 						wicket:id="caracteristicaNueva" class="form-control" type="text" />
 					<button wicket:id="agregarCaracteristica" type="submit"
-						class="btn btn-primary">Agregar</button>
+						class="btn btn-info">Agregar</button>
 				</div>
 			</div>
 			<div>
@@ -40,7 +41,7 @@
 			<div>
 				<label for="conexionNueva">Agregar conexion:</label>
 				<select	wicket:id="conexionNueva"></select>
-				<button wicket:id="agregarConexion" type="submit" class="btn btn-success">Agregar</button>
+				<button wicket:id="agregarConexion" type="submit" class="btn btn-info">Agregar</button>
 			</div>
 			<div class="form-group">
 				<div>
@@ -51,11 +52,13 @@
 				<div>
 					<label for="lugaresPosibles">Agregar lugar:</label>
 					<select wicket:id="lugarDeInteresNuevo"></select>
-					<button wicket:id="agregarLugar" type="submit" class="btn btn-success">Agregar</button>
+					<button wicket:id="agregarLugar" type="submit" class="btn btn-info">Agregar</button>
 				</div>
 			</div>
-			<button wicket:id="cancelar" type="submit" class="btn btn-warning">Cancelar</button>
-			<button wicket:id="crearPais" type="submit" class="btn btn-success">Aceptar</button>
+			<div class="botones">
+				<button wicket:id="crearPais" type="submit" class="btn btn-primary">Aceptar</button>
+				<button wicket:id="cancelar" type="submit" class="btn btn-warning">Cancelar</button>	
+			</div>
 			<div wicket:id="feedbackPanel" class="alert alert-error" id="panelDeErrores" style="width:33%;">
 				<strong>Warning!</strong> Best check yourself, you're not looking too good.  
 			</div>

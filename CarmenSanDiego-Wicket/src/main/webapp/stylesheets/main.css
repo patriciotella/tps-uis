@@ -25,8 +25,38 @@ table {
 	margin-left: 122%;
 }
 
-#editorDePais{
+#editorDePais, 
+#editorDeVillano{
 	width: auto;
 	color: white;
 	background: rgba(54, 25, 25, .5);
+}
+
+.nav-pills > li.active > a {
+    background-color:rgba(54, 25, 25, .5);
+}
+
+label {
+	color: white;
+	font-weight: bold;
+}
+
+textarea, select {
+	background: rgba(54, 25, 25, .5);
+	color: white;
+	margin-bottom: 0px;
+}
+
+input[type="text"], textarea {
+	background-color: rgba(54, 25, 25, .5);
+	color: white;
+	margin-bottom: 0px;
+}
+
+#panelDeErrores {
+	background-color: rgba(54, 25, 25, .5);
+}
+
+.botones {
+	margin-top: 5%;
 }
