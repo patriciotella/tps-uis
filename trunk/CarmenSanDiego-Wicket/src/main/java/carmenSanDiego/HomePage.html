@@ -50,19 +50,19 @@
 				<div>
 					<label for="conexiones">Conexiones:</label>
 					<ul wicket:id="conexiones">
-						<li wicket:id="conexion"></li>
+						<li wicket:id="conexionSeleccionada"></li>
 					</ul>
 				</div>
 				<div>
 					<label for="caracteristicass">Caracteristicas:</label>
 					<ul wicket:id="caracteristicas">
-						<li wicket:id="caracteristica"></li>
+						<li wicket:id="caracteristicaSeleccionada"></li>
 					</ul>
 				</div>
 				<div>
 					<label for="lugaresDeInteres">Lugares de Interes:</label>
 					<ul wicket:id="lugaresDeInteres">
-						<li wicket:id="lugarDeInteres"></li>
+						<li wicket:id="lugarSeleccionado"></li>
 					</ul>
 				</div>
 				<div class="btn-group">
@@ -88,7 +88,8 @@
 									<button wicket:id="inspeccionarVillano" class="btn-link"
 										onclick="inspeccionarVillano()">Ver</button>
 									<button wicket:id="editar" class="btn-link">Editar</button>
-									<button wicket:id="eliminar" class="btn-link">Eliminar</button>
+									<button wicket:id="eliminar" class="btn-link"
+										onclick="volverInspeccionVillano()">Eliminar</button>
 								</div>
 							</td>
 						</tr>
