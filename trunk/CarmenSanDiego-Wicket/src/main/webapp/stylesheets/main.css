@@ -1,5 +1,5 @@
-#tablaDeVillanos { width:30%; float:left; margin-right: 20%; }
-#editorDeVillano { width:50%; float:left }
+#tablaDeVillanos, #tablaDePaises { width:30%; float:left; margin-right: 20%; }
+#editorDeVillano, #editorDePais { width:50%; float:left }
 .break { clear:both }
 #botones_de_edicion { float:right }
 #panelDeErrores" { width:50% }
