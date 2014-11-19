@@ -1,13 +1,9 @@
 package carmenSanDiego;
 
 import carmenSanDiegoUIs.HomePageModApp
-import org.apache.wicket.Component
-import org.apache.wicket.ajax.AjaxRequestTarget
 import org.apache.wicket.markup.html.WebPage
 import org.apache.wicket.markup.html.basic.Label
-import org.apache.wicket.markup.html.form.DropDownChoice
 import org.apache.wicket.markup.html.form.Form
-import org.apache.wicket.markup.html.form.TextField
 import org.apache.wicket.model.CompoundPropertyModel
 import org.apache.wicket.model.PropertyModel
 import org.uqbar.wicket.xtend.WicketExtensionFactoryMethods
@@ -114,7 +110,6 @@ public class HomePage extends WebPage {
 		]
 		form.addChild(seniasParticulares)
 		form.addChild(new Label("sexo", new PropertyModel(form.modelObject, "sexo")))
-//		form.addChild(new XAjaxLink<Object>("volver") => [])
 	}
 
 	def addPaisesList(Form<EditorDePais> form) {
@@ -137,7 +132,7 @@ public class HomePage extends WebPage {
 				new XAjaxLink<Object>("inspeccionarPais") => [
 					onClick = [ target |
 						editorPais.sincWith(item.modelObject, modelApp.mapamundi)
-						target.addComponent(parent, parent.markupId);
+						target.addComponent(form, form.markupId);
 					]
 				]
 			)
