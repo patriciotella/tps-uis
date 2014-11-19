@@ -2,15 +2,16 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Crear villano</title>
+<title>Editor de villano</title>
 <link href="lib/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="stylesheets/main.css" rel="stylesheet" media="screen">
 
 <script src="javascripts/jquery-2.1.1.min.js"></script>
 <script src="javascripts/pageBehavior.js"></script>
 </head>
-<body>
-	<h1>Crear / Editar villano</h1>
+<body background="images/Criminal-Background.jpg"
+	style="background-size: 100%;">
+	<h3>Crear / Editar villano</h3>
 	<form wicket:id="crearVillanoForm" class="form">
 		<div style="margin-left: 40%;" id="editorVillano">
 			<div class="form-group">
@@ -20,15 +21,16 @@
 				</div>
 			</div>
 			<div>
-				<label for="hobbies">Hobbies:</label> <select wicket:id="hobbieSeleccionado"></select>
-				<input wicket:id="eliminarHobbie" type="submit"
-					class="btn btn-danger" value="Eliminar">
+				<label for="hobbies">Hobbies:</label> <select
+					wicket:id="hobbieSeleccionado"></select> <input
+					wicket:id="eliminarHobbie" type="submit" class="btn btn-danger"
+					value="Eliminar">
 			</div>
 			<div class="form-group">
+				<label for="hobbieNuevo">Agregar Hobbie:</label>
 				<div>
-					<label for="hobbieNuevo">Agregar Hobbie:</label> <input
-						wicket:id="hobbieNuevo" class="form-control" type="text" /> <input
-						wicket:id="agregarHobbie" type="submit" class="btn btn-info"
+					<input wicket:id="hobbieNuevo" class="form-control" type="text" />
+					<input wicket:id="agregarHobbie" type="submit" class="btn btn-info"
 						value="Agregar">
 				</div>
 			</div>
@@ -39,23 +41,23 @@
 					class="btn btn-danger" value="Eliminar">
 			</div>
 			<div class="form-group">
+				<label for="seniaNueva">Agregar se&ntilde;a particular:</label>
 				<div>
-					<label for="seniaNueva">Agregar se&ntilde;a particular:</label> <input
-						wicket:id="seniaNueva" class="form-control" type="text" /> <input
-						wicket:id="agregarSeniaParticular" type="submit"
+					<input wicket:id="seniaNueva" class="form-control" type="text" />
+					<input wicket:id="agregarSeniaParticular" type="submit"
 						class="btn btn-info" value="Agregar">
 				</div>
 			</div>
 			<div class="form-group">
-				<div>
-					<label for="sexo">Sexo:</label> <select wicket:id="sexo"></select>
-				</div>
+				<label for="sexo">Sexo:</label> <select wicket:id="sexo"></select>
 			</div>
 			<div class="botones">
-				<button wicket:id="crearVillano" type="submit" class="btn btn-primary">Aceptar</button>
-				<button wicket:id="cancelar" type="submit" class="btn btn-warning">Cancelar</button>			
+				<button wicket:id="crearVillano" type="submit"
+					class="btn btn-primary">Aceptar</button>
+				<button wicket:id="cancelar" type="submit" class="btn btn-warning">Cancelar</button>
 			</div>
-			<div wicket:id="feedbackPanel" class="alert alert-error" id="panelDeErrores" style="width:33%;"></div>
+			<div wicket:id="feedbackPanel" class="alert alert-error"
+				id="panelDeErroresDeVillano"></div>
 		</div>
 	</form>
 </body>

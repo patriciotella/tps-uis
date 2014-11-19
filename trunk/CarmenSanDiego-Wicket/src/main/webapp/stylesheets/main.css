@@ -4,13 +4,12 @@
 #botones_de_edicion { float:right }
 #panelDeErrores" { width:50% }
 
-body{
-	background-image: url("http://www.wallpaperup.com/uploads/wallpapers/2012/08/18/11247/8510282b2377877a71e219911934e1e4.jpg");
+#homePage{
 	background-size: 100%;
     background-repeat: no-repeat;
 }
 
-h1 {
+h3, h1 {
 	text-align: center;
 	color: white;
 }
@@ -32,13 +31,8 @@ table {
 	background: rgba(54, 25, 25, .5);
 }
 
-.nav-pills > li.active > a {
+.nav-pills > li > a {
     background-color:rgba(54, 25, 25, .5);
-}
-
-label {
-	color: white;
-	font-weight: bold;
 }
 
 textarea, select {
@@ -54,9 +48,31 @@ input[type="text"], textarea {
 }
 
 #panelDeErrores {
-	background-color: rgba(54, 25, 25, .5);
+	background-color: transparent;
+	border-color: transparent;
+	width: 20%;
+	color: white;
+	font-weight: bold;
 }
 
+#panelDeErroresDeVillano{
+	background-color: transparent;
+	border-color: transparent;
+	width: 20%;
+	color: black;
+	font-weight: bold;
+}
 .botones {
 	margin-top: 5%;
+	margin-left: 4%;
+}
+
+#editorVillano > div > label{
+	color: black;
+	font-weight: bold;
+}
+
+#editorPais > div > label{
+	color: white;
+	font-weight: bold;
 }
