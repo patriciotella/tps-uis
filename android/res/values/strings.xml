@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Carmen SanDiego</string>
+    <string name="ubicacion">Estás en Egipto</string>
+    <string name="ordenTitle">Emitir orden de arresto</string>
+    <string name="ordenEmitida">Orden de arresto contra:</string>
+    <string name="emitirTitle">Emitir orden contra:</string>
+    <string name="action_settings">Settings</string>
+    <string name="viajar_button">Viajar</string>
+    <string name="pistas_button">Pedir pista</string>
+    
+
+</resources>
