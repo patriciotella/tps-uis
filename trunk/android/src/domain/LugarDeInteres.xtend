@@ -1,6 +1,8 @@
 package domain
 
-abstract class LugarDeInteres {
+import java.io.Serializable
+
+abstract class LugarDeInteres implements Serializable {
 	
 //	@Property Ocupante ocupante
 	private Pais proximoPaisDondeFueElMalechor

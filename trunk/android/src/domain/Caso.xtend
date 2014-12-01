@@ -2,9 +2,10 @@ package domain
 
 import java.util.Set
 import org.eclipse.xtend.lib.annotations.Accessors
+import java.io.Serializable
 
 @Accessors
-class Caso {
+class Caso implements Serializable {
 	Villano responsable
 	Reporte reporte
 	ObjetoRobado objetoRobado
