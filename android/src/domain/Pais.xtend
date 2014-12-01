@@ -3,9 +3,10 @@ package domain
 import java.util.Set
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
+import java.io.Serializable
 
 @Accessors
-class Pais {
+class Pais implements Serializable {
 	String nombre
 	Set<String> caracteristicas
 	Set<LugarDeInteres> lugaresDeInteres

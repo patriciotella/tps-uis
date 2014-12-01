@@ -2,9 +2,10 @@ package domain
 
 import java.util.Set
 import org.eclipse.xtend.lib.annotations.Accessors
+import java.io.Serializable
 
 @Accessors
-class Villano {
+class Villano implements Serializable {
 	String nombre
 	String sexo
 	Set<String> seniasParticulares

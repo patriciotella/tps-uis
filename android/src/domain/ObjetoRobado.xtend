@@ -1,6 +1,8 @@
 package domain
 
-class ObjetoRobado {
+import java.io.Serializable
+
+class ObjetoRobado implements Serializable {
 	private String nombre
 	private String descripcion
 	

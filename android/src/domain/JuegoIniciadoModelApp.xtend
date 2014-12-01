@@ -1,6 +1,8 @@
 package domain
 
-class JuegoIniciadoModelApp {
+import java.io.Serializable
+
+class JuegoIniciadoModelApp implements Serializable {
 	
 	Juego juegoActual
 	Expedientes expedientes

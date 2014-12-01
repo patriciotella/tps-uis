@@ -1,7 +1,8 @@
 package domain
 
+import java.io.Serializable
 
-class Reporte {
+class Reporte implements Serializable {
 	
 	String descripcion
 	
