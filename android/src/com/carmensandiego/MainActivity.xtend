@@ -6,7 +6,6 @@ import android.support.v7.app.ActionBarActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.EditText
 import android.widget.ImageButton
 import retrofit.RestAdapter
 import service.CarmenService
@@ -15,6 +14,7 @@ import retrofit.Callback
 import retrofit.RetrofitError
 import retrofit.client.Response
 import android.util.Log
+import android.widget.TextView
 
 class MainActivity extends ActionBarActivity {
 
@@ -24,10 +24,6 @@ class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		iniciarJuego
-
-		findViewById(R.id.ubicacion_actual) as EditText => [
-			setText = juego.juegoActual.paisActual.nombre;
-		]
 
 	//        findViewById(R.id.viajar_btn) as ImageButton => [
 	//			onClickListener = [view | changeToViajarActivity(view)]
@@ -49,15 +45,17 @@ class MainActivity extends ActionBarActivity {
 
 				override success(JuegoIniciadoModelApp juegoIniciado, Response arg1) {
 					juego = juegoIniciado
+					mostrarUbicacionActual
 				}
 			})
 	}
 
 	def createService() {
-//		val SERVER_IP = "10.0.2.2"
-		val SERVER_IP = "127.0.0.1"
-		val API_URL = '''http://«SERVER_IP»:9000/'''
 
+		val SERVER_IP = "10.0.2.2"
+//		val SERVER_IP = "127.0.0.1"
+		val API_URL = '''http://«SERVER_IP»:9000'''
+		
 		val restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build
 		val CarmenService carmenService = restAdapter.create(CarmenService)
 		carmenService
@@ -82,6 +80,11 @@ class MainActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	def mostrarUbicacionActual() {
+		findViewById(R.id.ubicacion_actual) as TextView => [
+			setText = juego.juegoActual.paisActual.nombre;
+		]
+	}
 //    private def changeToViajarActivity(View view) {
 //    	val myIntent = new Intent(view.getContext(), Activity2.class);
 //                startActivityForResult(myIntent, 0);

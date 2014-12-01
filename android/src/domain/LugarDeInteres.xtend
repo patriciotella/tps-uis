@@ -2,7 +2,7 @@ package domain
 
 import java.io.Serializable
 
-abstract class LugarDeInteres implements Serializable {
+class LugarDeInteres implements Serializable {
 	
 //	@Property Ocupante ocupante
 	private Pais proximoPaisDondeFueElMalechor
@@ -35,7 +35,7 @@ abstract class LugarDeInteres implements Serializable {
 //		estado.pista(this)
 	}
 	
-	def protected abstract String darPistaSegunPolitica()
+//	def protected abstract String darPistaSegunPolitica()
 	
 	def getVillano() {
 		villano
