@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Carmen SanDiego</string>
-    <string name="ubicacion">Estás en Egipto</string>
+    <string name="ubicacion">Estás en:</string>
     <string name="ordenTitle">Emitir orden de arresto</string>
     <string name="ordenEmitida">Orden de arresto contra:</string>
     <string name="emitirTitle">Emitir orden contra:</string>
