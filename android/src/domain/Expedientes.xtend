@@ -2,9 +2,11 @@ package domain
 
 import java.util.List
 import java.io.Serializable
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class Expedientes implements Serializable {
-	@Property List<Villano> villanos;
+	List<Villano> villanos;
 	
 	new() {
 		villanos = newArrayList()

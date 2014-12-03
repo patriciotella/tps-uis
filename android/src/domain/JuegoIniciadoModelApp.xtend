@@ -1,22 +1,16 @@
 package domain
 
 import java.io.Serializable
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class JuegoIniciadoModelApp implements Serializable {
 	
 	Juego juegoActual
-	Expedientes expedientes
+	Expedientes expedientesDeVillanos
 	
 	new(Juego unJuego, Expedientes expedientesDeVillanos){
 		juegoActual = unJuego
-		expedientes = expedientesDeVillanos
-	}
-	
-	def getJuegoActual(){
-		juegoActual
-	}
-	
-	def getExpedientesDeVillanos() {
-		expedientes
+		this.expedientesDeVillanos = expedientesDeVillanos
 	}
 }
