@@ -4,6 +4,7 @@ import retrofit.http.GET
 import retrofit.http.Path
 import retrofit.Callback
 import domain.JuegoIniciadoModelApp
+import retrofit.http.POST
 
 interface CarmenService {
 
@@ -19,4 +20,7 @@ POST    /finalizarPartida/:idJuego           controllers.Application.finalizarPa
  
 	@GET("/iniciarJuego")
 	def void iniciarJuego(Callback<JuegoIniciadoModelApp> callback)
+	
+	@POST("/acusarA/{idJuego}/{nombre}")
+	def void acusarVillano(@Path("idJuego")Integer id, @Path("nombre")String nombreDeVillano, Callback<String> callback)
 }

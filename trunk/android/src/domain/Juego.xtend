@@ -1,32 +1,20 @@
 package domain
 
-import java.util.ArrayList
-import java.util.HashSet
 import java.util.List
 import java.util.Set
 import java.io.Serializable
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class Juego implements Serializable {
 
-	Villano villanoAcusado
+	String villanoAcusado
 	Pais paisActual
 	Set<Pais> recorridoCriminal
 	Set<Pais> destinosFallidos
 	List<Pais> paisesAnteriores
 	Caso casoAResolver
 	int id
-
-//	new(Repositorio unRepositorio) {
-//		recorridoCriminal = new HashSet
-//		destinosFallidos = new HashSet
-//		paisesAnteriores = new ArrayList
-//		casoAResolver = casoFactory.crearCasoDefault(unRepositorio)
-//		paisActual = casoAResolver.paisDondeOcurrio
-//	}
-
-	def getPaisActual() {
-		paisActual
-	}
 
 	def viajarAlPaisAnterior() {
 		paisActual = paisesAnteriores.last
@@ -47,7 +35,7 @@ class Juego implements Serializable {
 		}
 	}
 
-	def Villano getVillanoAcusado() {
+	def String getVillanoAcusado() {
 		villanoAcusado
 	}
 
@@ -69,10 +57,6 @@ class Juego implements Serializable {
 
 	def determinarSiEstaEnUnPaisFallido() {
 		casoAResolver.planDeEscape
-	}
-
-	def emitirOrdenContraVillano(Villano unVillano) {
-		villanoAcusado = unVillano
 	}
 
 	def getDescripcionDelCaso() {
@@ -100,7 +84,7 @@ class Juego implements Serializable {
 	}
 
 	def getResolucionDePartida() {
-		if (villanoAcusado != null && villanoAcusado.nombre == caso.responsable.nombre)
+		if (villanoAcusado != null && villanoAcusado == caso.responsable.nombre)
 			"Ganaste"
 		else
 			"Perdiste"

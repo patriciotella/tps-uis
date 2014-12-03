@@ -9,6 +9,7 @@
     <string name="action_settings">Settings</string>
     <string name="viajar_button">Viajar</string>
     <string name="pistas_button">Pedir pista</string>
-    
+    <string name="emitir_button">Emitir Orden</string>
+    <string name="iniciar_button">Iniciar Juego</string>
 
 </resources>
