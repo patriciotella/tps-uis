@@ -23,4 +23,7 @@ POST    /finalizarPartida/:idJuego           controllers.Application.finalizarPa
 	
 	@POST("/acusarA/{idJuego}/{nombre}")
 	def void acusarVillano(@Path("idJuego")Integer id, @Path("nombre")String nombreDeVillano, Callback<String> callback)
+	
+//	@GET("/pista/{idJuego}/{paisActual.lugarDeInteres.pista}")
+//	def void getPista(@Path("idJuego")Integer id, @Path("paisActual.lugarDeInteres.pista")String pista, Callback<String> callback)
 }

@@ -42,7 +42,7 @@ class IniciarJuegoActivity extends ActionBarActivity {
 
 	def createService() {
 		val SERVER_IP = "192.168.56.1"
-		val API_URL = '''http://Â«SERVER_IPÂ»:9000'''
+		val API_URL = '''http://«SERVER_IP»:9000'''
 
 		val restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build
 		val CarmenService carmenService = restAdapter.create(CarmenService)

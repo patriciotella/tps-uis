@@ -6,7 +6,6 @@ import android.support.v7.app.ActionBarActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
@@ -32,6 +31,8 @@ class MainActivity extends ActionBarActivity {
 		mostrarVillanoAcusado
 		mostrarVillanos
 		emitirOrdenButton
+		pistasActivityButton
+		viajarActivityButton
 	}
 
 	override boolean onCreateOptionsMenu(Menu menu) {
@@ -82,7 +83,7 @@ class MainActivity extends ActionBarActivity {
 
 	def createService() {
 		val SERVER_IP = "192.168.56.1"
-		val API_URL = '''http://Â«SERVER_IPÂ»:9000'''
+		val API_URL = '''http://«SERVER_IP»:9000'''
 
 		val restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build
 		val CarmenService carmenService = restAdapter.create(CarmenService)
@@ -116,9 +117,30 @@ class MainActivity extends ActionBarActivity {
 	def spinnerDeVillanos() {
 		findViewById(R.id.villanos_a_acusar) as Spinner
 	}
+	
+	def pistasActivityButton(){
+		findViewById(R.id.pistas_btn) as Button => [
+			onClickListener = [view | changeToPistasActivity(juego)]
+			]
+	}
+	
+	private def changeToPistasActivity(JuegoIniciadoModelApp juego) {
+		val intent = new Intent(this, PistasActivity) => [
+			putExtra(PistasActivity.JUEGO_ACTUAL, juego)
+		]
+		startActivityForResult(intent, 0)
+	}
 
-//    private def changeToViajarActivity(View view) {
-//    	val myIntent = new Intent(view.getContext(), Activity2.class);
-//                startActivityForResult(myIntent, 0);
-//    }
+	def viajarActivityButton(){
+		findViewById(R.id.viajar_btn) as Button => [
+			onClickListener = [view | changeToViajarActivity(juego)]
+			]
+	}
+	
+    private def changeToViajarActivity(JuegoIniciadoModelApp juego) {
+		val intent = new Intent(this, ViajarActivity) => [
+			putExtra(ViajarActivity.JUEGO_ACTUAL, juego)
+		]
+		startActivityForResult(intent, 0)
+	}
 }
