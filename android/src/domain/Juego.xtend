@@ -1,6 +1,5 @@
 package domain
 
-import java.util.List
 import java.util.Set
 import java.io.Serializable
 import org.eclipse.xtend.lib.annotations.Accessors
@@ -12,20 +11,10 @@ class Juego implements Serializable {
 	Pais paisActual
 	Set<Pais> recorridoCriminal
 	Set<Pais> destinosFallidos
-	List<Pais> paisesAnteriores
+	Pais paisAnterior
 	Caso casoAResolver
+	String resolucionDePartida
 	int id
-
-	def viajarAlPaisAnterior() {
-		paisActual = paisesAnteriores.last
-		paisesAnteriores.remove(paisesAnteriores.size - 1)
-	}
-
-	def viajarAPais(Pais unPais) {
-		paisesAnteriores.add(paisActual)
-		paisActual = unPais
-		determinarSiPerteneceAlRecorridoCriminal
-	}
 
 	def determinarSiPerteneceAlRecorridoCriminal() {
 		if (casoAResolver.planDeEscape.contains(paisActual)) {
@@ -63,14 +52,6 @@ class Juego implements Serializable {
 		casoAResolver.reporte.descripcion
 	}
 
-	def getPaisAnterior() {
-		paisesAnteriores.last
-	}
-
-	def getPistaDeLugarDeInteres(String nombreLugarDeInteres) {
-		paisActual.getPistaDeLugar(nombreLugarDeInteres)
-	}
-
 	def getDestinoPorNombre(String nombreDelDestino) {
 		paisActual.conexiones.filter[nombre == nombreDelDestino].head
 	}
@@ -81,13 +62,6 @@ class Juego implements Serializable {
 
 	def getId() {
 		id
-	}
-
-	def getResolucionDePartida() {
-		if (villanoAcusado != null && villanoAcusado == caso.responsable.nombre)
-			"Ganaste"
-		else
-			"Perdiste"
 	}
 
 //	def finalizar() {

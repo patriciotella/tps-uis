@@ -68,27 +68,12 @@ class Pais implements Serializable {
 		this.nombre = nombre
 	}
 	
-	def void marcarComoRutaDeEscapeDeVillano(Villano unVillano, Pais proximoPaisEnRuta) {
-		lugaresDeInteres.forEach[marcarComoRutaDeEscapeDeVillano(unVillano, proximoPaisEnRuta)]
-		/*Por cada lugar de interés, setearlo como lugar que tiene datos del vilano
-		 * y darle el proximo país en la ruta (si no es el último)
-		 */
-	}
-	
-	def syncWith(Pais pais) {
-		nombre = pais.nombre
-		caracteristicas = pais.caracteristicas
-		conexiones = pais.conexiones
-		lugaresDeInteres = pais.lugaresDeInteres
-	}
-	
-	def getPistaDeLugar(String nombreDelLugar) {
-		val lugar = lugaresDeInteres.filter[nombre == nombreDelLugar]
-		return lugar.head.pista
-	}
-	
 	def getNombreDePais() {
 		nombre
+	}
+	
+	def contieneAlVillano() {
+		lugaresDeInteres.head.pais == null
 	}
 	
 }
