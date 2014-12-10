@@ -1,16 +1,15 @@
 package com.carmensandiego
 
-import android.support.v7.app.ActionBarActivity
+import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.ActionBarActivity
+import android.util.Log
+import android.widget.Button
+import domain.JuegoIniciadoModelApp
 import retrofit.Callback
 import retrofit.RetrofitError
-import android.util.Log
 import retrofit.client.Response
-import domain.JuegoIniciadoModelApp
-import service.CarmenService
-import retrofit.RestAdapter
-import android.content.Intent
-import android.widget.Button
+import service.ServiceFactory
 
 class IniciarJuegoActivity extends ActionBarActivity {
 
@@ -25,7 +24,7 @@ class IniciarJuegoActivity extends ActionBarActivity {
 	}
 
 	def getIniciarJuego() {
-		val service = createService
+		val service = ServiceFactory.createService
 		service.iniciarJuego(
 			new Callback<JuegoIniciadoModelApp>() {
 
@@ -38,15 +37,6 @@ class IniciarJuegoActivity extends ActionBarActivity {
 					changeToMainActivity(juegoIniciado)
 				}
 			})
-	}
-
-	def createService() {
-		val SERVER_IP = "192.168.56.1"
-		val API_URL = '''http://«SERVER_IP»:9000'''
-
-		val restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build
-		val CarmenService carmenService = restAdapter.create(CarmenService)
-		carmenService
 	}
 
 	private def changeToMainActivity(JuegoIniciadoModelApp juego) {

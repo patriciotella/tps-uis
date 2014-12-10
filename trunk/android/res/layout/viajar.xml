@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.carmensandiego.ViajarActivity" >
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,52 +29,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
-    
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/viajarTitle" />
-    
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:context="com.carmensandiego.ViajarActivity" >
-        
-        <Button
-        android:id="@+id/pais_1_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/conexion_button" />
-        
-        <Button
-        android:id="@+id/pais_2_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/conexion_button" />
-        
-        <Button
-        android:id="@+id/pais_3_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/conexion_button" />
-    
+
+        <Spinner
+            android:id="@+id/conexiones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown" />
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         tools:context="com.carmensandiego.ViajarActivity" >
-
-        <Button
-            android:id="@+id/orden_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/orden_button" />
 
         <Button
             android:id="@+id/viajar_btn"
@@ -82,7 +61,33 @@
             android:layout_height="wrap_content"
             android:text="@string/viajar_button" />
 
+        <Button
+            android:id="@+id/volver_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/volver_button" />
     </LinearLayout>
-    
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:context="com.carmensandiego.ViajarActivity" >
+
+        <Button
+            android:id="@+id/pistas_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="@string/pistas_button" />
+
+        <Button
+            android:id="@+id/orden_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="@string/orden_button" />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -13,10 +13,10 @@ import android.widget.TextView
 import domain.JuegoIniciadoModelApp
 import java.util.ArrayList
 import retrofit.Callback
-import retrofit.RestAdapter
 import retrofit.RetrofitError
 import retrofit.client.Response
-import service.CarmenService
+import service.ServiceFactory
+import android.view.View
 
 class MainActivity extends ActionBarActivity {
 
@@ -55,7 +55,8 @@ class MainActivity extends ActionBarActivity {
 	}
 
 	def emitirOrdenButton() {
-		findViewById(R.id.emitir_orden_btn) as Button => [
+		actualizarBoton
+		getEmitirOrdenBtn => [
 			onClickListener = [ view |
 				val spinner = spinnerDeVillanos
 				emitirOrden(spinner.selectedItem as String)
@@ -63,8 +64,26 @@ class MainActivity extends ActionBarActivity {
 		]
 	}
 
+	def actualizarBoton() {
+		if(juego.juegoActual.emitioOrdenDeArresto){
+			emitirOrdenBtn => [
+				setEnabled(false)
+				setVisibility(View.INVISIBLE)
+			]
+		}else{
+			emitirOrdenBtn => [
+				setEnabled(true)
+				setVisibility(View.VISIBLE)
+			]
+		}
+	}
+	
+	def getEmitirOrdenBtn(){
+		findViewById(R.id.emitir_orden_btn) as Button
+	}
+	
 	def emitirOrden(String nombreDelVillano) {
-		val service = createService
+		val service = ServiceFactory.createService
 		service.acusarVillano(juego.juegoActual.id, nombreDelVillano,
 			new Callback<String>() {
 
@@ -77,17 +96,10 @@ class MainActivity extends ActionBarActivity {
 					val spinner = findViewById(R.id.villanos_a_acusar) as Spinner
 					juego.juegoActual.villanoAcusado = spinner.selectedItem as String;
 					mostrarVillanoAcusado
+					actualizarBoton
+					actualizarSpinnerDeVillanos
 				}
 			})
-	}
-
-	def createService() {
-		val SERVER_IP = "192.168.56.1"
-		val API_URL = '''http://«SERVER_IP»:9000'''
-
-		val restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build
-		val CarmenService carmenService = restAdapter.create(CarmenService)
-		carmenService
 	}
 
 	def mostrarUbicacionActual() {
@@ -106,12 +118,24 @@ class MainActivity extends ActionBarActivity {
 	}
 
 	def mostrarVillanos() {
+		actualizarSpinnerDeVillanos
 		val nombres = new ArrayList
 		juego.expedientesDeVillanos.villanos.forEach[nombres.add(nombre)]
 		val adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, nombres)
 		spinnerDeVillanos() => [
 			setAdapter(adapter)
 		]
+	}
+	
+	def actualizarSpinnerDeVillanos() {
+		val titutlo = findViewById(R.id.emitirTitle) as TextView
+		if(juego.juegoActual.emitioOrdenDeArresto){
+			 titutlo => [setVisibility(View.INVISIBLE)]
+			spinnerDeVillanos => [setVisibility(View.INVISIBLE)]
+		}else{
+			titutlo => [setVisibility(View.VISIBLE)]
+			spinnerDeVillanos => [setVisibility(View.VISIBLE)]
+		}			
 	}
 	
 	def spinnerDeVillanos() {

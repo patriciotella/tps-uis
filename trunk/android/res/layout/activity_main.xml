@@ -57,6 +57,7 @@
     </LinearLayout>
     
     <TextView
+        android:id="@+id/emitirTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/emitirTitle" />
@@ -85,12 +86,14 @@
             android:id="@+id/viajar_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:text="@string/viajar_button" />
 
         <Button
             android:id="@+id/pistas_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:text="@string/pistas_button" />
 
     </LinearLayout>

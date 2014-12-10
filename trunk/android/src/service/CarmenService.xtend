@@ -5,6 +5,8 @@ import retrofit.http.Path
 import retrofit.Callback
 import domain.JuegoIniciadoModelApp
 import retrofit.http.POST
+import domain.Juego
+import domain.ResolucionDeJuego
 
 interface CarmenService {
 
@@ -24,6 +26,16 @@ POST    /finalizarPartida/:idJuego           controllers.Application.finalizarPa
 	@POST("/acusarA/{idJuego}/{nombre}")
 	def void acusarVillano(@Path("idJuego")Integer id, @Path("nombre")String nombreDeVillano, Callback<String> callback)
 	
-//	@GET("/pista/{idJuego}/{paisActual.lugarDeInteres.pista}")
-//	def void getPista(@Path("idJuego")Integer id, @Path("paisActual.lugarDeInteres.pista")String pista, Callback<String> callback)
+	@GET("/pista/{idJuego}/{idLugar}")
+	def void getPista(@Path("idJuego")Integer id, @Path("idLugar")String idDeLugar, Callback<String> callback)
+	
+	@POST("/viajar/{idJuego}/{nombreDelPais}")
+	def void viajar(@Path("idJuego")Integer id, @Path("nombreDelPais")String idDePais, Callback<Juego> callback)
+
+	@POST("/volverAPaisAnterior/{idJuego}")	
+	def void volver(@Path("idJuego")Integer id, Callback<Juego> callback)
+	
+	@POST("/finalizarPartida/{idJuego}")
+	def void finalizarPartida(@Path("idJuego")Integer id, Callback<ResolucionDeJuego> callback)
+	
 }

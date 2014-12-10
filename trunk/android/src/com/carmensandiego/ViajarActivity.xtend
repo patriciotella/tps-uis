@@ -6,98 +6,156 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
+import android.widget.Spinner
+import java.util.ArrayList
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.content.Intent
+import service.ServiceFactory
+import domain.Juego
+import retrofit.Callback
+import retrofit.RetrofitError
+import retrofit.client.Response
+import android.util.Log
 
-class ViajarActivity extends ActionBarActivity{
-	
+class ViajarActivity extends ActionBarActivity {
+
 	public static val JUEGO_ACTUAL = "JUEGO_ACTUAL"
 	JuegoIniciadoModelApp juego
-	
+
 	override protected onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.viajar);
 		this.juego = intent.getSerializableExtra(JUEGO_ACTUAL) as JuegoIniciadoModelApp
 		mostrarUbicacionActual
-		pais1
-		pais2
-		pais3
+		mostrarPaises
 		mainActivityButton
 		pistasActivityButton
+		viajarButton
+		volverButton
+	}
+	
+	def volverButton() {
+		findViewById(R.id.volver_btn) as Button => [
+			onClickListener = [ view |
+				volver
+			]
+		]
+		actualizarBoton
+	}
+	
+	def actualizarBoton() {
+		if(juego.juegoActual.paisAnterior == null)
+			getVolverBtn => [setEnabled(false)]
+		else
+			Log.e("", juego.juegoActual.paisAnterior.toString)
+			getVolverBtn => [setEnabled(true)]
+	}
+	
+	def private getVolverBtn() {
+		findViewById(R.id.volver_btn) as Button	
+	}
+	
+	def volver() {
+		val service = ServiceFactory.createService
+		service.volver(juego.juegoActual.id, new Callback<Juego>() {
+
+				override failure(RetrofitError e) {
+					Log.e("", e.message)
+					e.printStackTrace
+				}
+
+				override success(Juego juegoActual, Response arg1) {
+					juego.juegoActual = juegoActual
+					mostrarUbicacionActual
+					mostrarPaises
+					actualizarBoton
+				}
+			})
+	}
+
+	def viajarButton() {
+		findViewById(R.id.viajar_btn) as Button => [
+			onClickListener = [ view |
+				val spinner = spinnerDePaises
+				viajar(spinner.selectedItem as String)
+			]
+		]
+	}
+
+	def viajar(String nombreDelPais) {
+		val service = ServiceFactory.createService
+		service.viajar(juego.juegoActual.id, nombreDelPais,
+			new Callback<Juego>() {
+
+				override failure(RetrofitError e) {
+					Log.e("", e.message)
+					e.printStackTrace
+				}
+
+				override success(Juego juegoActual, Response arg1) {
+					juego.juegoActual = juegoActual
+					mostrarUbicacionActual
+					mostrarPaises
+				}
+			})
 	}
 
 	override boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu)
 		return true;
 	}
 
 	override boolean onOptionsItemSelected(MenuItem item) {
-
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		val id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
 		}
 		return super.onOptionsItemSelected(item)
 	}
-	
+
 	def mostrarUbicacionActual() {
 		findViewById(R.id.ubicacion_actual) as TextView => [
 			setText = juego.juegoActual.paisActual.nombre
 		]
 	}
-	
-	def pais1() {
-		findViewById(R.id.pais_1_btn) as Button => [
-			setText(juego.juegoActual.paisActual.conexiones.get(0).nombre)
-			onClickListener = [ view |
-			]
+
+	def spinnerDePaises() {
+		findViewById(R.id.conexiones) as Spinner
+	}
+
+	def mostrarPaises() {
+		val nombres = new ArrayList
+		juego.juegoActual.paisActual.conexiones.forEach[nombres.add(nombre)]
+		val adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, nombres)
+		spinnerDePaises() => [
+			setAdapter(adapter)
 		]
 	}
-	
-	def pais2() {
-		findViewById(R.id.pais_2_btn) as Button => [
-			setText(juego.juegoActual.paisActual.conexiones.get(1).nombre)
-			onClickListener = [ view |
-			]
-		]
-	}
-	
-	def pais3() {
-		findViewById(R.id.pais_3_btn) as Button => [
-			setText(juego.juegoActual.paisActual.lugaresDeInteres.get(2).nombre)
-			onClickListener = [ view |
-			]
-		]
-	}
-	def mainActivityButton(){
+
+	def mainActivityButton() {
 		findViewById(R.id.orden_btn) as Button => [
-			onClickListener = [view | changeToMainActivity(juego)]
-			]
+			onClickListener = [view|changeToMainActivity(juego)]
+		]
 	}
-	
+
 	private def changeToMainActivity(JuegoIniciadoModelApp juego) {
 		val intent = new Intent(this, MainActivity) => [
 			putExtra(MainActivity.JUEGO_ACTUAL, juego)
 		]
 		startActivityForResult(intent, 0)
 	}
-	
-	def pistasActivityButton(){
+
+	def pistasActivityButton() {
 		findViewById(R.id.pistas_btn) as Button => [
-			onClickListener = [view | changeToPistasActivity(juego)]
-			]
+			onClickListener = [view|changeToPistasActivity(juego)]
+		]
 	}
-	
+
 	private def changeToPistasActivity(JuegoIniciadoModelApp juego) {
 		val intent = new Intent(this, PistasActivity) => [
 			putExtra(PistasActivity.JUEGO_ACTUAL, juego)
 		]
 		startActivityForResult(intent, 0)
 	}
-	
 }

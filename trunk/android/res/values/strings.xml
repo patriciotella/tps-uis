@@ -8,8 +8,10 @@
     <string name="emitirTitle">Emitir orden contra:</string>
     <string name="action_settings">Settings</string>
     <string name="viajar_button">Viajar</string>
+    <string name="volver_button">Volver</string>
     <string name="pistas_button">Buscar Pistas</string>
     <string name="orden_button">Orden de Arresto</string>
+    <string name="resolver_button">Resolver Misterio</string>
     <string name="emitir_button">Emitir Orden</string>
     <string name="iniciar_button">Iniciar Juego</string>
     <string name="pistasTitle">Pedir Pistas</string>
